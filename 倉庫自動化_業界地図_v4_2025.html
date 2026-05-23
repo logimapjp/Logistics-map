@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>倉庫自動化 業界地図 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060b14;--surface:#0c1420;--surface2:#111c2e;--surface3:#162035;
+  --border:#1a2a40;--border2:#243550;--border3:#2e4565;
+  --text:#d8e8f5;--text2:#a0bcd8;--muted:#5a7a99;--muted2:#3a5570;
+  --capital:#ff4d6d;--jv:#ff8c42;--partner:#38bdf8;--rival:#606880;
+  --c-sbg:#c97bff;--c-toyota:#22c55e;--c-kion:#38bdf8;
+  --c-indep:#ff8c42;--c-china:#ef4444;--c-startup:#fbbf24;
+  --c-domestic:#4ade80;--c-arm:#a855f7;--c-soft:#06b6d4;--c-conv:#94a3b8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,200,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+
+.topbar{height:50px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:14px;flex-shrink:0;z-index:20;position:relative;}
+.logo{font-size:13px;font-weight:900;white-space:nowrap;background:linear-gradient(90deg,#fff,#7ab8e8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.sep{width:1px;height:22px;background:var(--border2);flex-shrink:0;}
+.leg-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.leg{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);white-space:nowrap;}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.leg-line{width:20px;height:2px;flex-shrink:0;}
+.tbr{margin-left:auto;display:flex;gap:5px;}
+.fbtn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:3px 9px;border-radius:12px;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;white-space:nowrap;}
+.fbtn:hover,.fbtn.on{border-color:var(--partner);color:var(--partner);background:rgba(56,189,248,.08);}
+
+.tabs{display:flex;gap:2px;padding:8px 16px 0;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;z-index:15;position:relative;}
+.tab{padding:7px 16px;font-size:12px;font-weight:600;border-radius:8px 8px 0 0;cursor:pointer;border:1px solid transparent;border-bottom:none;transition:all .15s;color:var(--muted);background:transparent;font-family:'Noto Sans JP',sans-serif;}
+.tab:hover{color:var(--text2);}
+.tab.active{background:var(--bg);border-color:var(--border);color:var(--text);margin-bottom:-1px;}
+
+.main{flex:1;overflow:hidden;position:relative;display:flex;}
+.view{position:absolute;inset:0;display:none;}
+.view.active{display:flex;}
+
+.canvas-wrap{flex:1;position:relative;overflow:hidden;cursor:grab;}
+.canvas-wrap:active{cursor:grabbing;}
+svg.graph-svg{position:absolute;inset:0;width:100%;height:100%;}
+
+.zoom-ctrls{position:absolute;bottom:16px;left:16px;display:flex;flex-direction:column;gap:4px;z-index:5;}
+.zbtn{width:30px;height:30px;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:7px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'DM Mono',monospace;}
+.zbtn:hover{border-color:var(--partner);color:var(--partner);}
+.hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted2);pointer-events:none;font-family:'DM Mono',monospace;}
+
+/* OVERVIEW */
+#view-overview{overflow-y:auto;padding:24px 28px;flex-direction:column;}
+.ov-title{font-size:18px;font-weight:900;margin-bottom:4px;}
+.ov-sub{font-size:12px;color:var(--muted);margin-bottom:20px;}
+.matrix-wrap{overflow-x:auto;}
+.matrix{border-collapse:collapse;width:100%;min-width:800px;}
+.matrix th{padding:10px 12px;font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2);text-align:center;white-space:nowrap;}
+.matrix th.left{text-align:left;min-width:200px;}
+.matrix td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.matrix tr:hover td{background:var(--surface2);}
+.co-cell{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.co-cell:hover .co-name{color:var(--partner);}
+.co-flag{font-size:14px;flex-shrink:0;}
+.co-name{font-size:12px;font-weight:700;}
+.grp-hdr td{background:var(--surface2);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:6px 12px;font-family:'DM Mono',monospace;}
+.cov-bar-wrap{display:flex;justify-content:center;}
+.cov-bar{width:72px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden;}
+.cov-fill{height:100%;border-radius:3px;}
+
+/* PANEL */
+#panel{width:340px;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;transform:translateX(100%);transition:transform .3s cubic-bezier(.16,1,.3,1);flex-shrink:0;position:relative;z-index:5;}
+#panel.open{transform:translateX(0);}
+.ph{padding:16px 16px 12px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.pc{position:absolute;top:13px;right:13px;background:transparent;border:1px solid var(--border2);color:var(--muted);width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.pc:hover{border-color:var(--capital);color:var(--capital);}
+.pb{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:14px;}
+.pb::-webkit-scrollbar{width:3px;}
+.pb::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+.p-flag{font-size:20px;margin-bottom:4px;}
+.p-name{font-size:17px;font-weight:900;margin-bottom:2px;}
+.p-sub{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:6px;}
+.p-tags{display:flex;flex-wrap:wrap;gap:4px;}
+.p-sec{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.p-sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.p-kgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.p-kbox{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:8px 10px;}
+.p-kl{font-size:9px;color:var(--muted);margin-bottom:2px;}
+.p-kv{font-size:11px;font-weight:700;line-height:1.3;}
+.p-desc{font-size:11px;color:var(--text2);line-height:1.6;}
+.p-btn{width:100%;padding:8px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--partner);font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
+.p-btn:hover{background:rgba(56,189,248,.1);}
+.p-link-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;border:1px solid var(--border2);color:var(--text2);transition:all .15s;}
+.p-link-btn:hover{border-color:var(--partner);color:var(--partner);}
+
+/* DETAIL PAGE */
+#view-detail{flex-direction:column;overflow-y:auto;}
+.d-topbar{padding:12px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:var(--surface);flex-shrink:0;}
+.back-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:5px 12px;border-radius:20px;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
+.back-btn:hover{border-color:var(--partner);color:var(--partner);}
+.d-body{padding:24px;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start;}
+.d-left{display:flex;flex-direction:column;gap:18px;}
+.d-right{display:flex;flex-direction:column;gap:14px;position:sticky;top:24px;}
+.d-hero{display:flex;align-items:flex-start;gap:14px;}
+.d-flag{font-size:36px;flex-shrink:0;}
+.d-name{font-size:24px;font-weight:900;line-height:1.1;margin-bottom:3px;}
+.d-sub{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:8px;}
+.d-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.d-link{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;text-decoration:none;border:1px solid;transition:all .15s;}
+.d-link.hp{border-color:rgba(56,189,248,.4);color:var(--partner);background:rgba(56,189,248,.07);}
+.d-link.hp:hover{background:rgba(56,189,248,.15);}
+.d-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.d-desc{font-size:13px;color:var(--text2);line-height:1.75;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.sec-h{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sec-h::after{content:'';flex:1;height:1px;background:var(--border);}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.kpi-box{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:11px 13px;}
+.kpi-lbl{font-size:10px;color:var(--muted);margin-bottom:3px;}
+.kpi-val{font-size:12px;font-weight:700;line-height:1.3;}
+.cust-list{display:flex;flex-direction:column;gap:5px;}
+.cust-item{display:flex;align-items:center;gap:9px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 11px;}
+.cust-flag{font-size:13px;}
+.cust-name{font-size:12px;font-weight:600;flex:1;}
+.cust-tag{font-size:9px;padding:2px 6px;border-radius:20px;background:rgba(56,189,248,.1);color:var(--partner);font-family:'DM Mono',monospace;white-space:nowrap;}
+.rel-list{display:flex;flex-direction:column;gap:5px;}
+.rel-item{display:flex;align-items:center;gap:7px;font-size:12px;padding:7px 10px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;transition:all .15s;}
+.rel-item:hover{border-color:var(--border3);}
+.rel-badge{font-size:9px;padding:2px 6px;border-radius:20px;font-family:'DM Mono',monospace;font-weight:600;white-space:nowrap;}
+.cov-grid{display:flex;flex-direction:column;gap:7px;}
+.cov-row{display:flex;align-items:center;gap:8px;}
+.cov-lbl{font-size:11px;color:var(--muted);width:72px;flex-shrink:0;}
+.cov-track{flex:1;height:5px;background:var(--border2);border-radius:3px;overflow:hidden;}
+.cov-fll{height:100%;border-radius:3px;}
+.cov-pct{font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);width:30px;text-align:right;}
+
+/* SOLUTION CARDS */
+.sol-cards{display:flex;flex-direction:column;gap:12px;}
+.sol-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.sol-name{font-size:13px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+.sol-desc{font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:10px;}
+.sol-links{display:flex;gap:8px;flex-wrap:wrap;}
+.sol-link{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;border:1px solid;transition:all .15s;}
+.sol-link.video{border-color:rgba(239,68,68,.4);color:#f87171;background:rgba(239,68,68,.07);}
+.sol-link.video:hover{background:rgba(239,68,68,.15);}
+.sol-link.page{border-color:rgba(56,189,248,.4);color:var(--partner);background:rgba(56,189,248,.07);}
+.sol-link.page:hover{background:rgba(56,189,248,.15);}
+
+/* TAGS */
+.tag{font-size:9px;padding:2px 7px;border-radius:20px;font-family:'DM Mono',monospace;font-weight:700;letter-spacing:.5px;white-space:nowrap;}
+.tag-gtp{background:rgba(0,212,255,.15);color:#00d4ff;}
+.tag-shuttle{background:rgba(34,197,94,.15);color:#22c55e;}
+.tag-amr{background:rgba(245,158,11,.15);color:#f59e0b;}
+.tag-acr{background:rgba(249,115,22,.15);color:#f97316;}
+.tag-ai{background:rgba(168,85,247,.15);color:#a855f7;}
+.tag-waas{background:rgba(236,72,153,.15);color:#ec4899;}
+.tag-integrator{background:rgba(100,116,139,.15);color:#64748b;}
+.tag-holding{background:rgba(255,77,109,.12);color:#ff4d6d;}
+.tag-wms{background:rgba(6,182,212,.15);color:#06b6d4;}
+.tag-arm{background:rgba(217,70,239,.15);color:#d946ef;}
+.tag-conv{background:rgba(148,163,184,.15);color:#94a3b8;}
+
+/* Exhibition badges */
+.expo-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:8.5px;font-weight:700;letter-spacing:.4px;white-space:nowrap;font-family:'DM Mono',monospace;}
+.expo-tokyo25{background:rgba(255,77,109,.18);color:#ff4d6d;border:1px solid rgba(255,77,109,.35);}
+.expo-kyushu26{background:rgba(251,191,36,.18);color:#fbbf24;border:1px solid rgba(251,191,36,.35);}
+.expo-tokyo26{background:rgba(56,189,248,.15);color:#38bdf8;border:1px solid rgba(56,189,248,.3);}
+
+/* Node badge overlay in SVG */
+.node-expo-strip{pointer-events:none;}
+
+
+@media(max-width:900px){.d-body{grid-template-columns:1fr;}.kpi-grid{grid-template-columns:1fr 1fr;}.d-right{position:static;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">倉庫自動化 業界地図 2025</div>
+  <div class="sep"></div>
+  <div class="leg-row">
+    <div class="leg"><div class="leg-line" style="background:var(--capital)"></div>資本・買収</div>
+    <div class="leg"><div class="leg-line" style="border-top:2px dashed var(--jv);height:0;background:none"></div>JV・出資</div>
+    <div class="leg"><div class="leg-line" style="border-top:2px dashed var(--partner);height:0;background:none"></div>代理店・提携</div>
+    <div class="leg"><div class="leg-line" style="border-top:1px dotted var(--rival);height:0;background:none"></div>競合</div>
+    <div class="sep"></div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-sbg)"></div>SBG</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-toyota)"></div>Toyota</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-kion)"></div>KION</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-indep)"></div>独立テック</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-china)"></div>中国系</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-startup)"></div>国内新興</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-domestic)"></div>国内大手</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-arm)"></div>アーム系</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--c-soft)"></div>ソフト</div>
+    <div class="sep"></div>
+    <div class="leg"><span class="expo-badge expo-tokyo25" style="font-size:9px">🗼 TYO'25</span>東京展出展済</div>
+    <div class="leg"><span class="expo-badge expo-kyushu26" style="font-size:9px">🌸 KYU'26</span>九州展出展予定</div>
+  </div>
+  <div class="tbr" id="filter-bar" style="display:none">
+    <button class="fbtn on" data-f="all">ALL</button>
+    <button class="fbtn" data-f="sbg">SBG</button>
+    <button class="fbtn" data-f="toyota">Toyota</button>
+    <button class="fbtn" data-f="kion">KION</button>
+    <button class="fbtn" data-f="china">中国</button>
+    <button class="fbtn" data-f="startup">新興</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="overview">🗺 俯瞰マップ</button>
+  <button class="tab" data-tab="storage">📦 保管系</button>
+  <button class="tab" data-tab="transport">🤖 搬送系</button>
+  <button class="tab" data-tab="arm">🦾 アーム系</button>
+  <button class="tab" data-tab="software">💻 ソフト・統合</button>
+</div>
+
+<div class="main">
+  <div id="view-overview" class="view active" style="overflow-y:auto;padding:24px 28px;flex-direction:column;"></div>
+
+  <div id="view-storage" class="view">
+    <div class="canvas-wrap" id="cwrap-storage">
+      <svg class="graph-svg" id="graph-storage"><defs id="defs-storage"></defs><g id="cl-storage"></g><g id="el-storage"></g><g id="nl-storage"></g></svg>
+      <div class="zoom-ctrls"><button class="zbtn" data-z="in" data-g="storage">+</button><button class="zbtn" data-z="out" data-g="storage">−</button><button class="zbtn" data-z="fit" data-g="storage" style="font-size:10px">fit</button></div>
+      <div class="hint">scroll to zoom · drag to pan · click node for details</div>
+    </div>
+    <div id="panel"><div class="ph"><button class="pc" id="pc">✕</button><div class="p-flag" id="pf"></div><div class="p-name" id="pn"></div><div class="p-sub" id="ps"></div><div class="p-tags" id="pt"></div></div><div class="pb" id="pb"></div></div>
+  </div>
+
+  <div id="view-transport" class="view">
+    <div class="canvas-wrap" id="cwrap-transport">
+      <svg class="graph-svg" id="graph-transport"><defs id="defs-transport"></defs><g id="cl-transport"></g><g id="el-transport"></g><g id="nl-transport"></g></svg>
+      <div class="zoom-ctrls"><button class="zbtn" data-z="in" data-g="transport">+</button><button class="zbtn" data-z="out" data-g="transport">−</button><button class="zbtn" data-z="fit" data-g="transport" style="font-size:10px">fit</button></div>
+      <div class="hint">scroll to zoom · drag to pan · click node for details</div>
+    </div>
+  </div>
+
+  <div id="view-arm" class="view">
+    <div class="canvas-wrap" id="cwrap-arm">
+      <svg class="graph-svg" id="graph-arm"><defs id="defs-arm"></defs><g id="cl-arm"></g><g id="el-arm"></g><g id="nl-arm"></g></svg>
+      <div class="zoom-ctrls"><button class="zbtn" data-z="in" data-g="arm">+</button><button class="zbtn" data-z="out" data-g="arm">−</button><button class="zbtn" data-z="fit" data-g="arm" style="font-size:10px">fit</button></div>
+      <div class="hint">scroll to zoom · drag to pan · click node for details</div>
+    </div>
+  </div>
+
+  <div id="view-software" class="view">
+    <div class="canvas-wrap" id="cwrap-software">
+      <svg class="graph-svg" id="graph-software"><defs id="defs-software"></defs><g id="cl-software"></g><g id="el-software"></g><g id="nl-software"></g></svg>
+      <div class="zoom-ctrls"><button class="zbtn" data-z="in" data-g="software">+</button><button class="zbtn" data-z="out" data-g="software">−</button><button class="zbtn" data-z="fit" data-g="software" style="font-size:10px">fit</button></div>
+      <div class="hint">scroll to zoom · drag to pan · click node for details</div>
+    </div>
+  </div>
+
+  <div id="view-detail" class="view" style="flex-direction:column;overflow-y:auto;">
+    <div class="d-topbar">
+      <button class="back-btn" id="back-btn">← 戻る</button>
+      <span id="d-crumb" style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;"></span>
+    </div>
+    <div class="d-body">
+      <div class="d-left" id="dl"></div>
+      <div class="d-right" id="dr"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ TAGS ═══════════════
+const TAGS={
+  gtp:{label:'GTP',cls:'tag-gtp'},shuttle:{label:'SHUTTLE',cls:'tag-shuttle'},
+  amr:{label:'AMR',cls:'tag-amr'},acr:{label:'ACR',cls:'tag-acr'},
+  ai:{label:'AI-PICK',cls:'tag-ai'},waas:{label:'WaaS',cls:'tag-waas'},
+  integrator:{label:'INTEGRATOR',cls:'tag-integrator'},holding:{label:'HOLDING',cls:'tag-holding'},
+  wms:{label:'WMS/WES',cls:'tag-wms'},arm:{label:'ROBOT-ARM',cls:'tag-arm'},
+  conv:{label:'CONVEYOR',cls:'tag-conv'},
+};
+const CLUSTERS={
+  sbg:{label:'SBG / Robo HD',color:'#c97bff',bg:'rgba(201,123,255,0.05)'},
+  toyota:{label:'Toyota TALG',color:'#22c55e',bg:'rgba(34,197,94,0.04)'},
+  kion:{label:'KION Group',color:'#38bdf8',bg:'rgba(56,189,248,0.04)'},
+  domestic:{label:'国内大手',color:'#4ade80',bg:'rgba(74,222,128,0.04)'},
+  indep:{label:'独立テック',color:'#ff8c42',bg:'rgba(255,140,66,0.04)'},
+  china:{label:'中国系',color:'#ef4444',bg:'rgba(239,68,68,0.04)'},
+  startup:{label:'国内新興',color:'#fbbf24',bg:'rgba(251,191,36,0.04)'},
+  arm:{label:'アーム系',color:'#a855f7',bg:'rgba(168,85,247,0.04)'},
+  soft:{label:'ソフト・WMS',color:'#06b6d4',bg:'rgba(6,182,212,0.04)'},
+  conv:{label:'搬送・コンベヤ',color:'#94a3b8',bg:'rgba(148,163,184,0.04)'},
+  honeywell:{label:'Honeywell',color:'#f59e0b',bg:'rgba(245,158,11,0.04)'},
+};
+
+// ═══════════════ EXHIBITION DATA ═══════════════
+// expo codes: tokyo25 = 国際物流総合展2025(東京 9/10-12), kyushu26 = 九州・東アジア国際物流総合展2026(福岡 6/24-25), tokyo26 = 国際物流総合展2026(東京 9/8-11 予定)
+const EXPOS = {
+  tokyo25: {
+    label: '東京展2025 出展済',
+    short: 'TYO\'25',
+    emoji: '🗼',
+    date: '2025年9月10〜12日',
+    venue: '東京ビッグサイト',
+    url: 'https://www.logistech-online.com/webguide/',
+    cls: 'expo-tokyo25',
+  },
+  kyushu26: {
+    label: '九州展2026 出展予定',
+    short: 'KYU\'26',
+    emoji: '🌸',
+    date: '2026年6月24〜25日',
+    venue: 'マリンメッセ福岡',
+    url: 'https://lttiekyushu.logis-tech-tokyo.gr.jp/',
+    cls: 'expo-kyushu26',
+  },
+  tokyo26: {
+    label: '東京展2026 出展予定',
+    short: 'TYO\'26',
+    emoji: '🗼',
+    date: '2026年9月8〜11日',
+    venue: '東京ビッグサイト',
+    url: 'https://www.logis-tech-tokyo.gr.jp/ltt/',
+    cls: 'expo-tokyo26',
+  },
+};
+
+// Which nodes exhibit where (confirmed from official sources)
+const NODE_EXPOS = {
+  geekplus:  ['tokyo25'],           // 公式プレスリリース確認済
+  exotec:    ['tokyo25'],           // 公式プレスリリース確認済
+  aiten:     ['tokyo25','kyushu26'],// 東京出展者一覧 + 九州WEBガイド確認済
+  hai:       ['tokyo25'],           // 展示会レビュー記事確認済
+  autostore: ['tokyo25'],           // オカムラブース経由で確認済
+  seer:      ['tokyo25'],           // LTT2025出展確認済
+  daifuku:   [],                    // 2025年は出展なし（記事で明記）
+  murata:    [],
+  rapyuta:   [],
+  mujin:     [],
+};
+
+// ═══════════════ NODE DATA ═══════════════
+const NODES={
+  sbg:{label:'SoftBank Group',flag:'🇯🇵',sub:'持株会社 / 東証プライム',cluster:'sbg',tags:['holding'],scale:1.0,cov:[0,0,0,0],color:'#c97bff',
+    website:'https://group.softbank/ja',
+    kpis:[{l:'物流自動化戦略',v:'Robo HD傘下に集約'},{l:'AutoStore出資',v:'40%（$2.8B・2021年）'},{l:'ABB Robotics',v:'買収中 $5.375B'},{l:'GreenBox JV',v:'SBG 65%出資'}],
+    desc:'ロボット・AI領域に集中投資するビジョンファンドを運営。倉庫自動化ではAutoStore（40%株主）・Berkshire Grey（100%）・Balyo（42%）・Symbotic（GreenBox JV）・ABB Roboticsを傘下に。Robo HDという持株会社に統合しPhysical AI戦略を推進。',
+    customers:[],tabs:['storage','transport','arm','software'],
+    solutions:[
+      {name:'Robo HD（ロボHD）',desc:'SBGのロボティクス投資を束ねる持株会社。AutoStore・Berkshire Grey・ABB Robotics・Skild AIを傘下に置き、Physical AIによる倉庫自動化の次世代プラットフォームを構築中。',videoUrl:null,linkUrl:'https://group.softbank/ja/news/press/20251008',linkLabel:'ABB Robotics買収発表'},
+    ]},
+
+  sbr:{label:'SBロボティクス',flag:'🇯🇵',sub:'ソフトバンクロボティクス / SBG 100%子会社',cluster:'sbg',tags:['gtp','integrator'],scale:0.22,cov:[0.8,0.2,0,0],color:'#c97bff',
+    website:'https://www.softbankrobotics.com/jp/',
+    kpis:[{l:'役割',v:'AutoStore国内代理店'},{l:'最大案件',v:'SBFW川崎（2026/1稼働）'},{l:'グループ',v:'SBG 100%子会社'}],
+    desc:'SBGグループの物流自動化推進会社。AutoStoreの主要国内代理店として国内最大級システムをSBフレームワークス川崎に提供（2026年1月稼働）。AMR搬送ロボットも取り扱い。',
+    customers:[{flag:'🇯🇵',name:'SBフレームワークス川崎',tag:'EC・物流'}],tabs:['storage','transport'],
+    solutions:[
+      {name:'AutoStore 国内展開',desc:'SBロボティクスが代理店としてAutoStoreのグリッド型高密度保管システムを国内企業に提案・導入。SBフレームワークス川崎に国内最大級システムを提供。',videoUrl:'https://www.youtube.com/watch?v=vJZM_jG8r3c',linkUrl:'https://www.softbankrobotics.com/jp/product/autostore/',linkLabel:'AutoStore紹介ページ'},
+      {name:'AMR 搬送ロボット',desc:'倉庫内の搬送自動化に対応するAMRソリューション。人とロボットが協働できる安全設計で、既存倉庫への後付けも対応。',videoUrl:null,linkUrl:'https://www.softbankrobotics.com/jp/product/transport/',linkLabel:'AMR紹介ページ'},
+    ]},
+
+  greenbox:{label:'GreenBox',flag:'🇺🇸',sub:'WaaS JV / SBG 65% + Symbotic 35%',cluster:'sbg',tags:['waas','integrator'],scale:0.45,cov:[0.7,0.5,0,0.3],color:'#c97bff',
+    website:'https://group.softbank/ja/news/press/20230724',
+    kpis:[{l:'設立',v:'2023年7月'},{l:'受発注規模',v:'約$7.5B（約1.1兆円）'},{l:'モデル',v:'WaaS（設備投資不要）'},{l:'出資',v:'SBG 65% / Symbotic 35%'}],
+    desc:'SBGとSymboticの合弁。Warehouse-as-a-Serviceで自動倉庫をサービス提供。設備投資不要でAI搭載自動倉庫を利用可能。Symboticのシステムを世界展開するビークル。',
+    customers:[{flag:'🇺🇸',name:'Walmart',tag:'小売'},{flag:'🇺🇸',name:'Target',tag:'小売'},{flag:'🇺🇸',name:'Albertsons',tag:'食品小売'}],tabs:['storage','software'],
+    solutions:[
+      {name:'Warehouse-as-a-Service（WaaS）',desc:'設備投資不要でSymboticのAI搭載自動倉庫システムを月額利用できるサービスモデル。シングルテナント・マルチテナント両対応。',videoUrl:null,linkUrl:'https://group.softbank/ja/news/press/20230724',linkLabel:'プレスリリース'},
+    ]},
+
+  symbotic:{label:'Symbotic',flag:'🇺🇸',sub:'Nasdaq: SYM / 2007年創業',cluster:'sbg',tags:['amr','waas','ai'],scale:0.55,cov:[0.7,0.8,0.3,0.7],color:'#c97bff',
+    website:'https://www.symbotic.com/',
+    kpis:[{l:'主要顧客',v:'Walmart・Target・Albertsons'},{l:'2025年',v:'WalmartのASR事業を買収'},{l:'技術',v:'AIケースハンドリング'},{l:'GreenBox',v:'35%出資'}],
+    desc:'AIオーケストレーション×モジュール型ロボット群でケースレベル自動化。段階的レトロフィットが可能な設計で従来大手と差別化。SBGのGreenBox JVを通じて世界展開中。',
+    customers:[{flag:'🇺🇸',name:'Walmart',tag:'小売DC'},{flag:'🇺🇸',name:'Target',tag:'小売DC'},{flag:'🇺🇸',name:'Albertsons',tag:'食品DC'},{flag:'🇺🇸',name:'C&S Wholesale',tag:'卸売'}],tabs:['storage','transport','software'],
+    solutions:[
+      {name:'Symbotic System',desc:'AIが制御するモジュール型ロボット群でDCの入荷〜保管〜出荷を自動化。ケースレベルのSKU無制限対応と段階的レトロフィットが差別化ポイント。',videoUrl:'https://www.youtube.com/watch?v=S4kzFNDqnWg',linkUrl:'https://www.symbotic.com/technology/',linkLabel:'技術詳細'},
+    ]},
+
+  berkshire:{label:'Berkshire Grey',flag:'🇺🇸',sub:'SBG 100%子会社 / 2013年創業',cluster:'sbg',tags:['ai','arm'],scale:0.3,cov:[0.2,0.4,0.9,0.3],color:'#c97bff',
+    website:'https://www.berkshiregrey.com/',
+    kpis:[{l:'買収額',v:'$375M（2023年）'},{l:'技術',v:'AIロボットピッキング・仕分け'},{l:'顧客',v:'Walmart・Target・TJX'},{l:'連携',v:'AutoStoreとCarouselAI共同開発'}],
+    desc:'SBGが2023年に$375Mで完全買収したAIピッキングロボット企業。EC・小売・3PLの仕分け・ピッキングを自動化。2025年にAutoStoreとCarouselAI（AI搭載ピッキング）を共同開発。',
+    customers:[{flag:'🇺🇸',name:'Walmart',tag:'小売'},{flag:'🇺🇸',name:'Target',tag:'小売'},{flag:'🇺🇸',name:'TJX Companies',tag:'小売'}],tabs:['arm'],
+    solutions:[
+      {name:'BG Robotic Pick',desc:'AIと3Dビジョンを組み合わせたロボットピッキングシステム。バラ積み商品や多品種混在SKUに対応し、EC・食品・アパレルの仕分けを自動化。',videoUrl:'https://www.youtube.com/watch?v=FT_kGBhBjqw',linkUrl:'https://www.berkshiregrey.com/solutions/',linkLabel:'ソリューション一覧'},
+      {name:'CarouselAI（AutoStoreと共同）',desc:'AutoStoreグリッドに統合されたAI搭載ピッキングステーション。Berkshire GreyのAI把持技術とAutoStoreのGTPシステムを組み合わせた次世代ソリューション。',videoUrl:null,linkUrl:'https://www.autostoresystem.com/news',linkLabel:'AutoStoreニュース'},
+    ]},
+
+  balyo:{label:'Balyo',flag:'🇫🇷',sub:'SBG 約42%出資 / フランス',cluster:'sbg',tags:['amr'],scale:0.2,cov:[0,0.9,0,0],color:'#c97bff',
+    website:'https://www.balyo.com/',
+    kpis:[{l:'出資',v:'SBG 約41.8%'},{l:'技術',v:'フォークリフト型AGV・AMR'},{l:'強み',v:'既存フォークリフトの自動化改造'}],
+    desc:'SBGが約42%出資するフランスのAGVメーカー。フォークリフト型の自動搬送に特化。既存のフォークリフトを自動化改造するアプローチが独自の強み。欧州を中心にロジスティクス・製造現場で展開。',
+    customers:[{flag:'🇫🇷',name:'各種物流・製造企業',tag:'欧州中心'}],tabs:['transport'],
+    solutions:[
+      {name:'Balyo AGV / AMR',desc:'フォークリフト型の自律走行ロボット。既存のフォークリフトにBalyoのナビゲーション技術を搭載して自動化改造できる点が特徴。地図ベースのSLAMナビゲーションで柔軟に対応。',videoUrl:'https://www.youtube.com/watch?v=7ORgAYuoQLQ',linkUrl:'https://www.balyo.com/solutions',linkLabel:'ソリューション詳細'},
+    ]},
+
+  abb_r:{label:'ABB Robotics',flag:'🇨🇭',sub:'SBG買収中 $5.375B / 2025年',cluster:'sbg',tags:['arm','integrator'],scale:0.75,cov:[0.3,0.4,1.0,0.3],color:'#c97bff',
+    website:'https://new.abb.com/products/robotics',
+    kpis:[{l:'買収額',v:'$5.375B（2025年10月発表）'},{l:'売上',v:'約$3.5B（ABB Robotics部門）'},{l:'製品',v:'産業ロボット・協働ロボット'},{l:'統合先',v:'Robo HD（SBG傘下）'}],
+    desc:'ABBが2025年10月にSBGへ売却を発表した産業ロボット部門。世界最大級の産業ロボットメーカーの一つ。Robo HDに統合しBerkshire Grey・AutoStore・Skild AIと連携してPhysical AIを推進予定。',
+    customers:[{flag:'🌍',name:'自動車・電子・物流各社',tag:'グローバル多業種'}],tabs:['arm'],
+    solutions:[
+      {name:'IRBシリーズ 産業ロボット',desc:'6軸産業ロボットアームのスタンダード。デパレタイズ・パレタイズ・溶接・塗装に対応。倉庫の入出荷自動化に広く採用されている。',videoUrl:'https://www.youtube.com/watch?v=5mJHns9WFBI',linkUrl:'https://new.abb.com/products/robotics/industrial-robots',linkLabel:'製品ページ'},
+      {name:'YuMi 協働ロボット',desc:'人と同じ作業台で安全に協働できるデュアルアームロボット。小物ピッキング・組み立て・検品に対応。安全柵不要で既存ラインに導入しやすい。',videoUrl:null,linkUrl:'https://new.abb.com/products/robotics/collaborative-robots',linkLabel:'協働ロボット製品ページ'},
+    ]},
+
+  skild:{label:'Skild AI',flag:'🇺🇸',sub:'SBG・NVIDIA出資 / 評価額$14B',cluster:'sbg',tags:['ai'],scale:0.35,cov:[0,0,0.7,0.8],color:'#c97bff',
+    website:'https://www.skild.ai/',
+    kpis:[{l:'調達額',v:'$1.4B（2025年）'},{l:'評価額',v:'約$14B'},{l:'出資者',v:'SBG・NVIDIA・Samsung他'},{l:'技術',v:'ロボット汎用AI基盤モデル Skild Brain'}],
+    desc:'ロボット向け汎用AI基盤モデル「Skild Brain」を開発。競合比1,000倍のデータで学習し、あらゆる形状のロボットに適用できるOS的存在。SBGとNVIDIAが共同出資。倉庫・製造・建設など多分野に展開。',
+    customers:[{flag:'🇺🇸',name:'各種ロボットメーカー',tag:'横断的AI基盤'}],tabs:['arm','software'],
+    solutions:[
+      {name:'Skild Brain（汎用ロボットAI）',desc:'あらゆる形状のロボットに適用できる汎用AI基盤モデル。大規模シミュレーションと数百万時間の動画データで学習。倉庫ピッキング・デパレ・自律走行など多タスクに対応。',videoUrl:null,linkUrl:'https://www.skild.ai/',linkLabel:'公式サイト'},
+    ]},
+
+  toyota_ind:{label:'豊田自動織機（TICO）',flag:'🇯🇵',sub:'東証プライム / 1926年創業',cluster:'toyota',tags:['holding','integrator'],scale:0.85,cov:[0,0,0,0],color:'#22c55e',
+    website:'https://www.toyota-industries.com/ja/',
+    kpis:[{l:'売上',v:'〜1.6兆円'},{l:'フォークリフト',v:'世界販売台数No.1'},{l:'TALG',v:'2026年4月統合ブランド発足'},{l:'M&A',v:'Vanderlande・Bastian・viastore'}],
+    desc:'フォークリフト世界最大手。Vanderlande・Bastian Solutions・viastoreを買収しToyota Automated Logistics（TAL）に統合（2026年4月）。AutoStore・Exotec・OTTO Motorsとパートナーシップ。',
+    customers:[],tabs:['storage','transport'],
+    solutions:[
+      {name:'Toyota Automated Logistics（TALG）',desc:'Bastian Solutions・Vanderlande倉庫部門・viastoreを2026年4月に統合した新ブランド。倉庫自動化のグローバルSIとして欧米・アジアで展開。',videoUrl:null,linkUrl:'https://toyota-automated-logistics.com/',linkLabel:'TAL公式サイト'},
+    ]},
+
+  tal:{label:'Toyota Automated Logistics',flag:'🇯🇵',sub:'Bastian+Vanderlande倉庫+viastore統合 / 2026年4月',cluster:'toyota',tags:['integrator','shuttle','gtp'],scale:0.65,cov:[0.8,0.7,0.2,0.7],color:'#22c55e',
+    website:'https://toyota-automated-logistics.com/',
+    kpis:[{l:'構成',v:'Bastian+Vanderlande Warehousing+viastore'},{l:'発足',v:'2026年4月'},{l:'パートナー',v:'AutoStore・Exotec・OTTO Motors'},{l:'拠点',v:'北米・欧州・アジア'}],
+    desc:'豊田自動織機がBastian Solutions・Vanderlande倉庫部門・viastoreを2026年4月に統合した新ブランド。AutoStore・Exotec・OTTO Motorsを公式パートナーとして採用し大規模SIを展開。',
+    customers:[{flag:'🇺🇸',name:'Puma',tag:'アパレル'},{flag:'🇺🇸',name:'Americold',tag:'冷蔵倉庫'},{flag:'🇺🇸',name:'Denso',tag:'製造'}],tabs:['storage','transport','software'],
+    solutions:[
+      {name:'AS/RS + AMR 統合ソリューション',desc:'AutoStore・Exotecなど複数メーカーのAS/RSとAMRを組み合わせた大規模倉庫自動化。viastoreのWMS・ダイフクのシャトルシステムとの連携実績も豊富。',videoUrl:'https://www.youtube.com/watch?v=Qf3TiSQ6O_g',linkUrl:'https://toyota-automated-logistics.com/',linkLabel:'TAL公式サイト'},
+    ]},
+
+  toyota_lf:{label:'トヨタL&F',flag:'🇯🇵',sub:'豊田自動織機 トヨタL&Fカンパニー',cluster:'toyota',tags:['gtp','amr','integrator'],scale:0.6,cov:[0.7,0.6,0,0.5],color:'#22c55e',
+    website:'https://logi.toyota-lf.com/',
+    kpis:[{l:'導入実績',v:'15,000+システム（2024年）'},{l:'AutoStore',v:'国内代理店の一つ'},{l:'展開',v:'日本・東南アジア中心'}],
+    desc:'豊田自動織機のフォークリフト・物流ソリューション部門。AutoStoreの国内代理店。AGV・AMR・ソーター等を幅広く取り扱い。日本国内での導入実績は業界最多水準。',
+    customers:[{flag:'🇯🇵',name:'各種製造・流通業',tag:'多業種'}],tabs:['storage','transport'],
+    solutions:[
+      {name:'AutoStore（国内代理店）',desc:'キューブ型高密度GTPシステムAutoStoreの国内代理店として提案・導入・保守を担当。千葉市川のショールームで実機デモ体験が可能。',videoUrl:'https://www.youtube.com/watch?v=vJZM_jG8r3c',linkUrl:'https://logi.toyota-lf.com/',linkLabel:'トヨタL&Fソリューション'},
+      {name:'t-Sort 平面ソーティングロボット',desc:'QRコード読み取りで走行するグリッド型ソーティングロボット。仕分けラインの自動化に対応し、アパレル・EC向けに導入実績多数。',videoUrl:null,linkUrl:'https://logi.toyota-lf.com/',linkLabel:'詳細ページ'},
+    ]},
+
+  vanderlande:{label:'Vanderlande（空港・小包）',flag:'🇳🇱',sub:'豊田自動織機傘下 / 1949年創業',cluster:'toyota',tags:['conv','integrator'],scale:0.5,cov:[0.3,0.8,0,0.4],color:'#22c55e',
+    website:'https://www.vanderlande.com/',
+    kpis:[{l:'強み',v:'空港BHS・小包仕分け'},{l:'売上',v:'〜1,300億円'},{l:'2026年',v:'空港・小包部門として独立継続'}],
+    desc:'TAL統合後も空港・小包部門はVanderlande名義で継続。空港手荷物処理（BHS）と小包仕分けシステムで世界トップクラス。倉庫部門はTALに統合済み。',
+    customers:[{flag:'🇦🇺',name:'Sydney Airport',tag:'空港'},{flag:'🇩🇰',name:'PostNord',tag:'小包'}],tabs:['transport'],
+    solutions:[
+      {name:'ADAPTO シャトルシステム',desc:'高密度倉庫向けシャトル型AS/RS。EC・アパレルの大規模フルフィルメントセンターに採用。スループット最大級で短期立ち上げに強い。',videoUrl:'https://www.youtube.com/watch?v=5HnFuOBST5c',linkUrl:'https://www.vanderlande.com/warehouse-automation/',linkLabel:'倉庫自動化ページ'},
+    ]},
+
+  kion:{label:'KION Group',flag:'🇩🇪',sub:'Frankfurt上場 / 2006年',cluster:'kion',tags:['holding'],scale:0.75,cov:[0,0,0,0],color:'#38bdf8',
+    website:'https://www.kiongroup.com/',
+    kpis:[{l:'売上',v:'〜1.1兆円'},{l:'傘下',v:'Dematic・Linde・Still・Baoli'},{l:'2025年',v:'NvidiaとPhysical AI連携'}],
+    desc:'フォークリフト・倉庫自動化の欧州最大コングロマリット。DematicとLinde/Stillを傘下に持ち物流機器から自動化システムまでカバー。2025年NvidiaおよびAccentureとPhysical AI連携を発表。',
+    customers:[],tabs:['storage','transport','software'],
+    solutions:[
+      {name:'KION Physical AI（Nvidia連携）',desc:'2025年にNvidiaとAccentureとの提携でPhysical AIを倉庫に統合。Dematicシステムとの連携でリアルタイム最適化・予知保全を強化。',videoUrl:null,linkUrl:'https://www.kiongroup.com/',linkLabel:'KIONグループサイト'},
+    ]},
+
+  dematic:{label:'Dematic',flag:'🇩🇪',sub:'KION Group傘下 / 1819年創業',cluster:'kion',tags:['shuttle','conv','integrator'],scale:0.62,cov:[0.8,0.8,0.2,0.8],color:'#38bdf8',
+    website:'https://www.dematic.com/ja-jp/',
+    kpis:[{l:'売上',v:'〜2,700億円（世界#3）'},{l:'導入実績',v:'世界10,000+倉庫'},{l:'2024年',v:'AI予知保全ASRS発表'},{l:'2025年',v:'NvidiaとPhysical AI'}],
+    desc:'コンベヤ・ソーター・AS/RSのフルラインインテグレーター。KIONグループの自動化中核。AI予知保全WMS・リアルタイム分析を強化。日本法人あり。',
+    customers:[{flag:'🇺🇸',name:'Amazon',tag:'EC'},{flag:'🇩🇪',name:'DB Schenker',tag:'3PL'},{flag:'🇬🇧',name:'Marks & Spencer',tag:'小売'}],tabs:['storage','transport','software'],
+    solutions:[
+      {name:'Dematic Multi-Shuttle',desc:'高密度・高スループットのシャトル型AS/RS。トート・段ボールを高速で保管・搬送し、EC・食品・アパレルの大規模DCに最適。',videoUrl:'https://www.youtube.com/watch?v=N5jNf_HCZRQ',linkUrl:'https://www.dematic.com/ja-jp/products/automated-storage-retrieval/',linkLabel:'AS/RS製品ページ'},
+      {name:'iQ Software Suite（AI WMS/WES）',desc:'AIによる予知保全・需要予測・在庫最適化を統合したソフトウェアプラットフォーム。リアルタイムデータ分析でシステム全体を最適化。',videoUrl:null,linkUrl:'https://www.dematic.com/ja-jp/products/software/',linkLabel:'ソフトウェア詳細'},
+    ]},
+
+  kuka:{label:'KUKA Group',flag:'🇩🇪',sub:'Midea Group（中国）傘下',cluster:'kion',tags:['holding','arm'],scale:0.5,cov:[0,0.2,0.9,0],color:'#38bdf8',
+    website:'https://www.kuka.com/ja-jp',
+    kpis:[{l:'親会社',v:'Midea Group（中国家電）'},{l:'傘下',v:'Swisslog・KUKA Robotics'},{l:'強み',v:'産業ロボット・溶接・搬送'}],
+    desc:'産業ロボット世界大手。中国の美的集団（Midea）傘下。Swisslogを通じて物流自動化にも展開。KUKAロボットアームは物流のデパレタイズ・パレタイズに広く採用。',
+    customers:[{flag:'🌍',name:'自動車・電子・物流各社',tag:'グローバル'}],tabs:['arm'],
+    solutions:[
+      {name:'KUKA KR シリーズ 産業ロボット',desc:'6軸産業ロボット。高ペイロードから高精度まで幅広いラインナップ。倉庫のデパレ・パレタイズ・ピッキングに採用実績多数。',videoUrl:'https://www.youtube.com/watch?v=W_BbMj8zPhs',linkUrl:'https://www.kuka.com/ja-jp/製品・サービス/ロボットシステム',linkLabel:'KUKAロボット製品'},
+    ]},
+
+  swisslog:{label:'Swisslog',flag:'🇨🇭',sub:'KUKA Group傘下',cluster:'kion',tags:['gtp','amr','integrator'],scale:0.38,cov:[0.7,0.5,0,0.6],color:'#38bdf8',
+    website:'https://www.swisslog.com/ja-jp',
+    kpis:[{l:'強み',v:'製薬・冷蔵・小売自動化'},{l:'製品',v:'AutoStore代理・CarryPick(AMR-GTP)'},{l:'特徴',v:'データ駆動型ロボットSI'}],
+    desc:'KUKAグループ傘下のデータ駆動型物流SI。AutoStoreの主要代理店の一つ。AMRを活用したCarryPick（GTPシステム）も展開。製薬・冷蔵向けのモジュール型ソリューションが強み。',
+    customers:[{flag:'🇩🇪',name:'REWE Group',tag:'食品小売'},{flag:'🇺🇸',name:'Cardinal Health',tag:'医薬品'}],tabs:['storage','transport'],
+    solutions:[
+      {name:'AutoStore（代理店）',desc:'SwisslogはAutoStoreの主要代理店の一つ。製薬・食品・小売向けに高密度GTPシステムを提案・導入。',videoUrl:'https://www.youtube.com/watch?v=vJZM_jG8r3c',linkUrl:'https://www.swisslog.com/ja-jp/solutions/warehouse-automation',linkLabel:'倉庫自動化ソリューション'},
+      {name:'CarryPick',desc:'AMRが棚ごと商品を運ぶGTP（Goods-to-Person）方式の搬送システム。柔軟なレイアウト変更が可能で中規模倉庫に最適。',videoUrl:'https://www.youtube.com/watch?v=8wTbLbJvqhU',linkUrl:'https://www.swisslog.com/ja-jp/products/carrypick',linkLabel:'CarryPick詳細'},
+    ]},
+
+  honeywell:{label:'Honeywell Intelligrated',flag:'🇺🇸',sub:'Honeywell傘下 / 1959年創業',cluster:'honeywell',tags:['conv','integrator','wms'],scale:0.7,cov:[0.5,0.9,0.3,0.8],color:'#f59e0b',
+    website:'https://www.intelligrated.com/',
+    kpis:[{l:'売上（SPS部門）',v:'$7B+（2024年）'},{l:'プラットフォーム',v:'Momentum™ WES'},{l:'強み',v:'高スループット小売・EC・3PL'},{l:'世界シェア',v:'約5位'}],
+    desc:'Honeywell傘下のSI大手。コンベヤ・ソーター・ロボットピッキング・WESをフルライン提供。Momentum™プラットフォームで自動化設備をリアルタイム管理。AI・ML・IoTを統合した次世代倉庫を展開。',
+    customers:[{flag:'🇺🇸',name:'大手小売・EC各社',tag:'小売・EC'},{flag:'🇺🇸',name:'大手3PL各社',tag:'3PL'}],tabs:['transport','software'],
+    solutions:[
+      {name:'Momentum™ WES（倉庫実行システム）',desc:'コンベヤ・ソーター・ロボット・AMRを一元管理するクラウド型WES。AIによる予知保全とリアルタイム最適化で高スループットを維持。',videoUrl:'https://www.youtube.com/watch?v=R2S9FuJpotE',linkUrl:'https://www.intelligrated.com/en/solutions/warehouse-execution-system',linkLabel:'Momentum™ WES詳細'},
+    ]},
+
+  daifuku:{label:'ダイフク',flag:'🇯🇵',sub:'Daifuku Co., Ltd. / 東証プライム',cluster:'domestic',tags:['shuttle','integrator'],scale:0.92,cov:[1.0,0.8,0.1,0.8],color:'#4ade80',
+    website:'https://www.daifuku.com/jp/',
+    kpis:[{l:'売上',v:'6,607億円（2025/12期 過去最高）'},{l:'世界シェア',v:'マテハン業界 #1'},{l:'設立',v:'1937年'},{l:'強み',v:'クレーン・シャトル・半導体・BHS'}],
+    desc:'マテリアルハンドリング世界シェアトップ。スタッカークレーン・シャトルラック（M/D³）・空港BHS・半導体クリーンルーム搬送まで幅広く対応。Knappと業務提携。国内最多導入実績。',
+    customers:[{flag:'🇯🇵',name:'トヨタ自動車',tag:'製造'},{flag:'🇯🇵',name:'主要国際空港',tag:'BHS'},{flag:'🇯🇵',name:'主要半導体工場',tag:'半導体'}],tabs:['storage','transport','software'],
+    solutions:[
+      {name:'シャトルラックM（マルチシャトル）',desc:'一時保管・仕分け・順立て出庫機能を備えた高能力荷揃えシステム。通販・卸売・生協など流通業の物流センター向け。コンテナ・段ボール両対応。',videoUrl:'https://www.youtube.com/watch?v=hWX3l2-UQBY',linkUrl:'https://www.daifuku.com/jp/solution/intralogistics/products/automated-warehouse/multi-shuttle-asrs/',linkLabel:'シャトルラックM詳細'},
+      {name:'シャトルラックD³（超高密度パレット）',desc:'パレット単位での超高密度保管を実現したディープストレージ型自動倉庫。食品・飲料メーカー向けに大ロット保管を自動化。',videoUrl:null,linkUrl:'https://www.daifuku.com/jp/solution/intralogistics/products/automated-warehouse/multideep-asrs/',linkLabel:'シャトルラックD³詳細'},
+    ]},
+
+  murata:{label:'村田機械',flag:'🇯🇵',sub:'Murata Machinery / 非上場 / 1935年',cluster:'domestic',tags:['shuttle','amr','integrator'],scale:0.55,cov:[0.8,0.6,0,0.6],color:'#4ade80',
+    website:'https://www.muratamc.com/',
+    kpis:[{l:'世界シェア',v:'マテハン業界 #4'},{l:'特徴',v:'半導体クリーンルームをワンストップ対応できる国内唯一'},{l:'最新',v:'デジタルツイン活用推進'}],
+    desc:'国内2位。クリーンルーム対応をワンストップで提供できる国内唯一のメーカー。3Dロボット倉庫・シャトルシステム・スマートAGV・無人フォークリフトを展開。デジタルツインでリアルタイム可視化。',
+    customers:[{flag:'🇯🇵',name:'主要半導体メーカー',tag:'半導体'},{flag:'🇯🇵',name:'製造・物流各社',tag:'多業種'}],tabs:['storage','transport'],
+    solutions:[
+      {name:'3Dロボット倉庫システム',desc:'立体搬送と多層階アクセスを実現する次世代倉庫システム。デジタルツイン技術でシステム全体をリアルタイムに可視化・最適化。',videoUrl:null,linkUrl:'https://www.muratamc.com/Products/logistics/',linkLabel:'物流システム製品'},
+      {name:'スマートAGV・無人フォークリフト',desc:'AIナビゲーションを搭載したスマートAGVと無人フォークリフト。人と同一空間で安全に稼働し、入出荷・搬送・保管をシームレスに自動化。',videoUrl:null,linkUrl:'https://www.muratamc.com/',linkLabel:'村田機械公式サイト'},
+    ]},
+
+  autostore:{label:'AutoStore',flag:'🇳🇴',sub:'Oslo: AUTO / 1996年創業 / SBG 40%株主',cluster:'indep',tags:['gtp','ai'],scale:0.68,cov:[1.0,0.1,0,0.4],color:'#ff8c42',
+    website:'https://www.autostoresystem.com/ja',
+    kpis:[{l:'世界導入',v:'1,950+システム（54ヵ国）'},{l:'稼働率',v:'99.8%'},{l:'省スペース',v:'最大75%削減'},{l:'SBG出資',v:'40%（$2.8B・2021年）'}],
+    desc:'キューブ型GTPのパイオニア。グリッド内ビン縦積み+グリッド上ロボット走行。SBGが40%株主。2025年冷凍対応・Berkshire GreyとCarouselAI発表。代理店：SBロボ・トヨタL&F(TAL)・Swisslog等。',
+    customers:[{flag:'🇩🇪',name:'Lufthansa',tag:'航空'},{flag:'🇺🇸',name:'Puma',tag:'アパレル'},{flag:'🇯🇵',name:'SBFW川崎',tag:'EC'}],tabs:['storage'],
+    solutions:[
+      {name:'AutoStore グリッドシステム',desc:'アルミグリッド内にビンを縦積みし、グリッド上をロボットが走行してビンを取り出すキューブ型GTP。従来比最大75%省スペース。稼働率99.8%で単一障害点なし。',videoUrl:'https://www.youtube.com/watch?v=vJZM_jG8r3c',linkUrl:'https://www.autostoresystem.com/ja/solution',linkLabel:'ソリューション詳細（日本語）'},
+      {name:'R5 / B1 ロボット',desc:'グリッド上を走行するAutoStore専用ロボット。R5は低プロファイル設計で低天井倉庫に対応。B1は大型グリッド向け高速モデル。10台の消費電力が掃除機1台相当の省エネ設計。',videoUrl:'https://www.youtube.com/watch?v=Xy5WH-KOsog',linkUrl:'https://www.autostoresystem.com/ja/technology/robots',linkLabel:'ロボット紹介'},
+      {name:'CubeVerse AI / CarouselAI',desc:'AIによるロボットルート動的最適化（CubeVerse）と、Berkshire Greyと共同開発したAI搭載ピッキングステーション（CarouselAI）。2025年発表の次世代機能。',videoUrl:null,linkUrl:'https://www.autostoresystem.com/news',linkLabel:'最新ニュース'},
+      {name:'Pio（中小規模向けサブスク）',desc:'中小企業向けのパッケージ化されたAutoStoreシステム。P100からP600まで段階的に選択可能。サブスクリプション型で初期投資を抑えて導入可能。',videoUrl:null,linkUrl:'https://www.autostoresystem.com/pio',linkLabel:'Pioサービス詳細'},
+    ]},
+
+  exotec:{label:'Exotec Skypod',flag:'🇫🇷',sub:'ユニコーン $2B+ / 2015年創業',cluster:'indep',tags:['amr','acr'],scale:0.42,cov:[0.7,0.7,0,0.3],color:'#ff8c42',
+    website:'https://www.exotec.com/ja/',
+    kpis:[{l:'ピッキング',v:'注文後2分以内'},{l:'2025年',v:'次世代Skypod（+50%処理能力）'},{l:'日本',v:'Exotec Nihon（品川）直販'},{l:'TAL提携',v:'Toyota Automated Logisticsの公式パートナー'}],
+    desc:'ロボットが棚を上下左右に走行する3次元AMR。フランス初ユニコーン工業企業。TAL（Toyota Automated Logistics）の公式パートナー。ユニクロ・ヨドバシカメラ等に導入。',
+    customers:[{flag:'🇯🇵',name:'ユニクロ',tag:'アパレル'},{flag:'🇯🇵',name:'ヨドバシカメラ',tag:'家電小売'},{flag:'🇫🇷',name:'Carrefour',tag:'食品小売'},{flag:'🇺🇸',name:'Grainger',tag:'MRO'}],tabs:['storage','transport'],
+    solutions:[
+      {name:'Skypodシステム',desc:'ロボットがラック内を前後左右・上下に自走してケースを取り出す3次元AMR。注文後2分以内にピッキングステーションに到達。24時間365日稼働。',videoUrl:'https://www.youtube.com/watch?v=694iAVDxRFQ',linkUrl:'https://www.exotec.com/ja/optimize-your-ecommerce-and-omnichannel-fulfillment-with-the-skypod-system/',linkLabel:'Skypodシステム詳細（日本語）'},
+      {name:'次世代Skypod（2025年発表）',desc:'処理能力50%向上・順立て出庫機能・梱包統合機能を追加した次世代版。オムニチャネル・EC・B2B注文を単一システムで処理可能。',videoUrl:null,linkUrl:'https://www.exotec.com/ja/',linkLabel:'Exotec Japan公式'},
+    ]},
+
+  ocado:{label:'Ocado / OSP',flag:'🇬🇧',sub:'London: OCDO / 2000年創業',cluster:'indep',tags:['gtp','ai'],scale:0.6,cov:[0.9,0.3,0.3,0.7],color:'#ff8c42',
+    website:'https://www.ocadogroup.com/',
+    kpis:[{l:'性能',v:'50品を約6分でピッキング'},{l:'ロボット',v:'2,300台・5mm間隔・時速4m'},{l:'日本',v:'イオンCFC千葉'},{l:'2024年',v:'6 River Systems買収'}],
+    desc:'食品EC特化エンドツーエンドプラットフォーム（OSP）。自社運営25年のノウハウを外販。グリッドロボット群を独自無線通信（1日4TB）で制御。6 River Systems買収でAMR領域も強化。',
+    customers:[{flag:'🇯🇵',name:'イオン',tag:'食品小売'},{flag:'🇺🇸',name:'Kroger',tag:'食品小売'},{flag:'🇦🇺',name:'Coles',tag:'食品小売'}],tabs:['storage','software'],
+    solutions:[
+      {name:'Ocado Smart Platform（OSP）',desc:'食品ECのエンドツーエンドフルフィルメントプラットフォーム。グリッドロボット・AI最適化・マルチ温度帯管理・配送最適化をワンパッケージで提供。',videoUrl:'https://www.youtube.com/watch?v=FY9sbW7oOiY',linkUrl:'https://ocadointelligentautomation.com/',linkLabel:'Ocado Intelligent Automation'},
+    ]},
+
+  ssi:{label:'SSI Schaefer',flag:'🇩🇪',sub:'非上場 / 1937年創業',cluster:'indep',tags:['shuttle','integrator'],scale:0.7,cov:[0.9,0.6,0,0.7],color:'#ff8c42',
+    website:'https://www.ssi-schaefer.com/ja-jp',
+    kpis:[{l:'売上',v:'〜3,200億円（世界#2）'},{l:'特徴',v:'ラック〜WMSまでフルライン'},{l:'2024年',v:'AI予知保全WMS拡充'}],
+    desc:'ラック・AS/RS・WMSのフルライン自社提供。非上場（Schaefer一族経営）。AI在庫管理WMSを強化中。日本法人あり。ソフトウェアからラックまで一括対応できる数少ない企業。',
+    customers:[{flag:'🇩🇪',name:'BMW',tag:'製造'},{flag:'🇯🇵',name:'国内製造・流通各社',tag:'多業種'}],tabs:['storage','software'],
+    solutions:[
+      {name:'SSI Cuby（キューブ型AS/RS）',desc:'グリッド型の高密度AS/RSシステム。AutoStoreの競合製品として展開。SSIの自社WMSとシームレスに統合し、倉庫全体を一元管理。',videoUrl:'https://www.youtube.com/watch?v=B_3C5K5Hpvs',linkUrl:'https://www.ssi-schaefer.com/ja-jp/products/storage-systems',linkLabel:'保管システム製品'},
+      {name:'WAMAS WMS',desc:'SSI Schaeferの自社WMS。AS/RSからコンベヤ・AMRまで自社・他社設備を統合管理。AI在庫管理・予知保全機能を2024年に強化。',videoUrl:null,linkUrl:'https://www.ssi-schaefer.com/ja-jp/products/software/wamas',linkLabel:'WAMAS詳細'},
+    ]},
+
+  knapp:{label:'Knapp AG',flag:'🇦🇹',sub:'オーストリア / 1952年創業',cluster:'indep',tags:['shuttle','integrator'],scale:0.45,cov:[0.7,0.5,0.2,0.7],color:'#ff8c42',
+    website:'https://www.knapp.com/ja/',
+    kpis:[{l:'強み',v:'医薬品・化粧品卸向け精密ピッキング'},{l:'主力製品',v:'OSR Shuttle™'},{l:'提携',v:'ダイフクとパートナーシップ'}],
+    desc:'医薬品・化粧品卸向け精密ピッキングシステムのトップランナー。OSR Shuttle™は医薬品・食品向けシャトルのデファクト。ダイフクと業務提携で日本市場にも展開。',
+    customers:[{flag:'🇩🇪',name:'GEHE Pharma',tag:'医薬品卸'},{flag:'🇺🇸',name:'Walgreens',tag:'薬局'}],tabs:['storage'],
+    solutions:[
+      {name:'OSR Shuttle™（オシャー・シャトル）',desc:'医薬品・食品・化粧品卸向けの高精度シャトル型AS/RS。規制対応・温度管理・トレーサビリティが求められる環境に最適化。',videoUrl:'https://www.youtube.com/watch?v=dLM_fwpLTLk',linkUrl:'https://www.knapp.com/ja/製品/自動倉庫システム/',linkLabel:'OSR Shuttle™詳細'},
+    ]},
+
+  interroll:{label:'Interroll',flag:'🇨🇭',sub:'SIX: INRN / 1959年創業',cluster:'conv',tags:['conv'],scale:0.42,cov:[0.2,0.9,0,0.3],color:'#94a3b8',
+    website:'https://www.interroll.com/ja/',
+    kpis:[{l:'強み',v:'コンベヤ・ソーティングの世界標準部品'},{l:'特徴',v:'OEM供給が主力。多数のSIが採用'}],
+    desc:'コンベヤ・ソーティングの世界標準部品メーカー。ダイフク・Dematic等多数のSIがInterrollのモジュールをOEM採用。インフラとして業界全体を支える縁の下の力持ち。',
+    customers:[{flag:'🌍',name:'各大手SI経由（OEM）',tag:'B2B'}],tabs:['transport'],
+    solutions:[
+      {name:'Interroll RBS（コンベヤモジュール）',desc:'ゾーンコントロール式ローラーコンベヤのスタンダード。業界標準部品として多数のSIが採用。省エネ設計で物流センターの搬送ラインを構成。',videoUrl:'https://www.youtube.com/watch?v=0Y4qxr8iFWk',linkUrl:'https://www.interroll.com/ja/products/',linkLabel:'製品ラインナップ'},
+    ]},
+
+  beumer:{label:'Beumer Group',flag:'🇩🇪',sub:'非上場 / 1935年創業',cluster:'conv',tags:['conv','integrator'],scale:0.38,cov:[0.2,0.9,0,0.2],color:'#94a3b8',
+    website:'https://www.beumergroup.com/',
+    kpis:[{l:'強み',v:'空港・EC向け高速ソーター'},{l:'製品',v:'クロスベルトソーター・荷物搬送'}],
+    desc:'高速ソーティングシステムの専業大手。空港手荷物・EC宅配仕分け向けクロスベルトソーターで世界トップクラス。非上場のドイツ家族経営企業。',
+    customers:[{flag:'🌍',name:'DHL・FedEx系',tag:'宅配'},{flag:'🌍',name:'主要国際空港',tag:'BHS'}],tabs:['transport'],
+    solutions:[
+      {name:'クロスベルトソーター',desc:'高速・高精度の仕分けシステム。EC宅配センター・空港手荷物処理に対応。毎時数万件の仕分けが可能で、Beumerの主力製品。',videoUrl:'https://www.youtube.com/watch?v=Mpc1RCMJ3sY',linkUrl:'https://www.beumergroup.com/products/sortation-systems/',linkLabel:'ソーティング製品'},
+    ]},
+
+  jungheinrich:{label:'Jungheinrich',flag:'🇩🇪',sub:'Frankfurt上場 / 1953年創業',cluster:'conv',tags:['amr','integrator'],scale:0.48,cov:[0.3,0.8,0,0.4],color:'#94a3b8',
+    website:'https://www.jungheinrich.co.jp/',
+    kpis:[{l:'強み',v:'自動フォークリフト・AGV'},{l:'特徴',v:'欧州大手フォークリフト+自動化SI'}],
+    desc:'欧州大手フォークリフトメーカーで自動化SI事業も展開。自動フォークリフト・AGVで倉庫の水平搬送を自動化。AS/RSとの組み合わせたトータルソリューションも提供。',
+    customers:[{flag:'🇩🇪',name:'欧州製造・流通各社',tag:'欧州中心'}],tabs:['transport'],
+    solutions:[
+      {name:'ETV / ETX 自動フォークリフト',desc:'自動ナビゲーション機能を搭載したフォークリフト。高層ラックへの自動入出庫を実現。既存フォークリフトとの混在運用が可能。',videoUrl:'https://www.youtube.com/watch?v=R3ZE3A8i7vA',linkUrl:'https://www.jungheinrich.co.jp/products/automated-systems/',linkLabel:'自動化システム製品'},
+    ]},
+
+  witron:{label:'Witron',flag:'🇩🇪',sub:'非上場 / バイエルン',cluster:'conv',tags:['integrator','shuttle'],scale:0.4,cov:[0.7,0.6,0,0.5],color:'#94a3b8',
+    website:'https://www.witron.com/',
+    kpis:[{l:'強み',v:'食品小売向け大規模DC自動化'},{l:'特徴',v:'OPM・COM等独自システム'}],
+    desc:'食品小売チェーン向け大規模DC自動化の専業SI。Aldi・Lidl等の欧米食品小売DCに多数導入実績。独自のOPM（Order Picking Machinery）でケース単位自動ピッキングを実現。',
+    customers:[{flag:'🇩🇪',name:'Aldi',tag:'食品小売'},{flag:'🇩🇪',name:'Lidl',tag:'食品小売'},{flag:'🇺🇸',name:'Meijer',tag:'食品小売'}],tabs:['storage','transport'],
+    solutions:[
+      {name:'OPM（Order Picking Machinery）',desc:'食品小売DC向けのケース単位自動ピッキングシステム。Witronの独自技術で、大規模食品DCの入荷〜ピッキング〜出荷を完全自動化。',videoUrl:'https://www.youtube.com/watch?v=p4pXE9rGhZU',linkUrl:'https://www.witron.com/solutions/',linkLabel:'ソリューション詳細'},
+    ]},
+
+  tgw:{label:'TGW Logistics',flag:'🇦🇹',sub:'非上場 / オーストリア / 1969年',cluster:'conv',tags:['shuttle','conv','integrator'],scale:0.38,cov:[0.7,0.7,0,0.6],color:'#94a3b8',
+    website:'https://www.tgw-group.com/',
+    kpis:[{l:'強み',v:'EC・アパレル向けAS/RS+コンベヤSI'},{l:'特徴',v:'シャトル・コンベヤ・ソーターのトータルSI'}],
+    desc:'EC・アパレル向けの大規模物流自動化SIとして欧州中心に展開。シャトルシステム・コンベヤ・ソーターをトータルで提供。Puma・Hugo Boss等に導入実績。',
+    customers:[{flag:'🇩🇪',name:'Puma',tag:'アパレル'},{flag:'🇩🇪',name:'Hugo Boss',tag:'アパレル'}],tabs:['storage','transport'],
+    solutions:[
+      {name:'Stingray シャトルシステム',desc:'高速シャトルロボットによるAS/RS。EC・アパレル向けに最適化されており、高密度保管と高スループット出庫を両立。',videoUrl:'https://www.youtube.com/watch?v=G1K5Y_2yiuQ',linkUrl:'https://www.tgw-group.com/solutions/',linkLabel:'ソリューション詳細'},
+    ]},
+
+  kardex:{label:'Kardex',flag:'🇨🇭',sub:'SIX: KARN / 1919年創業',cluster:'conv',tags:['shuttle'],scale:0.32,cov:[0.6,0.2,0,0],color:'#94a3b8',
+    website:'https://www.kardex.com/ja/',
+    kpis:[{l:'主力製品',v:'VLM（垂直リフトモジュール）・Remstar'},{l:'日本',v:'アルテックが正規代理店'},{l:'強み',v:'中小規模倉庫・工場部品管理'}],
+    desc:'垂直リフトモジュール（VLM）専業の老舗。センサーで棚間隔を自動最適化し超高密度収納を実現。中小規模の工場部品管理・ネットショップ倉庫に最適。日本はアルテックが販売。',
+    customers:[{flag:'🇯🇵',name:'国内中小製造・EC各社',tag:'中小企業'}],tabs:['storage'],
+    solutions:[
+      {name:'Kardex Remstar VLM',desc:'垂直リフトモジュール（縦型自動棚）。センサーで棚間隔を自動最適化し、限られたスペースで最大60%の保管密度向上を実現。中小規模の工場・倉庫向け。',videoUrl:'https://www.youtube.com/watch?v=6o5P4NHDVB4',linkUrl:'https://www.kardex.com/ja/products',linkLabel:'Kardex製品ページ'},
+    ]},
+
+  geekplus:{label:'Geek+（ギークプラス）',flag:'🇨🇳',sub:'ユニコーン / 日本JV：株式会社ギークプラス',cluster:'china',tags:['amr','acr'],scale:0.52,cov:[0.4,1.0,0,0.3],color:'#ef4444',
+    website:'https://www.geekplus.jp/',
+    kpis:[{l:'AMRシェア',v:'世界#1'},{l:'2025年4月',v:'RSシリーズ（ACR+AMR）日本展開'},{l:'生産性',v:'最大8倍向上'},{l:'対応高さ',v:'最大12m'}],
+    desc:'AMR世界シェア首位のユニコーン。2025年4月にACR+AMR一体型RSシリーズ（Robo Shuttle）を日本国内提供開始。最大12m対応・Tote-to-Personモデルで生産性最大8倍・保管容量5倍。',
+    customers:[{flag:'🇯🇵',name:'アスクル',tag:'EC'},{flag:'🇯🇵',name:'三井倉庫（上新電機向け）',tag:'3PL'},{flag:'🇯🇵',name:'トヨタ',tag:'製造'}],tabs:['transport'],
+    solutions:[
+      {name:'Picking Pシリーズ（棚搬送AMR）',desc:'棚ごと商品を作業員の元へ運ぶGoods-to-Person型AMR。既存倉庫に後付け導入可能で、短期間でピッキング効率を大幅向上。',videoUrl:'https://www.youtube.com/watch?v=NGFRbZaIy-s',linkUrl:'https://www.geekplus.jp/products/',linkLabel:'製品ラインナップ'},
+      {name:'RSシリーズ（ACR+AMR一体型）',desc:'ロボットがラック内のケース・コンテナを直接取り出すACR機能とAMRを統合。最大12m高さ対応・生産性最大8倍。2025年4月に日本展開開始。',videoUrl:'https://www.youtube.com/watch?v=s7R9XmKn_jM',linkUrl:'https://www.geekplus.jp/products/',linkLabel:'RSシリーズ詳細'},
+    ]},
+
+  hai:{label:'Hai Robotics',flag:'🇨🇳',sub:'深圳 / 2016年創業',cluster:'china',tags:['acr','amr'],scale:0.32,cov:[0.3,0.9,0,0],color:'#ef4444',
+    website:'https://www.hairobotics.com/',
+    kpis:[{l:'カテゴリ',v:'ACRパイオニア'},{l:'特徴',v:'ロボット自身がケースを把持'}],
+    desc:'ACR（Autonomous Case-handling Robot）カテゴリのパイオニア。ロボット自身がケース単位で棚から直接取り出す。Geek+ RSシリーズの主要競合。',
+    customers:[{flag:'🇨🇳',name:'各種EC・物流企業',tag:'EC・物流'}],tabs:['transport'],
+    solutions:[
+      {name:'HAIPICK ACR',desc:'ロボット自身がケース・トートを棚から直接把持して取り出すACRシステム。バッファラックへの効率的な配置と高速搬送を実現。',videoUrl:'https://www.youtube.com/watch?v=CDhXiMrINYk',linkUrl:'https://www.hairobotics.com/solutions/',linkLabel:'ソリューション詳細'},
+    ]},
+
+  quicktron:{label:'Quicktron',flag:'🇨🇳',sub:'アリババ系 / 上海',cluster:'china',tags:['amr'],scale:0.28,cov:[0,0.85,0,0],color:'#ef4444',
+    website:'https://www.quicktron.com/',
+    kpis:[{l:'親会社',v:'アリババグループ関連'},{l:'強み',v:'大規模AMRフリート管理'}],
+    desc:'アリババグループ関連のAMRメーカー。大規模フリート管理が得意。中国・東南アジアで多数導入。日本市場への本格参入を検討中。',
+    customers:[{flag:'🇨🇳',name:'アリババ物流施設',tag:'EC'}],tabs:['transport'],
+    solutions:[
+      {name:'Quicktron AMRフリート',desc:'大規模倉庫向けAMRフリート管理システム。アリババの物流ノウハウを活かした最適化アルゴリズムで、数百台規模のフリートを効率管理。',videoUrl:'https://www.youtube.com/watch?v=4tQ3kqSTWvM',linkUrl:'https://www.quicktron.com/solutions/',linkLabel:'ソリューション詳細'},
+    ]},
+
+  mushiny:{label:'Mushiny（ムシニー）',flag:'🇨🇳',sub:'南京 / 2015年創業',cluster:'china',tags:['amr','conv'],scale:0.22,cov:[0.1,0.8,0,0.2],color:'#ef4444',
+    website:'https://www.mushiny.com/',
+    kpis:[{l:'特徴',v:'AMR＋ソーティングシステム'}],
+    desc:'AMRとソーティングシステムを組み合わせたソリューション。中国・東南アジアでの実績が中心。日本市場での存在感は限定的。',
+    customers:[{flag:'🇨🇳',name:'中国物流・EC各社',tag:'EC・物流'}],tabs:['transport'],
+    solutions:[
+      {name:'Mushiny AMR＋Sorter統合',desc:'AMRによる搬送とソーティングシステムを組み合わせた自動化ソリューション。EC・物流センターの仕分け・搬送工程を自動化。',videoUrl:null,linkUrl:'https://www.mushiny.com/solutions',linkLabel:'ソリューション詳細'},
+    ]},
+
+  aiten:{label:'AiTEN Robotics',flag:'🇨🇳',sub:'2017年創業 / 日本展開中',cluster:'china',tags:['amr','conv'],scale:0.3,cov:[0.2,0.9,0,0.3],color:'#ef4444',
+    website:'https://www.aitenrobot.com/ja/',
+    kpis:[{l:'導入実績',v:'30ヵ国以上・200プロジェクト以上'},{l:'製品',v:'AMR・自動フォークリフト（AGF）フルスタック自社開発'},{l:'日本',v:'2025年関東・2026年関西物流展に出展'}],
+    desc:'AMR・自動フォークリフト（AGF）のフルスタックを自社開発する中国系メーカー。2017年創業で30ヵ国以上・200プロジェクト以上の導入実績。2025〜26年の日本物流展に出展し日本市場に積極参入中。',
+    customers:[{flag:'🌍',name:'Fortune 500企業各社',tag:'製造・物流'},{flag:'🇯🇵',name:'日本物流・製造企業',tag:'参入中'}],tabs:['transport'],
+    solutions:[
+      {name:'APe AMRシリーズ',desc:'自律走行型AMR。SLAMナビゲーションと3D LiDARで精密に自律走行。生産ライン〜倉庫間の搬送を24時間自動化。食品・医薬・EC・製造向け。',videoUrl:'https://www.youtube.com/watch?v=5JdkW0Xa3sM',linkUrl:'https://www.aitenrobot.com/ja/products/',linkLabel:'製品ラインナップ'},
+      {name:'自動フォークリフト（AGF）',desc:'1.5トン対応のデュアルモード自動ガイドフォークリフト。高層ラックへの精密な入出庫と重量物搬送を自動化。エレベーター連携にも対応。',videoUrl:null,linkUrl:'https://www.aitenrobot.com/ja/products/',linkLabel:'AGF製品詳細'},
+    ]},
+
+  seer:{label:'SEER Robotics',flag:'🇨🇳',sub:'上海 / AMRコントローラー世界販売No.1',cluster:'china',tags:['amr'],scale:0.35,cov:[0,0.9,0,0.3],color:'#ef4444',
+    website:'https://seer-robotics.ai/',
+    kpis:[{l:'コントローラー販売',v:'世界No.1（2年連続）'},{l:'顧客数',v:'65ヵ国以上・1,500社以上'},{l:'顧客例',v:'Siemens・Samsung・Walmart・Haier'},{l:'日本',v:'2025年東京物流展に出展'}],
+    desc:'AMR/AGVコントローラー（SRCシリーズ）が世界販売台数2年連続No.1の「ロボットのOS屋」。65ヵ国以上・1,500社以上に導入。2025年東京物流展に出展し日本市場展開中。Siemens・Samsung・Walmartに採用。',
+    customers:[{flag:'🇩🇪',name:'Siemens',tag:'製造'},{flag:'🇰🇷',name:'Samsung',tag:'電子'},{flag:'🇺🇸',name:'Walmart',tag:'小売'},{flag:'🇨🇳',name:'Haier',tag:'家電'}],tabs:['transport','software'],
+    solutions:[
+      {name:'SRCシリーズ AMR/AGVコントローラー',desc:'市場の大多数のLiDAR・サーボドライブ・センサーに対応する汎用AMRコントローラー。数日以内にロボットフリートを構築可能なオープンプラットフォーム設計。',videoUrl:'https://www.youtube.com/watch?v=RiPg3Y8UQMQ',linkUrl:'https://seer-robotics.ai/products/',linkLabel:'製品ページ'},
+      {name:'Meta-Map Pro（3D可視化システム）',desc:'ゲームエンジンレベルの3D倉庫シミュレーションでAGV/AMRフリートをリアルタイム監視・管理。工場全体のデジタルツインを構築可能。',videoUrl:null,linkUrl:'https://seer-robotics.ai/blog/',linkLabel:'SEERブログ・事例'},
+    ]},
+
+  tusk:{label:'Tusk Robots',flag:'🇨🇳',sub:'仏山 / 2021年創業',cluster:'china',tags:['amr'],scale:0.2,cov:[0,0.8,0,0],color:'#ef4444',
+    website:'https://www.tuskrobotics.com/',
+    kpis:[{l:'設立',v:'2021年'},{l:'投資家',v:'Lalamove・ZhenFund・01vc'},{l:'強み',v:'インテリジェントパレットロボット'},{l:'用途',v:'医薬・電子・EC・自動車部品'}],
+    desc:'中国・仏山のAMR/パレットロボットメーカー。Lalamove・ZhenFundなどから出資を受けて急成長中。医薬品・電子・EC・自動車部品・タバコ・化学など幅広い業種向けのインテリジェントパレットロボットを展開。',
+    customers:[{flag:'🇨🇳',name:'各種製造・物流企業',tag:'製造・物流'}],tabs:['transport'],
+    solutions:[
+      {name:'インテリジェントパレットロボット',desc:'パレット単位の重量物搬送に特化したAMR。医薬品・電子・EC・自動車部品など幅広い業種の工場・倉庫内搬送を自動化。',videoUrl:null,linkUrl:'https://www.tuskrobotics.com/',linkLabel:'公式サイト'},
+    ]},
+
+  rapyuta:{label:'ラピュタロボティクス',flag:'🇯🇵',sub:'2014年創業 / クラウドRaaS',cluster:'startup',tags:['amr','waas'],scale:0.3,cov:[0.4,0.8,0,0.6],color:'#fbbf24',
+    website:'https://www.rapyuta-robotics.com/ja/',
+    kpis:[{l:'代表事例',v:'アスクル34台（当時国内EC最大）'},{l:'生産性',v:'1.8倍'},{l:'人員削減',v:'約30%'},{l:'モデル',v:'クラウドRaaS（月額）'}],
+    desc:'日本製クラウドロボティクスプラットフォームでRaaSを展開。PA-AMRとラピュタASRSを組み合わせた自動化ソリューション。月額型で初期投資不要。補助金活用で中小企業への普及も進む。',
+    customers:[{flag:'🇯🇵',name:'アスクル',tag:'EC'},{flag:'🇯🇵',name:'日本通運',tag:'3PL'}],tabs:['transport','software'],
+    solutions:[
+      {name:'PA-AMR（ピッキングアシストAMR）',desc:'ピッキング作業者と協働するAMR。作業者の代わりに商品棚まで移動し、ピッキングリストを表示。作業者の歩行距離を大幅削減しスループット向上。',videoUrl:'https://www.youtube.com/watch?v=OfOIVW1Gv2E',linkUrl:'https://www.rapyuta-robotics.com/ja/products/rapyuta-pa-amr/',linkLabel:'PA-AMR詳細'},
+      {name:'ラピュタASRS',desc:'クラウド管理の自動保管・搬送システム。PA-AMRと組み合わせてEC倉庫のピッキング〜搬送を一元管理。月額サブスクリプションで導入可能。',videoUrl:null,linkUrl:'https://www.rapyuta-robotics.com/ja/products/',linkLabel:'製品ラインナップ'},
+    ]},
+
+  mujin:{label:'Mujin',flag:'🇯🇵',sub:'2011年創業 / 東京',cluster:'startup',tags:['ai','arm'],scale:0.35,cov:[0.1,0.2,1.0,0.4],color:'#fbbf24',
+    website:'https://mujin.co.jp/',
+    kpis:[{l:'処理能力',v:'1,000ピース/時（世界最高）'},{l:'実績',v:'ピースピッキング世界最多導入'},{l:'技術',v:'AIロボットコントローラー'}],
+    desc:'AIロボットコントローラーのパイオニア。高精度3Dビジョン＋AI把持計画で多様な形状に対応。ピースピッキング導入実績世界最多。ファンケル・PALTAC等国内大手に導入済み。',
+    customers:[{flag:'🇯🇵',name:'ファンケル',tag:'化粧品EC'},{flag:'🇯🇵',name:'PALTAC',tag:'卸売'}],tabs:['arm'],
+    solutions:[
+      {name:'MujinController（AIロボットコントローラー）',desc:'AIと3Dビジョンでロボットアームの把持計画をリアルタイム生成。バラ積み混在品にも対応し1,000ピース/時を実現。ファンケル・PALTAC等に導入済み。',videoUrl:'https://www.youtube.com/watch?v=YCCxuqaJLhE',linkUrl:'https://mujin.co.jp/product/',linkLabel:'製品詳細'},
+    ]},
+
+  plus_auto:{label:'Plus Automation',flag:'🇯🇵',sub:'プラスオートメーション / 2018年',cluster:'startup',tags:['amr','waas'],scale:0.22,cov:[0.2,0.7,0,0.3],color:'#fbbf24',
+    website:'https://plus-automation.co.jp/',
+    kpis:[{l:'モデル',v:'AMR RaaS（国内3PL向け）'},{l:'特徴',v:'AMRオペレーション代行'}],
+    desc:'AMRを活用したRaaSを国内3PL向けに展開。AMRの導入からオペレーション代行まで一括提供。中小〜中堅物流企業の自動化を支援。',
+    customers:[{flag:'🇯🇵',name:'国内3PL各社',tag:'3PL'}],tabs:['transport'],
+    solutions:[
+      {name:'AMR RaaS（ロボット・アズ・ア・サービス）',desc:'AMRをサブスクリプション型で提供し、導入・運用・保守まで一括代行。設備投資不要で倉庫自動化を実現。国内3PL向けに展開中。',videoUrl:null,linkUrl:'https://plus-automation.co.jp/',linkLabel:'公式サイト'},
+    ]},
+
+  ground:{label:'GROUND',flag:'🇯🇵',sub:'2015年創業 / SG Holdings関連',cluster:'startup',tags:['amr','integrator'],scale:0.25,cov:[0.2,0.7,0,0.5],color:'#fbbf24',
+    website:'https://ground.inc/',
+    kpis:[{l:'関連',v:'佐川急便（SG Holdings）'},{l:'特徴',v:'AGV+WMS統合'}],
+    desc:'佐川急便グループ関連のロボット・WMS統合会社。AGVとWMSを組み合わせた倉庫自動化ソリューションを展開。佐川急便の物流施設への導入実績あり。',
+    customers:[{flag:'🇯🇵',name:'佐川急便グループ',tag:'宅配'}],tabs:['transport','software'],
+    solutions:[
+      {name:'GreyOrange Ranger AMR + GROUND WMS',desc:'GreyOrangeのRanger AMRとGROUNDのWMSを統合したソリューション。ニトリ・大和ハウス・トラスコ中山への導入実績あり。',videoUrl:null,linkUrl:'https://ground.inc/',linkLabel:'GROUND公式サイト'},
+    ]},
+
+  fanuc:{label:'Fanuc',flag:'🇯🇵',sub:'東証プライム / 1956年創業',cluster:'arm',tags:['arm'],scale:0.85,cov:[0.1,0.3,1.0,0.3],color:'#a855f7',
+    website:'https://www.fanuc.co.jp/',
+    kpis:[{l:'売上',v:'約8,000億円'},{l:'世界シェア',v:'産業ロボット世界最大手'},{l:'強み',v:'高速ロボットアーム・ビジョンシステム'}],
+    desc:'産業ロボット世界最大手。倉庫では高速デパレタイズ・パレタイズ・ピッキングに採用。CNCシステム・サーボモーターも世界トップ。SBGのABB Robotics買収後も独立した競合として存在感を維持。',
+    customers:[{flag:'🇯🇵',name:'主要製造業全般',tag:'製造'},{flag:'🌍',name:'物流・EC大手各社',tag:'物流'}],tabs:['arm'],
+    solutions:[
+      {name:'FANUC ロボット（デパレ・パレタイズ）',desc:'高ペイロード・高精度の6軸ロボットアーム。倉庫のデパレタイズ・パレタイズに広く採用。ビジョンシステムとの組み合わせでバラ積み対応も可能。',videoUrl:'https://www.youtube.com/watch?v=m7VN0xOeMZ4',linkUrl:'https://www.fanuc.co.jp/ja/product/robot/',linkLabel:'ロボット製品'},
+      {name:'CRX 協働ロボット',desc:'安全柵不要で人と協働できるFanucの協働ロボット（コボット）シリーズ。倉庫の軽量ピッキング・仕分け・検品に対応。タブレット操作で簡単設定。',videoUrl:null,linkUrl:'https://www.fanuc.co.jp/ja/product/robot/f_r_crx.html',linkLabel:'CRX詳細'},
+    ]},
+
+  yaskawa:{label:'YASKAWA',flag:'🇯🇵',sub:'東証プライム / 1915年創業',cluster:'arm',tags:['arm'],scale:0.72,cov:[0.1,0.2,0.9,0.2],color:'#a855f7',
+    website:'https://www.yaskawa.co.jp/',
+    kpis:[{l:'売上',v:'約5,000億円'},{l:'強み',v:'Motomanロボット・モーションコントロール'},{l:'用途',v:'溶接・塗装・ピッキング'}],
+    desc:'産業ロボット大手（Motomanブランド）。倉庫ではデパレタイズ・パレタイズ・ピッキングに広く採用。モーションコントロール技術で高精度動作を実現。',
+    customers:[{flag:'🇯🇵',name:'製造・物流各社',tag:'多業種'}],tabs:['arm'],
+    solutions:[
+      {name:'Motoman MPシリーズ（物流向け）',desc:'物流・倉庫向けに最適化されたMotomanロボット。デパレタイズ・パレタイズ・ケースピッキングに対応。高速・高精度動作で処理能力を最大化。',videoUrl:'https://www.youtube.com/watch?v=Uj5L2h7Xcuk',linkUrl:'https://www.yaskawa.co.jp/product/robotics',linkLabel:'ロボティクス製品'},
+    ]},
+
+  ur:{label:'Universal Robots（UR）',flag:'🇩🇰',sub:'Teradyne傘下 / 2005年創業',cluster:'arm',tags:['arm'],scale:0.45,cov:[0.1,0.1,0.8,0.1],color:'#a855f7',
+    website:'https://www.universal-robots.com/ja/',
+    kpis:[{l:'親会社',v:'Teradyne（米国）'},{l:'強み',v:'協働ロボット（コボット）世界最多導入'},{l:'特徴',v:'安全柵不要・短期設置・プログラム容易'}],
+    desc:'協働ロボット（コボット）の世界最多導入を誇るパイオニア。安全柵不要で人と共働き可能。プログラミングが容易で中小企業への普及が進む。倉庫では軽量ピッキング・梱包・検品に活用。',
+    customers:[{flag:'🌍',name:'中小製造・物流企業',tag:'多業種'}],tabs:['arm'],
+    solutions:[
+      {name:'UR5 / UR10 協働ロボット',desc:'5〜10kgペイロードの協働ロボット。安全柵不要で人と同じ作業スペースで使用可能。URCapアプリで機能拡張でき、ピッキング・梱包・検品に対応。',videoUrl:'https://www.youtube.com/watch?v=BrqBBH7SWMM',linkUrl:'https://www.universal-robots.com/ja/products/',linkLabel:'製品ラインナップ'},
+    ]},
+
+  blue_yonder:{label:'Blue Yonder',flag:'🇺🇸',sub:'Panasonic傘下 / アリゾナ',cluster:'soft',tags:['wms'],scale:0.62,cov:[0,0,0,1.0],color:'#06b6d4',
+    website:'https://blueyonder.com/ja-jp',
+    kpis:[{l:'親会社',v:'Panasonic（日本）'},{l:'強み',v:'AI予測型WMS・需要予測'},{l:'2023年',v:'生成AIオーケストレーター発表'}],
+    desc:'Panasonic傘下のWMS世界大手。機械学習による需要予測・在庫最適化が強み。クラウドベースのLuminate Cognitive Platformで需要〜配送まで一元管理。生成AIをSCM最適化に組み込み中。',
+    customers:[{flag:'🌍',name:'グローバル大手小売・3PL',tag:'多業種'}],tabs:['software'],
+    solutions:[
+      {name:'Luminate Cognitive Platform（WMS）',desc:'AIによる需要予測・在庫最適化・フルフィルメント管理をクラウドで提供。生成AIオーケストレーターで複雑なSCM意思決定を自動化。',videoUrl:'https://www.youtube.com/watch?v=MCxZB8H8T5A',linkUrl:'https://blueyonder.com/ja-jp/solutions/warehouse-management',linkLabel:'WMSソリューション'},
+    ]},
+
+  manhattan:{label:'Manhattan Associates',flag:'🇺🇸',sub:'Nasdaq: MANH / 1990年創業',cluster:'soft',tags:['wms'],scale:0.55,cov:[0,0,0,1.0],color:'#06b6d4',
+    website:'https://www.manh.com/ja-jp',
+    kpis:[{l:'強み',v:'クラウドWMS・OMS統合'},{l:'特徴',v:'小売・EC向けWMSで業界標準'}],
+    desc:'小売・EC向けWMSで業界標準的存在。クラウドネイティブのWMS/OMS統合プラットフォームを展開。在庫可視化・オムニチャネルフルフィルメントの最適化で実績多数。',
+    customers:[{flag:'🇺🇸',name:'小売・EC大手各社',tag:'小売・EC'}],tabs:['software'],
+    solutions:[
+      {name:'Manhattan Active WMS',desc:'クラウドネイティブのWMS。リアルタイム在庫管理・オムニチャネルフルフィルメント最適化・AI需要予測を統合。継続的アップデートで常に最新機能を利用可能。',videoUrl:'https://www.youtube.com/watch?v=TUz7SFkQZxA',linkUrl:'https://www.manh.com/ja-jp/solutions/warehouse-management',linkLabel:'Manhattan Active WMS'},
+    ]},
+
+  korber:{label:'Körber',flag:'🇩🇪',sub:'非上場 / ハンブルク',cluster:'soft',tags:['wms','integrator'],scale:0.5,cov:[0.3,0.3,0,0.9],color:'#06b6d4',
+    website:'https://www.koerber-supplychain.com/',
+    kpis:[{l:'強み',v:'WES・WMS・マルチベンダー対応'},{l:'2024年',v:'Gamification・Slotting.IQ・UCS発表'},{l:'特徴',v:'マルチベンダー環境のWES統合'}],
+    desc:'マルチベンダー環境のWES統合に最も強いソフトウェアベンダー。AMR・コンベヤ・ロボット等の異なるメーカーを一元管理するUCS（Unified Control System）が特徴。',
+    customers:[{flag:'🌍',name:'大手物流・EC各社',tag:'多業種'}],tabs:['software'],
+    solutions:[
+      {name:'Körber WES（Unified Control System）',desc:'異なるメーカーのAMR・コンベヤ・ロボットを一元管理するWES。2024年に発表したUCSでマルチベンダー環境の統合管理を実現。',videoUrl:null,linkUrl:'https://www.koerber-supplychain.com/solutions/warehouse-execution-system/',linkLabel:'WESソリューション'},
+    ]},
+
+  infor:{label:'Infor WMS',flag:'🇺🇸',sub:'Koch Industries傘下',cluster:'soft',tags:['wms'],scale:0.45,cov:[0,0,0,0.9],color:'#06b6d4',
+    website:'https://www.infor.com/ja-jp/products/wms',
+    kpis:[{l:'親会社',v:'Koch Industries'},{l:'強み',v:'製造・3PL・食品向けWMS'}],
+    desc:'Koch Industries傘下のエンタープライズWMS。製造・3PL・食品流通向けの業種特化型WMSに強み。ERPとの深い統合が特徴。',
+    customers:[{flag:'🌍',name:'製造・3PL各社',tag:'製造・3PL'}],tabs:['software'],
+    solutions:[
+      {name:'Infor WMS',desc:'業種特化型クラウドWMS。製造・食品・3PLの複雑な業務要件に対応。ERP（SAP・Oracle等）との深い統合で在庫・物流・生産を一元管理。',videoUrl:null,linkUrl:'https://www.infor.com/ja-jp/products/wms',linkLabel:'Infor WMS詳細'},
+    ]},
+};
+
+// ═══════════════ EDGES ═══════════════
+const EDGES=[
+  // SBG資本 (SBGが中心になるよう強調)
+  ['sbg','sbr','capital','100%子会社'],
+  ['sbg','greenbox','jv','JV 65%'],
+  ['sbg','berkshire','capital','100%（$375M）'],
+  ['sbg','balyo','jv','出資 41.8%'],
+  ['sbg','abb_r','capital','買収中 $5.375B'],
+  ['sbg','skild','jv','出資（$1.4B調達）'],
+  ['sbg','autostore','jv','株主 40%（$2.8B）'],
+  ['sbg','symbotic','jv','GreenBox経由'],
+  ['symbotic','greenbox','jv','JV 35%'],
+  // Toyota
+  ['toyota_ind','tal','capital','100%統合'],
+  ['toyota_ind','toyota_lf','capital','100%'],
+  ['toyota_ind','vanderlande','capital','100%（空港・小包）'],
+  // KION
+  ['kion','dematic','capital','100%'],
+  ['kion','kuka','capital','傘下'],
+  ['kuka','swisslog','capital','100%'],
+  // AutoStore代理店
+  ['autostore','sbr','partner','代理店'],
+  ['autostore','tal','partner','代理店（TAL）'],
+  ['autostore','swisslog','partner','代理店'],
+  ['autostore','berkshire','partner','CarouselAI共同開発'],
+  // Exotec
+  ['exotec','tal','partner','公式パートナー'],
+  // その他提携
+  ['daifuku','knapp','partner','業務提携'],
+  ['seer','sbr','partner','取り扱い検討'],
+  // 競合
+  ['autostore','ocado','rival','競合（GTP）'],
+  ['autostore','exotec','rival','競合（高密度）'],
+  ['autostore','ssi','rival','競合（保管）'],
+  ['ssi','daifuku','rival','競合（SI）'],
+  ['dematic','honeywell','rival','競合（SI）'],
+  ['dematic','vanderlande','rival','競合（SI）'],
+  ['geekplus','rapyuta','rival','競合（AMR）'],
+  ['geekplus','hai','rival','競合（ACR）'],
+  ['geekplus','aiten','rival','競合（AMR）'],
+  ['geekplus','seer','rival','競合（AMR）'],
+  ['geekplus','tusk','rival','競合（AMR）'],
+  ['fanuc','yaskawa','rival','競合（産業ロボット）'],
+  ['fanuc','abb_r','rival','競合（産業ロボット）'],
+  ['yaskawa','abb_r','rival','競合（産業ロボット）'],
+  ['mujin','berkshire','rival','競合（AIピック）'],
+  ['blue_yonder','manhattan','rival','競合（WMS）'],
+  ['blue_yonder','korber','rival','競合（WES/WMS）'],
+  ['manhattan','infor','rival','競合（WMS）'],
+];
+
+// ═══════════════ TAB NODE SETS ═══════════════
+const TAB_NODES={
+  // SBG中心レイアウト：SBGを中央上部に配置
+  storage:['sbg','sbr','greenbox','symbotic','tal','toyota_lf','swisslog','daifuku','murata','autostore','exotec','ocado','ssi','knapp','witron','tgw','kardex'],
+  transport:['sbg','sbr','symbotic','greenbox','balyo','tal','toyota_lf','vanderlande','kion','dematic','swisslog','honeywell','daifuku','murata','exotec','geekplus','hai','quicktron','mushiny','aiten','seer','tusk','rapyuta','plus_auto','ground','interroll','beumer','jungheinrich'],
+  arm:['sbg','abb_r','berkshire','skild','kuka','mujin','fanuc','yaskawa','ur','symbotic'],
+  software:['sbg','greenbox','symbotic','kion','dematic','ocado','ssi','daifuku','murata','tal','rapyuta','ground','seer','blue_yonder','manhattan','korber','infor'],
+};
+
+// ポジション（SBG中心）
+const POS={
+  storage:{
+    // SBGクラスター：中央上
+    sbg:{x:820,y:40},sbr:{x:640,y:160},greenbox:{x:900,y:170},symbotic:{x:780,y:290},
+    // Toyota：右上
+    tal:{x:1420,y:80},toyota_lf:{x:1300,y:210},swisslog:{x:1530,y:250},
+    // 国内大手：左
+    daifuku:{x:180,y:680},murata:{x:180,y:860},
+    // 独立テック：中央
+    autostore:{x:700,y:130},exotec:{x:970,y:330},ocado:{x:880,y:50},
+    ssi:{x:540,y:380},knapp:{x:370,y:540},
+    witron:{x:1220,y:520},tgw:{x:1050,y:540},kardex:{x:380,y:720},
+  },
+  transport:{
+    // SBGクラスター：中央上
+    sbg:{x:820,y:30},sbr:{x:640,y:140},symbotic:{x:760,y:260},greenbox:{x:920,y:160},balyo:{x:680,y:360},
+    // Toyota：右上
+    tal:{x:1380,y:70},toyota_lf:{x:1260,y:190},vanderlande:{x:1500,y:200},
+    // KION：右中
+    kion:{x:1540,y:480},dematic:{x:1660,y:640},swisslog:{x:1420,y:650},
+    honeywell:{x:1190,y:480},
+    // 国内大手：左
+    daifuku:{x:150,y:620},murata:{x:150,y:800},
+    exotec:{x:700,y:250},
+    // 中国系：中央下
+    geekplus:{x:870,y:680},hai:{x:1070,y:820},quicktron:{x:1250,y:720},
+    mushiny:{x:1360,y:880},aiten:{x:950,y:900},seer:{x:760,y:830},tusk:{x:580,y:900},
+    // 国内新興：左下
+    rapyuta:{x:440,y:880},plus_auto:{x:260,y:960},ground:{x:440,y:1030},
+    // コンベヤ系
+    interroll:{x:680,y:490},beumer:{x:870,y:450},jungheinrich:{x:690,y:80},
+  },
+  arm:{
+    // SBGクラスター中央
+    sbg:{x:800,y:40},abb_r:{x:640,y:200},berkshire:{x:940,y:200},skild:{x:780,y:380},
+    kuka:{x:1350,y:80},mujin:{x:750,y:600},
+    fanuc:{x:550,y:200},yaskawa:{x:1100,y:250},ur:{x:1200,y:450},
+    symbotic:{x:400,y:80},
+  },
+  software:{
+    sbg:{x:800,y:40},greenbox:{x:650,y:180},symbotic:{x:900,y:180},
+    kion:{x:1380,y:80},dematic:{x:1520,y:230},
+    ocado:{x:880,y:80},ssi:{x:660,y:280},
+    daifuku:{x:180,y:580},murata:{x:180,y:740},tal:{x:1320,y:380},
+    rapyuta:{x:460,y:780},ground:{x:650,y:860},seer:{x:820,y:780},
+    blue_yonder:{x:780,y:500},manhattan:{x:980,y:600},korber:{x:1180,y:500},infor:{x:980,y:770},
+  },
+};
+
+const NW=165,NH=74;
+const GRAPH_IDS=['storage','transport','arm','software'];
+const transforms={};const viewSizes={};
+GRAPH_IDS.forEach(g=>{transforms[g]={x:0,y:0,scale:1};});
+
+// ═══════════════ RENDER ═══════════════
+function mkArrow(id,color){
+  const m=document.createElementNS('http://www.w3.org/2000/svg','marker');
+  m.setAttribute('id',id);m.setAttribute('markerWidth','8');m.setAttribute('markerHeight','8');
+  m.setAttribute('refX','7');m.setAttribute('refY','3');m.setAttribute('orient','auto');
+  const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+  p.setAttribute('d','M0,0 L0,6 L8,3 z');p.setAttribute('fill',color);p.setAttribute('opacity','0.9');
+  m.appendChild(p);return m;
+}
+function initDefs(gid){
+  const d=document.getElementById(`defs-${gid}`);
+  d.appendChild(mkArrow(`arr-cap-${gid}`,'#ff4d6d'));
+  d.appendChild(mkArrow(`arr-jv-${gid}`,'#ff8c42'));
+  d.appendChild(mkArrow(`arr-par-${gid}`,'#38bdf8'));
+}
+function clusterBounds(gid){
+  const groups={};const pos=POS[gid]||{};
+  Object.entries(pos).forEach(([id,p])=>{
+    const nd=NODES[id];if(!nd)return;
+    const c=nd.cluster;
+    if(!groups[c])groups[c]={minX:1e9,minY:1e9,maxX:-1e9,maxY:-1e9};
+    groups[c].minX=Math.min(groups[c].minX,p.x-14);
+    groups[c].minY=Math.min(groups[c].minY,p.y-14);
+    groups[c].maxX=Math.max(groups[c].maxX,p.x+NW+14);
+    groups[c].maxY=Math.max(groups[c].maxY,p.y+NH+14);
+  });
+  return groups;
+}
+function renderClusters(gid){
+  const layer=document.getElementById(`cl-${gid}`);layer.innerHTML='';
+  const bounds=clusterBounds(gid);
+  Object.entries(bounds).forEach(([cid,b])=>{
+    const cl=CLUSTERS[cid];if(!cl)return;
+    const pad=16;
+    const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r.setAttribute('x',b.minX-pad);r.setAttribute('y',b.minY-pad-18);
+    r.setAttribute('width',b.maxX-b.minX+pad*2);r.setAttribute('height',b.maxY-b.minY+pad*2+18);
+    r.setAttribute('rx',14);r.setAttribute('fill',cl.bg);
+    r.setAttribute('stroke',cl.color);r.setAttribute('stroke-width','1');r.setAttribute('stroke-opacity','0.3');
+    g.appendChild(r);
+    const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',b.minX-pad+10);t.setAttribute('y',b.minY-pad-3);
+    t.setAttribute('font-size','10');t.setAttribute('font-weight','700');
+    t.setAttribute('font-family','DM Mono,monospace');t.setAttribute('fill',cl.color);
+    t.setAttribute('opacity','0.7');t.setAttribute('letter-spacing','1.5');
+    t.textContent=cl.label;g.appendChild(t);
+    layer.appendChild(g);
+  });
+}
+function nc(id,gid){const p=(POS[gid]||{})[id];if(!p)return null;return{x:p.x+NW/2,y:p.y+NH/2};}
+function edgePath(a,b,gid){
+  const ca=nc(a,gid),cb=nc(b,gid);if(!ca||!cb)return '';
+  const dx=cb.x-ca.x,dy=cb.y-ca.y;
+  const mx=ca.x+dx*.5,my=ca.y+dy*.5;
+  const curve=Math.min(50,Math.sqrt(dx*dx+dy*dy)*.17);
+  const len=Math.sqrt(dx*dx+dy*dy)||1;
+  const px=-dy/len,py=dx/len;
+  return `M${ca.x},${ca.y} Q${mx+px*curve},${my+py*curve} ${cb.x},${cb.y}`;
+}
+function eStyle(type,gid){
+  return{
+    capital:{stroke:'#ff4d6d',w:2.5,dash:'none',mk:`url(#arr-cap-${gid})`,op:0.9},
+    jv:     {stroke:'#ff8c42',w:2,  dash:'6,3', mk:`url(#arr-jv-${gid})`, op:0.82},
+    partner:{stroke:'#38bdf8',w:1.5,dash:'4,4', mk:`url(#arr-par-${gid})`,op:0.72},
+    rival:  {stroke:'#5a6880',w:1,  dash:'2,5', mk:'none',                op:0.38},
+  }[type]||{stroke:'#38bdf8',w:1.5,dash:'4,4',mk:'none',op:0.6};
+}
+function renderEdges(gid){
+  const layer=document.getElementById(`el-${gid}`);layer.innerHTML='';
+  const nodeSet=new Set(TAB_NODES[gid]||[]);
+  EDGES.forEach(([f,t,type,label])=>{
+    if(!nodeSet.has(f)||!nodeSet.has(t))return;
+    const d=edgePath(f,t,gid);if(!d)return;
+    const st=eStyle(type,gid);
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',d);path.setAttribute('fill','none');
+    path.setAttribute('stroke',st.stroke);path.setAttribute('stroke-width',st.w);
+    path.setAttribute('stroke-opacity',st.op);
+    if(st.dash!=='none')path.setAttribute('stroke-dasharray',st.dash);
+    if(st.mk!=='none')path.setAttribute('marker-end',st.mk);
+    path.setAttribute('data-from',f);path.setAttribute('data-to',t);path.setAttribute('data-type',type);
+    layer.appendChild(path);
+    if(label&&type!=='rival'){
+      const ca=nc(f,gid),cb=nc(t,gid);
+      const tx=(ca.x+cb.x)/2,ty=(ca.y+cb.y)/2;
+      const txt=document.createElementNS('http://www.w3.org/2000/svg','text');
+      txt.setAttribute('x',tx);txt.setAttribute('y',ty-4);
+      txt.setAttribute('text-anchor','middle');txt.setAttribute('font-size','7.5');
+      txt.setAttribute('font-family','DM Mono,monospace');
+      txt.setAttribute('fill',st.stroke);txt.setAttribute('opacity','0.75');
+      txt.textContent=label;layer.appendChild(txt);
+    }
+  });
+}
+function renderNodes(gid){
+  const layer=document.getElementById(`nl-${gid}`);layer.innerHTML='';
+  (TAB_NODES[gid]||[]).forEach(id=>{
+    const nd=NODES[id];const p=(POS[gid]||{})[id];if(!nd||!p)return;
+    const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('data-id',id);g.setAttribute('data-gid',gid);g.style.cursor='pointer';
+    // SBGノードは特別に強調
+    const isSBG=(id==='sbg');
+    const bg=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    bg.setAttribute('x',p.x);bg.setAttribute('y',p.y);
+    bg.setAttribute('width',NW);bg.setAttribute('height',NH);
+    bg.setAttribute('rx',9);bg.setAttribute('fill',isSBG?'#1a0e28':'#0c1420');
+    bg.setAttribute('stroke',nd.color);bg.setAttribute('stroke-width',isSBG?'2':'1.2');
+    bg.setAttribute('stroke-opacity',isSBG?'0.9':'0.55');
+    g.appendChild(bg);
+    const bar=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    bar.setAttribute('x',p.x);bar.setAttribute('y',p.y);
+    bar.setAttribute('width',NW);bar.setAttribute('height',isSBG?4:3);
+    bar.setAttribute('rx',9);bar.setAttribute('fill',nd.color);bar.setAttribute('opacity','0.95');
+    g.appendChild(bar);
+    const fo=document.createElementNS('http://www.w3.org/2000/svg','foreignObject');
+    fo.setAttribute('x',p.x+7);fo.setAttribute('y',p.y+6);
+    fo.setAttribute('width',NW-14);fo.setAttribute('height',NH-8);
+    const div=document.createElement('div');
+    div.style.cssText='display:flex;flex-direction:column;gap:0;height:100%;font-family:Noto Sans JP,sans-serif;pointer-events:none;';
+    const r1=document.createElement('div');r1.style.cssText='display:flex;align-items:center;gap:4px;margin-bottom:3px;';
+    const fl=document.createElement('span');fl.style.cssText='font-size:11px;line-height:1;flex-shrink:0;';fl.textContent=nd.flag;
+    const nm=document.createElement('span');nm.style.cssText=`font-size:${isSBG?'11':'10'}px;font-weight:${isSBG?'900':'700'};color:#d8e8f5;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;`;
+    nm.textContent=nd.label;
+    r1.appendChild(fl);r1.appendChild(nm);div.appendChild(r1);
+    const bw=Math.round(nd.scale*(NW-16));
+    const bc=document.createElement('div');bc.style.cssText='background:#1a2a40;border-radius:2px;height:4px;margin-bottom:4px;overflow:hidden;';
+    const bf=document.createElement('div');bf.style.cssText=`width:${bw}px;height:100%;background:${nd.color};border-radius:2px;opacity:0.7;`;
+    bc.appendChild(bf);div.appendChild(bc);
+    const td=document.createElement('div');td.style.cssText='display:flex;flex-wrap:wrap;gap:2px;';
+    nd.tags.slice(0,3).forEach(t=>{
+      const ti=TAGS[t];if(!ti)return;
+      const sp=document.createElement('span');
+      sp.className=`tag ${ti.cls}`;sp.style.cssText='font-size:7px;padding:1px 4px;';
+      sp.textContent=ti.label;td.appendChild(sp);
+    });
+    div.appendChild(td);fo.appendChild(div);g.appendChild(fo);
+
+    // Expo badge strip (top-right corner)
+    const nodeExpos = NODE_EXPOS[id] || [];
+    if (nodeExpos.length > 0) {
+      const badgeFo = document.createElementNS('http://www.w3.org/2000/svg','foreignObject');
+      badgeFo.setAttribute('x', p.x + NW - 58);
+      badgeFo.setAttribute('y', p.y - 9);
+      badgeFo.setAttribute('width', 62);
+      badgeFo.setAttribute('height', 18);
+      badgeFo.setAttribute('class','node-expo-strip');
+      const badgeDiv = document.createElement('div');
+      badgeDiv.style.cssText = 'display:flex;flex-direction:column;gap:2px;align-items:flex-end;';
+      nodeExpos.slice(0,2).forEach(code => {
+        const ex = EXPOS[code]; if(!ex) return;
+        const sp = document.createElement('span');
+        sp.className = `expo-badge ${ex.cls}`;
+        sp.style.cssText = 'font-size:7px;padding:1px 4px;';
+        sp.textContent = ex.short;
+        badgeDiv.appendChild(sp);
+      });
+      badgeFo.appendChild(badgeDiv);
+      g.appendChild(badgeFo);
+    }
+
+    g.addEventListener('click',e=>{e.stopPropagation();openPanel(id,gid);});
+    g.addEventListener('mouseenter',()=>{bg.setAttribute('fill',isSBG?'#2a1840':'#152035');bg.setAttribute('stroke-opacity','1');highlightEdges(id,gid,true);});
+    g.addEventListener('mouseleave',()=>{bg.setAttribute('fill',isSBG?'#1a0e28':'#0c1420');bg.setAttribute('stroke-opacity',isSBG?'0.9':'0.55');highlightEdges(id,gid,false);});
+    layer.appendChild(g);
+  });
+}
+function highlightEdges(id,gid,on){
+  document.querySelectorAll(`#el-${gid} path`).forEach(p=>{
+    const f=p.getAttribute('data-from'),t=p.getAttribute('data-to'),tp=p.getAttribute('data-type');
+    const st=eStyle(tp,gid);
+    if(f===id||t===id){p.setAttribute('stroke-opacity',on?'1':st.op);p.setAttribute('stroke-width',on?parseFloat(st.w)+1:st.w);}
+    else{p.setAttribute('stroke-opacity',on?'0.07':st.op);}
+  });
+}
+function initGraph(gid){initDefs(gid);renderClusters(gid);renderEdges(gid);renderNodes(gid);}
+
+// PAN & ZOOM
+function applyTx(gid){
+  const t=transforms[gid];
+  ['cl','el','nl'].forEach(prefix=>{
+    const el=document.getElementById(`${prefix}-${gid}`);
+    if(el)el.setAttribute('transform',`translate(${t.x},${t.y}) scale(${t.scale})`);
+  });
+}
+function fitGraph(gid){
+  const wrap=document.getElementById(`cwrap-${gid}`);if(!wrap)return;
+  const rect=wrap.getBoundingClientRect();const W=rect.width,H=rect.height;
+  viewSizes[gid]={W,H};
+  const pos=POS[gid]||{};
+  const xs=Object.values(pos).map(p=>p.x);const ys=Object.values(pos).map(p=>p.y);
+  if(!xs.length)return;
+  const lw=Math.max(...xs)+NW+30;const lh=Math.max(...ys)+NH+30;
+  const sx=(W-60)/lw,sy=(H-60)/lh,s=Math.min(sx,sy,.95);
+  transforms[gid]={x:(W-lw*s)/2,y:(H-lh*s)/2,scale:s};
+  applyTx(gid);
+}
+GRAPH_IDS.forEach(gid=>{
+  const wrap=document.getElementById(`cwrap-${gid}`);if(!wrap)return;
+  let pan=false,ps={x:0,y:0},po={x:0,y:0};
+  wrap.addEventListener('wheel',e=>{
+    e.preventDefault();
+    const rect=wrap.getBoundingClientRect();const mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    const d=e.deltaY<0?1.12:0.89;const t=transforms[gid];
+    const ns=Math.max(0.15,Math.min(4,t.scale*d));const r=ns/t.scale;
+    transforms[gid]={x:mx-(mx-t.x)*r,y:my-(my-t.y)*r,scale:ns};applyTx(gid);
+  },{passive:false});
+  wrap.addEventListener('mousedown',e=>{if(e.button!==0)return;pan=true;ps={x:e.clientX,y:e.clientY};po={...transforms[gid]};wrap.style.cursor='grabbing';});
+  window.addEventListener('mousemove',e=>{if(!pan)return;const t=transforms[gid];transforms[gid]={...t,x:po.x+e.clientX-ps.x,y:po.y+e.clientY-ps.y};applyTx(gid);});
+  window.addEventListener('mouseup',()=>{pan=false;wrap.style.cursor='grab';});
+});
+document.querySelectorAll('.zbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const gid=btn.getAttribute('data-g'),z=btn.getAttribute('data-z');
+    if(z==='fit'){fitGraph(gid);return;}
+    const t=transforms[gid];const{W=800,H=600}=viewSizes[gid]||{};
+    const cx=W/2,cy=H/2;
+    const ns=z==='in'?Math.min(4,t.scale*1.25):Math.max(0.15,t.scale*0.8);
+    const r=ns/t.scale;
+    transforms[gid]={x:cx-(cx-t.x)*r,y:cy-(cy-t.y)*r,scale:ns};applyTx(gid);
+  });
+});
+
+// ═══════════════ PANEL ═══════════════
+function relBadge(type){
+  return{
+    capital:{bg:'rgba(255,77,109,.15)',color:'#ff4d6d',label:'資本・買収'},
+    jv:     {bg:'rgba(255,140,66,.15)',color:'#ff8c42',label:'JV・出資'},
+    partner:{bg:'rgba(56,189,248,.15)',color:'#38bdf8',label:'代理店・提携'},
+    rival:  {bg:'rgba(96,104,128,.2)', color:'#8090b0',label:'競合'},
+  }[type]||{bg:'rgba(56,189,248,.15)',color:'#38bdf8',label:'関係'};
+}
+function openPanel(id,gid){
+  const nd=NODES[id];if(!nd)return;
+  document.getElementById('pf').textContent=nd.flag;
+  document.getElementById('pn').textContent=nd.label;
+  document.getElementById('ps').textContent=nd.sub;
+  document.getElementById('pt').innerHTML=nd.tags.map(t=>`<span class="tag ${TAGS[t]?.cls||''}">${TAGS[t]?.label||t}</span>`).join('');
+  const rels=EDGES.filter(([f,t])=>f===id||t===id);
+  let html='';
+  if(nd.website)html+=`<div><a href="${nd.website}" target="_blank" class="p-link-btn">🔗 公式サイト</a></div>`;
+  // Expo badges in panel
+  const pExpos = NODE_EXPOS[id] || [];
+  if(pExpos.length > 0){
+    html += `<div style="display:flex;flex-wrap:wrap;gap:5px;">` +
+      pExpos.map(code=>{const ex=EXPOS[code];return ex?`<span class="expo-badge ${ex.cls}" style="font-size:10px;padding:3px 8px;" title="${ex.date} / ${ex.venue}">${ex.emoji} ${ex.label}</span>`:''}).join('') +
+      `</div>`;
+  }
+  html+=`<div><div class="p-sec">概要</div><div class="p-desc">${nd.desc}</div></div>`;
+  if(nd.kpis?.length)html+=`<div><div class="p-sec">Key Metrics</div><div class="p-kgrid">${nd.kpis.map(k=>`<div class="p-kbox"><div class="p-kl">${k.l}</div><div class="p-kv">${k.v}</div></div>`).join('')}</div></div>`;
+  if(nd.customers?.length)html+=`<div><div class="p-sec">主要顧客</div>${nd.customers.slice(0,3).map(c=>`<div class="cust-item" style="margin-bottom:5px"><span class="cust-flag">${c.flag}</span><span class="cust-name">${c.name}</span><span class="cust-tag">${c.tag}</span></div>`).join('')}</div>`;
+  if(rels.length)html+=`<div><div class="p-sec">関係会社</div><div class="rel-list">${rels.slice(0,6).map(([f,t,type,label])=>{const oid=f===id?t:f;const on=NODES[oid];if(!on)return '';const st=relBadge(type);const dir=f===id?'→':'←';return`<div class="rel-item" onclick="openPanel('${oid}','${gid}')"><span class="rel-badge" style="background:${st.bg};color:${st.color}">${st.label}</span><span style="color:var(--muted);font-size:10px">${dir}</span><span style="font-size:12px">${on.flag}</span><span class="rel-name">${on.label}</span></div>`;}).join('')}</div></div>`;
+  html+=`<button class="p-btn" onclick="openDetail('${id}')">📄 詳細ページを開く →</button>`;
+  document.getElementById('pb').innerHTML=html;
+  document.getElementById('panel').classList.add('open');
+  document.querySelectorAll(`#nl-${gid} g`).forEach(g=>{const bg=g.querySelector('rect');if(!bg)return;const isThis=g.getAttribute('data-id')===id;bg.setAttribute('fill',isThis?(id==='sbg'?'#2a1840':'#1a2d45'):'#0c1420');});
+}
+function closePanel(){
+  document.getElementById('panel').classList.remove('open');
+  document.querySelectorAll('[data-gid] rect:first-child').forEach(r=>{const id=r.closest('g')?.getAttribute('data-id');r.setAttribute('fill',id==='sbg'?'#1a0e28':'#0c1420');});
+}
+document.getElementById('pc').addEventListener('click',closePanel);
+document.querySelector('.canvas-wrap')?.addEventListener('click',closePanel);
+
+// ═══════════════ DETAIL PAGE ═══════════════
+let prevTab='storage';
+function openDetail(id){
+  const nd=NODES[id];if(!nd)return;
+  prevTab=document.querySelector('.tab.active')?.getAttribute('data-tab')||'storage';
+  document.getElementById('d-crumb').textContent=nd.label;
+  const dl=document.getElementById('dl'),dr=document.getElementById('dr');
+
+  // LEFT
+  let lhtml=`<div class="d-hero"><div class="d-flag">${nd.flag}</div><div class="d-info">
+    <div class="d-name">${nd.label}</div>
+    <div class="d-sub">${nd.sub}</div>
+    <div class="d-links">${nd.website?`<a href="${nd.website}" target="_blank" class="d-link hp">🔗 公式サイト</a>`:''}</div>
+    <div class="d-tags">${nd.tags.map(t=>`<span class="tag ${TAGS[t]?.cls||''}">${TAGS[t]?.label||t}</span>`).join('')}</div>
+  </div></div>`;
+  lhtml+=`<div class="d-desc">${nd.desc}</div>`;
+  if(nd.kpis?.length)lhtml+=`<div><div class="sec-h">Key Metrics</div><div class="kpi-grid">${nd.kpis.map(k=>`<div class="kpi-box"><div class="kpi-lbl">${k.l}</div><div class="kpi-val">${k.v}</div></div>`).join('')}</div></div>`;
+  if(nd.customers?.length)lhtml+=`<div><div class="sec-h">主要顧客</div><div class="cust-list">${nd.customers.map(c=>`<div class="cust-item"><span class="cust-flag">${c.flag}</span><span class="cust-name">${c.name}</span><span class="cust-tag">${c.tag}</span></div>`).join('')}</div></div>`;
+
+  // ソリューションカード
+  if(nd.solutions?.length){
+    lhtml+=`<div><div class="sec-h">主要ソリューション</div><div class="sol-cards">${nd.solutions.map(s=>`
+      <div class="sol-card">
+        <div class="sol-name">⚙️ ${s.name}</div>
+        <div class="sol-desc">${s.desc}</div>
+        <div class="sol-links">
+          ${s.videoUrl?`<a href="${s.videoUrl}" target="_blank" class="sol-link video">🎬 動画を見る</a>`:''}
+          ${s.linkUrl?`<a href="${s.linkUrl}" target="_blank" class="sol-link page">📄 ${s.linkLabel||'詳細を見る'}</a>`:''}
+        </div>
+      </div>`).join('')}</div></div>`;
+  }
+
+  // 関係会社
+  const rels=EDGES.filter(([f,t])=>f===id||t===id);
+  if(rels.length)lhtml+=`<div><div class="sec-h">関係会社</div><div class="rel-list">${rels.map(([f,t,type,label])=>{const oid=f===id?t:f;const on=NODES[oid];if(!on)return '';const st=relBadge(type);const dir=f===id?'→':'←';return`<div class="rel-item" onclick="openDetail('${oid}')"><span class="rel-badge" style="background:${st.bg};color:${st.color}">${st.label}</span><span style="color:var(--muted);font-size:10px;margin:0 3px">${dir}</span><span style="font-size:13px">${on.flag}</span><span class="rel-name">${on.label}</span>${label?`<span style="font-size:10px;color:var(--muted)">${label}</span>`:''}</div>`;}).join('')}</div></div>`;
+
+  // Exhibition badges section
+  const nodeExpoList = NODE_EXPOS[id] || [];
+  if (nodeExpoList.length > 0) {
+    lhtml += `<div><div class="sec-h">展示会出展情報</div><div style="display:flex;flex-direction:column;gap:8px;">` +
+      nodeExpoList.map(code => {
+        const ex = EXPOS[code]; if(!ex) return '';
+        return `<div style="display:flex;align-items:center;gap:12px;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:12px 14px;">
+          <span class="expo-badge ${ex.cls}" style="font-size:11px;padding:4px 10px;">${ex.emoji} ${ex.short}</span>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;margin-bottom:2px;">${ex.label}</div>
+            <div style="font-size:11px;color:var(--muted);">📅 ${ex.date} ／ 📍 ${ex.venue}</div>
+          </div>
+          <a href="${ex.url}" target="_blank" style="font-size:11px;color:var(--partner);text-decoration:none;border:1px solid rgba(56,189,248,.3);padding:4px 10px;border-radius:6px;" onmouseover="this.style.background='rgba(56,189,248,.1)'" onmouseout="this.style.background='transparent'">🔗 展示会サイト</a>
+        </div>`;
+      }).join('') + `</div></div>`;
+  }
+
+  dl.innerHTML=lhtml;
+
+  // RIGHT
+  const covLabels=['保管系','搬送系','アーム系','ソフト'];
+  const covColors=['#00d4ff','#f59e0b','#a855f7','#06b6d4'];
+  let rhtml=`<div><div class="sec-h">カバレッジ</div><div class="cov-grid">${nd.cov.map((v,i)=>`<div class="cov-row"><div class="cov-lbl">${covLabels[i]}</div><div class="cov-track"><div class="cov-fll" style="width:${v*100}%;background:${covColors[i]}"></div></div><div class="cov-pct">${Math.round(v*100)}%</div></div>`).join('')}</div></div>`;
+  if(nd.tabs?.length){
+    const tabLabels={storage:'📦 保管系',transport:'🤖 搬送系',arm:'🦾 アーム系',software:'💻 ソフト'};
+    rhtml+=`<div><div class="sec-h">関連タブ</div><div style="display:flex;flex-wrap:wrap;gap:6px;">${nd.tabs.map(t=>`<button onclick="switchTab('${t}')" style="background:var(--surface2);border:1px solid var(--border2);color:var(--text2);padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;" onmouseover="this.style.borderColor='#38bdf8'" onmouseout="this.style.borderColor='var(--border2)'">${tabLabels[t]||t}</button>`).join('')}</div></div>`;
+  }
+  const cl=CLUSTERS[nd.cluster];
+  if(cl)rhtml+=`<div><div class="sec-h">所属グループ</div><div style="background:${cl.bg};border:1px solid ${cl.color}30;border-radius:9px;padding:12px 14px;"><div style="font-size:12px;font-weight:700;color:${cl.color};margin-bottom:4px;">${cl.label}</div></div></div>`;
+  dr.innerHTML=rhtml;
+  switchView('detail');
+}
+document.getElementById('back-btn').addEventListener('click',()=>switchView(prevTab));
+function switchTab(tabId){
+  switchView(tabId);
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.getAttribute('data-tab')===tabId));
+}
+
+// ═══════════════ TAB SWITCHING ═══════════════
+function switchView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const el=document.getElementById(`view-${name}`);if(el)el.classList.add('active');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.getAttribute('data-tab')===name));
+  const isGraph=GRAPH_IDS.includes(name);
+  document.getElementById('filter-bar').style.display=isGraph?'flex':'none';
+  if(isGraph)setTimeout(()=>fitGraph(name),50);
+  closePanel();
+}
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>switchView(tab.getAttribute('data-tab')));
+});
+
+// ═══════════════ OVERVIEW MATRIX ═══════════════
+const GROUPS=[
+  {label:'SBG / Robo HD',ids:['sbg','sbr','greenbox','symbotic','berkshire','balyo','abb_r','skild'],color:'#c97bff'},
+  {label:'Toyota TALG',ids:['toyota_ind','tal','toyota_lf','vanderlande'],color:'#22c55e'},
+  {label:'KION Group',ids:['kion','dematic','kuka','swisslog'],color:'#38bdf8'},
+  {label:'Honeywell',ids:['honeywell'],color:'#f59e0b'},
+  {label:'国内大手',ids:['daifuku','murata'],color:'#4ade80'},
+  {label:'独立テックメーカー',ids:['autostore','exotec','ocado','ssi','knapp'],color:'#ff8c42'},
+  {label:'搬送・コンベヤ系',ids:['interroll','beumer','jungheinrich','witron','tgw','kardex'],color:'#94a3b8'},
+  {label:'中国系（日本市場参入組）',ids:['geekplus','hai','quicktron','mushiny','aiten','seer','tusk'],color:'#ef4444'},
+  {label:'国内新興',ids:['rapyuta','mujin','plus_auto','ground'],color:'#fbbf24'},
+  {label:'アーム系ロボット',ids:['fanuc','yaskawa','ur'],color:'#a855f7'},
+  {label:'ソフト・WMS',ids:['blue_yonder','manhattan','korber','infor'],color:'#06b6d4'},
+];
+function buildMatrix(){
+  const wrap=document.getElementById('view-overview');
+  const covColors=['#00d4ff','#f59e0b','#a855f7','#06b6d4'];
+  let html=`<div class="ov-title">倉庫自動化 業界俯瞰マップ</div>
+  <div class="ov-sub">各社のソリューションカバレッジを一覧で比較。会社名クリックで詳細ページへ。</div>
+  <div class="matrix-wrap"><table class="matrix">
+  <thead><tr>
+    <th class="left">会社</th>
+    <th>保管系<br><span style="font-size:9px;color:var(--muted2)">AS/RS・GTP</span></th>
+    <th>搬送系<br><span style="font-size:9px;color:var(--muted2)">AMR・AGV・コンベヤ</span></th>
+    <th>アーム系<br><span style="font-size:9px;color:var(--muted2)">産業・協働ロボット</span></th>
+    <th>ソフト<br><span style="font-size:9px;color:var(--muted2)">WMS・WES</span></th>
+    <th>規模感</th>
+    <th>公式サイト</th>
+  </tr></thead><tbody>`;
+  GROUPS.forEach(grp=>{
+    html+=`<tr class="grp-hdr"><td colspan="7" style="border-left:3px solid ${grp.color}">${grp.label}</td></tr>`;
+    grp.ids.forEach(id=>{
+      const nd=NODES[id];if(!nd)return;
+      const tags=nd.tags.map(t=>`<span class="tag ${TAGS[t]?.cls||''}" style="font-size:8px">${TAGS[t]?.label||t}</span>`).join(' ');
+      const covCells=nd.cov.map((v,i)=>{
+        if(v===0)return`<td><div class="cov-bar-wrap"><div style="width:10px;height:10px;border-radius:50%;background:var(--border2);margin:auto"></div></div></td>`;
+        return`<td><div class="cov-bar-wrap"><div class="cov-bar"><div class="cov-fill" style="width:${v*100}%;background:${covColors[i]}"></div></div></div></td>`;
+      }).join('');
+      html+=`<tr>
+        <td><div class="co-cell" onclick="openDetail('${id}')">
+          <span class="co-flag">${nd.flag}</span>
+          <div>
+            <div class="co-name">${nd.label}</div>
+            <div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:2px">${tags}</div>
+            ${(NODE_EXPOS[id]||[]).map(code=>{const ex=EXPOS[code];return ex?`<span class="expo-badge ${ex.cls}" style="font-size:7.5px;margin-top:2px;">${ex.emoji} ${ex.short}</span>`:''}).join('')}
+          </div>
+        </div></td>
+        ${covCells}
+        <td><div style="display:flex;align-items:center;gap:6px;"><div style="flex:1;height:4px;background:var(--border2);border-radius:3px;overflow:hidden;min-width:50px"><div style="width:${Math.round(nd.scale*100)}%;height:100%;background:${nd.color};border-radius:3px"></div></div><span style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace">${Math.round(nd.scale*100)}%</span></div></td>
+        <td>${nd.website?`<a href="${nd.website}" target="_blank" style="font-size:10px;color:var(--partner);text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">🔗 サイト</a>`:'-'}</td>
+      </tr>`;
+    });
+  });
+  html+=`</tbody></table></div>`;
+  wrap.innerHTML=html;
+}
+
+// ═══════════════ FILTERS ═══════════════
+document.querySelectorAll('.fbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+    const f=btn.getAttribute('data-f');
+    const activeTab=document.querySelector('.tab.active')?.getAttribute('data-tab');
+    if(!activeTab||!GRAPH_IDS.includes(activeTab))return;
+    document.querySelectorAll(`#nl-${activeTab} g`).forEach(g=>{
+      const id=g.getAttribute('data-id');const nd=NODES[id];if(!nd)return;
+      const match=f==='all'||nd.cluster===f;
+      g.style.opacity=match?'1':'0.08';g.style.pointerEvents=match?'auto':'none';
+    });
+    document.querySelectorAll(`#el-${activeTab} path`).forEach(p=>{
+      if(f==='all'){p.style.opacity='1';return;}
+      const fn=NODES[p.getAttribute('data-from')],tn=NODES[p.getAttribute('data-to')];
+      p.style.opacity=(fn?.cluster===f||tn?.cluster===f)?'1':'0.04';
+    });
+  });
+});
+
+// ═══════════════ INIT ═══════════════
+buildMatrix();
+GRAPH_IDS.forEach(gid=>initGraph(gid));
+requestAnimationFrame(()=>GRAPH_IDS.forEach(gid=>fitGraph(gid)));
+window.addEventListener('resize',()=>{
+  const t=document.querySelector('.tab.active')?.getAttribute('data-tab');
+  if(t&&GRAPH_IDS.includes(t))fitGraph(t);
+});
+</script>
+</body>
+</html>
