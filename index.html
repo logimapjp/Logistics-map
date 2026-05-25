@@ -234,11 +234,18 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
   <div class="logo"><div class="logo-dot"></div>Logimap</div>
   <div class="sep"></div>
   <div style="font-size:11px;color:var(--muted)">チップをクリックで詳細ページへ</div>
+  <div style="display:flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border2);border-radius:20px;padding:5px 12px;flex-shrink:0;">
+    <span style="font-size:12px;color:var(--muted)">🔍</span>
+    <input id="search-input" type="text" placeholder="例：GTP / AMR / 医薬品 / SBG…" style="border:none;background:transparent;outline:none;font-size:12px;color:var(--text);font-family:'Noto Sans JP',sans-serif;width:180px;">
+    <button id="search-clear" style="display:none;border:none;background:transparent;cursor:pointer;color:var(--muted);font-size:12px;padding:0;">✕</button>
+  </div>
   <div class="leg-row">
     
     <div class="leg"><span class="expo-badge expo-kyushu26">🌸 KYU'26</span>九州展予定</div>
     <div class="sep"></div>
     <div class="leg"><div style="width:12px;height:12px;border-radius:3px;background:linear-gradient(135deg,#fff5ee,#ffe8d6);border:1.5px solid var(--sb);box-shadow:0 0 5px var(--sb-glow)"></div>SBGroup企業</div>
+    <div class="sep"></div>
+    <div style="font-size:10px;color:var(--muted2);font-family:'DM Mono',monospace;white-space:nowrap;">更新：2025年5月</div>
   </div>
 </div>
 
@@ -256,6 +263,19 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
         <div class="help-section"><h4>📊 縦軸：資本グループ</h4><p>倉庫自動化への<strong>投資コミットメント額</strong>が大きい順に並べています。同じ行にいる企業はグループ内の関係会社です。</p></div>
         <div class="help-section"><h4>↔️ 横軸：関わり方</h4><p><strong>ハード製造</strong>：ロボット・設備を作る<br><strong>ソフト開発</strong>：WMS・AI・制御ソフトを作る<br><strong>SI・代理販売</strong>：設計・統合・販売をする<br>※同一企業が複数列に登場するのは正常です</p></div>
         <div class="help-section"><h4>⭐ SBGroupについて</h4><div class="sbg-note">AutoStore出資($2.8B) + ABB Robotics買収($5.375B) + GreenBox JV($7.5B受注残) ＝ <strong>業界最大規模のコミットメント</strong>。ハード・ソフト・SI全方位をカバー。</div></div>
+      </div>
+      <div class="help-content open" id="help-search" style="display:block;padding:10px 20px;border-top:1px solid var(--border);background:var(--surface2);">
+        <div style="font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <span style="font-weight:700;color:var(--text2)">🔍 検索のヒント：</span>
+          <span>会社名・技術名・業種など部分一致で検索できます。</span>
+          <span style="background:var(--border);padding:1px 7px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;">GTP</span>
+          <span style="background:var(--border);padding:1px 7px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;">AMR</span>
+          <span style="background:var(--border);padding:1px 7px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;">医薬品</span>
+          <span style="background:var(--border);padding:1px 7px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;">SBG</span>
+          <span style="background:var(--border);padding:1px 7px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;">Walmart</span>
+          <span style="color:var(--muted2)">— スペースは無視されます。会社名の一部でもヒットします。</span>
+        </div>
+      </div>
       </div>
     </div>
     <div class="map-scroll"><div class="imap" id="imap"></div></div>
@@ -426,7 +446,7 @@ const NODES={
 
   rapyuta:{label:'ラピュタロボティクス',flag:'🇯🇵',sub:'2014年創業 / クラウドRaaS / ETH Zurich発スピンオフ',tags:['amr','waas'],color:'#c4870a',website:'https://www.rapyuta-robotics.com/ja/',
     shortDesc:'日本製クラウドRaaS。アスクルへ当時国内EC最大規模の34台を導入し生産性1.8倍を実証。',
-    desc:'ラピュタロボティクスは、スイス連邦工科大学チューリッヒ校（ETH Zurich）発のロボティクス研究を起源に、2014年に日本で設立されたクラウドロボティクスプラットフォーム企業。\n\nクラウドRaaSの最大の特徴は、月額サブスクリプション型でAMRを提供し、導入から運用・保守・アップグレードまでをワンストップでサービス提供すること。これにより、大規模な設備投資が困難な中堅・中小物流企業でも自動化が実現できる。\n\n代表実績はアスクルへの34台導入（当時国内EC業界最大規模）。生産性1.8倍・人員約30%削減という具体的な効果を実証し、日本のEC物流における自動化の可能性を示した。その後も日本通運など物流大手への展開を進めている。\n\nPA-AMR（ピッキングアシストAMR）とラピュタASRS（自動保管搬送システム）を組み合わせることで、ピッキングから搬送まで一気通貫で自動化できる点も強みとなっている。',
+    desc:'ラピュタロボティクスは、ETH Zurich（スイス連邦工科大学チューリッヒ校）発のロボティクス研究を起源に、2014年に日本で設立されたクラウドロボティクスプラットフォーム企業。累計調達約106億円（Goldman Sachs主導のSeries C等）。3製品ライン体制：PA-AMR（ピッキングアシスト協働AMR）・ラピュタASRS（自動倉庫）・ラピュタAFL（自動フォークリフト）を展開し、倉庫内の搬送・保管・入出庫まで一気通貫の自動化を提供。デロイト トーマツ ミック経済研究所「サービスロボットソリューション市場展望 2024年度版」でPA-AMRが国内トップシェア（2023年度実績）を記録。累計出荷ピース数5,000万ピース突破（2024年5月）。2025年12月グッドカンパニー大賞（イノベーション事業化推進賞）受賞。導入顧客：アスクル（34台）・日本通運・日本アクセス・国分北海道・東和薬品・浜松倉庫など食品・医薬品・EC幅広い業種に展開。月額RaaSで初期投資不要。',
     kpis:[{l:'設立',v:'2014年（ETH Zurich発スピンオフ・日本法人）'},{l:'代表実績',v:'アスクル34台導入（当時国内EC最大規模）'},{l:'生産性向上',v:'1.8倍（アスクル実績）'},{l:'人員削減',v:'約30%（アスクル実績）'},{l:'提供モデル',v:'RaaS（月額サブスクリプション）'},{l:'補助金対応',v:'IT導入補助金等を活用した中小企業向け展開'}],
     customers:[{flag:'🇯🇵',name:'アスクル',tag:'EC'},{flag:'🇯🇵',name:'日本通運',tag:'3PL'},{flag:'🇯🇵',name:'中小〜中堅物流各社',tag:'3PL'}],
     groupMembers:[],
@@ -435,6 +455,95 @@ const NODES={
 };
 
 // ═══════════ MAP ROWS ═══════════
+
+// ═══════════ GROUP DATA ═══════════
+const GROUP_DATA={
+  sbg:{
+    label:'SBGroup',flag:'🇯🇵',color:'#ff6600',
+    desc:'ソフトバンクグループ（SBG）は2021年以降、倉庫自動化を次世代投資の柱と明確に位置づけ、業界最大規模の投資コミットメントを形成してきた。AutoStore出資（$2.8B・40%）・Berkshire Grey完全買収（$375M）・ABB Robotics買収交渉（$5.375B）・GreenBox JV設立（SBG 65%・受注残$7.5B）の4つの大型ディールにより、ハード製造（ABB・Berkshire Grey・Balyo）・ソフト開発（Skild AI・Symbotic）・SI/代理販売（SBロボ・GreenBox）の全方位をカバーする唯一のグループとなった。\n\nRobo HDという持株会社にロボティクス関連投資を統合し、「Physical AI」戦略のもとでAI基盤（Skild AI・評価額$14B）とハードウェアを組み合わせた次世代自動化エコシステムの構築を進めている。競合グループがM&Aで1〜2つの強みを持つのに対し、SBGはAutostoreという独立系GTP最大手にも40%出資することで、グループ内の全テクノロジーと補完関係にある。',
+    kpis:[{l:'AutoStore出資',v:'40%（$2.8B・2021年）'},{l:'ABB Robotics',v:'買収中 $5.375B（2025年10月発表）'},{l:'GreenBox JV',v:'SBG 65% / 受注残$7.5B'},{l:'Berkshire Grey',v:'100%子会社（$375M・2023年）'},{l:'Balyo出資',v:'91.28%（事実上子会社化）'},{l:'Skild AI出資',v:'評価額$14B（NVIDIA共同出資）'},{l:'投資合計',v:'約10兆円超（業界最大規模）'},{l:'戦略名',v:'Physical AI / Robo HD統合'}],
+    strategy:'SBGの倉庫自動化戦略の核心は「ハード×AI×オペレーション」の垂直統合。AutoStoreでGTP市場を押さえ、ABB RoboticsでロボットアームをRobo HDに統合し、Skild AIで汎用ロボットAIを開発、Berkshire GreyでAIピッキングを実現、GreenBoxでWaaS（倉庫をサービスとして提供）という収益モデルを作る。「どの会社も持っていない全方位の組み合わせ」がSBGの競争優位。',
+    members:['sbg','sbr','greenbox','symbotic','berkshire','balyo','abb_r','skild','autostore'],
+  },
+  kion:{
+    label:'KION Group',flag:'🇩🇪',color:'#1a6be8',
+    desc:'KIONグループは欧州最大のフォークリフト・倉庫自動化コングロマリット。2006年にLinde AGのフォークリフト部門として独立し、2017年にDematicを$3.25Bで買収したことで倉庫自動化SI市場に本格参入した。Linde・STILL（プレミアムフォークリフト）・Baoli（ローコスト）・Dematic（倉庫自動化SI）のマルチブランド戦略で、フォークリフト世界シェア第2位（欧州最大）を維持しながら自動化領域への転換を図っている。\n\n2025年売上€11.3B・従業員42,000人以上・100ヵ国以上の顧客基盤を持つ。2025年にはNVIDIAとPhysical AI統合を発表し、Halosベースの安全AIをトレーラー自動積み込みに適用するPoCを実施。2024年DAI（英WMS企業）を$135Mで買収しDematic iQのソフト機能を強化した。',
+    kpis:[{l:'売上',v:'€11.3B（2025年）'},{l:'従業員',v:'42,000人以上'},{l:'フォークリフト累計',v:'200万台以上・6大陸'},{l:'Dematic買収',v:'$3.25B（2017年）'},{l:'DAI買収',v:'$135M（2024年）'},{l:'NVIDIA連携',v:'Physical AI統合（2025年）'},{l:'フォークリフト世界シェア',v:'第2位（欧州最大）'}],
+    strategy:'フォークリフト事業の安定収益を基盤に、Dematicを通じた倉庫自動化SIへの転換を進めている。ハードウェア（フォークリフト・AS/RS・コンベヤ）とソフトウェア（Dematic iQ WES）の垂直統合が強み。中国製フォークリフトとの価格競争が激化する中、高付加価値の自動化ソリューションへのシフトが生存戦略。',
+    members:['kion','dematic','swisslog'],
+  },
+  panasonic:{
+    label:'Panasonic',flag:'🇯🇵',color:'#0a7eb8',
+    desc:'PanasonicはBlue Yonderを$8.5Bで買収（2021年）し、倉庫自動化ソフト領域への世界最大規模のM&Aの一つを実行した。家電・製造業で培ったサプライチェーンノウハウとBlue YonderのAI需要予測・在庫最適化を掛け合わせ、「製造から物流まで一気通貫のSCM最適化」を目指す戦略。\n\nBlue Yonderは2024年売上$1.36B・SaaS成長率+14.2%・新規顧客132社と好調で、Gartner WMS Magic Quadrantでリーダー評価を継続。Panasonicの製造業顧客へのクロスセルと、Blue Yonderの物流・小売顧客基盤の活用を両輪として展開している。',
+    kpis:[{l:'Blue Yonder買収',v:'$8.5B（2021年）'},{l:'2024年Blue Yonder売上',v:'$1.36B'},{l:'SaaS成長率',v:'+14.2%（2024年）'},{l:'新規顧客',v:'132社（2024年）'},{l:'Gartner評価',v:'WMS Magic Quadrant リーダー'}],
+    strategy:'ソフトウェアに特化した戦略。ハードウェアは持たず、AIによる需要予測・在庫最適化・フルフィルメント最適化のソフト領域でSCM市場をリード。Panasonicグループの製造業ネットワークを活用したクロスセルが収益拡大のカギ。',
+    members:['panasonic','blue_yonder'],
+  },
+  honeywell:{
+    label:'Honeywell',flag:'🇺🇸',color:'#b07a00',
+    desc:'Honeywellは2016年にIntelligratedを$1.5Bで買収し、倉庫自動化SI市場に参入した。コンベヤ・ソーター・WES（Momentum™プラットフォーム）・ロボットピッキングをフルラインで自社提供できる点が競合との差別化。航空宇宙・建設・石油化学など多様な産業を持つコングロマリットの中で、Safety and Productivity Solutions（SPS）部門が倉庫自動化を担当し、年間売上$7B超を誇る。\n\nWESのMomentum™プラットフォームは異なるメーカーの設備を一元管理するクラウド型WESで、Honeywellのハード（コンベヤ・ソーター）とサードパーティ設備を同時に管理できる柔軟性が強み。',
+    kpis:[{l:'Intelligrated買収',v:'$1.5B（2016年）'},{l:'SPS部門売上',v:'$7B超（年間）'},{l:'主力製品',v:'Momentum™ WES・コンベヤ・ソーター'},{l:'強み',v:'ハード+ソフト一気通貫提供'}],
+    strategy:'コンベヤ・ソーター等のハードウェアとWES（Momentum™）を同一ベンダーで調達できる「ワンストップ」が競争優位。大手小売・EC・3PLの大規模DCへの導入実績が豊富。',
+    members:['honeywell'],
+  },
+  toyota:{
+    label:'Toyota / 豊田自動織機',flag:'🇯🇵',color:'#1a9e4a',
+    desc:'豊田自動織機はフォークリフト世界販売台数No.1のメーカーとして、Vanderlande（2017年）・Bastian Solutions（2017年）・viastore（2022年）を買収し、2026年4月にToyota Automated Logistics（TAL）ブランドに統合した。AutoStoreとExotecを公式パートナーに採用し、マルチベンダーSIとして特定メーカーに縛られない提案力を持つ。\n\n豊田通商系のMujinへの出資も含めると、フォークリフト（豊田自動織機）・AMR/GTP SI（TAL）・AIロボットコントローラー（Mujin）という倉庫自動化のバリューチェーンをグループで押さえつつある。トヨタL&FカンパニーはAutoStoreの国内代理店としても機能し、国内展開を担う。',
+    kpis:[{l:'フォークリフト',v:'世界販売台数No.1'},{l:'TAL統合',v:'2026年4月（Bastian+Vanderlande+viastore）'},{l:'公式パートナー',v:'AutoStore・Exotec・OTTO Motors'},{l:'M&A投資',v:'Vanderlande+Bastian+viastore 約2,000億円'}],
+    strategy:'フォークリフト世界首位の地位を活かしながら、倉庫自動化SIへの転換を図る。自社製品に縛られないマルチベンダーSI（TAL）という差別化で、Dematic等と競合しない独自ポジションを確立。',
+    members:['toyota_ind','tal','toyota_lf','vanderlande'],
+  },
+  midea:{
+    label:'Midea / KUKA',flag:'🇨🇳',color:'#9b1fd4',
+    desc:'中国の家電大手・美的集団（Midea）が2016年に約$4.5BでKUKAを買収したことで、産業ロボット・物流自動化・スマートホームを統合するグローバルコングロマリットが形成された。KUKAを通じてSwisslog（物流自動化SI）も傘下に持ち、産業ロボットアーム（KUKA）と倉庫SIの組み合わせを実現している。\n\nMidea自身の家電工場でKUKA・Swisslogを活用したスマートファクトリー化を進めており、「自社で使って実証した技術を外販する」モデルが信頼性の源泉となっている。',
+    kpis:[{l:'KUKA買収',v:'約$4.5B（2016年）'},{l:'Midea売上',v:'約$57B（2024年）'},{l:'KUKA売上',v:'約$4B'},{l:'Swisslog売上',v:'€771M（2022年）'},{l:'従業員合計',v:'約12,000人超（KUKA+Swisslog）'}],
+    strategy:'中国の製造業・EC成長を背景に、低コストで高品質なロボット・自動化設備を提供。Swisslogを通じた欧米市場展開と、KUKAの産業ロボット実績が競争力の核。',
+    members:['midea_kuka','swisslog'],
+  },
+  teradyne:{
+    label:'Teradyne',flag:'🇺🇸',color:'#9b1fd4',
+    desc:'Teradyneは2015年にUniversal Robotsを$3Bで買収し、コボット（協働ロボット）市場のパイオニアとして世界最多導入数を誇るリーダーポジションを確立した。安全柵不要・最短1時間セットアップ・直感的なティーチングペンダントで「ロボットの民主化」を実現し、従来は大企業のみが活用できた自動化を中小製造業・物流企業にも展開した。\n\nCobot市場は2028年までに$10B超への成長が予測されており、URはそのカテゴリリーダーとして安定した地位を持つ。倉庫では梱包・ラベル貼り・検品・パレタイジングに広く活用される。',
+    kpis:[{l:'UR買収',v:'$3B（2015年）'},{l:'強み',v:'コボット世界最多導入'},{l:'セットアップ',v:'最短1時間'},{l:'Cobot市場予測',v:'$10B超（2028年）'}],
+    strategy:'産業用ロボットとコボットの補完関係を活かし、従来自動化できなかった中小規模・人と共働きする工程に展開。UR+の新シリーズで高ペイロード・高精度への対応も強化中。',
+    members:['teradyne'],
+  },
+  koch:{
+    label:'Koch Industries',flag:'🇺🇸',color:'#5a6880',
+    desc:'Koch Industriesは石油精製・化学・農業・紙パルプなど多様な産業を持つ非上場の米国コングロマリット。Inforを傘下に収め、エンタープライズソフトウェア市場での存在感を持つ。Infor WMSは製造・3PL・食品流通向けの業種特化型WMSで、製薬のシリアライゼーション・食品ロット追跡・冷蔵管理・3PLのマルチクライアント対応など規制対応が求められる業種への展開実績が豊富。\n\n非上場のため財務詳細は非公開だが、Inforの顧客基盤は世界68,000社以上・170ヵ国に及ぶ。',
+    kpis:[{l:'親会社',v:'Koch Industries（非上場・米国）'},{l:'Infor顧客',v:'世界68,000社以上・170ヵ国'},{l:'強み',v:'製薬・食品・3PL向け特化WMS'},{l:'Gartner評価',v:'WMS Magic Quadrant ビジョナリー'}],
+    strategy:'規制対応が複雑な業種（製薬・食品・化学）での深い業種特化が競争優位。Blue Yonder・Manhattanが小売・EC大手向けなのに対し、Inforは製造業・3PLの規制対応で補完的なポジション。',
+    members:['koch'],
+  },
+  indep:{
+    label:'独立系大手',flag:'🌍',color:'#7c3aed',
+    desc:'特定の資本グループに属さず、独自技術・ブランドで市場をリードする企業群。ダイフク（マテハン世界1位）・SSI Schaefer（世界2位）・AutoStore（GTPパイオニア）・Exotec（3次元AMR）・Ocado（食品EC特化）・Knapp（医薬品精密ピッキング）・Manhattan Associates（WMS世界大手）など、各カテゴリでトップクラスの実績を持つ。\n\n独立系であるがゆえに、特定グループの思惑に左右されない中立的な提案ができる点がユーザーから評価される。買収対象として各グループから注目されており、今後のM&Aによる業界再編の軸になりうる企業群でもある。',
+    kpis:[{l:'ダイフク',v:'マテハン世界#1・売上6,607億円'},{l:'SSI Schaefer',v:'マテハン世界#2・売上〜3,200億円'},{l:'AutoStore',v:'GTPパイオニア・1,950+システム・SBG 40%株主'},{l:'Exotec',v:'評価額$2B・調達$446M・TAL公式パートナー'},{l:'Manhattan',v:'WMS Magic Quadrant 17年連続リーダー'}],
+    strategy:'各社が特定技術・業種で深い専門性を持ち、グループ系SIには真似できない専門特化の強みで市場をリード。ただしグループ系の資本力・販売網には劣るため、代理店・パートナーネットワークの構築が重要な戦略課題。',
+    members:['daifuku','murata','autostore','exotec','ocado','ssi','knapp','fanuc','yaskawa','manhattan','korber','interroll','beumer','kardex','okamura','amazon_robotics','greyorange','hitachi'],
+  },
+  china:{
+    label:'中国系（日本参入組）',flag:'🇨🇳',color:'#e8341a',
+    desc:'中国のAMR・ACR・AGFメーカーが日本市場に本格参入しつつある企業群。Geek+（AMR世界1位・HKEX上場）・Hai Robotics（ACRパイオニア）・AiTEN（AGF・AMRフルスタック）・SEER（AMRコントローラー世界1位）・Hikrobot（Hikvision子会社）・JDL（EC物流の自動化技術外販）・VisionNav（AGF専業・東京ショールーム）・Standard Robots（製造業特化）・Senad（ソーター・DWS専業）など多様なプレイヤーが揃う。\n\n日本企業と比較して価格競争力と開発スピードで優位を持ちながら、展示会出展・パートナー企業との連携・ショールーム設置などを通じて信頼性の構築を進めている。2025〜26年の九州展への複数社出展が日本参入加速の象徴。',
+    kpis:[{l:'Geek+',v:'AMR世界#1・HKEX上場（2590.HK）・2025年初黒字化'},{l:'SEER',v:'AMRコントローラー世界販売No.1（2年連続）'},{l:'Hikrobot',v:'Hikvision子会社・2025年H1売上RMB 31.4億'},{l:'JDL',v:'HKEX上場・2024年売上$25.6B'},{l:'VisionNav',v:'30ヵ国450プロジェクト・東京ショールームあり'}],
+    strategy:'ハードウェアの価格競争力と開発スピードで日本市場に参入。日本の2024年問題（物流危機）が追い風となり、コスト重視のユーザー層への展開が加速している。日本のパートナー企業（代理店・SI）との連携が普及の鍵。',
+    members:['geekplus','hai','aiten','seer','quicktron','tusk','mushiny','hikrobot','jdl','visionnav','xyz_robotics','standard_robots','senad'],
+  },
+  startup:{
+    label:'国内新興',flag:'🇯🇵',color:'#c4870a',
+    desc:'2011〜2015年に創業した日本発のロボティクス・スタートアップ。ラピュタロボティクス（RaaS・国内PA-AMRトップシェア）・Mujin（AIロボットコントローラー・世界最高1,000ピース/時）・GROUND（佐川急便系・AGV+WMS統合）が代表格。\n\nいずれも月額サブスクリプション（RaaS）や特定技術の深掘りで差別化しており、資本力では国内外の大手に劣るが、日本の現場ニーズへの深い理解と迅速な対応力で存在感を持つ。Mujinは2025年12月に$233M（NTT主導）を調達し累計$411Mに達した。',
+    kpis:[{l:'ラピュタPA-AMR',v:'国内トップシェア（2023年度）・累計5,000万ピース突破'},{l:'Mujin調達',v:'累計$411M（Series D 2025年12月）'},{l:'GROUND',v:'佐川急便グループ系・GreyOrangeの日本パートナー'}],
+    strategy:'大手が手を出しにくい中小規模・RaaS型・特定技術特化で独自ポジションを確立。2024年問題（物流危機）による自動化需要の急増が追い風。',
+    members:['rapyuta','mujin','ground'],
+  },
+  specialist:{
+    label:'専業・老舗メーカー',flag:'🌍',color:'#5a6880',
+    desc:'1919〜1959年に創業した特定技術領域の専業メーカー。Kardex（VLM・1919年）・Beumer（ソーター・1935年）・Interroll（コンベヤ・1959年）・ホクショー（垂直搬送・1952年）が代表格。いずれも特定の技術カテゴリで世界的なニッチトップ企業として長年にわたり業界標準を形成してきた。\n\nInterrollのコンベヤ部品はダイフク・Dematicなど多数の大手SIがOEM採用しており、「知らずに使っている」形で業界インフラを担っている。Kardex VLMは中小規模倉庫・工場での保管自動化で高いROIを実証している。',
+    kpis:[{l:'Kardex',v:'売上€791M（2024年・過去最高）'},{l:'Interroll',v:'売上CHF 527M（2024年）'},{l:'Beumer',v:'受注残€1.25B（2023年・過去最高）'},{l:'創業',v:'1919〜1959年（老舗）'}],
+    strategy:'特定技術での深い専門性とOEM供給による業界インフラポジションが長期的な競争優位。大きな変化はなく安定した収益基盤を持つ一方、新興プレイヤーへの技術移転リスクも存在。',
+    members:['hokusho','interroll','beumer','kardex'],
+  },
+};
+
 const MAP_ROWS=[
   {id:'sbg',label:'⭐ SBGroup',sub:'倉庫自動化への投資コミットメント 約10兆円超',commit:'AutoStore$2.8B + ABB$5.375B + GreenBox$7.5B受注残',tagline:'業界最大規模の投資でハード・ソフト・SIの全方位をカバー。AutoStoreへの40%出資も含む',isSBG:true,
     cols:[{ids:['autostore','abb_r','berkshire','balyo']},{ids:['skild','symbotic']},{ids:['sbr','greenbox']}]},
@@ -477,6 +586,7 @@ const CHIP_DESC={
   symbotic:'AIロボット群でケースレベル自動化。GreenBox JVを通じてSBGと世界展開中。',
   sbr:'AutoStore国内代理店。SBフレームワークス川崎に国内最大級システムを提供。',
   greenbox:'WaaS（倉庫をサービスとして提供）のJV。受注残約$7.5B。',
+  kion:'フォークリフト・倉庫自動化の欧州最大コングロマリット。売上€11.3B・NVIDIA Physical AI連携。',
   dematic:'世界10,000+倉庫に導入実績のフルラインSI。KION Group傘下。',
   swisslog:'AutoStore代理・CarryPickを展開するSI。KUKA/Midea傘下。',
   blue_yonder:'AI予測型WMS世界大手。2024年売上$1.36B・SaaS成長+14.2%。Panasonicが$8.5Bで買収。',
@@ -532,36 +642,44 @@ const LAYERS=[
 
 // Additional nodes used in matrix but not in main NODES
 const EXTRA={
-  fanuc:{label:'Fanuc',flag:'🇯🇵',sub:'東証プライム / 1956年 / 産業ロボット世界最大手',tags:['arm'],color:'#9b1fd4',website:'https://www.fanuc.co.jp/',shortDesc:'産業ロボット世界最大手。倉庫のデパレ・パレタイズ・ピッキングに採用。',desc:'産業ロボット世界最大手。倉庫では高速デパレタイズ・パレタイズ・ピッキングに採用。ビジョンシステムとの組み合わせでバラ積み品対応も可能。',kpis:[{l:'売上',v:'約8,000億円'},{l:'世界シェア',v:'産業ロボット世界最大手'}],customers:[{flag:'🇯🇵',name:'主要製造業全般',tag:'製造'}],solutions:[{name:'FANUCロボット（物流向け）',desc:'高ペイロード・高精度の6軸ロボットアーム。デパレ・パレタイズ・ピッキングに対応。',videoUrl:'https://www.youtube.com/watch?v=m7VN0xOeMZ4',linkUrl:'https://www.fanuc.co.jp/ja/product/robot/',linkLabel:'ロボット製品'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / デパレ列・ピッキング / ロボットアーム列・出荷 / パレタイズロボット列',color:'#9b1fd4'}]},
-  yaskawa:{label:'YASKAWA',flag:'🇯🇵',sub:'東証プライム / 1915年',tags:['arm'],color:'#9b1fd4',website:'https://www.yaskawa.co.jp/',shortDesc:'Motomanロボット大手。倉庫のデパレ・パレタイズ・ピッキングに広く採用。',desc:'産業ロボット大手（Motomanブランド）。倉庫ではデパレタイズ・パレタイズ・ピッキングに広く採用。モーションコントロール技術で高精度動作を実現。',kpis:[{l:'売上',v:'約5,000億円'}],customers:[{flag:'🇯🇵',name:'製造・物流各社',tag:'多業種'}],solutions:[{name:'Motoman MPシリーズ',desc:'物流・倉庫向けMotomanロボット。高速・高精度動作で処理能力を最大化。',videoUrl:'https://www.youtube.com/watch?v=Uj5L2h7Xcuk',linkUrl:'https://www.yaskawa.co.jp/product/robotics',linkLabel:'ロボティクス製品'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / デパレ列・ピッキング / ロボットアーム列・出荷 / パレタイズ列',color:'#9b1fd4'}]},
-  ocado:{label:'Ocado / OSP',flag:'🇬🇧',sub:'London: OCDO / 2000年',tags:['gtp','ai'],color:'#7c3aed',website:'https://www.ocadogroup.com/',shortDesc:'食品EC特化GTPシステム。イオンCFC千葉に導入。50品を約6分でピッキング。',desc:'食品EC特化エンドツーエンドプラットフォーム。グリッドロボット群を独自無線通信で制御。日本ではイオンCFC千葉に導入。',kpis:[{l:'性能',v:'50品を約6分'},{l:'日本',v:'イオンCFC千葉'}],customers:[{flag:'🇯🇵',name:'イオン',tag:'食品小売'}],solutions:[{name:'Ocado Smart Platform（OSP）',desc:'食品ECのエンドツーエンドフルフィルメントプラットフォーム。',videoUrl:'https://www.youtube.com/watch?v=FY9sbW7oOiY',linkUrl:'https://ocadointelligentautomation.com/',linkLabel:'Ocado IA'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / キューブ型GTP列・ピッキング / GTP型列',color:'#1a6be8'}]},
-  ssi:{label:'SSI Schaefer',flag:'🇩🇪',sub:'非上場 / 1937年 / マテハン世界#2',tags:['shuttle','integrator'],color:'#7c3aed',website:'https://www.ssi-schaefer.com/ja-jp',shortDesc:'マテハン世界シェア2位。ラック・AS/RS・WMSをフルライン自社提供。日本法人あり。',desc:'ラック・AS/RS・WMSのフルライン自社提供。AI在庫管理WMSを強化中。日本法人あり。',kpis:[{l:'売上',v:'〜3,200億円（世界#2）'}],customers:[{flag:'🇩🇪',name:'BMW',tag:'製造'}],solutions:[{name:'WAMAS WMS',desc:'SSI自社WMS。',videoUrl:null,linkUrl:'https://www.ssi-schaefer.com/ja-jp/products/software/wamas',linkLabel:'WAMAS詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / スタッカー・シャトルラック列・ソフト / WMS列',color:'#7c3aed'}]},
-  knapp:{label:'Knapp AG',flag:'🇦🇹',sub:'オーストリア / 1952年',tags:['shuttle','integrator'],color:'#7c3aed',website:'https://www.knapp.com/ja/',shortDesc:'医薬品・化粧品卸向けOSR Shuttle™のトップランナー。ダイフクと業務提携。',desc:'医薬品・化粧品卸向け精密ピッキングシステムのトップランナー。ダイフクと業務提携。',kpis:[{l:'主力製品',v:'OSR Shuttle™'}],customers:[{flag:'🇺🇸',name:'Walgreens',tag:'薬局'}],solutions:[{name:'OSR Shuttle™',desc:'医薬品・食品・化粧品卸向けの高精度シャトル型AS/RS。',videoUrl:'https://www.youtube.com/watch?v=dLM_fwpLTLk',linkUrl:'https://www.knapp.com/ja/',linkLabel:'Knapp日本語サイト'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / シャトルラック列・仕分け / シャトル荷揃え列',color:'#7c3aed'}]},
+  fanuc:{label:'Fanuc',flag:'🇯🇵',sub:'東証プライム / 1956年 / 産業ロボット世界最大手',tags:['arm'],color:'#9b1fd4',website:'https://www.fanuc.co.jp/',shortDesc:'産業ロボット世界最大手。倉庫のデパレ・パレタイズ・ピッキングに採用。',desc:'産業ロボット世界最大手（世界シェア約17%）。黄色いロボットボディで世界中の製造ライン・倉庫に展開。【物流向けの強み】ProMat 2025・MODEX 2026でwarehouse & logistics専用ソリューションを大規模展示。AI Box Locator（3Dビジョン+AI）でバラ積み・混載の認識精度を大幅向上し、M-710/50-26D（50kgペイロード・湾曲アーム）によるカートデパレ・コンベヤへのパレタイズを実現。新製品CRX-30iAモバイルマニピュレーター（AMRに搭載できるコボットアーム）で自律搬送+パレタイズの一体化も推進。AIパートナーはMujin・OSARO・Covariant・Plus Oneと複数連携しており、AI把持計画の自由度が高い。',kpis:[{l:'売上',v:'約8,000億円'},{l:'世界シェア',v:'産業ロボット世界最大手'}],customers:[{flag:'🇯🇵',name:'主要製造業全般',tag:'製造'}],solutions:[{name:'FANUCロボット（物流向け）',desc:'高ペイロード・高精度の6軸ロボットアーム。デパレ・パレタイズ・ピッキングに対応。',videoUrl:'https://www.youtube.com/watch?v=m7VN0xOeMZ4',linkUrl:'https://www.fanuc.co.jp/ja/product/robot/',linkLabel:'ロボット製品'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / デパレ列・ピッキング / ロボットアーム列・出荷 / パレタイズロボット列',color:'#9b1fd4'}]},
+  yaskawa:{label:'YASKAWA',flag:'🇯🇵',sub:'東証プライム / 1915年',tags:['arm'],color:'#9b1fd4',website:'https://www.yaskawa.co.jp/',shortDesc:'Motomanロボット大手。倉庫のデパレ・パレタイズ・ピッキングに広く採用。',desc:'産業ロボット大手（Motomanブランド）。モーションコントロール技術（インバーター・サーボモーター）との垂直統合が強みで、高精度・高速動作を安定して実現できる。【物流向けの展開】Motoman PL190はロングリーチ型パレタイズロボットで、1台のアームで複数パレットをカバーできる作業エリアの広さが特徴。Plus One Robotics（AI把持）との連携でパーセルシンギュレーション（バラ積みを1個ずつ整列）と組み合わせたピッキングも展開。世界市場シェアFANUC・ABBに次ぐ3位圏内。Automate 2024でAI・ビジョン統合物流ソリューションを展示。',kpis:[{l:'売上',v:'約5,000億円'}],customers:[{flag:'🇯🇵',name:'製造・物流各社',tag:'多業種'}],solutions:[{name:'Motoman MPシリーズ',desc:'物流・倉庫向けMotomanロボット。高速・高精度動作で処理能力を最大化。',videoUrl:'https://www.youtube.com/watch?v=Uj5L2h7Xcuk',linkUrl:'https://www.yaskawa.co.jp/product/robotics',linkLabel:'ロボティクス製品'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / デパレ列・ピッキング / ロボットアーム列・出荷 / パレタイズ列',color:'#9b1fd4'}]},
+  ocado:{label:'Ocado / OSP',flag:'🇬🇧',sub:'London: OCDO / 2000年',tags:['gtp','ai'],color:'#7c3aed',website:'https://www.ocadogroup.com/',shortDesc:'食品EC特化GTPシステム。イオンCFC千葉に導入。50品を約6分でピッキング。',desc:'食品EC特化エンドツーエンドプラットフォーム。グリッドロボット群を独自無線通信で制御。日本ではイオンCFC千葉に導入。',kpis:[{l:'性能',v:'50品を約6分'},{l:'日本',v:'イオンCFC千葉'}],customers:[{flag:'🇯🇵',name:'イオン',tag:'食品小売'}],solutions:[{name:'Ocado Smart Platform（OSP）',desc:'【食品EC特化GTPの最高峰・50品を約6分】Ocado Smart Platform（OSP）は食品EC向けのエンドツーエンドフルフィルメントプラットフォーム。グリッド型ロボットシステム（OFC: Ocado Fulfilment Centre）でロボットが最大2,300台・5mm間隔で同時走行しながら50品目の注文を約6分でピッキングする驚異的なスループットを実現。独自の分散型無線通信システム「Hive」でロボットを一元制御。単一障害点なし設計・マルチ温度帯（冷蔵・冷凍・常温）対応。WMS・配送最適化・顧客アプリまでをワンパッケージで提供。日本ではイオンのCFC（Customer Fulfilment Centre）千葉に導入済み。',videoUrl:'https://www.youtube.com/watch?v=FY9sbW7oOiY',linkUrl:'https://ocadointelligentautomation.com/',linkLabel:'Ocado IA'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / キューブ型GTP列・ピッキング / GTP型列',color:'#1a6be8'}]},
+  ssi:{label:'SSI Schaefer',flag:'🇩🇪',sub:'非上場 / 1937年 / マテハン世界#2',tags:['shuttle','integrator'],color:'#7c3aed',website:'https://www.ssi-schaefer.com/ja-jp',shortDesc:'マテハン世界シェア2位。ラック・AS/RS・WMSをフルライン自社提供。日本法人あり。',desc:'ラック・AS/RS・WMSのフルライン自社提供。AI在庫管理WMSを強化中。日本法人あり。',kpis:[{l:'売上',v:'〜3,200億円（世界#2）'}],customers:[{flag:'🇩🇪',name:'BMW',tag:'製造'}],solutions:[{name:'WAMAS WMS',desc:'【フルライン自社提供の競争優位】ラック・コンテナ・AS/RS・コンベヤ・AGV・WMSをすべて自社開発・製造する業界でも数少ない真の総合メーカー。「ハードとソフトを一社で提供できる」ことで責任範囲が明確になり、設計から保守まで一気通貫で対応できる。WAMAS WMSはAI在庫管理・予知保全機能を2024年に強化。マテハン世界第2位（約3,200億円）・40,000以上のインストールベース・世界70ヵ国展開。日本法人あり（SSIシェーファーシステムズインターナショナル合同会社）。',videoUrl:null,linkUrl:'https://www.ssi-schaefer.com/ja-jp/products/software/wamas',linkLabel:'WAMAS詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / スタッカー・シャトルラック列・ソフト / WMS列',color:'#7c3aed'}]},
+  knapp:{label:'Knapp AG',flag:'🇦🇹',sub:'オーストリア / 1952年',tags:['shuttle','integrator'],color:'#7c3aed',website:'https://www.knapp.com/ja/',shortDesc:'医薬品・化粧品卸向けOSR Shuttle™のトップランナー。ダイフクと業務提携。',desc:'1952年創業のオーストリアの倉庫自動化企業。従業員約6,200人・世界50ヵ国以上に展開。医薬品・化粧品・食品卸向けの精密ピッキングシステムで世界トップクラスの実績を持つ。主力のOSR Shuttle™はシャトル型AS/RSの事実上の世界標準として6万台以上が稼働中。自社WMS・WCS・WESをフルライン提供できる点が競合との差別化で、KiSoftと呼ばれる統合ソフトウェアプラットフォームがシステム全体の最適制御を担う。Avon・Hugo Boss・L’Oréal・Coca-Cola・John Lewisなどのグローバル大手への導入実績。2025年に冷凍倉庫向けOSR Shuttleを正式ローンチ（200万サイクル・1.1万km走行のベータテスト完了）。ダイフクと業務提携。',kpis:[{l:'主力製品',v:'OSR Shuttle™'}],customers:[{flag:'🇺🇸',name:'Walgreens',tag:'薬局'}],solutions:[{name:'OSR Shuttle™',desc:'【世界初のシャトル型AS/RS・6万台以上稼働】医薬品・食品・化粧品卸向けに特化して開発された高精度シャトル型AS/RS。単なる保管にとどまらず、ピッキング・バッファリング・順立て出庫（シーケンシング）を一体で実現する点が最大の特徴。OSR Shuttle Evoは前世代比で処理速度が大幅向上し、稼働高度39m（130フィート）・走行距離200m（650フィート）に対応。保管密度を従来倉庫比最大400%向上させる高密度設計。2025年に冷凍・冷蔵対応版を正式ローンチし、コールドチェーン物流にも対応。フォーマシューティカル卸Novaltiaへの導入では自動化率98%を達成。',videoUrl:'https://www.youtube.com/watch?v=dLM_fwpLTLk',linkUrl:'https://www.knapp.com/ja/',linkLabel:'Knapp日本語サイト'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / シャトルラック列・仕分け / シャトル荷揃え列',color:'#7c3aed'}]},
   korber:{label:'Körber',flag:'🇩🇪',sub:'非上場 / ハンブルク',tags:['wms','integrator'],color:'#0a7eb8',website:'https://www.koerber-supplychain.com/',shortDesc:'マルチベンダー環境のWES統合に強いソフトベンダー。UCS（統合制御）が特徴。',desc:'マルチベンダー環境のWES統合に最も強いソフトウェアベンダー。UCS（Unified Control System）が特徴。',kpis:[{l:'強み',v:'WES・マルチベンダー統合'}],customers:[{flag:'🌍',name:'大手物流・EC各社',tag:'多業種'}],solutions:[{name:'Körber WMS（倉庫管理システム）',desc:'世界1,600以上の顧客を持つWMSベンダー（世界3位）。顧客が平均15〜20年使い続ける高い継続性と生産性最大50%向上の実績が特徴。3PL向けマルチクライアント対応・業種特化機能（自動車・石油化学・EC）を持つ。2025年KKRと戦略的パートナーシップ締結でグローバル展開を加速。Gartner WMS Magic Quadrantでリーダー認定。',videoUrl:null,linkUrl:'https://koerber-supplychain.com/supply-chain-solutions/supply-chain-software/warehouse-management/',linkLabel:'Körber WMS公式ページ'},{name:'Körber WCS（倉庫制御システム）',desc:'マルチベンダー環境でAS/RS・コンベヤ・ソーター・AGV/AMRを一元管理する倉庫制御システム。ベンダー非依存設計が強みで、複数メーカーの自動化設備を統合できる。直感的なグラフィカルダッシュボードでリアルタイム監視・最適化が可能。倉庫自動化黎明期から数十年の実績を持つ業界最古参クラスのWCS。',videoUrl:null,linkUrl:'https://koerber-supplychain.com/supply-chain-solutions/supply-chain-software/warehouse-control-system/',linkLabel:'Körber WCS公式ページ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'ソフト / WMS列・WES列',color:'#1a1f36'}]},
   manhattan:{label:'Manhattan Associates',flag:'🇺🇸',sub:'Nasdaq: MANH / 1990年',tags:['wms'],color:'#0a7eb8',website:'https://www.manh.com/ja-jp',shortDesc:'小売・EC向けWMSの業界標準。クラウドネイティブOMS統合プラットフォーム。',desc:'小売・EC向けWMSで業界標準的存在。クラウドネイティブのWMS/OMS統合プラットフォームを展開。',kpis:[{l:'強み',v:'クラウドWMS・OMS統合'}],customers:[{flag:'🇺🇸',name:'小売・EC大手各社',tag:'小売・EC'}],solutions:[{name:'Manhattan Active® Warehouse Management',desc:'Gartner WMS Magic Quadrantで17年連続リーダー認定（2025年）。クラウドネイティブ・マイクロサービス設計の「エバーグリーン型」WMSで、四半期ごとの自動アップデートによりバージョンアップ作業が不要。WES機能（ロボット・ソーター・プットウォール統合制御）を内包し、Manhattan Automation Networkでロボットを事前統合済みで即接続可能。機械学習で自動化・ロボット・人材を同期させ最大スループットを実現。',videoUrl:'https://www.youtube.com/watch?v=TUz7SFkQZxA',linkUrl:'https://www.manh.com/solutions/supply-chain-management-software/warehouse-management',linkLabel:'Manhattan Active WMS公式ページ'},{name:'Manhattan Active® OMS（オーダー管理）',desc:'WMSと統合されたクラウドネイティブOMS。EC・店舗・B2Bの注文を一元管理し在庫最適化・返品処理を統合。Forrester Wave OMS Q1 2025でリーダー認定。',videoUrl:null,linkUrl:'https://www.manh.com/solutions/omnichannel-commerce/order-management',linkLabel:'Manhattan Active OMS詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'ソフト / WMS列',color:'#1a1f36'}]},
-  dematic:{label:'Dematic',flag:'🇩🇪',sub:'KION Group傘下 / 1819年',tags:['shuttle','conv','integrator'],color:'#1a6be8',website:'https://www.dematic.com/ja-jp/',shortDesc:'世界10,000+倉庫に導入実績のフルラインSI。KION Group傘下。',desc:'コンベヤ・ソーター・AS/RSのフルラインインテグレーター。AI予知保全WMS・2025年NvidiaとPhysical AI連携。',kpis:[{l:'売上',v:'〜2,700億円（世界#3）'}],customers:[{flag:'🇺🇸',name:'Amazon',tag:'EC'}],solutions:[{name:'Dematic Multi-Shuttle',desc:'高密度・高スループットのシャトル型AS/RS。',videoUrl:'https://www.youtube.com/watch?v=N5jNf_HCZRQ',linkUrl:'https://www.dematic.com/ja-jp/products/automated-storage-retrieval/',linkLabel:'AS/RS製品'}],groupMembers:[{id:'kion',rel:'親会社（100%子会社）',role:'持株会社'}],mapPositions:[{layer:'業界マップ',cell:'KION Group行 / ハード製造列・SI代理販売列'},{layer:'ソリューションマトリクス',cell:'保管 / シャトルラック列・ソフト / WES列・デジタルツイン列',color:'#1a6be8'}]},
-  swisslog:{label:'Swisslog',flag:'🇨🇭',sub:'KUKA/Midea傘下',tags:['gtp','amr','integrator'],color:'#1a6be8',website:'https://www.swisslog.com/ja-jp',shortDesc:'AutoStore代理・CarryPick展開のSI。KUKA/Midea傘下。製薬・冷蔵に強み。',desc:'KUKAグループ傘下のSI。AutoStoreの主要代理店。CarryPick（AMRが棚ごと商品を運ぶGTP）も展開。',kpis:[{l:'製品',v:'AutoStore代理・CarryPick'}],customers:[{flag:'🇩🇪',name:'REWE Group',tag:'食品小売'}],solutions:[{name:'CarryPick',desc:'AMRが棚ごと商品を運ぶGTP方式。',videoUrl:'https://www.youtube.com/watch?v=8wTbLbJvqhU',linkUrl:'https://www.swisslog.com/en-us/products-and-systems/transport-automation-systems/carry-pick',linkLabel:'CarryPick詳細'}],groupMembers:[{id:'midea_kuka',rel:'親会社（Midea/KUKA傘下）',role:'持株会社'}],mapPositions:[{layer:'業界マップ',cell:'Midea/KUKA行 / ハード製造列・SI代理販売列'},{layer:'ソリューションマトリクス',cell:'ピッキング / GTP型列',color:'#c4870a'}]},
+  dematic:{label:'Dematic',flag:'🇩🇪',sub:'KION Group傘下 / 1819年',tags:['shuttle','conv','integrator'],color:'#1a6be8',website:'https://www.dematic.com/ja-jp/',shortDesc:'世界10,000+倉庫に導入実績のフルラインSI。KION Group傘下。',desc:'KION Group傘下のフルラインSI大手。1819年創業・26ヵ国展開・2,000施設以上の自動化システムを管理・売上$2.5B超（2024年）。【Dematic iQ：ソフトウェアが強みの差別化】Dematic iQはWES（倉庫実行システム）として倉庫内のすべての自動化設備・AMRフリート・人員を一元制御するプラットフォーム。AIによる動的オーダーバッチング・予知保全・リアルタイム分析で設備ダウンタイムを最小化。2024年にはKION GroupがDAI（英WMS企業）を約$135Mで買収しDematic iQのソフト機能を強化。2025年NVIDIAとPhysical AI連携（Halosベースの安全AI・デジタルツイン）を発表しトレーラー自動積み込みのPoC実施中。Amazon・DB Schenkerなどグローバル大手への導入実績多数。',kpis:[{l:'売上',v:'〜2,700億円（世界#3）'}],customers:[{flag:'🇺🇸',name:'Amazon',tag:'EC'}],solutions:[{name:'Dematic Multi-Shuttle',desc:'高密度・高スループットのシャトル型AS/RS。',videoUrl:'https://www.youtube.com/watch?v=N5jNf_HCZRQ',linkUrl:'https://www.dematic.com/ja-jp/products/automated-storage-retrieval/',linkLabel:'AS/RS製品'}],groupMembers:[{id:'kion',rel:'親会社（100%子会社）',role:'持株会社'}],mapPositions:[{layer:'業界マップ',cell:'KION Group行 / ハード製造列・SI代理販売列'},{layer:'ソリューションマトリクス',cell:'保管 / シャトルラック列・ソフト / WES列・デジタルツイン列',color:'#1a6be8'}]},
+  kion:{label:'KION Group',flag:'🇩🇪',sub:'Frankfurt上場 / 2006年 / 売上€11.3B（2025年）',tags:['holding'],color:'#1a6be8',website:'https://www.kiongroup.com/',
+    shortDesc:'フォークリフト・倉庫自動化の欧州最大コングロマリット。Dematic・Linde・STILLを傘下に持つ。売上€11.3B・42,000人以上。',
+    desc:'フォークリフト・倉庫自動化の欧州最大コングロマリット。2025年売上約€11.3B・従業員42,000人以上・フォークリフト累計200万台以上が6大陸で稼働。Linde・STILL（プレミアム）・Baoli（ローコスト）・Dematic（倉庫自動化SI）のマルチブランド戦略でバリューチェーン全体をカバー。100ヵ国以上の顧客に対応し、フォークリフト世界シェア第2位（欧州最大）。【2025年戦略的動向】NVIDIAとPhysical AI統合・デジタルツイン連携を発表（CeMAT Shanghai 2025で実演）。KION Automation Center Antwerp（2024年10月開設）でSIエンジニアリング能力を強化。2024年DAI（英WMS企業）を約$135Mで買収しDematic iQのソフト機能を強化。中国では非中国系メーカーとして最大級のシェアを維持。',
+    kpis:[{l:'売上',v:'€11.3B（2025年）'},{l:'フォークリフト累計',v:'200万台以上・6大陸'},{l:'従業員',v:'42,000人以上'},{l:'Dematic買収',v:'$3.25B（2017年）'},{l:'2024年',v:'DAI（英WMS企業）を$135Mで買収'},{l:'NVIDIA連携',v:'Physical AI・デジタルツイン統合（2025年）'}],
+    customers:[{flag:'🌍',name:'フォークリフト・物流・製造各社',tag:'グローバル100ヵ国'}],
+    solutions:[{name:'Dematic（倉庫自動化SI）',desc:'KION Group傘下の倉庫自動化専門ブランド。コンベヤ・ソーター・AS/RS・WES（Dematic iQ）・AMRをフルライン提供するグローバルSI大手。',videoUrl:null,linkUrl:'https://www.dematic.com/ja-jp/',linkLabel:'Dematic公式'},{name:'Linde / STILL（フォークリフト）',desc:'プレミアムフォークリフトブランド。電動・ガス・ディーゼル全種類と自動化フォークリフト（AGF）を展開。KIONグループの安定した収益基盤。',videoUrl:null,linkUrl:'https://www.kiongroup.com/',linkLabel:'KION公式サイト'}],
+    groupMembers:[{id:'dematic',rel:'100%子会社',role:'倉庫自動化SI'},{id:'swisslog',rel:'傘下（KUKA/Midea経由）',role:'SI・GTP代理店'}],
+    mapPositions:[{layer:'業界マップ',cell:'KION Group行 / ハード製造列・SI代理販売列',color:'#1a6be8'}]},
+  swisslog:{label:'Swisslog',flag:'🇨🇭',sub:'KUKA/Midea傘下',tags:['gtp','amr','integrator'],color:'#1a6be8',website:'https://www.swisslog.com/ja-jp',shortDesc:'AutoStore代理・CarryPick展開のSI。KUKA/Midea傘下。製薬・冷蔵に強み。',desc:'KUKAグループ（Midea傘下）のSI大手。AutoStoreの主要国際代理店であり、独自開発のCarryPick（AMRが棚ごと商品を運ぶGTP型システム）も展開する。1900年創業の老舗で、売上約€771M（2022年）・従業員3,000人以上・約20ヵ国に展開。病院向け自動薬剤搬送システムでも世界有数の実績を持ち、医薬品・食品・EC・アパレルに強みを持つSIとして、顧客の業種・規模に応じた最適なシステムを提案できる体制を持つ。',kpis:[{l:'製品',v:'AutoStore代理・CarryPick'}],customers:[{flag:'🇩🇪',name:'REWE Group',tag:'食品小売'}],solutions:[{name:'CarryPick',desc:'【AutoStoreの低コスト代替・スモールスタート向け】AMR（自律移動ロボット）が棚ごと商品をピッキングステーションまで運ぶGoods-to-Person型システム。AutoStoreより導入コストが低く・実装が速い点が強みで、中小規模からのスタートや既存倉庫へのレトロフィットに最適。2023年に次世代版を発表：新設計のリフティングターンテーブル採用で動作速度が大幅向上し、ラック回転・静止の両方に対応することで1時間あたりのピッキングステーションへの商品提示回数が増加。アパレル・EC・電子・自動車部品など幅広い業種に対応。AutoStoreより高スループットが必要な案件ではAutoStoreとの組み合わせ提案も可能。',videoUrl:'https://www.youtube.com/watch?v=8wTbLbJvqhU',linkUrl:'https://www.swisslog.com/en-us/products-and-systems/transport-automation-systems/carry-pick',linkLabel:'CarryPick詳細'}],groupMembers:[{id:'midea_kuka',rel:'親会社（Midea/KUKA傘下）',role:'持株会社'}],mapPositions:[{layer:'業界マップ',cell:'Midea/KUKA行 / ハード製造列・SI代理販売列'},{layer:'ソリューションマトリクス',cell:'ピッキング / GTP型列',color:'#c4870a'}]},
   blue_yonder:{label:'Blue Yonder',flag:'🇺🇸',sub:'Panasonic傘下（$8.5B買収） / スコッツデール・アリゾナ / 設立1985年',tags:['wms'],color:'#0a7eb8',website:'https://blueyonder.com/ja-jp',shortDesc:'2024年売上$1.36B（SaaS成長+14.2%）。WMSが最大製品（前年比+32%）。132社新規顧客獲得。',desc:'Panasonic傘下のWMS世界大手。機械学習による需要予測・在庫最適化が強み。',kpis:[{l:'2024年売上',v:'$1.36B（SaaS成長+14.2%）'},{l:'WMS',v:'最大製品・前年比+32%成長'},{l:'新規顧客',v:'132社（2024年）'},{l:'親会社',v:'Panasonic（$8.5B買収・2021年）'}],customers:[{flag:'🌍',name:'グローバル大手小売・3PL',tag:'多業種'}],solutions:[{name:'Luminate WMS（倉庫管理システム）',desc:'クラウドネイティブSaaS型WMS。25年以上の開発実績を基盤に継続進化し続ける。AIによる動的タスク割り当て・ピッキングルート最適化で労働生産性15〜30%向上を実証。SAP・OracleとのERPプリビルド連携、マイクロサービスアーキテクチャで拡張性が高い。Gartner WMS Magic Quadrantでリーダー評価。2024年売上$1.36B（+14.2%）・新規顧客132社。',videoUrl:'https://www.youtube.com/watch?v=MCxZB8H8T5A',linkUrl:'https://blueyonder.com/solutions/warehouse-management',linkLabel:'Blue Yonder WMS公式ページ'},{name:'Robotics Hub（ロボティクス統合基盤）',desc:'異なるメーカーのAMR・AGV・ソーターをWMSから一元管理する統合基盤。マルチベンダー対応が強みで、特定メーカーに縛られずベストオブブリードの設備を組み合わせ可能。PanasonicグループのSCMノウハウとの融合でサプライチェーン全体の最適化を実現。',videoUrl:null,linkUrl:'https://blueyonder.com/solutions/warehouse-management',linkLabel:'Robotics Hub詳細'}],groupMembers:[{id:'panasonic',rel:'親会社（$8.5B買収・2021年）',role:'持株会社'}],mapPositions:[{layer:'業界マップ',cell:'Panasonic行 / ソフト開発列'},{layer:'ソリューションマトリクス',cell:'ソフト / WMS列',color:'#1a1f36'}]},
   honeywell:{label:'Honeywell Intelligrated',flag:'🇺🇸',sub:'Honeywell傘下 / Intelligrated買収$1.5B（2016年）',tags:['conv','integrator','wms'],color:'#b07a00',website:'https://www.intelligrated.com/',shortDesc:'コンベヤ・ソーター・WESをフルラインで提供するSI大手。Honeywell傘下。',desc:'Honeywell傘下のSI大手。コンベヤ・ソーター・ロボットピッキング・WESをフルライン提供。Momentum™プラットフォームで自動化設備をリアルタイム管理。',kpis:[{l:'倉庫自動化売上',v:'約$450M（年間）'},{l:'プラットフォーム',v:'Momentum™ WES'}],customers:[{flag:'🇺🇸',name:'大手小売・EC各社',tag:'小売・EC'}],solutions:[{name:'Momentum™ WES',desc:'【統合制御の中枢】コンベヤ・ソーター・ロボットアーム・AMRを問わず、倉庫内の全自動化設備をリアルタイムで一元管理するクラウド型WES。AIによる優先度に基づく動的タスク割り当てで倉庫全体の生産性を最大化する。WMSから指示を受けてWCS（設備制御）に指令を出す「中間レイヤー」として機能し、設備の追加・変更に柔軟に対応可能。コンベヤ・ソーターのハードウェアも自社提供できるため、ソフト・ハードをトータルで提案できることがHoneywellの強み。',videoUrl:'https://www.youtube.com/watch?v=R2S9FuJpotE',linkUrl:'https://www.honeywell.com/us/en/products/supply-chain-products/warehouse-automation',linkLabel:'WES詳細'}],groupMembers:[],mapPositions:[{layer:'業界マップ',cell:'Honeywell行 / ハード・ソフト・SI全列'},{layer:'ソリューションマトリクス',cell:'水平搬送 / 水平コンベヤ列・仕分け / クロスベルトソーター列・ソフト / WES列',color:'#1a1f36'}]},
-  tal:{label:'Toyota Automated Logistics',flag:'🇯🇵',sub:'Bastian+Vanderlande+viastore統合 / 2026年4月',tags:['integrator','shuttle','gtp'],color:'#1a9e4a',website:'https://toyota-automated-logistics.com/',shortDesc:'Toyota傘下の倉庫自動化SI。AutoStore・Exotecを公式パートナーに。2026年4月統合。',desc:'豊田自動織機がBastian Solutions・Vanderlande倉庫部門・viastoreを2026年4月に統合した新ブランド。AutoStore・Exotecを公式パートナーとして大規模SIを展開。',kpis:[{l:'パートナー',v:'AutoStore・Exotec・OTTO Motors'}],customers:[{flag:'🇺🇸',name:'Puma',tag:'アパレル'}],solutions:[{name:'AS/RS + AMR 統合SI',desc:'AutoStore・Exotecなど複数メーカーのAS/RSとAMRを組み合わせた大規模倉庫自動化。',videoUrl:null,linkUrl:'https://toyota-automated-logistics.com/',linkLabel:'TAL公式サイト'}],groupMembers:[{id:'toyota_lf',rel:'グループ兄弟（国内展開）',role:'SI・代理販売'}],mapPositions:[{layer:'業界マップ',cell:'Toyota行 / SI・代理販売列'},{layer:'ソリューションマトリクス',cell:'保管 / GTP・シャトル列',color:'#1a6be8'}]},
+  tal:{label:'Toyota Automated Logistics',flag:'🇯🇵',sub:'Bastian+Vanderlande+viastore統合 / 2026年4月',tags:['integrator','shuttle','gtp'],color:'#1a9e4a',website:'https://toyota-automated-logistics.com/',shortDesc:'Toyota傘下の倉庫自動化SI。AutoStore・Exotecを公式パートナーに。2026年4月統合。',desc:'豊田自動織機がBastian Solutions・Vanderlande倉庫部門・viastoreを2026年4月に統合した新ブランド。AutoStore・Exotecを公式パートナーとして大規模SIを展開。',kpis:[{l:'パートナー',v:'AutoStore・Exotec・OTTO Motors'}],customers:[{flag:'🇺🇸',name:'Puma',tag:'アパレル'}],solutions:[{name:'AS/RS + AMR 統合SI',desc:'【マルチベンダーSIの強み・特定メーカーに縛られない提案力】AutoStore・Exotecを公式パートナーとして、顧客の課題・規模・予算に応じて最適なAS/RS・AMRを組み合わせて提案・導入するフルラインSI。OTTO Motors（自律搬送）とも連携し、製造業・EC・食品・医薬品向けの大規模倉庫自動化を手掛ける。Bastian Solutions（米国）・Vanderlande（倉庫部門）・viastore（独・WMS）を2026年4月に統合したToyota Automated Logisticsブランドのもと、グローバルSIとして急成長中。PUMAの北米DC向け大規模AutoStoreシステムの導入が代表実績。',videoUrl:null,linkUrl:'https://toyota-automated-logistics.com/',linkLabel:'TAL公式サイト'}],groupMembers:[{id:'toyota_lf',rel:'グループ兄弟（国内展開）',role:'SI・代理販売'}],mapPositions:[{layer:'業界マップ',cell:'Toyota行 / SI・代理販売列'},{layer:'ソリューションマトリクス',cell:'保管 / GTP・シャトル列',color:'#1a6be8'}]},
   toyota_lf:{label:'トヨタL&F',flag:'🇯🇵',sub:'豊田自動織機 トヨタL&Fカンパニー',tags:['gtp','amr','integrator'],color:'#1a9e4a',website:'https://logi.toyota-lf.com/',shortDesc:'AutoStore国内代理店。15,000+システム導入実績。日本・東南アジアで展開。',desc:'豊田自動織機のフォークリフト・物流ソリューション部門。AutoStoreの国内代理店。AGV・AMR・ソーター等を幅広く取り扱い。',kpis:[{l:'導入実績',v:'15,000+システム'}],customers:[{flag:'🇯🇵',name:'各種製造・流通業',tag:'多業種'}],solutions:[{name:'AutoStore（国内代理店）',desc:'AutoStoreの国内代理店として提案・導入・保守を担当。',videoUrl:'https://www.youtube.com/watch?v=icRpbughHWHw',linkUrl:'https://logi.toyota-lf.com/',linkLabel:'トヨタL&Fソリューション'}],groupMembers:[{id:'tal',rel:'グループ兄弟（TAL統合ブランド）',role:'SI・統合'}],mapPositions:[{layer:'業界マップ',cell:'Toyota行 / SI・代理販売列'}]},
-  midea_kuka:{label:'Midea / KUKA',flag:'🇨🇳',sub:'Midea Group（中国）/ KUKA（独）/ KUKA買収$4.5B',tags:['holding','arm'],color:'#9b1fd4',website:'https://www.kuka.com/ja-jp',shortDesc:'中国家電大手MideaがKUKAを$4.5Bで買収。Swisslog・KUKAロボットを傘下に持つ。',desc:'中国の美的集団（Midea）がKUKAを買収（約$4.5B・2016年）。KUKAを通じてSwisslogも傘下に持ち、産業ロボットと物流自動化の両分野で展開。',kpis:[{l:'Midea売上',v:'約$57B（2024年）'},{l:'倉庫自動化',v:'Swisslog・KUKA Robotics'}],customers:[{flag:'🌍',name:'自動車・電子・物流各社',tag:'グローバル'}],solutions:[{name:'KUKA KRシリーズ',desc:'6軸産業ロボット。デパレ・パレタイズ・ピッキングに採用実績多数。',videoUrl:'https://www.youtube.com/watch?v=W_BbMj8zPhs',linkUrl:'https://www.kuka.com/ja-jp/',linkLabel:'KUKA製品'}],groupMembers:[{id:'swisslog',rel:'100%子会社（KUKA経由）',role:'SI・代理販売'}],mapPositions:[{layer:'業界マップ',cell:'Midea/KUKA行 / ハード製造列'}]},
-  teradyne:{label:'Teradyne / Universal Robots',flag:'🇺🇸',sub:'Teradyne傘下 / UR買収$3B（2015年）',tags:['arm'],color:'#9b1fd4',website:'https://www.universal-robots.com/ja/',shortDesc:'協働ロボット（コボット）世界最多導入。安全柵不要で人と共働き可能。',desc:'TeradyneがUniversal Robotsを$3Bで買収（2015年）。安全柵不要で人と共働き可能な協働ロボットの世界最多導入を誇る。倉庫では軽量ピッキング・梱包・検品に活用。',kpis:[{l:'買収額',v:'$3B（Universal Robots・2015年）'},{l:'強み',v:'協働ロボット（コボット）世界最多導入'}],customers:[{flag:'🌍',name:'中小製造・物流企業',tag:'多業種'}],solutions:[{name:'UR5 / UR10 協働ロボット',desc:'安全柵不要で人と同じ作業スペースで使用可能。ピッキング・梱包・検品に対応。',videoUrl:'https://www.youtube.com/watch?v=BrqBBH7SWMM',linkUrl:'https://www.universal-robots.com/ja/products/',linkLabel:'製品ラインナップ'}],groupMembers:[],mapPositions:[{layer:'業界マップ',cell:'Teradyne行 / ハード製造列'},{layer:'ソリューションマトリクス',cell:'ピッキング / ロボットアーム列',color:'#c4870a'}]},
-  koch:{label:'Koch Industries / Infor',flag:'🇺🇸',sub:'Koch Industries傘下 / Infor WMS',tags:['wms'],color:'#5a6880',website:'https://www.infor.com/ja-jp/products/wms',shortDesc:'製造・3PL・食品向け特化型WMS。Koch Industries傘下のエンタープライズソフト。',desc:'Koch Industries傘下のエンタープライズWMS。製造・3PL・食品流通向けの業種特化型WMSに強み。ERPとの深い統合が特徴。',kpis:[{l:'強み',v:'製造・3PL・食品向けWMS'}],customers:[{flag:'🌍',name:'製造・3PL各社',tag:'製造・3PL'}],solutions:[{name:'Infor WMS（業種特化型クラウドWMS）',desc:'Koch Industries傘下のエンタープライズWMSで、製造・3PL・食品流通向けの業種特化設計が強み。ERPとの深い統合（SAP・Oracle対応）、RF・音声・RFID・ビジョンなど複数の指示デバイスに対応。冷蔵・冷凍倉庫向けの特殊環境対応や、製薬業界向けのシリアライゼーション（連番管理）機能など、規制対応が求められる業種への展開実績が豊富。クラウド・オンプレミス・ハイブリッド展開に対応。',videoUrl:null,linkUrl:'https://www.infor.com/products/wms',linkLabel:'Infor WMS公式ページ'}],groupMembers:[],mapPositions:[{layer:'業界マップ',cell:'Koch Industries行 / ソフト開発列'}]},
-  murata:{label:'村田機械',flag:'🇯🇵',sub:'非上場 / 1935年 / マテハン世界#4',tags:['shuttle','amr','integrator'],color:'#0e8f6e',website:'https://www.muratamc.com/',shortDesc:'マテハン世界シェア4位。半導体クリーンルーム対応を国内唯一でワンストップ提供。',desc:'国内2位。スタッカークレーン・シャトルシステム・スマートAGVをフルライン展開。半導体クリーンルームをワンストップ対応できる国内唯一のメーカー。',kpis:[{l:'世界シェア',v:'マテハン業界 #4'},{l:'特徴',v:'半導体クリーンルーム対応 国内唯一'}],customers:[{flag:'🇯🇵',name:'主要半導体メーカー',tag:'半導体'}],solutions:[{name:'3Dロボット倉庫',desc:'立体搬送と多層階アクセスを実現。デジタルツイン技術でリアルタイム可視化。',videoUrl:null,linkUrl:'https://www.muratamc.com/Products/logistics/',linkLabel:'物流システム製品'}],groupMembers:[],mapPositions:[{layer:'業界マップ',cell:'独立系大手行 / ハード製造列・SI代理販売列'}]},
-  hai:{label:'Hai Robotics',flag:'🇨🇳',sub:'深圳 / 2016年',tags:['acr','amr'],color:'#e8341a',website:'https://www.hairobotics.com/',shortDesc:'ACR（自律ケースハンドリング）カテゴリのパイオニア。2016年深圳創業。',desc:'ACR（Autonomous Case-handling Robot）カテゴリのパイオニア。ロボット自身がケース単位で棚から直接取り出す。Geek+ RSシリーズの競合。',kpis:[{l:'カテゴリ',v:'ACRパイオニア'}],customers:[{flag:'🇨🇳',name:'各種EC・物流企業',tag:'EC・物流'}],solutions:[{name:'HAIPICK ACR',desc:'ロボット自身がケース・トートを棚から直接把持して取り出す。',videoUrl:'https://www.youtube.com/watch?v=CDhXiMrINYk',linkUrl:'https://www.hairobotics.com/solutions/',linkLabel:'ソリューション詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / ACRケース搬送列'}]},
+  midea_kuka:{label:'Midea / KUKA',flag:'🇨🇳',sub:'Midea Group（中国）/ KUKA（独）/ KUKA買収$4.5B',tags:['holding','arm'],color:'#9b1fd4',website:'https://www.kuka.com/ja-jp',shortDesc:'中国家電大手MideaがKUKAを$4.5Bで買収。Swisslog・KUKAロボットを傘下に持つ。',desc:'中国の美的集団（Midea）がKUKAを買収（約$4.5B・2016年）し、産業ロボット・物流自動化・スマートホームを統合するグローバルコングロマリットを形成。【KUKAとSwisslogの相乗効果】KUKAの産業ロボットアーム（デパレ・パレタイズ・ピッキング）とSwisslogの倉庫SIを組み合わせることで、製造ラインから物流倉庫まで一気通貫のソリューション提案が可能。MideaはKUKAを通じたスマートファクトリー化も推進しており、自社の家電工場の自動化にKUKA・Swisslogを活用している。KUKA売上約$4B・Swisslog売上約€771M（2022年）・従業員合計約12,000人超の規模。',kpis:[{l:'Midea売上',v:'約$57B（2024年）'},{l:'倉庫自動化',v:'Swisslog・KUKA Robotics'}],customers:[{flag:'🌍',name:'自動車・電子・物流各社',tag:'グローバル'}],solutions:[{name:'KUKA KRシリーズ',desc:'6軸産業ロボット。デパレ・パレタイズ・ピッキングに採用実績多数。',videoUrl:'https://www.youtube.com/watch?v=W_BbMj8zPhs',linkUrl:'https://www.kuka.com/ja-jp/',linkLabel:'KUKA製品'}],groupMembers:[{id:'swisslog',rel:'100%子会社（KUKA経由）',role:'SI・代理販売'}],mapPositions:[{layer:'業界マップ',cell:'Midea/KUKA行 / ハード製造列'}]},
+  teradyne:{label:'Teradyne / Universal Robots',flag:'🇺🇸',sub:'Teradyne傘下 / UR買収$3B（2015年）',tags:['arm'],color:'#9b1fd4',website:'https://www.universal-robots.com/ja/',shortDesc:'協働ロボット（コボット）世界最多導入。安全柵不要で人と共働き可能。',desc:'TeradyneがUniversal Robotsを$3Bで買収（2015年）した際、コボット市場は草創期だったが現在は世界最多導入数を誇るカテゴリリーダーに成長。【URの強み】安全柵不要・軽量（UR5なら本体約18.4kg）・セットアップ最短1時間・直感的なティーチングペンダントで、産業用ロボットの知識がない現場でも導入できる「民主化されたロボット」が最大の価値。ペイロード3〜30kgのシリーズと、より軽量・高速なURe（e-Series）を展開。物流・倉庫では梱包・ラベル貼り・検品・パレタイジングに活用。Cobot市場全体では2028年までに$10B超への成長が予測される。',kpis:[{l:'買収額',v:'$3B（Universal Robots・2015年）'},{l:'強み',v:'協働ロボット（コボット）世界最多導入'}],customers:[{flag:'🌍',name:'中小製造・物流企業',tag:'多業種'}],solutions:[{name:'UR5 / UR10 協働ロボット',desc:'安全柵不要で人と同じ作業スペースで使用可能。ピッキング・梱包・検品に対応。',videoUrl:'https://www.youtube.com/watch?v=BrqBBH7SWMM',linkUrl:'https://www.universal-robots.com/ja/products/',linkLabel:'製品ラインナップ'}],groupMembers:[],mapPositions:[{layer:'業界マップ',cell:'Teradyne行 / ハード製造列'},{layer:'ソリューションマトリクス',cell:'ピッキング / ロボットアーム列',color:'#c4870a'}]},
+  koch:{label:'Koch Industries / Infor',flag:'🇺🇸',sub:'Koch Industries傘下 / Infor WMS',tags:['wms'],color:'#5a6880',website:'https://www.infor.com/ja-jp/products/wms',shortDesc:'製造・3PL・食品向け特化型WMS。Koch Industries傘下のエンタープライズソフト。',desc:'Koch Industries傘下のエンタープライズソフトウェア企業。Infor WMSは製造・3PL・食品流通向けの業種特化型WMSで、業界固有の要件（製薬のシリアライゼーション・食品のロット追跡・冷蔵管理・3PLのマルチクライアント対応）に深く対応する設計が強み。【位置づけ】Blue Yonder・Manhattanが小売・EC大手向けに強いのに対し、Inforは製造業・3PL・食品の規制対応・複雑な業務フローに強みを持つ補完的なポジション。非上場のKoch Industriesが親会社であるため財務詳細は非公開。Gartner WMS Magic Quadrantでビジョナリー評価。クラウド・オンプレミス・ハイブリッド展開に対応。',kpis:[{l:'強み',v:'製造・3PL・食品向けWMS'}],customers:[{flag:'🌍',name:'製造・3PL各社',tag:'製造・3PL'}],solutions:[{name:'Infor WMS（業種特化型クラウドWMS）',desc:'Koch Industries傘下のエンタープライズWMSで、製造・3PL・食品流通向けの業種特化設計が強み。ERPとの深い統合（SAP・Oracle対応）、RF・音声・RFID・ビジョンなど複数の指示デバイスに対応。冷蔵・冷凍倉庫向けの特殊環境対応や、製薬業界向けのシリアライゼーション（連番管理）機能など、規制対応が求められる業種への展開実績が豊富。クラウド・オンプレミス・ハイブリッド展開に対応。',videoUrl:null,linkUrl:'https://www.infor.com/products/wms',linkLabel:'Infor WMS公式ページ'}],groupMembers:[],mapPositions:[{layer:'業界マップ',cell:'Koch Industries行 / ソフト開発列'}]},
+  murata:{label:'村田機械',flag:'🇯🇵',sub:'非上場 / 1935年 / マテハン世界#4',tags:['shuttle','amr','integrator'],color:'#0e8f6e',website:'https://www.muratamc.com/',shortDesc:'マテハン世界シェア4位。半導体クリーンルーム対応を国内唯一でワンストップ提供。',desc:'国内2位。スタッカークレーン・シャトルシステム・スマートAGVをフルライン展開。半導体クリーンルームをワンストップ対応できる国内唯一のメーカー。',kpis:[{l:'世界シェア',v:'マテハン業界 #4'},{l:'特徴',v:'半導体クリーンルーム対応 国内唯一'}],customers:[{flag:'🇯🇵',name:'主要半導体メーカー',tag:'半導体'}],solutions:[{name:'3Dロボット倉庫',desc:'【国内唯一・半導体クリーンルームワンストップ対応の強み】スタッカークレーン・シャトルシステム・クリーンルーム搬送システム（OHT/OHS）を組み合わせた3Dロボット倉庫。半導体製造工場の天井走行搬送から一般物流倉庫まで対応できる国内唯一のメーカー。デジタルツイン技術によるリアルタイム可視化で設備稼働状況を3D表示。シミュレーションで最適な設備構成を事前検証できる。世界シェアマテハン業界第4位・非上場の老舗として高品質・高信頼性を維持。',videoUrl:null,linkUrl:'https://www.muratamc.com/Products/logistics/',linkLabel:'物流システム製品'}],groupMembers:[],mapPositions:[{layer:'業界マップ',cell:'独立系大手行 / ハード製造列・SI代理販売列'}]},
+  hai:{label:'Hai Robotics',flag:'🇨🇳',sub:'深圳 / 2016年',tags:['acr','amr'],color:'#e8341a',website:'https://www.hairobotics.com/',shortDesc:'ACR（自律ケースハンドリング）カテゴリのパイオニア。2016年深圳創業。',desc:'ACR（Autonomous Case-handling Robot）カテゴリのパイオニア。ロボット自身がケース単位で棚から直接取り出す。Geek+ RSシリーズの競合。',kpis:[{l:'カテゴリ',v:'ACRパイオニア'}],customers:[{flag:'🇨🇳',name:'各種EC・物流企業',tag:'EC・物流'}],solutions:[{name:'HAIPICK ACR',desc:'【ACRカテゴリを創出したパイオニア製品】ロボット自身がラック内を昇降しながらケース・トートを棚から直接把持して取り出すACR（Autonomous Case-handling Robot）。GTP型（棚ごと運ぶ）とは異なり、必要なケースだけを取り出すため棚を丸ごと移動させる無駄がなく、高密度保管と高速ピッキングを両立できる。A42シリーズは最大10m高さ対応・最大積載30kg・1時間あたり400サイクル以上。Geek+ RSシリーズとACR市場をリードする二大巨頭の一角。EC・3PL・食品・医薬品向けに世界50ヵ国以上で展開。',videoUrl:'https://www.youtube.com/watch?v=CDhXiMrINYk',linkUrl:'https://www.hairobotics.com/solutions/',linkLabel:'ソリューション詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / ACRケース搬送列'}]},
   aiten:{label:'AiTEN Robotics',flag:'🇨🇳',sub:'2017年創業 / 日本展開中',tags:['amr','conv'],color:'#e8341a',website:'https://www.aitenrobot.com/ja/',shortDesc:'AGF・AMRのフルスタック自社開発。30ヵ国・200プロジェクト以上の導入実績。',desc:'AMR・自動フォークリフト（AGF）のフルスタックを自社開発。2025〜26年の日本物流展に出展し積極参入中。',kpis:[{l:'導入実績',v:'30ヵ国以上・200プロジェクト以上'}],customers:[{flag:'🌍',name:'Fortune 500企業各社',tag:'製造・物流'}],solutions:[{name:'APe AMRシリーズ',desc:'SLAMナビゲーションと3D LiDARで精密に自律走行。',videoUrl:'https://www.youtube.com/watch?v=5JdkW0Xa3sM',linkUrl:'https://www.aitenrobot.com/ja/products/',linkLabel:'製品ラインナップ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / AGF列・水平搬送 / AGF列・ACR列'}]},
-  seer:{label:'SEER Robotics',flag:'🇨🇳',sub:'上海 / AMRコントローラー世界No.1',tags:['amr'],color:'#e8341a',website:'https://seer-robotics.ai/',shortDesc:'AMRコントローラー世界販売No.1（2年連続）。65ヵ国・1,500社超に採用。',desc:'AMR/AGVコントローラー（SRCシリーズ）が世界販売台数2年連続No.1。Siemens・Samsung・Walmartに採用。',kpis:[{l:'コントローラー',v:'世界販売No.1（2年連続）'}],customers:[{flag:'🇩🇪',name:'Siemens',tag:'製造'},{flag:'🇺🇸',name:'Walmart',tag:'小売'}],solutions:[{name:'SRCシリーズ AMRコントローラー',desc:'市場の大多数のLiDAR・センサーに対応する汎用AMRコントローラー。',videoUrl:'https://www.youtube.com/watch?v=RiPg3Y8UQMQ',linkUrl:'https://seer-robotics.ai/products/',linkLabel:'製品ページ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / ACR列・ソフト / AI基盤列'}]},
-  tusk:{label:'Tusk Robots',flag:'🇨🇳',sub:'仏山 / 2021年',tags:['amr'],color:'#e8341a',website:'https://www.tuskrobotics.com/',shortDesc:'パレット搬送特化AMR。Lalamove・ZhenFundが出資する急成長中国スタートアップ。',desc:'中国・仏山のAMR/パレットロボットメーカー。医薬品・電子・EC・自動車部品向けのインテリジェントパレットロボットを展開。',kpis:[{l:'投資家',v:'Lalamove・ZhenFund'}],customers:[{flag:'🇨🇳',name:'各種製造・物流企業',tag:'製造・物流'}],solutions:[{name:'インテリジェントパレットロボット',desc:'パレット単位の重量物搬送に特化したAMR。',videoUrl:null,linkUrl:'https://tuskrobotics.com/',linkLabel:'公式サイト'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / ACRケース搬送列'}]},
-  mushiny:{label:'Mushiny',flag:'🇨🇳',sub:'南京 / 2015年',tags:['amr','conv'],color:'#e8341a',website:'https://www.mushiny.com/',shortDesc:'AMR＋ソーティング統合。中国・東南アジアでの実績中心に日本参入を検討。',desc:'AMRとソーティングシステムを組み合わせたソリューション。中国・東南アジアでの実績が中心。',kpis:[{l:'特徴',v:'AMR＋ソーティングシステム'}],customers:[{flag:'🇨🇳',name:'中国物流・EC各社',tag:'EC・物流'}],solutions:[{name:'AMR＋Sorter統合',desc:'AMRによる搬送とソーティングシステムを組み合わせた自動化ソリューション。',videoUrl:null,linkUrl:'https://www.mushiny.com/solutions',linkLabel:'ソリューション詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / AMR棚搬送列・仕分け / AMR仕分け列'}]},
-  hokusho:{label:'ホクショー',flag:'🇯🇵',sub:'石川県金沢市 / 1952年 / 垂直搬送専業',tags:['conv'],color:'#0e8f6e',website:'https://www.hokusho.co.jp/',shortDesc:'垂直搬送機（昇降機・スパイラルコンベヤ）の国内専業メーカー。石川県金沢。',desc:'垂直コンベヤ・仕分けコンベヤの専業メーカー。垂直往復搬送機「オートレーター」・垂直連続搬送機「バーチレーター」・垂直仕分け搬送機「ハイトレー」を展開。多階層の物流センター・工場に多数導入。',kpis:[{l:'強み',v:'垂直搬送機の国内専業メーカー'},{l:'製品',v:'オートレーター・バーチレーター・ハイトレー'}],customers:[{flag:'🇯🇵',name:'物流センター・工場各社',tag:'多業種'}],solutions:[{name:'オートレーター（垂直往復搬送機）',desc:'エレベーター方式でパレット・台車・袋物を上下階に搬送。1時間約90パレットの搬送能力。',videoUrl:null,linkUrl:'https://www.hokusho.co.jp/vts_veas.html',linkLabel:'オートレーター詳細'},{name:'バーチレーター（垂直連続搬送機）',desc:'連続的に荷物を垂直搬送。スパイラル式で省スペースかつ高能力。',videoUrl:null,linkUrl:'https://www.hokusho.co.jp/standard.html',linkLabel:'製品一覧'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'垂直搬送 / 垂直往復機列・垂直連続機列・仕分け / ピースソーター列'}]},
-  interroll:{label:'Interroll',flag:'🇨🇭',sub:'SIX: INRN / 1959年',tags:['conv'],color:'#5a6880',website:'https://www.interroll.com/ja/',shortDesc:'コンベヤ・ソーティングの世界標準部品。多数のSIがOEM採用するインフラ企業。',desc:'コンベヤ・ソーティングの世界標準部品メーカー。ダイフク・Dematic等多数のSIがOEM採用。',kpis:[{l:'売上',v:'CHF 527M（2024年）'},{l:'強み',v:'業界標準コンベヤ部品のOEM供給'}],customers:[{flag:'🌍',name:'各大手SI経由（OEM）',tag:'B2B'}],solutions:[{name:'Interroll RBS',desc:'ゾーンコントロール式ローラーコンベヤのスタンダード。省エネ設計。',videoUrl:'https://www.youtube.com/watch?v=0Y4qxr8iFWk',linkUrl:'https://www.interroll.com/ja/products/',linkLabel:'製品ラインナップ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / 水平コンベヤ列・水平搬送 / 水平コンベヤ列・出荷 / 出荷コンベヤ列'}]},
-  beumer:{label:'Beumer Group',flag:'🇩🇪',sub:'非上場 / 1935年',tags:['conv','integrator'],color:'#5a6880',website:'https://www.beumergroup.com/',shortDesc:'空港BHS・EC向けクロスベルトソーターの世界大手。非上場のドイツ家族経営。',desc:'高速ソーティングシステムの専業大手。空港BHS・EC宅配仕分けで世界トップクラス。',kpis:[{l:'受注残',v:'€1.25B（2023年・過去最高）'},{l:'強み',v:'空港BHS・EC向けクロスベルトソーター世界大手'}],customers:[{flag:'🌍',name:'DHL・FedEx系',tag:'宅配'}],solutions:[{name:'クロスベルトソーター',desc:'高速・高精度の仕分けシステム。毎時数万件の仕分けが可能。',videoUrl:'https://www.youtube.com/watch?v=Mpc1RCMJ3sY',linkUrl:'https://www.beumergroup.com/products/sortation-systems/',linkLabel:'ソーティング製品'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'仕分け / クロスベルトソーター列'}]},
-  kardex:{label:'Kardex',flag:'🇨🇭',sub:'SIX: KARN / 1919年',tags:['conv'],color:'#5a6880',website:'https://www.kardex.com/ja/',shortDesc:'VLM（垂直リフトモジュール）専業老舗。センサーで棚間隔を自動最適化。',desc:'垂直リフトモジュール（VLM）専業の老舗。センサーで棚間隔を自動最適化し超高密度収納を実現。',kpis:[{l:'売上',v:'€791M（2024年・過去最高）'},{l:'主力製品',v:'VLM（垂直リフトモジュール）'}],customers:[{flag:'🇯🇵',name:'国内中小製造・EC各社',tag:'中小企業'}],solutions:[{name:'Kardex Remstar VLM',desc:'垂直リフトモジュール（縦型自動棚）。最大60%の保管密度向上を実現。',videoUrl:'https://www.youtube.com/watch?v=6o5P4NHDVB4',linkUrl:'https://www.kardex.com/ja/products',linkLabel:'Kardex製品ページ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / VLM垂直リフト列'}]},
-  quicktron:{label:'Quicktron',flag:'🇨🇳',sub:'アリババ系 / 上海',tags:['amr'],color:'#e8341a',website:'https://www.quicktron.com/',shortDesc:'アリババグループ関連のAMRメーカー。大規模フリート管理が得意。',desc:'アリババグループ関連のAMRメーカー。大規模フリート管理が得意。中国・東南アジアで多数導入。',kpis:[{l:'親会社',v:'アリババグループ関連'}],customers:[{flag:'🇨🇳',name:'アリババ物流施設',tag:'EC'}],solutions:[{name:'Quicktron AMRフリート',desc:'大規模倉庫向けAMRフリート管理システム。',videoUrl:null,linkUrl:'https://www.quicktron.com/solutions/',linkLabel:'ソリューション詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / AMR棚搬送列'}]},
+  seer:{label:'SEER Robotics',flag:'🇨🇳',sub:'上海 / AMRコントローラー世界No.1',tags:['amr'],color:'#e8341a',website:'https://seer-robotics.ai/',shortDesc:'AMRコントローラー世界販売No.1（2年連続）。65ヵ国・1,500社超に採用。',desc:'AMR/AGVコントローラー（SRCシリーズ）が世界販売台数2年連続No.1。Siemens・Samsung・Walmartに採用。',kpis:[{l:'コントローラー',v:'世界販売No.1（2年連続）'}],customers:[{flag:'🇩🇪',name:'Siemens',tag:'製造'},{flag:'🇺🇸',name:'Walmart',tag:'小売'}],solutions:[{name:'SRCシリーズ AMRコントローラー',desc:'【AMRコントローラー世界販売No.1・2年連続】SRCシリーズはメーカーを問わず市場の大多数のLiDAR・センサーに対応する汎用AMRコントローラー。オープンプラットフォーム設計で特定ロボットへのロックインがなく、既存ロボットへの後付けも可能。SLAMナビゲーション・自然特徴点マッピング・マルチフロア対応・群ロボット制御（Fleet管理）まで統合。Siemens・Samsung・Walmartが採用する信頼性。65ヵ国以上・1,500社以上への展開実績。',videoUrl:'https://www.youtube.com/watch?v=RiPg3Y8UQMQ',linkUrl:'https://seer-robotics.ai/products/',linkLabel:'製品ページ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / ACR列・ソフト / AI基盤列'}]},
+  tusk:{label:'Tusk Robots',flag:'🇨🇳',sub:'仏山 / 2021年',tags:['amr'],color:'#e8341a',website:'https://www.tuskrobotics.com/',shortDesc:'パレット搬送特化AMR。Lalamove・ZhenFundが出資する急成長中国スタートアップ。',desc:'中国・仏山のAMR/パレットロボットメーカー。医薬品・電子・EC・自動車部品向けのインテリジェントパレットロボットを展開。',kpis:[{l:'投資家',v:'Lalamove・ZhenFund'}],customers:[{flag:'🇨🇳',name:'各種製造・物流企業',tag:'製造・物流'}],solutions:[{name:'インテリジェントパレットロボット',desc:'パレット単位の重量物搬送に特化したインテリジェントパレットロボット。最大積載量2,000kg・自動でパレットを持ち上げて目的地まで搬送する。LiDAR + 視覚認識で自律ナビゲーションし、人との協調作業も可能。医薬品・電子部品・自動車部品・EC向け。Lalamove・ZhenFundが出資するスタートアップで、中国・東南アジア市場での急成長が注目されている。',videoUrl:null,linkUrl:'https://tuskrobotics.com/',linkLabel:'公式サイト'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / ACRケース搬送列'}]},
+  mushiny:{label:'Mushiny',flag:'🇨🇳',sub:'南京 / 2015年',tags:['amr','conv'],color:'#e8341a',website:'https://www.mushiny.com/',shortDesc:'AMR＋ソーティング統合。中国・東南アジアでの実績中心に日本参入を検討。',desc:'AMRとソーティングシステムを組み合わせたソリューション。中国・東南アジアでの実績が中心。',kpis:[{l:'特徴',v:'AMR＋ソーティングシステム'}],customers:[{flag:'🇨🇳',name:'中国物流・EC各社',tag:'EC・物流'}],solutions:[{name:'AMR＋Sorter統合',desc:'AMRによる棚搬送とクロスベルト型ソーティングシステムを統合した自動化ソリューション。独自のWMS・WCSを組み合わせることで、AMRピッキングから仕分け・梱包まで一気通貫の自動化ラインを構築できる。中国・東南アジアでの導入実績が中心。インドネシア・シンガポールなどASEAN市場にも進出中。',videoUrl:null,linkUrl:'https://www.mushiny.com/solutions',linkLabel:'ソリューション詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / AMR棚搬送列・仕分け / AMR仕分け列'}]},
+  hokusho:{label:'ホクショー',flag:'🇯🇵',sub:'石川県金沢市 / 1952年 / 垂直搬送専業',tags:['conv'],color:'#0e8f6e',website:'https://www.hokusho.co.jp/',shortDesc:'垂直搬送機（昇降機・スパイラルコンベヤ）の国内専業メーカー。石川県金沢。',desc:'垂直コンベヤ・仕分けコンベヤの専業メーカー。垂直往復搬送機「オートレーター」・垂直連続搬送機「バーチレーター」・垂直仕分け搬送機「ハイトレー」を展開。多階層の物流センター・工場に多数導入。',kpis:[{l:'強み',v:'垂直搬送機の国内専業メーカー'},{l:'製品',v:'オートレーター・バーチレーター・ハイトレー'}],customers:[{flag:'🇯🇵',name:'物流センター・工場各社',tag:'多業種'}],solutions:[{name:'オートレーター（垂直往復搬送機）',desc:'【垂直搬送の国内専業メーカー・石川県のニッチトップ企業】エレベーター方式で往復搬送するオートレーターは、1時間あたり約90パレットの高能力搬送を実現。パレット・台車・袋物・コンテナと幅広い荷姿に対応し、倉庫・工場の上下階移動を人手なしで自動化する。石川県金沢市の1952年創業の老舗専業メーカーで、垂直搬送機の国内市場では圧倒的なシェアを持つニッチトップ企業。多階層物流センター・製造工場の必需品として全国に納入実績。',videoUrl:null,linkUrl:'https://www.hokusho.co.jp/vts_veas.html',linkLabel:'オートレーター詳細'},{name:'バーチレーター（垂直連続搬送機）',desc:'連続的に荷物を垂直搬送。スパイラル式で省スペースかつ高能力。',videoUrl:null,linkUrl:'https://www.hokusho.co.jp/standard.html',linkLabel:'製品一覧'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'垂直搬送 / 垂直往復機列・垂直連続機列・仕分け / ピースソーター列'}]},
+  interroll:{label:'Interroll',flag:'🇨🇭',sub:'SIX: INRN / 1959年',tags:['conv'],color:'#5a6880',website:'https://www.interroll.com/ja/',shortDesc:'コンベヤ・ソーティングの世界標準部品。多数のSIがOEM採用するインフラ企業。',desc:'コンベヤ・ソーティングの世界標準部品メーカー。ダイフク・Dematic等多数のSIがOEM採用。',kpis:[{l:'売上',v:'CHF 527M（2024年）'},{l:'強み',v:'業界標準コンベヤ部品のOEM供給'}],customers:[{flag:'🌍',name:'各大手SI経由（OEM）',tag:'B2B'}],solutions:[{name:'Interroll RBS',desc:'【倉庫搬送インフラの世界標準部品・OEMで業界に浸透】InterrollのRBS（ローラーボルバーシステム）はゾーンコントロール式ローラーコンベヤの事実上の世界標準。ダイフク・Dematic・SSI等の大手SIが自社システムのコアコンポーネントとしてOEM採用しており、「知らずに使っている」ケースも多い。モータープーリー方式により各ゾーンを独立制御することで省エネ（従来比最大50%削減）・低騒音・メンテナンス性向上を実現。2024年売上CHF 527M。',videoUrl:'https://www.youtube.com/watch?v=0Y4qxr8iFWk',linkUrl:'https://www.interroll.com/ja/products/',linkLabel:'製品ラインナップ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / 水平コンベヤ列・水平搬送 / 水平コンベヤ列・出荷 / 出荷コンベヤ列'}]},
+  beumer:{label:'Beumer Group',flag:'🇩🇪',sub:'非上場 / 1935年',tags:['conv','integrator'],color:'#5a6880',website:'https://www.beumergroup.com/',shortDesc:'空港BHS・EC向けクロスベルトソーターの世界大手。非上場のドイツ家族経営。',desc:'高速ソーティングシステムの専業大手。空港BHS・EC宅配仕分けで世界トップクラス。',kpis:[{l:'受注残',v:'€1.25B（2023年・過去最高）'},{l:'強み',v:'空港BHS・EC向けクロスベルトソーター世界大手'}],customers:[{flag:'🌍',name:'DHL・FedEx系',tag:'宅配'}],solutions:[{name:'クロスベルトソーター',desc:'【クロスベルト方式ソーターの世界大手・空港BHSでも圧倒的実績】クロスベルト型ソーターは各仕分けキャリアに小型コンベヤを搭載し、仕分け先に応じてベルトを正逆転させて荷物を排出する高精度仕分け方式。毎時数万件の処理が可能で、EC宅配・アパレル返品・空港手荷物（BHS）向けに世界トップクラスの実績を持つ。1935年創業のドイツ家族経営企業で、受注残€1.25B（2023年・過去最高）を誇る。DHL・FedEx系宅配センター・主要国際空港のBHSに広く採用。',videoUrl:'https://www.youtube.com/watch?v=Mpc1RCMJ3sY',linkUrl:'https://www.beumergroup.com/products/sortation-systems/',linkLabel:'ソーティング製品'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'仕分け / クロスベルトソーター列'}]},
+  kardex:{label:'Kardex',flag:'🇨🇭',sub:'SIX: KARN / 1919年',tags:['conv'],color:'#5a6880',website:'https://www.kardex.com/ja/',shortDesc:'VLM（垂直リフトモジュール）専業老舗。センサーで棚間隔を自動最適化。',desc:'垂直リフトモジュール（VLM）専業の老舗。センサーで棚間隔を自動最適化し超高密度収納を実現。',kpis:[{l:'売上',v:'€791M（2024年・過去最高）'},{l:'主力製品',v:'VLM（垂直リフトモジュール）'}],customers:[{flag:'🇯🇵',name:'国内中小製造・EC各社',tag:'中小企業'}],solutions:[{name:'Kardex Remstar VLM',desc:'【中小規模倉庫・工場の保管自動化で最もROIが出やすいソリューション】VLM（垂直リフトモジュール）はトレイを縦方向に積層保管し、センサーで商品の高さを自動計測して棚間隔を最適化する縦型自動棚。従来の固定棚と同じフットプリントで最大60%の保管密度向上を実現。2024年売上€791M（過去最高）。日本ではアルテック（Altec）が正規代理店。医薬品・電子部品・工具・スペアパーツ管理など「少量多品種の高密度保管」が必要な用途に最適で、大規模AS/RSほどの投資なしに即効性のある自動化が実現できる。',videoUrl:'https://www.youtube.com/watch?v=6o5P4NHDVB4',linkUrl:'https://www.kardex.com/ja/products',linkLabel:'Kardex製品ページ'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'保管 / VLM垂直リフト列'}]},
+  quicktron:{label:'Quicktron',flag:'🇨🇳',sub:'アリババ系 / 上海',tags:['amr'],color:'#e8341a',website:'https://www.quicktron.com/',shortDesc:'アリババグループ関連のAMRメーカー。大規模フリート管理が得意。',desc:'アリババグループ関連のAMRメーカー。大規模フリート管理が得意。中国・東南アジアで多数導入。',kpis:[{l:'親会社',v:'アリババグループ関連'}],customers:[{flag:'🇨🇳',name:'アリババ物流施設',tag:'EC'}],solutions:[{name:'Quicktron AMRフリート',desc:'【アリババグループのノウハウを外部提供】アリババグループのECフルフィルメント・物流オペレーション技術を外部企業向けに展開するAMRシステム。菜鳥（Cainiao）ネットワークで実証されたフリート管理技術を活用し、数百台規模のAMRを一元管理できる。棚搬送型（Goods-to-Person）AMRが主力で、EC・3PL・食品流通向けに中国・東南アジアで多数の導入実績を持つ。',videoUrl:null,linkUrl:'https://www.quicktron.com/solutions/',linkLabel:'ソリューション詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'水平搬送 / AMR棚搬送列'}]},
   okamura:{label:'オカムラ',flag:'🇯🇵',sub:'株式会社オカムラ / 東証プライム / 1945年創業',tags:['gtp','integrator'],color:'#0e8f6e',website:'https://www.okamura.co.jp/mhs/',
     shortDesc:'AutoStore国内初導入（2016年）の正規販売店。国内50カ所以上の導入実績を持つ老舗SI。',
-    desc:'株式会社オカムラは、オフィス家具・物流システムの大手メーカー。2016年に日本で初めてAutoStoreを導入した正規販売店（代理店）として知られ、現在は国内50カ所以上の導入実績を持つ。\n\n単なる代理店にとどまらず、AutoStoreを核にコンベヤ・ソーター・WMSを組み合わせたトータルソリューションを提案できる総合SIとして存在感を持つ。2024年にはAutoStoreのロボットレンタルプランを開始し、初期コストを抑えた導入スキームでさらなる普及を進めている。また、AIを活用したロボットピッキングシステム「RightPick」や、独自のスタッカークレーン型自動倉庫「CYBISTOR」も展開するなど、製品ラインナップの幅広さが強みとなっている。',
+    desc:'株式会社オカムラは、オフィス家具・物流システムの大手メーカー。日本におけるAutoStore正規販売店として2016年に国内初導入を実現し、現在は国内導入実績トップクラス（50カ所以上）を誇る。\n\n【2024年・2025年の新展開】2024年7月にAutoStoreのロボットレンタルプランを開始（初期投資を通常比約80%に削減可能）。2025年東京展にHIKROBOT製AMR「LMR」・搬送ユニット「CTU」を新たに取り扱い開始。同年5月にWMS+BI統合の倉庫最適化システム「Optify」をリリース。\n\nAutoStoreを核にCYBISTOR（スタッカークレーン型自動倉庫・パレット対応）・Rotary Rack H（高速自動倉庫）・ORV（カゴ台車搬送AMR）・HIKROBOT製AMRを組み合わせたトータルSIを展開。代表実績：とらのあな（EC）でAutoStore導入により出荷処理の70%を自動化・24時間稼働を実現。',
     kpis:[{l:'AutoStore国内初導入',v:'2016年（日本初）'},{l:'国内導入実績',v:'50カ所以上（2024年時点）'},{l:'ロボットレンタル',v:'2024年7月より開始'},{l:'主な製品',v:'AutoStore・CYBISTOR・RightPick・Optify'},{l:'ショールーム',v:'LUX定例見学会を定期開催'}],
     customers:[{flag:'🇯🇵',name:'EC・通販・製造業各社',tag:'多業種'},{flag:'🇯🇵',name:'とらのあな（同人誌販売）',tag:'EC物流'}],
     groupMembers:[],
@@ -573,7 +691,7 @@ const EXTRA={
 
   hikrobot:{label:'Hikrobot（海康机器人）',flag:'🇨🇳',sub:'Hikvision子会社 / 設立2016年 / 深圳',tags:['amr','acr'],color:'#e8341a',website:'https://www.hikrobotics.com/',
     shortDesc:'防犯カメラ世界No.1 Hikvisionの子会社。AMR・ACR・産業用ロボットを展開。Geek+の主要競合。',
-    desc:'Hikrobot（海康机器人）は、防犯カメラ世界シェアNo.1のHikvisionが2016年に設立したロボティクス子会社。機械ビジョン・AMR・産業用ロボットアームの3事業を展開する中国最大級のロボットメーカーの一つ。\n\n2025年上半期の売上はRMB 31.4億（前年比+14.4%）。17,000社以上の顧客・200以上の業種・50ヵ国以上に展開している。Geek+のIPO目論見書においても主要競合として名指しされており、中国国内の工業物流シナリオ（製造業内搬送）での強みは特に際立っている。\n\n倉庫フルフィルメントシナリオではGeek+がグローバルで先行しているが、製造業向け搬送・産業ビジョン連携でのHikrobotの強みは独自の位置づけを持つ。日本市場にも参入中。',
+    desc:'Hikrobot（海康机器人）は、防犯カメラ世界シェアNo.1のHikvision（海康威視）が2016年に設立したロボティクス子会社。【親会社のビジョン技術が最大の差別化】Hikvisionで培った機械ビジョン・3D認識・AI物体検出技術をロボットに直接統合できるため、カメラ・センサーとロボット制御の垂直統合が他社よりコスト効率よく実現できる。\n\n【3事業体制】機械ビジョン（産業用カメラ・検査システム）・AMR/ACR（倉庫・工場内搬送）・産業ロボットアーム（デパレ・パレタイズ・アセンブリ）の3事業を展開し、製造ライン全体をカバーできる数少ないメーカー。2025年H1売上RMB 31.4億（前年比+14.4%）・17,000社以上・200業種以上・50ヵ国以上に展開。\n\nGeek+のIPO目論見書でも主要競合として名指しされており、倉庫フルフィルメント（EC・3PL）ではGeek+が先行するが、製造業搬送・ビジョン検査連携・産業ロボットアームの統合提案ではHikrobotが独自優位を持つ。日本市場にも参入中。',
     kpis:[{l:'親会社',v:'Hikvision（防犯カメラ世界No.1）'},{l:'設立',v:'2016年'},{l:'2025年H1売上',v:'RMB 31.4億（前年比+14.4%）'},{l:'顧客数',v:'17,000社超（50ヵ国以上）'},{l:'業種',v:'200以上の業種に展開'},{l:'製品',v:'機械ビジョン・AMR・産業用ロボットアーム'}],
     customers:[{flag:'🇨🇳',name:'製造・物流・EC各社',tag:'多業種'},{flag:'🌍',name:'50ヵ国以上の顧客企業',tag:'グローバル'}],
     solutions:[{name:'AMR・ACRシリーズ',desc:'自律走行型AMRとケース直接取り出しACRをラインナップ。機械ビジョン技術をロボットに統合することで高精度な把持・認識を実現。既存WMSとの連携も容易。',videoUrl:null,linkUrl:'https://www.hikrobotics.com/en/products',linkLabel:'Hikrobot製品ページ'}],
@@ -582,7 +700,7 @@ const EXTRA={
 
   greyorange:{label:'GreyOrange',flag:'🇮🇳',sub:'インド・米国 / 設立2012年 / 累計調達$545M',tags:['amr','ai'],color:'#7c3aed',website:'https://www.greyorange.com/',
     shortDesc:'AIオーケストレーション基盤「GreyMatter」が特徴。累計調達$545M。GROUNDが日本パートナー。',
-    desc:'GreyOrangeは2012年にインドで創業した倉庫自動化企業。最大の特徴はハードウェア非依存のAIオーケストレーション基盤「GreyMatter」で、自社製AMR（Ranger AMR）だけでなく他社のロボット・設備も一元管理できるマルチベンダーWES的な立ち位置を持つ。\n\n累計調達額は$545Mで、2025年にはSeries D $135M（Anthelion Capital主導）を追加調達。Google Cloudとの提携でAIナビゲーション技術「GreyMatter DeepNav」を強化している。EC・食品・3PL・アパレルなど幅広い業種への導入実績を持つ。\n\n日本市場ではGROUND（佐川急便グループ関連）がパートナーとして協業しており、間接的に日本市場に参入している。',
+    desc:'GreyOrangeは2012年にインドで創業した倉庫自動化企業。【最大の差別化：ベンダー非依存のAIオーケストレーション基盤GreyMatter】GreyMatterは自社製AMR（Ranger）だけでなく、Certified Ranger Network（CRN）として認定した多数のサードパーティロボット・設備を一元管理できるハードウェア非依存プラットフォーム。WMSからロボットへの指令を最適化するAI動的タスク割り当てで、保管密度4〜5倍・スループット最大化を実現する。\n\n2025年ProMatではRack-to-Person/Tote-to-Personハイブリッドピッキング・AS/RSのRelay Pickソリューション・AMRフォークリフトのオーケストレーションをリアルデモで展示。SOC 2 Type II・ISO 27001認定のエンタープライズ対応済み。RaaS（ハード+ソフト+サポートのサブスクリプション）モデルも提供し、設備投資なしでの自動化も可能。\n\n累計調達$545M・2025年にAppleとAmazon出身の新CTOを迎え2026年の展開拡大を加速。日本市場はGROUND（佐川急便グループ系）がパートナー。',
     kpis:[{l:'設立',v:'2012年（インド発・現在は米国拠点）'},{l:'累計調達額',v:'$545M'},{l:'2025年調達',v:'Series D $135M（Anthelion Capital）'},{l:'差別化',v:'ハードウェア非依存AIオーケストレーション基盤'},{l:'日本',v:'GROUND（佐川急便グループ系）が国内パートナー'},{l:'提携',v:'Google CloudとAIナビゲーション共同開発'}],
     customers:[{flag:'🇺🇸',name:'Fabletics',tag:'アパレル'},{flag:'🇯🇵',name:'佐川急便グループ（GROUND経由）',tag:'宅配'}],
     solutions:[{name:'GreyMatter AIオーケストレーション基盤',desc:'自社製AMRだけでなく他社ロボット・設備も一元管理できるハードウェア非依存のAIプラットフォーム。Google CloudとのAIナビゲーション連携「GreyMatter DeepNav」を2025年発表。',videoUrl:null,linkUrl:'https://www.greyorange.com/solutions/',linkLabel:'GreyOrange Solutions'},{name:'Ranger AMR',desc:'GreyOrange独自のAMR。Goods-to-Personでのピッキング支援に対応。GreyMatter基盤で他社ロボットとの混在運用も可能。',videoUrl:null,linkUrl:'https://www.greyorange.com/products/',linkLabel:'Ranger AMR製品'}],
@@ -591,7 +709,7 @@ const EXTRA={
 
   jdl:{label:'JD Logistics（京東物流）',flag:'🇨🇳',sub:'HKEX: 2618 / JD.com傘下 / 設立2007年',tags:['integrator','wms'],color:'#e8341a',website:'https://www.jdl.com/',
     shortDesc:'JD.comの物流子会社。2024年売上RMB 1,828億（$25.6B）。自社開発Zhilangシステム（GTP）で自動化を自社展開・外販。',
-    desc:'JD Logistics（京東物流・JDL）は、中国EC最大手JD.com（京東）が2007年に設立した物流子会社で、2021年にHKEXに上場（2618.HK）。2024年の売上はRMB 1,828億（約$25.6B）で、外部顧客向けが約70%を占める。\n\n最大の特徴は「世界最大規模の自動化物流ネットワーク」の自社構築。自社開発のZhilangシステム（GTP型自動倉庫・倉庫高さ12m対応・ピッキング効率3倍）を2025年上半期に全国展開フェーズに移行。AI・ビッグデータ・オペレーションズリサーチを統合した「JDLスーパーブレイン」で物流全体を最適化している。\n\n中国国内に100以上の自動倉庫を保有し、累計20万台以上のロボットを稼働させている。外部企業向けへの技術・システム外販も展開しており、倉庫自動化の「ユーザー兼プロバイダー」という独自のポジションを持つ。',
+    desc:'JD Logistics（京東物流・JDL）は、中国EC最大手JD.com（京東）が2007年に設立した物流子会社で、2021年にHKEXに上場（2618.HK）。【倉庫自動化の「ユーザー兼プロバイダー」という独自モデル】JDLは自社ECフルフィルメントで実証した自動化技術を外部企業にも販売するという、世界でも珍しいハイブリッドモデルを持つ。\n\n2024年売上RMB 1,828億（約$25.6B）・非IFRS純利益RMB 79.2億（前年比約3倍）・外部顧客比率約70%と急成長中。自社開発Zhilangシステムは高さ12m対応GTP型自動倉庫で、AGV+昇降ロボット+立体ラックを組み合わせてピッキング効率を従来比3倍・保管密度を業界平均比2.5倍に向上させる。2025年H1に全国展開フェーズへ移行。\n\n中国国内100拠点超の自動倉庫・累計20万台以上のロボットを稼働させ、「JDLスーパーブレイン」（AI+ビッグデータ+OR）で物流全体を最適化。製薬・食品・自動車部品など外部企業への技術外販も積極展開。中国で最も進んだ物流自動化の実態を体現する企業。',
     kpis:[{l:'上場',v:'HKEX: 2618（2021年）'},{l:'2024年売上',v:'RMB 1,828億（約$25.6B）'},{l:'2024年利益',v:'非IFRS純利益 RMB 79.2億（前年比 約3倍）'},{l:'外部顧客比率',v:'約70%'},{l:'自動倉庫',v:'100拠点超・ロボット累計20万台以上'},{l:'Zhilang',v:'自社開発GTPシステム・2025年H1に全国展開'}],
     customers:[{flag:'🇨🇳',name:'JD.com（内部）',tag:'EC'},{flag:'🇨🇳',name:'中国製造・物流各社（外販）',tag:'多業種'},{flag:'🌍',name:'越境EC・海外進出中国ブランド',tag:'クロスボーダー'}],
     solutions:[{name:'Zhilangシステム（自社開発GTP）',desc:'自社開発のGoods-to-Person型自動倉庫システム。倉庫高さ12mを最大活用し保管密度を業界平均比2.5倍に高める。AGV・昇降ロボット・立体ラックを組み合わせ、ピッキング効率を従来比3倍に向上。2025年上半期に全国展開フェーズへ移行。',videoUrl:null,linkUrl:'https://jdcorporateblog.com/jd-logistics-introduces-zhilang-intelligent-warehousing-solution-at-cemat-asia-2024/',linkLabel:'Zhilangシステム紹介'},{name:'JDL統合サプライチェーンソリューション（ISC）',desc:'倉庫・輸送・ラストマイル・クロスボーダー・コールドチェーンを統合したエンドツーエンドサプライチェーンソリューション。AI・ビッグデータ・OR技術を組み合わせた「JDLスーパーブレイン」で全体最適化。',videoUrl:null,linkUrl:'https://www.jdl.com/',linkLabel:'JDL公式サイト'}],
@@ -603,13 +721,13 @@ const EXTRA={
     desc:'日立グループは、日立インダストリアルプロダクツ・日立オートメーション・日立産機システムを通じて倉庫・物流自動化に参入している。主力は日立インダストリアルプロダクツが提供するAGV/AMR、統合設備制御システム「日立統括型WCS（ユニバーサルWCS）」、WMS統合物流管理システム「HITLUSTER」。\n\n2024年7月には、製造・物流ロボティクスSIを中核とした協創施設「Automation Square HANEDA」（東京）と「Automation Square KYOTO」（京都）を開設。顧客・パートナーとの共同PoC・導入検討の場として機能させている。\n\n倉庫制御レイヤーでは、独自の制御ロジックによるピッキング設備最適化ソリューション「LogiRiSM」も展開。Hai Robotics（HAIPICKロボット）との連携や、プラスオートメーション（佐川急便系）とのソーターシステム連携など、エコシステム的なアプローチで倉庫自動化を推進している。',
     kpis:[{l:'グループ',v:'東証プライム 日立製作所グループ'},{l:'主要製品',v:'ユニバーサルWCS・HITLUSTER・LogiRiSM・Racrew'},{l:'協創施設',v:'Automation Square HANEDA・KYOTO（2024年7月開設）'},{l:'提携',v:'Hai Robotics・プラスオートメーション・Beckhoff等'},{l:'特徴',v:'WCS・WMS・ロボティクスSIを自社提供'}],
     customers:[{flag:'🇯🇵',name:'国内製造・物流各社',tag:'多業種'}],
-    solutions:[{name:'ユニバーサルWCS（統合設備制御）',desc:'異なるメーカーのAGV・AMR・コンベヤを一元管理する統合設備制御システム。日立独自の制御ロジックで設備稼働を最適化。',videoUrl:null,linkUrl:'https://www.hitachi-ip.co.jp/products/logistics/',linkLabel:'日立インダストリアルプロダクツ物流製品'},{name:'LogiRiSM（ピッキング最適化）',desc:'日立独自の制御ロジックによるオーダー仕分け・ピッキング設備最適化ソリューション。作業実績と設備稼働データを連携してリアルタイムに可視化。',videoUrl:null,linkUrl:'https://www.hitachi-ip.co.jp/products/logistics/',linkLabel:'日立物流自動化ソリューション'}],
+    solutions:[{name:'ユニバーサルWCS（統合設備制御）',desc:'【異メーカー混在環境での統合制御が強み】日立インダストリアルプロダクツが提供するユニバーサルWCS。AGV・AMR・コンベヤ・ソーターなどメーカーを問わず混在した設備を一元管理する。Hai Robotics（HAIPICK）・プラスオートメーション・Beckhoff等とのエコシステム連携により、最適なロボット・設備を組み合わせた倉庫自動化をSIとして提案。2024年7月開設のAutomation Square（羽田・京都）で顧客・パートナーとのPoC環境を提供。',videoUrl:null,linkUrl:'https://www.hitachi-ip.co.jp/products/logistics/',linkLabel:'日立インダストリアルプロダクツ物流製品'},{name:'LogiRiSM（ピッキング最適化）',desc:'日立独自の制御ロジックによるオーダー仕分け・ピッキング設備最適化ソリューション。作業実績と設備稼働データを連携してリアルタイムに可視化。',videoUrl:null,linkUrl:'https://www.hitachi-ip.co.jp/products/logistics/',linkLabel:'日立物流自動化ソリューション'}],
     groupMembers:[],
     mapPositions:[{layer:'業界マップ',cell:'国内大手行 / ソフト開発列・SI代理販売列',color:'#0e8f6e'},{layer:'ソリューションマトリクス',cell:'ソフト / WES列・WMS列',color:'#1a1f36'}]},
 
   amazon_robotics:{label:'Amazon Robotics',flag:'🇺🇸',sub:'Amazon傘下 / Kiva Systems買収（2012年）/ 自社専用・外販なし',tags:['amr','ai'],color:'#5a6880',website:'https://www.amazonrobotics.com/',
     shortDesc:'100万台超の世界最大ロボットフリート。自社倉庫専用・外販なし。業界の基準点として参照。',
-    desc:'Amazon Roboticsは、Amazonが2012年にKiva Systems（$775M）を買収して設立した自社ロボティクス部門。2025年時点で100万台超のロボットを300以上の倉庫施設で稼働させており、世界最大の産業ロボット展開規模を誇る。\n\n主要ロボットシステムはSequoia（AI・コンピュータビジョンによる在庫管理）・Proteus（自律走行AMR）・Hercules（2,500ポンド対応ヘビーカート搬送）・Sparrow・Robin（ピッキングアーム）など多岐にわたる。2024年には次世代施設で25%の生産性向上を実証。\n\n重要な点として、Amazon Roboticsの技術・製品は外部販売を一切行っておらず、すべてAmazon自社倉庫の競争優位のために使用される。ただし、業界全体への影響力（Kiva買収が競合他社のAMR参入を加速させた等）と技術水準の基準点として、業界マップ上の参照企業として位置づける。',
+    desc:'Amazon Roboticsは、Amazonが2012年にKiva Systems（$775M）を買収して設立した自社ロボティクス部門。2025年時点で100万台超（2021年比3倍以上）のロボットが300以上のフルフィルメントセンターで稼働し、世界最大の産業ロボット展開規模を誇る。【ロボット群の役割分担】Sequoia（AI制御コンテナ在庫システム・在庫特定75%高速化・処理時間25%短縮）、Proteus（人間と共存できる初の完全自律AMR・カート搬送）、Hercules/Titan（フェンス区域内の重量物搬送AMR・最大約570kg積載）、Sparrow（AIビジョンで2億SKU以上に対応するピッキングアーム）、Robin/Cardinal（仕分け・積載用ロボットアーム・最大22kg）、Vulcan（触覚センサー搭載・高さ方向のピッキングで腰痛リスク低減）。2024年シュリーブポート施設（ルイジアナ州）で全システム統合を実証。2026年までに全手動作業の50%自動化・年間$120億コスト削減を目標。【業界への影響】Kiva買収（2012年）により競合他社がAMR市場に参入するきっかけとなった。外販なしだが業界技術水準の基準点として参照。',
     kpis:[{l:'稼働ロボット台数',v:'100万台超（2025年・世界最大）'},{l:'展開施設数',v:'300以上のフルフィルメントセンター'},{l:'外販',v:'なし（完全自社専用）'},{l:'Kiva買収',v:'$775M（2012年）'},{l:'2025年',v:'次世代施設で生産性25%向上を実証'},{l:'特記',v:'業界最大規模だが競合他社への技術・製品販売なし'}],
     customers:[{flag:'🇺🇸',name:'Amazon自社施設のみ',tag:'自社専用'}],
     solutions:[{name:'Sequoia（AI在庫管理システム）',desc:'AIとコンピュータビジョンを活用し、在庫の受け取り・保管を人の75%速で処理。同日・翌日配送商品の拡大に貢献。',videoUrl:null,linkUrl:'https://www.aboutamazon.com/news/operations/amazon-robotics',linkLabel:'Amazon Robotics公式'},{name:'Proteus（自律走行AMR）',desc:'初めて安全認証を取得したAmazonのAMR。作業員と同じエリアで自律走行。10時間シフト×2を稼働。',videoUrl:null,linkUrl:'https://www.amazonrobotics.com/',linkLabel:'Amazon Roboticsサイト'}],
@@ -618,7 +736,7 @@ const EXTRA={
 
   visionnav:{label:'VisionNav Robotics',flag:'🇨🇳',sub:'未来机器人 / 深圳 / 設立2016年 / 東京ショールームあり',tags:['amr'],color:'#e8341a',website:'https://www.visionnav.com/',
     shortDesc:'AGF（自律走行フォークリフト）専業の中国系メーカー。30ヵ国450プロジェクト以上。2022年東京ショールーム開設。',
-    desc:'VisionNav Robotics（未来机器人）は2016年に深圳で創業した自律走行フォークリフト（AGF）専業メーカー。マシンラーニング・環境認識・サーボ制御技術を組み合わせた独自の視覚ベース自律走行（カメラ+3D SLAM）が最大の特徴で、ガイドテープや反射板なしで倉庫全域を自律走行できる。\n\nカウンターバランス型・リーチ型・スリム型など9シリーズのAGFラインナップを展開し、30ヵ国以上・450プロジェクト以上の導入実績を持つ。自動車・食品・化学・製薬・3PLのFortune 500企業に多数採用されており、9m以上の高層ラック対応・狭い通路での自律走行・トラックへの自動積み降ろしなど高難度シナリオをカバーする。\n\n2022年11月に東京・江東区に海外初のショールームを開設し、日本市場に本格参入。国際物流総合展（Logis-Tech Tokyo）にも出展実績があり、日本の製造業・物流業向けに展開を加速している。',
+    desc:'VisionNav Robotics（未来机器人）は2016年に深圳で創業した自律走行フォークリフト（AGF）専業メーカー。【最大の差別化：ガイドレス視覚SLAM】マシンラーニング・環境認識・サーボ制御を組み合わせた視覚ベース自律走行（3D SLAM + LiDAR + カメラ）により、ガイドテープ・反射板・QRコード不要で倉庫全域を自律走行できる。既存インフラを変更せずに導入できるため、レトロフィットコストが最小化される。\n\n9シリーズのAGFラインナップは業界最広クラスで、カウンターバランス型（VNP15）・リーチ型（VNR16、11m超高層対応）・スリム型（VNST20、最小通路幅1.8m）・パレットスタッカー型（VNSL14）など多様な用途をカバー。RCS2.0中央制御システムでAGF複数台・AMR・コンベヤ・ロボットアームを一元管理し、MES/WMSとシームレスに連携する。\n\n30ヵ国以上・350+プロジェクト・Fortune 500企業50社以上への採用実績（自動車・食品・石油化学・EC・3PL・製薬）。2022年11月に東京・江東区に海外初ショールームを開設し日本市場に本格参入。九州展2026にも出展予定。',
     kpis:[{l:'設立',v:'2016年（深圳）'},{l:'導入実績',v:'30ヵ国以上・450プロジェクト以上'},{l:'製品',v:'AGF 9シリーズ（カウンター・リーチ・スリム等）'},{l:'日本',v:'東京・江東区にショールーム（2022年11月開設）'},{l:'差別化',v:'ガイドレスの視覚ベース3D SLAM自律走行'},{l:'対応シナリオ',v:'9m超高層ラック・狭通路・トラック自動積み降ろし'}],
     customers:[{flag:'🌍',name:'Fortune 500 自動車・食品・化学・製薬・3PL各社',tag:'多業種'},{flag:'🇯🇵',name:'国内製造・物流企業',tag:'日本市場参入中'}],
     solutions:[{name:'VNP15 カウンターバランス型AGF',desc:'3Dレーザーベースの多機能自律フォークリフト。倉庫内の入出庫・生産ラインへの搬送・パレット移動の70%をカバー。3種類の荷物の3段積みを自動実行できる高精度な制御を実現。',videoUrl:null,linkUrl:'https://www.visionnav.com/product/',linkLabel:'VisionNav製品ラインナップ'},{name:'VNR16 リーチ型AGF',desc:'7m超の高層ラックへの入出庫に対応するリーチ型自律フォークリフト。倉庫の垂直スペースを最大活用するための高層ラック対応モデル。',videoUrl:null,linkUrl:'https://www.visionnav.com/product/',linkLabel:'VisionNav製品ラインナップ'}],
@@ -627,7 +745,7 @@ const EXTRA={
 
   xyz_robotics:{label:'XYZ Robotics',flag:'🇨🇳',sub:'上海 / 設立2018年 / 累計調達$100M超',tags:['arm','ai'],color:'#e8341a',website:'https://www.xyzrobotics.com/',
     shortDesc:'AIピッキング・デパレタイズ専業。累計調達$100M超。Mujin・Berkshire Greyと並ぶAIピッキングカテゴリの主要プレイヤー。',
-    desc:'XYZ Roboticsは2018年に上海で創業したAIピッキング・デパレタイズロボット専業企業。3Dビジョンと機械学習を組み合わせた「手と目の協調」技術で、多様な形状・サイズの商品をロボットアームで正確に把持できる。\n\n主要製品はデパレタイズシステム（入荷荷解き自動化）・混載パレタイジング・ピースピッキング・トラック積み降ろしロボット。EC・製薬・電子・自動車・3PLなど幅広い業種への導入実績を持つ。Watsons（ワトソンズ）・製薬プラントへの大規模導入事例が公開されており、8台導入で処理能力4倍向上の実績もある。\n\n累計調達額は$100M超。Series B+はCapital Today主導・5Y Capital・Gaorong Capital・Source Code Capital参加。日本では2026年6月の九州展に出展予定。',
+    desc:'XYZ Roboticsは2018年に上海で創業したAIピッキング・デパレタイズロボット専業企業。米国・ドイツ・日本・韓国・中国に拠点を持ちグローバル展開中。【差別化：ティーチング不要のモデルフリー認識】10,000種類以上のカートンボックスをWCSデータなしで認識できるAI認識システムが最大の強み。混載デパレタイズ（複数種の商品が混在したパレットの荷解き）・ラベル面出しパレタイジング・ピースピッキング・トラック自動積み降ろしまでフルカバー。\n\n代表実績：電子部品DCへの25台導入で生産性5,700→17,000ピース/時（約3倍）達成。製薬プラントへの8台導入で処理能力4倍向上。Watsons（ワトソンズ）への入荷デパレタイズ自動化など。\n\nSeries B+は$17Mを追加調達（2024年）・売上$50〜100M規模・累計調達$100M超。Mujin・Berkshire Greyと並ぶAIピッキング市場の主要プレイヤー。九州展2026に出展予定。',
     kpis:[{l:'設立',v:'2018年（上海）'},{l:'累計調達額',v:'$100M超（Series B+）'},{l:'主要投資家',v:'Capital Today・5Y Capital・Gaorong Capital'},{l:'代表製品',v:'デパレタイズ・混載パレタイジング・ピースピッキング'},{l:'顧客実績',v:'Watsons・製薬プラント等'},{l:'日本',v:'2026年6月 九州展出展予定'}],
     customers:[{flag:'🇨🇳',name:'Watsons（ワトソンズ）',tag:'小売'},{flag:'🇨🇳',name:'製薬・電子・EC各社',tag:'多業種'}],
     solutions:[{name:'デパレタイズ＆パレタイジングロボット',desc:'AIと3Dビジョンで多様な商品形状に対応するデパレタイズ・混載パレタイジングシステム。入荷時の荷解きから出荷積み付けまで自動化。ラベル面出し・SKU識別・不規則形状対応が可能。',videoUrl:null,linkUrl:'https://www.xyzrobotics.com/picking-robot/depalletizing-and-palletizing',linkLabel:'デパレタイジング製品ページ'},{name:'モバイルマニピュレーションロボット',desc:'自律走行シャーシにロボットアームを搭載したトラック積み降ろし専用ロボット。倉庫入口のトラックから自動でアンロードし搬送ラインへ接続する。',videoUrl:null,linkUrl:'https://www.xyzrobotics.com/',linkLabel:'XYZ Robotics公式サイト'}],
@@ -636,7 +754,7 @@ const EXTRA={
 
   standard_robots:{label:'Standard Robots',flag:'🇨🇳',sub:'標準机器人 / 深圳 / 設立2016年',tags:['amr'],color:'#e8341a',website:'https://en.standard-robots.com/',
     shortDesc:'製造業特化のレーザーSLAM AMR。半導体・自動車・EV電池向け。TRUSCOとの日本実績あり。',
-    desc:'Standard Robots（标准机器人）は2016年に深圳で創業したAMRメーカー。製造業（半導体・自動車・EV電池・新エネルギー）向けのレーザーSLAM AMRに特化し、「標準化・再現性の高いアルゴリズム」で工場内の柔軟な物流自動化を実現することに注力している。\n\n倉庫フルフィルメント向けのGeek+とは異なり、製造業の工場内搬送（ライン間材料搬送・完成品搬送・WIP管理）が主戦場。OPPO・Foxconn・Delta Electronics・東風ライアーなど製造業大手への導入実績を持つ。\n\n日本では工業用MRO（維持・補修・運用部品）大手のTRUSCO（トラスコ中山）との協業実績があり、九州展2026への出展で日本市場展開を加速する。',
+    desc:'Standard Robots（标准机器人）は2016年に深圳で創業したAMRメーカー。【製造業特化というポジショニング】Geek+・AiTEN等が主に倉庫フルフィルメント（EC・3PL）向けなのに対し、Standard Robotsは半導体・自動車・EV電池・新エネルギー製造業の「工場内搬送」に特化する。製造業特有の「多品種少量・頻繁なレイアウト変更・24時間連続稼働」という要件に応える高い柔軟性とロバスト性が強み。\n\nレーザーSLAMナビゲーション採用で地図を自動生成・更新し、レイアウト変更にすぐ対応できる。バックキャリー型AMR（300〜2,000kg）・コンベヤモジュール搭載型など用途別ラインナップを展開。OPPO・Foxconn・Delta Electronics・東風ライアーなど製造業大手への導入実績。\n\nR&D投資率は売上の約30%（2024年）で技術開発に積極投資。海外比率が前年比2倍増（24.1%、2024年）と急速にグローバル展開を加速中。日本ではTRUSCO（トラスコ中山）との協業実績があり、九州展2026への出展で日本製造業向け展開を本格化する。',
     kpis:[{l:'設立',v:'2016年（深圳 宝安区）'},{l:'特化領域',v:'製造業工場内搬送（半導体・自動車・EV電池）'},{l:'代表顧客',v:'OPPO・Foxconn・Delta Electronics・東風ライアー'},{l:'日本',v:'TRUSCOとの協業実績・2026年九州展出展予定'},{l:'R&D投資率',v:'売上の約30%（2024年）'},{l:'海外比率',v:'24.1%（2024年・前年比+倍増）'}],
     customers:[{flag:'🇨🇳',name:'OPPO',tag:'電子機器製造'},{flag:'🇺🇸',name:'Foxconn',tag:'EMS'},{flag:'🇯🇵',name:'TRUSCO（トラスコ中山）',tag:'MRO'}],
     solutions:[{name:'工場内搬送AMRシリーズ',desc:'レーザーSLAMナビゲーションで工場内を自律走行するAMR。バックキャリー型（300〜2,000kg対応）・コンベヤモジュール型など用途別に展開。製造ラインへの材料供給・WIP（仕掛品）搬送・完成品出荷搬送に対応。',videoUrl:null,linkUrl:'https://en.standard-robots.com/products/cid-11.html',linkLabel:'Standard Robots製品ページ'}],
@@ -645,7 +763,7 @@ const EXTRA={
 
   senad:{label:'Senad Robot',flag:'🇨🇳',sub:'上海 / 設立2012年 / ソーター・DWS専業',tags:['conv'],color:'#e8341a',website:'https://www.senadvision.com/',
     shortDesc:'ソーター・DWS（計量・寸法計測・スキャン）システム専業。DHL・VIPshop・AliHealthに導入実績。',
-    desc:'Senad Robot（上海）は2012年に上海で創業した倉庫自動化設備専業メーカー。マシンビジョンを核にした仕分けシステム・DWSシステム（計量・寸法計測・スキャン）・コンベヤシステムの開発・製造・販売を行う。\n\n主力製品はナローベルトソーター・スウィベルホイールソーター・パーセルシンギュレーター（バラ物分離）・6面スキャンDWSシステム。EC向け宅配センターや物流センターの仕分け・検品工程の自動化に特化している。3D画像認識・物体検出アルゴリズム・RFIDをWMSとクラウドで統合する「インテリジェント物流」を提供。\n\nDHL・EMS・Lazada・VIPshop・AliHealthなどへの導入実績を持ち、九州展2026への出展で日本市場参入を図る。',
+    desc:'Senad Robot（上海）は2012年に上海で創業した倉庫自動化設備専業メーカー。【ソーター・DWSの専業メーカーとして中国市場で台頭】マシンビジョンを核にした仕分けシステム・DWS（動的計量・寸法計測・6面スキャン統合システム）・コンベヤの3事業を自社一貫開発する。\n\n【主力製品】ナローベルトソーター（EC・宅配小包の高速仕分け）・スウィベルホイールソーター（方向転換対応の高精度仕分け）・パーセルシンギュレーター（バラ積み小包を1列に整列するシステム）・6面DWSシステム（全方向バーコード読取+計量+寸法計測の同時処理）。コンベヤ→シンギュレーター→DWS→ソーターの仕分けラインをワンストップで提供できる点が強み。\n\n3D画像認識・物体検出アルゴリズム・RFIDをWMSとクラウドで統合する「インテリジェント物流」を提供。DHL・中国郵政EMS・Lazada・VIPshop（唯品会）・AliHealthに導入実績。九州展2026への出展で日本市場参入を図る。',
     kpis:[{l:'設立',v:'2012年（上海 嘉定区）'},{l:'主力製品',v:'ソーター・DWSシステム・コンベヤ・デパレロボット'},{l:'代表顧客',v:'DHL・EMS・Lazada・VIPshop・AliHealth'},{l:'技術',v:'機械ビジョン・3D画像認識・RFID統合'},{l:'日本',v:'2026年6月 九州展出展予定'}],
     customers:[{flag:'🌍',name:'DHL',tag:'宅配'},{flag:'🇨🇳',name:'VIPshop（唯品会）',tag:'EC'},{flag:'🇨🇳',name:'AliHealth（阿里健康）',tag:'医薬EC'}],
     solutions:[{name:'仕分けシステム（ソーター）',desc:'ナローベルトソーター・スウィベルホイールソーターなど8種のAIソーティングシステムを展開。機械ビジョンベースの高精度仕分けでEC・宅配・物流センターの仕分け工程を自動化。',videoUrl:null,linkUrl:'https://www.senadvision.com/product/',linkLabel:'Senad製品ページ'},{name:'DWSシステム（計量・寸法計測・スキャン）',desc:'ダイナミック計量・寸法計測・6面スキャンを統合したDWSシステム。物流センターの検品・課金計算・住所読取を自動化。クラウドWMS連携対応。',videoUrl:null,linkUrl:'https://www.senadvision.com/product/',linkLabel:'Senad DWS製品'}],
@@ -655,9 +773,9 @@ const EXTRA={
 
 
 
-  mujin:{label:'Mujin',flag:'🇯🇵',sub:'2011年創業 / 東京 / Series D $233M（2025年12月）',tags:['ai','arm'],color:'#c4870a',website:'https://mujin.co.jp/',shortDesc:'AIロボットコントローラー。2025年12月Series D $233M調達（累計$411M）。ピースピッキング世界最多導入実績。',desc:'AIロボットコントローラーのパイオニア。高精度3Dビジョン＋AI把持計画で多様な形状に対応。ファンケル・PALTAC等国内大手に導入済み。\n\n2025年12月にSeries D $233M（NTT Group主導・QIA・Salesforce Ventures参加）を調達し、累計調達額は$411Mに達した。主力製品MujinOSをSaaSサブスクリプション型で展開し、ロボットコントローラーからWES・デジタルツインまでを統合するプラットフォームへと進化させている。2024年1月にはAccentureとのJVを設立し、製造・物流向けの自動化ソリューション展開を加速。',kpis:[{l:'調達総額',v:'$411M（Series D 2025年12月）'},{l:'処理能力',v:'1,000ピース/時（世界最高）'},{l:'Series D調達',v:'$233M（2025年12月・累計$411M）'},{l:'主要投資家',v:'NTT Group・QIA・Salesforce Ventures'},{l:'MujinOS',v:'SaaSサブスクリプション型で展開推進'},{l:'JV',v:'Accenture×Mujin JV（2024年1月）'}],customers:[{flag:'🇯🇵',name:'ファンケル',tag:'化粧品EC'},{flag:'🇯🇵',name:'PALTAC',tag:'卸売'}],solutions:[{name:'MujinController',desc:'AIと3Dビジョンでロボットアームの把持計画をリアルタイム生成。1,000ピース/時を実現。',videoUrl:'https://www.youtube.com/watch?v=YCCxuqaJLhE',linkUrl:'https://mujin.co.jp/product/',linkLabel:'製品詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / デパレ列・ピッキング / AIピッキング列・出荷 / パレタイズ列'}]},
-  ground:{label:'GROUND',flag:'🇯🇵',sub:'2015年創業 / SG Holdings関連',tags:['amr','integrator'],color:'#c4870a',website:'https://ground.inc/',shortDesc:'佐川急便グループ関連のAGV+WMS統合会社。ニトリ・大和ハウス等に導入実績。',desc:'佐川急便グループ関連のロボット・WMS統合会社。AGVとWMSを組み合わせた倉庫自動化ソリューションを展開。',kpis:[{l:'関連',v:'佐川急便（SG Holdings）'}],customers:[{flag:'🇯🇵',name:'佐川急便グループ',tag:'宅配'}],solutions:[{name:'AMR+WMS統合',desc:'AGVとGROUNDのWMSを統合したソリューション。',videoUrl:null,linkUrl:'https://ground.inc/',linkLabel:'GROUND公式サイト'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'ソフト / WMS列'}]},
-  panasonic:{label:'Panasonic',flag:'🇯🇵',sub:'東証プライム / Blue Yonder買収$8.5B（2021年）',tags:['holding'],color:'#0a7eb8',website:'https://www.panasonic.com/jp/',shortDesc:'Blue Yonderを$8.5Bで買収した日本の総合電機大手。WMSで倉庫自動化ソフト市場に参入。',desc:'PanasonicはBlue Yonderを$8.5Bで買収（2021年）し、倉庫自動化ソフト領域への最大規模M&Aの一つを実行。製造業で培ったサプライチェーンノウハウとBlue YonderのAI需要予測を組み合わせ、SCM全体の最適化を目指す。',kpis:[{l:'Blue Yonder買収',v:'$8.5B（2021年）'},{l:'Blue Yonder売上',v:'$1.36B（2024年）'},{l:'本業',v:'総合電機・家電メーカー'},{l:'戦略',v:'製造×SCM最適化の垂直統合'}],customers:[],solutions:[{name:'Blue Yonder WMS/SCM統合',desc:'Panasonicの製造ノウハウとBlue YonderのAI需要予測を組み合わせたSCM最適化。',videoUrl:null,linkUrl:'https://blueyonder.com/solutions/warehouse-management',linkLabel:'Blue Yonder公式（日本語）'}],groupMembers:[{id:'blue_yonder',rel:'100%子会社（$8.5B買収）',role:'WMS・AI需要予測'}],mapPositions:[{layer:'業界マップ',cell:'Panasonic行 / ソフト開発列'}]},
+  mujin:{label:'Mujin',flag:'🇯🇵',sub:'2011年創業 / 東京 / Series D $233M（2025年12月）',tags:['ai','arm'],color:'#c4870a',website:'https://mujin.co.jp/',shortDesc:'AIロボットコントローラー。2025年12月Series D $233M調達（累計$411M）。ピースピッキング世界最多導入実績。',desc:'AIロボットコントローラーのパイオニア。2025年12月にSeries D $233M調達（NTTグループ主導・Qatar Investment Authority共同リード・Salesforce Ventures・累計$411M）を実施しMujinOSプラットフォーム化戦略を加速。MujinOSは産業ロボット・AGV・保管システム・ビジョンセンサーをデジタルツイン環境で統合制御する統一プラットフォームで、ティーチング不要・リアルタイム把持計画により1,000ピース/時（世界最高）を実現。デパレ/パレタイズ・ピースピッキング・トラック荷降ろし・WES・フリート管理まで標準化されたモジュールでカバーし、複数サイトへの展開コスト・期間を大幅に削減できる。ファンケル・PALTAC等国内大手と製造・物流向けの自動化ソリューション展開を加速。',kpis:[{l:'調達総額',v:'$411M（Series D 2025年12月）'},{l:'処理能力',v:'1,000ピース/時（世界最高）'},{l:'Series D調達',v:'$233M（2025年12月・累計$411M）'},{l:'主要投資家',v:'NTT Group・QIA・Salesforce Ventures'},{l:'MujinOS',v:'SaaSサブスクリプション型で展開推進'},{l:'JV',v:'Accenture×Mujin JV（2024年1月）'}],customers:[{flag:'🇯🇵',name:'ファンケル',tag:'化粧品EC'},{flag:'🇯🇵',name:'PALTAC',tag:'卸売'}],solutions:[{name:'MujinController',desc:'AIと3Dビジョンでロボットアームの把持計画をリアルタイム生成。1,000ピース/時を実現。',videoUrl:'https://www.youtube.com/watch?v=YCCxuqaJLhE',linkUrl:'https://mujin.co.jp/product/',linkLabel:'製品詳細'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'入荷 / デパレ列・ピッキング / AIピッキング列・出荷 / パレタイズ列'}]},
+  ground:{label:'GROUND',flag:'🇯🇵',sub:'2015年創業 / SG Holdings関連',tags:['amr','integrator'],color:'#c4870a',website:'https://ground.inc/',shortDesc:'佐川急便グループ関連のAGV+WMS統合会社。ニトリ・大和ハウス等に導入実績。',desc:'佐川急便グループ関連のロボット・WMS統合会社。AGVとWMSを組み合わせた倉庫自動化ソリューションを展開。',kpis:[{l:'関連',v:'佐川急便（SG Holdings）'}],customers:[{flag:'🇯🇵',name:'佐川急便グループ',tag:'宅配'}],solutions:[{name:'AMR+WMS統合',desc:'AGVとWMSを統合した倉庫自動化ソリューション。佐川急便グループの物流ノウハウと自社開発のWMS（Locus）・AGVを組み合わせ、既存倉庫への導入が容易なRaaS型サービスとして提供。GreyOrange（インド系ユニコーン）が日本パートナーとなっており、GROUNDを通じてGreyMatter AIオーケストレーション基盤の国内展開も進む。物流企業がシステムの選定・導入・運用まで一括相談できる「物流会社が作ったロボット会社」という位置づけが強み。',videoUrl:null,linkUrl:'https://ground.inc/',linkLabel:'GROUND公式サイト'}],groupMembers:[],mapPositions:[{layer:'ソリューションマトリクス',cell:'ソフト / WMS列'}]},
+  panasonic:{label:'Panasonic',flag:'🇯🇵',sub:'東証プライム / Blue Yonder買収$8.5B（2021年）',tags:['holding'],color:'#0a7eb8',website:'https://www.panasonic.com/jp/',shortDesc:'Blue Yonderを$8.5Bで買収した日本の総合電機大手。WMSで倉庫自動化ソフト市場に参入。',desc:'PanasonicはBlue Yonderを$8.5Bで買収（2021年）し、倉庫自動化ソフト領域への最大規模M&Aの一つを実行。【戦略的意図】家電・製造業で培ったサプライチェーン・製造現場ノウハウとBlue YonderのAI需要予測・在庫最適化を掛け合わせ、「製造から物流まで一気通貫のSCM最適化」を目指す。Blue Yonderは2024年売上$1.36B・SaaS成長率+14.2%・新規顧客132社と好調。Gartner WMS Magic Quadrantでリーダー評価。Panasonicの製造業顧客への展開と、Blue Yonderの物流・小売顧客基盤を相互活用するクロスセル戦略を推進中。',kpis:[{l:'Blue Yonder買収',v:'$8.5B（2021年）'},{l:'Blue Yonder売上',v:'$1.36B（2024年）'},{l:'本業',v:'総合電機・家電メーカー'},{l:'戦略',v:'製造×SCM最適化の垂直統合'}],customers:[],solutions:[{name:'Blue Yonder WMS/SCM統合',desc:'Panasonicの製造ノウハウとBlue YonderのAI需要予測を組み合わせたSCM最適化。',videoUrl:null,linkUrl:'https://blueyonder.com/solutions/warehouse-management',linkLabel:'Blue Yonder公式（日本語）'}],groupMembers:[{id:'blue_yonder',rel:'100%子会社（$8.5B買収）',role:'WMS・AI需要予測'}],mapPositions:[{layer:'業界マップ',cell:'Panasonic行 / ソフト開発列'}]},
 };
 
 function getNode(id){return NODES[id]||EXTRA[id]||null;}
@@ -674,7 +792,13 @@ function buildMap(){
   });
   MAP_ROWS.forEach(row=>{
     const rh=document.createElement('div');rh.className='row-hdr'+(row.isSBG?' sbg-row':'');
-    rh.innerHTML=`<div class="row-name">${row.label}</div><div class="row-sub">${row.sub}</div><div class="row-commit">${row.commit}</div><div class="row-tagline">${row.tagline}</div>`;
+    rh.innerHTML=`<div class="row-name">${row.label}</div><div class="row-sub">${row.sub}</div><div class="row-commit">${row.commit}</div><div class="row-tagline">${row.tagline}</div>${GROUP_DATA[row.id]?'<div style="margin-top:8px;font-size:10px;color:var(--sb);font-weight:600;cursor:pointer;">詳細を見る →</div>':''}`;
+    if(GROUP_DATA[row.id]){
+      rh.style.cursor='pointer';
+      rh.addEventListener('click',()=>openGroupDetail(row.id));
+      rh.addEventListener('mouseenter',()=>{rh.style.boxShadow='0 0 0 2px var(--sb), 2px 0 8px rgba(0,0,0,0.06)';});
+      rh.addEventListener('mouseleave',()=>{rh.style.boxShadow=row.isSBG?'2px 0 16px var(--sb-glow)':'2px 0 8px rgba(0,0,0,0.06)';});
+    }
     map.appendChild(rh);
     row.cols.forEach((col,ci)=>{
       const cell=document.createElement('div');cell.className='mcell'+(col.ids.length===0?' empty':'')+(row.isSBG?' sbg-cell':'');
@@ -696,6 +820,7 @@ function buildMap(){
         chip.addEventListener('mousemove',e=>posTip(e));
         chip.addEventListener('mouseleave',hideTip);
         chip.addEventListener('click',()=>openDetail(id,'map'));
+        chip.setAttribute('data-id',id);
         cell.appendChild(chip);
       });
       map.appendChild(cell);
@@ -734,6 +859,7 @@ function buildMatrix(){
         chip.addEventListener('mousemove',e=>posTip(e));
         chip.addEventListener('mouseleave',hideTip);
         chip.addEventListener('click',()=>openDetail(id,'matrix',layer,cat));
+        chip.setAttribute('data-id',id);
         cell.appendChild(chip);
       });
       if(uniq.length===0)cell.classList.add('empty');
@@ -831,10 +957,155 @@ function switchView(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===`view-${name}`));
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.getAttribute('data-tab')===name));
   hideTip();
+  document.getElementById('panel').classList.remove('open');
+  setTimeout(applySearch, 50);
 }
 document.querySelectorAll('.tab').forEach(tab=>{
   tab.addEventListener('click',()=>switchView(tab.getAttribute('data-tab')));
 });
+
+// ═══════════ SEARCH ═══════════
+let searchQuery = '';
+
+function normalizeStr(s){
+  return (s||'').toLowerCase()
+    .replace(/[ａ-ｚＡ-Ｚ０-９]/g, c => String.fromCharCode(c.charCodeAt(0)-0xFEE0))
+    .replace(/[\s　]/g,'');
+}
+
+function matchesSearch(id, q){
+  if(!q) return true;
+  const nd = getNode(id); if(!nd) return false;
+  const needle = normalizeStr(q);
+  const hay = normalizeStr([
+    nd.label, nd.sub||'', nd.shortDesc||'', nd.desc||'',
+    (nd.tags||[]).join(' '),
+    (nd.solutions||[]).map(s=>s.name+' '+s.desc).join(' '),
+    (nd.customers||[]).map(c=>c.name).join(' '),
+  ].join(' '));
+  return hay.includes(needle);
+}
+
+function applySearch(){
+  const q = searchQuery;
+  // Map chips
+  document.querySelectorAll('.chip[data-id]').forEach(chip=>{
+    const id = chip.getAttribute('data-id');
+    const match = matchesSearch(id, q);
+    chip.style.opacity = (!q || match) ? '1' : '0.18';
+    chip.style.transform = (!q || match) ? '' : 'none';
+    chip.style.pointerEvents = (!q || match) ? '' : 'none';
+    if(match && q){
+      chip.style.boxShadow = '0 0 0 2px var(--sb)';
+    } else {
+      chip.style.boxShadow = '';
+    }
+  });
+  // Matrix chips
+  document.querySelectorAll('.mchip[data-id]').forEach(chip=>{
+    const id = chip.getAttribute('data-id');
+    const match = matchesSearch(id, q);
+    chip.style.opacity = (!q || match) ? '1' : '0.18';
+    chip.style.pointerEvents = (!q || match) ? '' : 'none';
+    if(match && q){
+      chip.style.boxShadow = '0 0 0 2px var(--sb)';
+    } else {
+      chip.style.boxShadow = '';
+    }
+  });
+  // Show/hide clear button
+  document.getElementById('search-clear').style.display = q ? 'block' : 'none';
+  // Count matches and show
+  if(q){
+    const ids = new Set();
+    document.querySelectorAll('.chip[data-id], .mchip[data-id]').forEach(chip=>{
+      const id = chip.getAttribute('data-id');
+      if(matchesSearch(id, q)) ids.add(id);
+    });
+  }
+}
+
+// Attach data-id to chips after build
+function tagChips(){
+  document.querySelectorAll('.chip, .mchip').forEach(chip=>{
+    // find onclick handler to get id — instead re-attach via data attr during build
+  });
+}
+
+// Wrap buildMap to tag chips with data-id
+const _origBuildMap2 = buildMap;
+buildMap = function(){
+  _origBuildMap2();
+  // Tag all chips in map
+  document.querySelectorAll('#imap .chip').forEach(chip=>{
+    if(!chip.getAttribute('data-id')){
+      // get id from onclick
+      const onclick = chip.getAttribute('onclick');
+    }
+  });
+};
+
+document.getElementById('search-input').addEventListener('input', function(){
+  searchQuery = this.value.trim();
+  applySearch();
+});
+document.getElementById('search-clear').addEventListener('click', function(){
+  document.getElementById('search-input').value = '';
+  searchQuery = '';
+  applySearch();
+});
+
+
+// ═══════════ GROUP DETAIL ═══════════
+function openGroupDetail(groupId){
+  const g = GROUP_DATA[groupId];
+  if(!g) return;
+  hideTip();
+  prevTab = 'map';
+  document.getElementById('d-breadcrumb').textContent = g.label + ' グループ';
+  const body = document.getElementById('d-body');
+
+  let html = '';
+  // Hero
+  html += `<div class="d-hero" style="border-left:4px solid ${g.color}">
+    <div class="d-hero-top">
+      <div class="d-flag">${g.flag}</div>
+      <div class="d-info">
+        <div class="d-name" style="color:${g.color}">${g.label}</div>
+        <div class="d-sub">資本グループ / 倉庫自動化への関わり方</div>
+      </div>
+    </div>
+    <div class="d-desc">${g.desc.replace(/\n\n/g,'</p><p style="margin-top:12px">')}</div>
+  </div>`;
+
+  // KPIs
+  if(g.kpis?.length) html += `<div class="d-section"><div class="d-sec-h">Key Metrics</div><div class="d-kgrid">${g.kpis.map(k=>`<div class="d-kbox"><div class="d-kl">${k.l}</div><div class="d-kv">${k.v}</div></div>`).join('')}</div></div>`;
+
+  // Strategy
+  if(g.strategy) html += `<div class="d-section"><div class="d-sec-h">グループ戦略</div><div class="d-desc" style="font-size:13px;line-height:1.8;">${g.strategy}</div></div>`;
+
+  // Member companies
+  if(g.members?.length){
+    html += `<div class="d-section"><div class="d-sec-h">グループ企業・関連企業</div><div class="d-group-members">`;
+    g.members.forEach(id=>{
+      const nd = getNode(id); if(!nd) return;
+      const sbg = isSBG(id);
+      html += `<div class="d-member${sbg?' active-member':''}" onclick="openDetail('${id}','map')">
+        <span class="d-member-flag">${nd.flag}</span>
+        <div class="d-member-info">
+          <div class="d-member-name">${nd.label}</div>
+          <div class="d-member-role">${nd.shortDesc||nd.sub||''}</div>
+        </div>
+        <span style="font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;padding:2px 8px;border-radius:20px;border:1px solid var(--border2);white-space:nowrap;">${(nd.tags||[]).slice(0,2).map(t=>TAGS[t]?.label||t).join(' / ')}</span>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  body.innerHTML = html;
+  switchView('detail');
+  if(typeof twemoji !== 'undefined') requestAnimationFrame(applyTwemoji);
+}
 
 // ═══════════ TWEMOJI ═══════════
 // Windows含め全OSで国旗絵文字を統一表示
