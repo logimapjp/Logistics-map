@@ -6,13 +6,15 @@
 <title>Logimap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
 <style>
 :root{
   --bg:#f2f4f8;--surface:#fff;--surface2:#f7f8fc;--border:#e2e6f0;--border2:#cdd3e3;
   --text:#1a1f36;--text2:#3d4461;--muted:#7c87a6;--muted2:#b0b8d0;
   --sb:#ff6600;--sb-light:rgba(255,102,0,0.08);--sb-mid:rgba(255,102,0,0.18);--sb-glow:rgba(255,102,0,0.3);
 }
-*{box-sizing:border-box;margin:0;padding:0;}
+img.emoji{height:1.2em;width:1.2em;vertical-align:-0.2em;display:inline-block;}
+
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
 
 /* TOPBAR */
@@ -834,7 +836,22 @@ document.querySelectorAll('.tab').forEach(tab=>{
   tab.addEventListener('click',()=>switchView(tab.getAttribute('data-tab')));
 });
 
-// ═══════════ INIT ═══════════
+// ═══════════ TWEMOJI ═══════════
+// Windows含め全OSで国旗絵文字を統一表示
+function applyTwemoji(){
+  if(typeof twemoji==='undefined')return;
+  twemoji.parse(document.body,{
+    folder:'svg',ext:'.svg',
+    base:'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/',
+  });
+}
+// 初回＋DOM更新後に都度適用
+const _origBuildMap=buildMap;
+buildMap=function(){_origBuildMap();requestAnimationFrame(applyTwemoji);};
+const _origBuildMatrix=buildMatrix;
+buildMatrix=function(){_origBuildMatrix();requestAnimationFrame(applyTwemoji);};
+const _origOpenDetail=openDetail;
+openDetail=function(...args){_origOpenDetail(...args);requestAnimationFrame(applyTwemoji);};
 buildMap();
 buildMatrix();
 </script>
