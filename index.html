@@ -6,7 +6,7 @@
 <title>Logimap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/twemoji.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 <style>
 :root{
   --bg:#f2f4f8;--surface:#fff;--surface2:#f7f8fc;--border:#e2e6f0;--border2:#cdd3e3;
@@ -841,8 +841,7 @@ document.querySelectorAll('.tab').forEach(tab=>{
 function applyTwemoji(){
   if(typeof twemoji==='undefined')return;
   twemoji.parse(document.body,{
-    folder:'svg',ext:'.svg',
-    base:'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/',
+    folder:'svg',ext:'.svg'
   });
 }
 // 初回＋DOM更新後に都度適用
