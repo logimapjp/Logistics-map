@@ -1021,7 +1021,6 @@ function switchView(name){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===`view-${name}`));
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.getAttribute('data-tab')===name));
   hideTip();
-  document.getElementById('panel').classList.remove('open');
   setTimeout(applySearch, 50);
 }
 document.querySelectorAll('.tab').forEach(tab=>{
@@ -1215,20 +1214,20 @@ const CASES_DATA=[
    url:'https://www.softbankrobotics.com/jp/product/autostore/',
    note:null,failure:false},
 
-  {id:'c02',span:['保管','ピッキング'],flag:'🇯🇵',client:'ティーツーケー（T2K）',sub:'EC市場向けフルフィルメント',
+  {id:'c02',span:['保管','ピッキング'],flag:'🇯🇵',client:'ティーツーケー（T2K）',sub:'EC・通販フルフィルメント代行 / 岡山県倉敷市',
    industry:'EC・通販',tech:['gtp'],vendor:'オカムラ',vendorFlag:'🇯🇵',vendorRole:'AutoStore正規販売店',
-   year:2024,procs:['storage', 'picking'],color:'#0e8f6e',
-   effects:['保管スペースを1/3に削減','作業人員を1/3に省人化','24時間稼働対応'],
-   scale:'中規模 / 2024年3月稼働',
-   url:'https://prtimes.jp/main/html/rd/p/000000010.000136129.html',
+   year:2024,color:'#1a6be8',
+   effects:['保管スペースを約900坪→250坪（1/3以下）に削減','ピッキング作業を13〜15名→3〜4名に省人化','入出庫リードタイムを1日半〜2日から大幅短縮','2万9,145ビンに古着など40〜50万SKUを高密度保管'],
+   scale:'中規模 / 2024年3月稼働 / 多品種小ロット古着EC',
+   url:'https://www.okamura.co.jp/mhs/special_site/product/autostore/casestudy/case10/index.html',
    note:null,failure:false},
 
-  {id:'c03',span:['保管','ピッキング'],flag:'🇯🇵',client:'とらのあな',sub:'同人誌・書籍EC',
+  {id:'c03',span:['保管','ピッキング'],flag:'🇯🇵',client:'虎の穴（とらのあな）',sub:'同人誌・グッズEC / とらのあなロジスティクスセンター（千葉県八千代市）',
    industry:'書籍EC',tech:['gtp'],vendor:'オカムラ',vendorFlag:'🇯🇵',vendorRole:'AutoStore正規販売店',
-   year:2023,procs:['storage', 'picking'],color:'#b07a00',
-   effects:['出荷処理の70%を自動化','24時間稼働を実現','保管スペース40%削減'],
-   scale:'中規模 / 新物流拠点（千葉）',
-   url:'https://www.okamura.co.jp/mhs/special_site/product/autostore/casestudy/',
+   year:2023,color:'#b07a00',
+   effects:['倉庫全体面積を5,500坪→ワンフロア3,500坪に縮小','1人あたりピッキング数を60行/時→100行/時に向上','AutoStore設置面積400坪弱・入荷7ポート/出荷14ポート構成','多層階運用の非効率を解消し24時間稼働の人手確保問題に対応'],
+   scale:'中規模 / 2023年稼働 / 3PL事業参入の核として導入',
+   url:'https://www.okamura.co.jp/mhs/special_site/product/autostore/casestudy/case11/index.html',
    note:null,failure:false},
 
   {id:'c04',span:['保管','ピッキング'],flag:'🇯🇵',client:'東亜DKK（狭山）',sub:'計測機器メーカー / 製造業内倉庫',
@@ -1240,11 +1239,11 @@ const CASES_DATA=[
    note:null,failure:false},
 
   // ─ AutoStore 海外 ─
-  {id:'c05',span:['保管','ピッキング'],flag:'🇸🇪',client:'Boozt',sub:'EC（ファッション・ビューティ）/ スウェーデン',
+  {id:'c05',span:['保管','ピッキング'],flag:'🇸🇪',client:'Boozt',sub:'EC（ファッション・ビューティ）/ スウェーデン・Ängelholm',
    industry:'EC・通販',tech:['gtp'],vendor:'Element Logic',vendorFlag:'🇳🇴',vendorRole:'AutoStore代理店',
-   year:2017,procs:['storage', 'picking'],color:'#1a6be8',
-   effects:['保管スペース75%削減','63秒フルフィルメント達成（世界最速クラス）','1.2Mビン・1,150台ロボット・1日190,000件処理','8年間で事業規模10倍成長'],
-   scale:'超大規模 / スウェーデン・Ängelholm / 4回拡張',
+   year:2017,color:'#1a6be8',
+   effects:['世界最大級のハイスループットAutoStore：120万ビン・1,150台R5ロボット・300ポート','保管スペース75%削減・稼働率99.7%','最速63秒フルフィルメント・1日最大19万点処理','2017年稼働（5万ビン・21台）から4回拡張・6年で売上200%成長'],
+   scale:'超大規模 / スウェーデン / 14ヵ国向けEC・既存倉庫を改装',
    url:'https://www.autostoresystem.com/cases/boozts-successful-journey-with-autostore-warehouse-automation',
    note:null,failure:false},
 
@@ -1253,24 +1252,24 @@ const CASES_DATA=[
    year:2024,procs:['storage'],color:'#5a6880',
    effects:['12基のAutoStoreシステムを世界展開','将来的に20基以上への拡張を計画'],
    scale:'大規模 / グローバル複数拠点',
-   url:'https://www.autostoresystem.com/jp/cases',
+   url:'https://www.autostoresystem.com/cases',
    note:null,failure:false},
 
   // ─ Exotec Skypod ─
-  {id:'c07',span:['保管','ピッキング'],flag:'🇯🇵',client:'ユニクロ（ファーストリテイリング）',sub:'アパレル / 国内外拠点',
+  {id:'c07',span:['保管','ピッキング'],flag:'🇯🇵',client:'ユニクロ（ファーストリテイリング）',sub:'アパレル / 有明プロジェクト・国内外拠点',
    industry:'アパレル',tech:['gtp'],vendor:'Exotec Nihon',vendorFlag:'🇫🇷',vendorRole:'Skypod直販・設計',
-   year:2019,procs:['storage', 'picking'],color:'#9b1fd4',
-   effects:['日本初導入（2019年）・戦略的グローバルパートナーシップ締結','グローバル複数拠点への展開','注文後2分以内ピッキングでオムニチャネル物流を効率化'],
-   scale:'大規模 / 国内外複数拠点',
-   url:'https://www.exotec.com/ja/',
+   year:2019,color:'#9b1fd4',
+   effects:['2019年11月に戦略的グローバルパートナーシップ締結（ダイフク・Mujinと並ぶ3社の1社）','ドイツの物流自動化展で出会い・オランダ倉庫で試用版を開発','形状が柔らかいアパレル製品のピッキング自動化を推進','海外拠点から段階的にグローバル展開'],
+   scale:'大規模 / 国内外複数拠点 / 有明プロジェクト',
+   url:'https://www.fastretailing.com/jp/ir/news/1911131400.html',
    note:null,failure:false},
 
   {id:'c08',span:['保管','ピッキング'],flag:'🇯🇵',client:'ヨドバシカメラ',sub:'家電小売・EC / 複数倉庫',
    industry:'家電小売',tech:['gtp'],vendor:'Exotec Nihon',vendorFlag:'🇫🇷',vendorRole:'Skypod直販・設計',
-   year:2022,procs:['storage', 'picking'],color:'#0a7eb8',
-   effects:['2022年パートナーシップ締結・複数倉庫に展開','応答スピードと拡張柔軟性を評価して採用','オムニチャネル（実店舗補充＋EC）の物流効率化'],
+   year:2022,color:'#0a7eb8',
+   effects:['2022年12月にSkypodシステムの複数倉庫導入パートナーシップを締結','ユニクロに続くExotecの日本大型導入案件','オムニチャネル（実店舗補充＋EC）の物流効率化に活用'],
    scale:'大規模 / 複数拠点',
-   url:'https://www.exotec.com/ja/news/yodobashi-camera-has-selected-exotecs-skypod-system-to-drive-the-efficiency-of-retail-distribution-and-e-commerce-fulfillment/',
+   url:'https://monoist.itmedia.co.jp/mn/articles/2212/08/news066.html',
    note:null,failure:false},
 
   {id:'c09',span:['保管','ピッキング'],flag:'🇯🇵',client:'バリューブックス',sub:'古本EC / 埼玉・吉見町新拠点',
@@ -1298,20 +1297,20 @@ const CASES_DATA=[
    url:'https://www.geekplus.jp/',
    note:null,failure:false},
 
-  {id:'c12',span:['ピッキング'],flag:'🇯🇵',client:'三井倉庫ロジスティクス（上新電機向け）',sub:'3PL / 家電・PC・ホビー商品',
-   industry:'3PL',tech:['amr_shelf'],vendor:'ギークプラス',vendorFlag:'🇨🇳',vendorRole:'AMR販売・PoC実施',
-   year:2025,procs:['transport', 'picking'],color:'#1a9e4a',
-   effects:['P500R導入（PoC経て本格採用）','家電・PC・ゲーム等の多品種ピッキングを省人化','業務標準化により安定したサービス品質を維持'],
-   scale:'中規模 / 上新電機向け専用拠点',
-   url:'https://prtimes.jp/main/html/rd/p/000000035.000060368.html',
+  {id:'c12',span:['ピッキング'],flag:'🇯🇵',client:'三井倉庫ロジスティクス（上新電機向け）',sub:'3PL / 家電・PC・ホビー商品（LLPサービス）',
+   industry:'3PL',tech:['amr_shelf'],vendor:'ギークプラス',vendorFlag:'🇨🇳',vendorRole:'自動棚搬送ロボット（EVE）',
+   year:2025,color:'#1a9e4a',
+   effects:['上新電機の物流業務を支援する施設に自動棚搬送ロボットを導入','家電・PC・ゲーム・おもちゃ等の多品種ピッキングを省人化','物流オペレーションの標準化で安定したサービス品質を維持','人材不足・流動的な物流需要への対応力を強化'],
+   scale:'中規模 / 2025年4月発表 / 上新電機向けLLP拠点',
+   url:'https://www.lnews.jp/2025/04/r0417504.html',
    note:null,failure:false},
 
-  {id:'c13',span:['ピッキング'],flag:'🇯🇵',client:'三菱倉庫（SharE Center misato）',sub:'3PL / EC特化物流センター',
-   industry:'3PL',tech:['amr_shelf'],vendor:'ギークプラス / フジテックス',vendorFlag:'🇨🇳',vendorRole:'AMR販売・導入',
-   year:2022,procs:['transport', 'picking'],color:'#1a9e4a',
-   effects:['EVE P500R 50台導入','EC特化センターとして2022年7月稼働','EC需要増加に対応する省人化・生産性向上'],
-   scale:'中規模 / 埼玉県三郷市',
-   url:'https://mf-p.jp/news_matehan/1472.html',
+  {id:'c13',span:['ピッキング'],flag:'🇯🇵',client:'三菱倉庫（SharE Center misato）',sub:'3PL / EC特化物流センター（埼玉県三郷市）',
+   industry:'3PL',tech:['amr_shelf'],vendor:'ギークプラス / フジテックス',vendorFlag:'🇨🇳',vendorRole:'AMR販売・導入支援',
+   year:2021,color:'#1a9e4a',
+   effects:['EVE P500R 50台・専用棚981台を導入','クラウドWMS「ロジザードZERO」と標準連携','EC特化センターとして従量課金制サービスを提供','2021年7月1日オープンと同時に50台稼働開始'],
+   scale:'中規模 / 2021年7月稼働 / 埼玉県三郷市',
+   url:'https://www.geekplus.jp/news/20210705/',
    note:null,failure:false},
 
   {id:'c14',span:['ピッキング'],flag:'🇯🇵',client:'KDDI',sub:'通信 / 自社物流センター2拠点',
@@ -1331,11 +1330,11 @@ const CASES_DATA=[
    url:'https://www.rapyuta-robotics.com/ja/use-cases/',
    note:null,failure:false},
 
-  {id:'c16',span:['ピッキング'],flag:'🇯🇵',client:'日本通運（NX小牧）',sub:'3PL / 小牧流通センター',
-   industry:'3PL',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型AMR',
-   year:2025,procs:['picking', 'transport'],color:'#1a9e4a',
-   effects:['生産性2.5倍向上（42.9件/時→110.8件/時）・稼働3ヶ月で達成','熟練者依存オペレーションからの脱却・業務標準化','新人からベテランまで均一な作業品質を確保'],
-   scale:'中規模 / 愛知県小牧市',
+  {id:'c16',span:['ピッキング'],flag:'🇯🇵',client:'日本通運（NX小牧流通センター）',sub:'3PL / 愛知県小牧市',
+   industry:'3PL',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型協働ピッキングAMR',
+   year:2025,color:'#1a9e4a',
+   effects:['稼働3か月で生産性を42.9件/時→110.8件/時（約2.5倍・258%）に向上','熟練者依存からの脱却・新人とベテランの作業差を大幅縮小','スポットワーカーも最小限の研修で即戦力化','今後WMS改修で対象業務を500行/日→1,000行/日へ2倍拡大予定'],
+   scale:'中規模 / 2025年稼働 / 愛知県小牧市',
    url:'https://www.lnews.jp/2025/10/r1001503.html',
    note:null,failure:false},
 
@@ -1350,8 +1349,8 @@ const CASES_DATA=[
   {id:'c18',span:['ピッキング'],flag:'🇯🇵',client:'花王',sub:'日用品 / 関東物流拠点',
    industry:'日用品・化粧品卸',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型AMR（重量検品モデル）',
    year:2025,procs:['picking', 'transport'],color:'#c4870a',
-   effects:['65台導入（ラピュタ1拠点で過去最多）','重量検品機能付き新モデル採用でピッキング＋検品を同時処理','自動充電ステーション導入で終日稼働を実現'],
-   scale:'大規模 / 関東物流拠点・2025年冬稼働',
+   effects:['65台導入（ラピュタ1拠点で過去最多）','ラピュタ初の重量検品機能付きモデルを採用（最小10g・約1秒で計量）','ピッキング時間を半減しつつ重量検品で誤出荷を防止','新規開発の自動ステーション併設で終日稼働を実現'],
+   scale:'大規模 / 関東物流拠点・2025年冬稼働予定',
    url:'https://www.lnews.jp/2025/07/r0717501.html',
    note:null,failure:false},
 
@@ -1372,54 +1371,54 @@ const CASES_DATA=[
    note:null,failure:false},
 
   // ─ Mujin ─
-  {id:'c21',span:['入荷・デパレ'],flag:'🇯🇵',client:'PALTAC（RDC新潟）',sub:'日用品・化粧品・一般用医薬品卸',
+  {id:'c21',span:['入荷・デパレ'],flag:'🇯🇵',client:'PALTAC（RDC新潟）',sub:'日用品・化粧品・一般用医薬品卸 / 新潟県',
    industry:'日用品・化粧品卸',tech:['depal'],vendor:'Mujin',vendorFlag:'🇯🇵',vendorRole:'AIデパレタイズロボット',
-   year:2021,procs:['inbound'],color:'#c4870a',
-   effects:['デパレタイズロボット4台で出荷能力2倍','ケースピッキング工程の完全自動化達成','重筋作業ゼロ化・重量に応じた速度自動制御'],
-   scale:'中規模 / 新潟県新潟市',
-   url:'https://mujin.co.jp/case/paltac/',
+   year:2018,color:'#c4870a',
+   effects:['パレット自動倉庫と連携した4台のデパレタイズロボットでケースピッキングを完全自動化','出荷能力が従来の2倍に向上','人手による荷下ろしなどの重筋作業をゼロ化','RDC新潟（2018年開設）の次世代型物流システムの中核'],
+   scale:'大規模 / 2018年稼働 / 新潟県',
+   url:'https://www.mujin.co.jp/case/paltac/',
    note:null,failure:false},
 
-  {id:'c22',span:['出荷・パレタイズ'],flag:'🇯🇵',client:'PALTAC（パレタイズ）',sub:'日用品・化粧品・一般用医薬品卸',
+  {id:'c22',span:['出荷・パレタイズ'],flag:'🇯🇵',client:'PALTAC（RDC埼玉）',sub:'日用品・化粧品・一般用医薬品卸 / 埼玉県',
    industry:'日用品・化粧品卸',tech:['depal'],vendor:'Mujin',vendorFlag:'🇯🇵',vendorRole:'AIパレタイズロボット',
-   year:2023,procs:['outbound'],color:'#c4870a',
-   effects:['パレット・カゴ台車・カートラック3種への積み付けを世界初1台で実現','狭いスペースでの干渉回避と最適経路計算を統合','安定荷姿シミュレーション機能で出荷後の倒壊を防止'],
-   scale:'中規模 / 国内複数拠点',
-   url:'https://www.mujin.co.jp/example/paltac02/',
+   year:2019,color:'#c4870a',
+   effects:['パレット・カゴ車・カートラックの3種什器への積み付けを世界初の1台で実現','独自の干渉回避機能で狭いスペースでも最適経路で積み付け','出荷後に倒壊しない安定した荷姿を自動生成','RDC埼玉（2019年開設）でRDC新潟を超える広範な工程を自動化'],
+   scale:'大規模 / 2019年稼働 / 埼玉県',
+   url:'https://www.mujin.co.jp/case/paltac2/',
    note:null,failure:false},
 
   {id:'c23',span:['入荷・デパレ'],flag:'🇯🇵',client:'ファンケル（関西物流センター）',sub:'化粧品・健康食品EC / 大阪府門真市',
    industry:'日用品・化粧品卸',tech:['depal'],vendor:'Mujin（ダイフク経由）',vendorFlag:'🇯🇵',vendorRole:'AIデパレ+ピースピッカー',
    year:2022,procs:['inbound', 'picking'],color:'#c4870a',
-   effects:['デパレタイザー2台+ピースピッカー2台（計4台）','段ボールとコンテナを1台で自動切り替え対応（本来2台必要な工程を1台に集約）','自律的な作業継続でライン停止を最小化'],
-   scale:'中規模 / 大阪府門真市',
+   effects:['デパレタイザー2台+ピースピッカー2台（2種4台）を導入','段ボール・コンテナを1台で自動ハンド切替（本来2台必要な工程を集約）','ピース品の転倒防止「寝かせ配置」機能を搭載','新センター全体で出荷能力1.4倍・翌日配送エリア拡大'],
+   scale:'中規模 / 大阪府門真市・2021年6月稼働',
    url:'https://mujin.co.jp/news/6234/',
    note:null,failure:false},
 
   {id:'c24',span:['入荷・デパレ'],flag:'🇯🇵',client:'カインズ',sub:'ホームセンター / 物流センター',
    industry:'ホームセンター',tech:['depal'],vendor:'Mujin（オークラ輸送機経由）',vendorFlag:'🇯🇵',vendorRole:'AIデパレタイズロボット',
    year:2021,procs:['inbound'],color:'#ff6600',
-   effects:['高積み（2.3m）対応のマスターレス混載デパレを実現','事前ケース登録不要・無地・透明テープ品も認識','ホームセンター特有の多種多様な商品形状に対応'],
-   scale:'中規模',
-   url:'https://www.lnews.jp/2021/02/n0209404.html',
+   effects:['積み高2.3mまでの高積み荷下ろしを自動化（超広範囲3Dビジョン）','マスターレスで事前ケース登録不要・混載パレットに対応','無地・透明テープ貼付の難認識ケースも対応','可動域最大活用の動作制御で小型ロボットでカバー'],
+   scale:'中規模 / 千葉県東金市物流センター',
+   url:'https://mujin.co.jp/example/cainz/',
    note:null,failure:false},
 
   // ─ Ocado / イオン ─
   {id:'c25',span:['保管','出荷・パレタイズ'],flag:'🇯🇵',client:'イオンネクスト（Green Beans）誉田CFC',sub:'食品EC / 千葉市緑区',
    industry:'食品・食品卸',tech:['gtp'],vendor:'Ocado Solutions',vendorFlag:'🇬🇧',vendorRole:'OSP（エンドツーエンドプラットフォーム）',
-   year:2023,procs:['storage', 'picking', 'sorting'],color:'#0e8f6e',
-   effects:['最大1,000台ロボットが秒速4mで走行','50品を約6分でピッキング（人間の約10倍の効率）','5万SKU・3温度帯（常温・冷蔵・冷凍）対応','2025年にオングリッドロボットピック追加で更に自動化率向上','登録会員60万人（2025年）に成長'],
-   scale:'超大規模 / 建築面積2.75万m²',
-   url:'https://www.lnews.jp/2025/06/r0630501.html',
+   year:2023,color:'#0e8f6e',
+   effects:['最大1,000台ロボットが秒速4mで走行・50品を約6分でピッキング（人間の約10倍）','2025年6月にオングリッドロボットピック30台＋オートフレームロードを本格導入','上記により作業工程の約30%を自動化・1日最大20万点処理','対象3,000品目→2025年度中に1万品目へ拡大予定','月33回以上のシステムアップデートで継続進化'],
+   scale:'超大規模 / 2023年稼働 / 2026・2027年度に新CFC開設予定',
+   url:'https://prtimes.jp/main/html/rd/p/000000047.000136256.html',
    note:null,failure:false},
 
   // ─ Symbotic ─
   {id:'c26',span:['入荷・デパレ','出荷・パレタイズ'],flag:'🇺🇸',client:'Walmart',sub:'小売DC / 全米42拠点',
-   industry:'EC・通販',tech:['waas'],vendor:'Symbotic / GreenBox（SBG JV）',vendorFlag:'🇺🇸',vendorRole:'AIロボットDCシステム',
-   year:2022,procs:['inbound', 'storage', 'picking', 'sorting', 'outbound'],color:'#1a6be8',
-   effects:['全米42のDCにSymboticシステムを展開（2022年全拠点契約）','ケースレベルの在庫管理を完全自動化','GreenBox WaaSモデルで中小DC向けにも横展開中'],
-   scale:'超大規模 / 全米42拠点',
-   url:'https://www.symbotic.com/',
+   industry:'EC・通販',tech:['waas'],vendor:'Symbotic',vendorFlag:'🇺🇸',vendorRole:'AIロボットDCシステム（入荷〜出荷全自動）',
+   year:2022,color:'#1a6be8',
+   effects:['全米42の地域配送センターにSymbotic展開（25→42拠点に拡大・2022年）','入荷検品→デパレ→高密度保管→出荷パレタイズまでを一気通貫で自動化','機械ビジョンで入荷在庫を検査・既存の発注/補充システムと連携','2025年1月にWalmartがロボット事業をSymboticへ売却し協業を深化'],
+   scale:'超大規模 / 全米42拠点 / 8年かけて展開',
+   url:'https://www.symbotic.com/about/news-events/news/walmart-and-symbotic-expand-partnership-to-implement-industry-leading-automation-system/',
    note:null,failure:false},
 
   {id:'c27',span:['入荷・デパレ','出荷・パレタイズ'],flag:'🇲🇽',client:'Walmart de México（Walmex）',sub:'小売DC / メキシコ・バヒオ地区',
@@ -1440,8 +1439,8 @@ const CASES_DATA=[
    note:'【学習事例】米国食品EC特有の薄利・広大な地理・注文密度の低さとOcado大規模集中型CFCの経済モデルがミスマッチ。設備投資の回収に必要な注文密度を確保できず撤退。「技術は正しいが市場条件とのフィット不全」というリスクを示す代表事例。'},
   {id:'c29',span:['保管','荷揃え・仕分け'],flag:'🇪🇸',client:'Novaltia',sub:'製薬卸 / サラゴサDC（スペイン）',
    industry:'製薬',tech:['shuttle'],vendor:'Knapp',vendorFlag:'🇦🇹',vendorRole:'OSR Shuttle Evo・KiSoft統合',
-   year:2024,procs:['storage', 'picking', 'sorting'],color:'#e8341a',
-   effects:['自動化率98%達成（製薬卸向けとして世界最高水準）','1,200容器/時のスループット・40,000+ SKU対応','6人/シフトで運営可能（従来比で大幅省人化）','1,000以上の薬局に注文後2〜3時間以内に配送'],
+   year:2024,color:'#e8341a',
+   effects:['倉庫全体の自動化率98%を達成（製薬卸向け最高水準）','1,200オーダー容器/時のスループット・40,000+ SKU対応','わずか6人/シフトで運営可能','5拠点から1,000薬局以上へ1日最大5回・2〜3時間以内に配送'],
    scale:'大規模 / サラゴサ新DC / Knappとの24年間パートナーシップ',
    url:'https://www.knapp.com/en/newsroom/press/novaltia-builds-new-dc-with-knapp/',
    note:null,failure:false},
@@ -1464,9 +1463,9 @@ const CASES_DATA=[
 
   {id:'c32',span:['保管','ピッキング'],flag:'🇺🇸',client:'Best Buy',sub:'家電小売 / 全米8拠点',
    industry:'家電小売',tech:['gtp'],vendor:'Bastian Solutions（Toyota TAL）',vendorFlag:'🇯🇵',vendorRole:'AutoStore SI・設計',
-   year:2023,procs:['storage', 'picking'],color:'#0a7eb8',
-   effects:['全米8拠点にAutoStore導入','5,000万人以上の顧客に対応','保管密度大幅向上と同日出荷能力を両立'],
-   scale:'大規模 / 全米8拠点',
+   year:2023,color:'#0a7eb8',
+   effects:['全米8拠点にAutoStore導入・合計1,194台ロボット・84万ビン','5,000万人以上の顧客に対応するEC物流網の中核に','Manhattan WMS + Exacta WESと統合運用','EC競争力の課題を解決し同日出荷能力を確保'],
+   scale:'大規模 / 全米8拠点（RDC各195台・MEC各73台）',
    url:'https://www.autostoresystem.com/cases/best-buy-wins-with-autostore',
    note:null,failure:false},
 
@@ -1539,18 +1538,19 @@ function buildCases(){
   });
   allIndBtn.addEventListener('click',()=>filterCases(allIndBtn,'industry'));
 
-  // Filter buttons - proc
+  // Filter buttons - proc (工程)
   const procDiv = document.getElementById('case-filter-proc');
   const allProcBtn = document.createElement('button');
   allProcBtn.className='cf-btn active'; allProcBtn.textContent='すべて';
   allProcBtn.dataset.filter='all'; allProcBtn.dataset.type='proc';
   procDiv.appendChild(allProcBtn);
   allProcBtn.addEventListener('click',()=>filterCases(allProcBtn,'proc'));
-  PROCESSES.forEach(proc=>{
+  const procColors={'入荷・デパレ':'#e8341a','保管':'#1a6be8','ピッキング':'#c4870a','荷揃え・仕分け':'#0a7eb8','出荷・パレタイズ':'#9b1fd4'};
+  PROCESS_STEPS.forEach(step=>{
     const btn=document.createElement('button');
-    btn.className='cf-btn'; btn.textContent=proc.label;
-    btn.dataset.filter=proc.id; btn.dataset.type='proc';
-    btn.style.borderColor=proc.color+'55';
+    btn.className='cf-btn'; btn.textContent=step;
+    btn.dataset.filter=step; btn.dataset.type='proc';
+    btn.style.borderColor=(procColors[step]||'#7c3aed')+'55';
     btn.addEventListener('click',()=>filterCases(btn,'proc'));
     procDiv.appendChild(btn);
   });
@@ -1582,6 +1582,14 @@ function buildCases(){
     card.className = 'case-card' + (cas.failure?' failure':'');
     card.dataset.industry = cas.industry;
     card.dataset.tech = cas.tech.join(',');
+    // Expand span to all covered steps (start..end inclusive)
+    let coveredSteps = [];
+    if(cas.span && cas.span.length){
+      const s = PROCESS_STEPS.indexOf(cas.span[0]);
+      const e = cas.span.length>1 ? PROCESS_STEPS.indexOf(cas.span[cas.span.length-1]) : s;
+      if(s>-1 && e>-1){ for(let i=s;i<=e;i++) coveredSteps.push(PROCESS_STEPS[i]); }
+    }
+    card.dataset.span = coveredSteps.join(',');
     card.innerHTML=`
       <div class="cc-top" style="background:${col}"></div>
       <div class="cc-with-bar">
@@ -1621,7 +1629,7 @@ function buildCases(){
   if(typeof twemoji!=='undefined') requestAnimationFrame(applyTwemoji);
 }
 
-let activeCaseFilters={industry:'all',tech:'all'};
+let activeCaseFilters={industry:'all',proc:'all'};
 
 function filterCases(btn, type){
   // Update active button
@@ -1632,8 +1640,12 @@ function filterCases(btn, type){
   // Filter cards
   document.querySelectorAll('.case-card').forEach(card=>{
     const indMatch = activeCaseFilters.industry==='all' || card.dataset.industry===activeCaseFilters.industry;
-    const techMatch = activeCaseFilters.tech==='all' || card.dataset.tech.split(',').includes(activeCaseFilters.tech);
-    card.classList.toggle('hidden', !(indMatch&&techMatch));
+    let procMatch = true;
+    if(activeCaseFilters.proc!=='all'){
+      const spanSteps = (card.dataset.span||'').split(',');
+      procMatch = spanSteps.includes(activeCaseFilters.proc);
+    }
+    card.classList.toggle('hidden', !(indMatch&&procMatch));
   });
   updateCaseCount();
 }
