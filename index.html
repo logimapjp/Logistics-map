@@ -327,11 +327,13 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .flow-desc strong{color:#c4870a;font-weight:800;}
 .flow-arrow{color:var(--muted2);font-size:14px;font-weight:700;}
 
-/* Walk compare (C) */
-.walk-compare{display:flex;flex-direction:column;gap:6px;}
+/* Walk compare (C) - bar and value always separated */
+.walk-compare{display:flex;flex-direction:column;gap:8px;}
 .walk-row{display:flex;align-items:center;gap:10px;}
-.walk-label{width:170px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
-.walk-bar{height:22px;background:#c4870a;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+.walk-label{width:170px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;flex-shrink:0;}
+.walk-track{flex:1;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;}
+.walk-bar{height:22px;border-radius:4px;min-width:3px;}
+.walk-val{font-size:12px;font-weight:800;color:var(--text);font-family:'DM Mono',monospace;white-space:nowrap;}
 
 /* Triple crisis (D) */
 .triple-crisis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
@@ -384,7 +386,15 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .reading-final p:last-of-type{margin-bottom:18px;}
 .reading-signature{text-align:right;font-size:13px;font-weight:800;color:var(--muted);font-style:italic;}
 
-/* Industry sections */
+/* Sub-tabs */
+.reading-subtabs{display:flex;gap:6px;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border2);flex-wrap:wrap;position:sticky;top:0;background:#fff;z-index:5;padding-top:12px;margin-top:-30px;}
+.rsub{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid var(--border2);background:#fff;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;}
+.rsub:hover{border-color:var(--sb);color:var(--sb);}
+.rsub.active{background:var(--sb);border-color:var(--sb);color:#fff;}
+.reading-content{display:none;}
+.reading-content.active{display:block;}
+
+/* Industry sections (legacy, kept for compat) */
 .reading-industry-wrap{margin-top:60px;padding-top:40px;border-top:3px double var(--border2);}
 .reading-industry-h{text-align:center;margin-bottom:24px;}
 .reading-industry-title{font-size:22px;font-weight:900;color:var(--text);margin:0 0 8px;}
@@ -424,6 +434,27 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 
 @media (max-width:760px){
   .temp-zones{grid-template-columns:1fr;}
+}
+
+/* EC charts */
+.ec-trend, .return-rate{display:flex;flex-direction:column;gap:6px;}
+.ec-row, .rr-row{display:flex;align-items:center;gap:10px;}
+.ec-year, .rr-cat{width:90px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
+.ec-bar, .rr-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+.ec-rate-table, .abc-table{width:100%;border-collapse:collapse;font-size:12px;}
+.ec-rate-table thead th, .abc-table thead th{text-align:left;font-size:10px;font-weight:700;color:var(--muted);padding:7px 10px;border-bottom:2px solid var(--border2);background:var(--surface2);}
+.ec-rate-table tbody td, .abc-table tbody td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);}
+.timeline{display:flex;flex-direction:column;gap:6px;}
+.tl-row{display:flex;align-items:center;gap:10px;}
+.tl-time{width:80px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:var(--muted);text-align:right;}
+.tl-event{padding:6px 14px;border-radius:6px;color:#fff;font-size:11px;font-weight:700;}
+.ec-calendar{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;align-items:end;height:140px;padding-bottom:24px;position:relative;}
+.ec-month{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative;}
+.ec-mon{position:absolute;bottom:-20px;font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);}
+.ec-mbar{width:80%;background:#1a6be8;border-radius:3px 3px 0 0;min-height:5px;}
+
+@media (max-width:760px){
+  .ec-calendar{grid-template-columns:repeat(6,1fr);}
 }
 
 @media (max-width:760px){
@@ -833,7 +864,17 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
   <!-- READING (BUSINESS PRIMER) -->
   <div id="view-reading" class="view" style="overflow-y:auto;">
     <div class="reading-wrap">
-      <div class="reading-cover">
+
+      <!-- Sub-tabs -->
+      <div class="reading-subtabs">
+        <button class="rsub active" data-rsub="overview">📘 全体読本</button>
+        <button class="rsub" data-rsub="food">🍱 食品・食品卸</button>
+        <button class="rsub" data-rsub="ec">🛒 EC・通販</button>
+      </div>
+
+      <!-- Overview content -->
+      <div class="reading-content reading-overview active" data-rcontent="overview">
+        <div class="reading-cover">
         <div class="reading-cover-icon"><svg viewBox="0 0 100 100" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
 <!-- body -->
 <ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
@@ -1082,10 +1123,34 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
           <div class="reading-figure">
             <div class="reading-figure-title">図C-2: ピッキング作業者の歩行距離（1日）</div>
             <div class="walk-compare">
-              <div class="walk-row"><div class="walk-label">倉庫内ピッキング</div><div class="walk-bar" style="width:75%;"><span>10〜20km</span></div></div>
-              <div class="walk-row"><div class="walk-label">フルマラソン</div><div class="walk-bar" style="width:80%;background:#5a6880;"><span>42.195km</span></div></div>
-              <div class="walk-row"><div class="walk-label">一般社会人（1日平均）</div><div class="walk-bar" style="width:18%;background:#5a6880;"><span>約5km</span></div></div>
-              <div class="walk-row"><div class="walk-label">ハシビロコウ（1日）</div><div class="walk-bar" style="width:3%;background:#0e8f6e;"><span>ほぼ0km</span></div></div>
+              <div class="walk-row">
+                <div class="walk-label">倉庫内ピッキング</div>
+                <div class="walk-track">
+                  <div class="walk-bar" style="width:47%;background:#c4870a;"></div>
+                  <span class="walk-val">10〜20km</span>
+                </div>
+              </div>
+              <div class="walk-row">
+                <div class="walk-label">フルマラソン</div>
+                <div class="walk-track">
+                  <div class="walk-bar" style="width:100%;background:#5a6880;"></div>
+                  <span class="walk-val">42.195km</span>
+                </div>
+              </div>
+              <div class="walk-row">
+                <div class="walk-label">一般社会人（1日平均）</div>
+                <div class="walk-track">
+                  <div class="walk-bar" style="width:12%;background:#7c3aed;"></div>
+                  <span class="walk-val">約5km</span>
+                </div>
+              </div>
+              <div class="walk-row">
+                <div class="walk-label">ハシビロコウ（1日）</div>
+                <div class="walk-track">
+                  <div class="walk-bar" style="width:1%;background:#0e8f6e;"></div>
+                  <span class="walk-val">ほぼ0km 🦉</span>
+                </div>
+              </div>
             </div>
             <p class="reading-figure-cap">ピッキング作業者は、ハーフマラソンに近い距離を毎日歩く。私から見ると「飛んだほうが早くないですか」と思いますが、人間に翼はないので歩くしかない。歩くしかないなら<strong>商品の方を運んでもらえばいい</strong>というのがGTPの発想です。</p>
           </div>
@@ -1372,26 +1437,20 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
         </div>
       </article>
 
-      <!-- INDUSTRY-SPECIFIC SECTIONS -->
-      <div class="reading-industry-wrap">
-        <div class="reading-industry-h">
-          <h3 class="reading-industry-title">業種別の読本</h3>
-          <p class="reading-industry-lead">商談相手に合わせて、その業界の構造・固有事情・自動化のリアルを押さえておくためのガイド。クリックで展開します。</p>
-        </div>
+      </div><!-- /reading-overview -->
 
-        <!-- 食品・食品卸 -->
-        <details class="reading-industry">
-          <summary class="reading-industry-sum">
-            <span class="ri-tag" style="background:#0e8f6e;">食品・食品卸</span>
-            <span class="ri-title">3温度帯と賞味期限という宿命</span>
-            <span class="ri-arrow">▼</span>
-          </summary>
-          <div class="reading-industry-body">
-            <div class="reading-talker">
-              <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/><ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/><path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/><path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/><ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/><path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/><ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33 Q42 36 47 33" fill="#8b939c"/><path d="M53 33 Q58 36 63 33" fill="#8b939c"/><ellipse cx="42" cy="37.5" rx="2.2" ry="1.8" fill="#222"/><ellipse cx="58" cy="37.5" rx="2.2" ry="1.8" fill="#222"/></svg></div>
-              <div class="reading-bubble">食品物流の話。私は鳥なので生鮮品を見ているとつい食欲が出ますが、なるべく集中して解説します。</div>
-            </div>
-            <div class="reading-body">
+      <!-- Food content -->
+      <div class="reading-content reading-food" data-rcontent="food" style="display:none;">
+        <div class="reading-cover">
+          <div class="reading-cover-icon"></div>
+          <h2 class="reading-cover-title">🍱 食品・食品卸 — 3温度帯と賞味期限という宿命</h2>
+        </div>
+        <article class="reading-section">
+          <div class="reading-talker">
+            <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/><ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/><path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/><path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/><ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/><path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/><ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33 Q42 36 47 33" fill="#8b939c"/><path d="M53 33 Q58 36 63 33" fill="#8b939c"/><ellipse cx="42" cy="37.5" rx="2.2" ry="1.8" fill="#222"/><ellipse cx="58" cy="37.5" rx="2.2" ry="1.8" fill="#222"/></svg></div>
+            <div class="reading-bubble">食品物流の話。私は鳥なので生鮮品を見ているとつい食欲が出ますが、なるべく集中して解説します。</div>
+          </div>
+          <div class="reading-body">
 
               <div class="ri-h">§1. 業界の輪郭</div>
               <p>食品物流というと、人間の皆さんは「スーパーに並んでる商品を運ぶアレでしょ」と思うわけですが、実際にはもっと複雑な多層構造をしています。</p>
@@ -1505,11 +1564,308 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
                 </tbody>
               </table>
 
-            </div>
           </div>
-        </details>
+        </article>
+      </div><!-- /reading-food -->
 
-      </div>
+      <!-- EC content will be inserted here -->
+      <div id="reading-ec-anchor"></div>
+
+      <!-- EC content -->
+      <div class="reading-content reading-ec" data-rcontent="ec" style="display:none;">
+        <div class="reading-cover">
+          <h2 class="reading-cover-title">🛒 EC・通販 — 注文1個ごとに人を1人雇えない</h2>
+        </div>
+
+        <article class="reading-section">
+          <div class="reading-h">§1. 業界の輪郭 — 26兆円の市場、その内訳</div>
+          <div class="reading-talker">
+            <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/><ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/><path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/><path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/><ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/><ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33 Q42 36 47 33" fill="#8b939c"/><path d="M53 33 Q58 36 63 33" fill="#8b939c"/><ellipse cx="42" cy="37.5" rx="2.2" ry="1.8" fill="#222"/><ellipse cx="58" cy="37.5" rx="2.2" ry="1.8" fill="#222"/></svg></div>
+            <div class="reading-bubble">EC物流の話。私は基本的にネットショッピングというものをしたことがないので、観察者として淡々と解説します。</div>
+          </div>
+          <div class="reading-body">
+            <p>EC物流の話です。私は基本的にネットショッピングというものをしたことがありません（鳥なので翼で配達してくれるサービスがあれば検討しなくもないですが、聞いたことがない。仮にあっても、配達員より受取人の私の方が動かないのでお互い不毛だと思います）が、人間の皆さんがどれだけEC経由でモノを買っているかは、倉庫の働き方の変化を見ていればよく分かります。</p>
+            <p>まず市場規模から。国内のBtoC-EC市場規模は<strong>26.1兆円</strong>（2024年）、うち物販系が<strong>15.2兆円</strong>。サービス系が8.2兆円、デジタル系が2.7兆円。EC化率（物販）は9.78%で、2025年には10%突破見込み。<small>出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省「令和6年度電子商取引に関する市場調査」（2025年8月）</a></small></p>
+
+            <!-- 図1：EC市場規模の推移 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図1: BtoC-EC市場規模の推移（物販系）</div>
+              <div class="ec-trend">
+                <div class="ec-row"><div class="ec-year">2018</div><div class="ec-bar" style="width:42%;background:#1a6be8aa;"><span>¥9.3兆</span></div></div>
+                <div class="ec-row"><div class="ec-year">2020</div><div class="ec-bar" style="width:55%;background:#1a6be8cc;"><span>¥12.2兆</span></div></div>
+                <div class="ec-row"><div class="ec-year">2022</div><div class="ec-bar" style="width:65%;background:#1a6be8;"><span>¥13.9兆</span></div></div>
+                <div class="ec-row"><div class="ec-year">2024</div><div class="ec-bar" style="width:73%;background:#0d4faa;"><span>¥15.2兆</span></div></div>
+              </div>
+              <p class="reading-figure-cap">コロナで急加速→現在は堅調な成長軌道。<small>出典：経済産業省「電子商取引に関する市場調査」各年版</small></p>
+            </div>
+
+            <p>ここで注意なのが、「EC化率10%」を「日本のEC化って遅れてる」と早合点する人がよくいることです。世界平均は20%程度なので確かに数字だけ見れば遅め。ただし、日本は<strong>実店舗網が他国より圧倒的に充実している</strong>（コンビニ5.5万店、スーパー2万店超）国なので、そもそも比較対象が違うんですよ。リアル店舗の利便性が高い国ほどEC化率は低くなる傾向で、これは欧米でも同じ。アメリカの田舎では最寄りスーパーまで車で30分とか普通にあるので、そりゃECに頼ります。<strong>日本は徒歩3分にコンビニがある異常な国</strong>だ、と認識しておくと、業界の数字が見えやすくなります。</p>
+            <p>それでも<strong>金額ベースでは世界4位</strong>の規模を持っているのが日本市場です。</p>
+
+            <!-- 図2：物販系EC化率と業種別市場規模 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図2: 業種別EC化率（2024年）</div>
+              <table class="ec-rate-table">
+                <thead><tr><th>業種</th><th>市場規模</th><th>EC化率</th></tr></thead>
+                <tbody>
+                  <tr><td>書籍・映像・音楽ソフト</td><td>—</td><td><strong style="color:#e8341a;">56.5%</strong></td></tr>
+                  <tr><td>生活家電・AV機器・PC</td><td>¥2.74兆</td><td><strong style="color:#c4870a;">43.0%</strong></td></tr>
+                  <tr><td>生活雑貨・家具・インテリア</td><td>¥2.56兆</td><td><strong style="color:#c4870a;">32.6%</strong></td></tr>
+                  <tr><td>衣類・服装雑貨</td><td>¥2.80兆</td><td>—</td></tr>
+                  <tr><td>食品・飲料・酒類</td><td>¥3.12兆 (+6.36%)</td><td><strong style="color:#1a9e4a;">4%前後</strong></td></tr>
+                </tbody>
+              </table>
+              <p class="reading-figure-cap">家電・書籍はもう「店舗で買う方が珍しい」レベル。一方で食品はEC化率が低く、ここに伸びしろがある。<small>出典：経済産業省（2025年8月）</small></p>
+            </div>
+
+            <p>家電・書籍・PCはもう「店舗で買う方が珍しい」レベルです。書店が消えていく速度は皆さんも肌で感じているはず。私は屋根裏で観察しているだけですが、人間が紙の本を抱えて歩く姿は確かに減りました。一方で食品はEC化率がまだ4%前後と低い。生鮮品をネットで買う文化が日本ではまだ薄いんですね。鮮度・温度管理が難しいうえに、「自分の目で選びたい」需要が根強い。私だったら魚を画面越しに選ぶのは不安です（鮮度は嘴で判定する派なので）。</p>
+
+            <p>プレイヤーは大きく3層に分かれます。</p>
+
+            <p><strong>①  総合ECモール</strong><br>Amazon、楽天市場、Yahoo!ショッピング。<strong>三大ECモールで国内BtoC物販の流通額の50%超</strong>を握っているとされます。<small>出典：Nint推計（2025年）</small>要するに、皆さんがネットで買い物するとき、半分以上はこの3社のどこかを経由している計算。地球上のEC取引が3社に集中する構造、私から見るとちょっとした生物の進化史を見ているようです。一強だった種が一夜にして滅び、別の種が大繁殖する、みたいな。</p>
+
+            <p><strong>②  専業EC</strong><br>ZOZO、ユニクロ.com、ヨドバシ.com、ニトリのEC、ベルメゾン、千趣会、無印良品など。特定カテゴリに特化したEC。最近の傾向は、<strong>実店舗を持つ企業のEC化</strong>で、ユニクロやニトリのように店舗とECを一体化させたオムニチャネル戦略が主流になってきました。</p>
+
+            <p><strong>③  D2C・個別ブランドEC</strong><br>メーカーが自社サイトで直接消費者に売るパターン。コロナ以降の成長領域で、特に化粧品・健康食品・アパレルで急増。ファンケル・北の達人コーポレーション・BASE FOODあたりが代表例。</p>
+
+            <p>そして、これらEC事業者の物流を裏で支えているのが<strong>3PL</strong>（ヤマト運輸、佐川グローバルロジスティクス、SBSロジコム、アスクル等）。実はEC物流の主役は3PLで、EC企業の8〜9割は自社で物流を持たず3PLに委託しています。「ECやってます」と謳う企業のうち、実際に倉庫で汗を流しているのは3PLという構図。光合成は植物がやって、果実は人間が食べる、みたいな分業ですね（雑な比喩で申し訳ない）。</p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <div class="reading-h">§2. 物流の固有事情 — 「シングル・1個・即日」が物流の常識を破壊した</div>
+          <div class="reading-body">
+            <p>EC物流が他業界と決定的に違うポイントを、5つに分けて掘り下げます。</p>
+
+            <p><strong>注文単位の極小化</strong></p>
+            <p>スーパーやコンビニ向けの物流は「店舗に箱単位・パレット単位で運ぶ」のが基本。1回の出荷で1パレット（100ケース）とか、トラック1台分とか、まとまった量が動きます。</p>
+            <p>ECは違います。<strong>1人の顧客が1〜数個の商品を注文</strong>し、それを<strong>個人宅まで</strong>届ける。1注文あたりの平均商品数（同梱率）は<strong>1.5〜2個</strong>程度。注文数で見ると桁違いに多いのに、1件あたりの量は極小。</p>
+
+            <!-- 図3：BtoB物流とEC物流の注文構造比較 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図3: BtoB物流 vs EC物流の注文構造</div>
+              <div class="order-compare">
+                <div class="order-side">
+                  <div class="order-era">BtoB物流</div>
+                  <div class="order-icon">📦×100</div>
+                  <div class="order-detail">同じ商品100個<br>→ 1店舗へ</div>
+                  <div class="order-tag" style="background:#1a9e4a;">ピッキング1回で完結</div>
+                </div>
+                <div class="order-vs">vs</div>
+                <div class="order-side">
+                  <div class="order-era">EC物流</div>
+                  <div class="order-icon">📦×1万</div>
+                  <div class="order-detail">1個ずつ違う商品<br>→ 1万人の顧客へ</div>
+                  <div class="order-tag" style="background:#e8341a;">ピッキング作業10倍超</div>
+                </div>
+              </div>
+              <p class="reading-figure-cap">同じ売上規模でも、ECに切り替わると<strong>ピッキング作業量が10倍以上</strong>になる。</p>
+            </div>
+
+            <p>これが物流現場の難易度を一気に押し上げた原因です。1注文100個を100店舗に届けるBtoB物流に対して、1注文1個を1万人に届けるEC物流。後者の方が物理的にやることが多いのは、計算するまでもないですよね。だから人間がいくらいても足りない。GTPやAMRが急速に普及した最大の理由はここにあります。</p>
+
+            <p><strong>SKU数が桁違い</strong></p>
+            <p>Amazonの取扱SKU数は<strong>数億点</strong>と言われています。専業ECでも数十万〜数百万SKUが普通。例えばZOZOTOWNは約1,500ブランド・常時90万点を扱います。ヨドバシ.comも家電だけで数十万点。</p>
+            <p>これだけのアイテムを物理的にどう保管するか。倉庫の床面積は限られているので、<strong>高密度保管</strong>が必須になります。だからビン型GTP（AutoStore、Skypod）が普及した。同じ面積に何倍も保管できるロボット倉庫がなければ、ECビジネスは成立しなくなったと言っても過言じゃありません。</p>
+            <p>私たちアリ（同じ群居性の鳥仲間として近い感覚があるんですが、彼らも巣の中の地下空間を最大限活用して食料を保管します。3次元活用の達人）から見ると、人間が長らく「平置きで保管」していたこと自体が、進化が遅れていた証拠だと思いますね。</p>
+
+            <p><strong>即日・翌日配送のプレッシャー</strong></p>
+            <p>「14時までの注文は当日出荷、翌日着」みたいな約束を、人間の皆さんはサラっとしますが、これは物流現場にとっては相当ハードです。注文締切から梱包・出荷までの猶予が<strong>数時間</strong>しかない。倉庫が「ちょっと考えさせて」と言える時間はありません。</p>
+
+            <!-- 図4：注文から配送までの時間軸 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図4: 注文から配送までの時間軸</div>
+              <div class="timeline">
+                <div class="tl-row"><div class="tl-time">14:00</div><div class="tl-event" style="background:#1a6be8;">注文締切</div></div>
+                <div class="tl-row"><div class="tl-time">14:01〜</div><div class="tl-event" style="background:#c4870a;">ピッキング開始（数千〜数万件）</div></div>
+                <div class="tl-row"><div class="tl-time">〜17:00</div><div class="tl-event" style="background:#e8341a;">梱包・出荷（3時間以内）</div></div>
+                <div class="tl-row"><div class="tl-time">17:00</div><div class="tl-event" style="background:#9b1fd4;">トラック出発</div></div>
+                <div class="tl-row"><div class="tl-time">翌日</div><div class="tl-event" style="background:#1a9e4a;">配達完了</div></div>
+              </div>
+              <p class="reading-figure-cap">注文締切から3時間で出荷を終える必要がある。<strong>倉庫が「ちょっと考えさせて」と言える時間はゼロ</strong>。</p>
+            </div>
+
+            <p>Amazon Primeの普及で「翌日着が標準」になり、今では「当日着」「即日着」の競争に。1〜2時間配送（Amazon Flex、Uber Eats Marketplace等）まで登場しました。</p>
+            <p>私から見ると、人間が自分で自分の首を絞めているように見えます。誰も「2時間後に届いてほしい」なんて、本来は要求していなかったはずなんですよ。「Amazonがやってるからうちもやらないと」で各社が張り合った結果、誰も得をしない高速化競争に突入した。ちなみに我々ハシビロコウは「水面の魚が浮上するまで待つ」ことに何時間でも耐えられる種族なので、その対極にあるのがEC物流ということになります。完全に向いてない業界です。</p>
+
+            <p><strong>配送先が「個人宅」</strong></p>
+            <p>BtoB物流は「企業の倉庫から企業の店舗・センターへ」運ぶので、配送先が明確で固定的。受け取る人も決まっています。ECは違って、<strong>全国の個人宅</strong>が配送先になる。不在再配達問題、置き配トラブル、住所間違い、マンションのオートロック対応、配達指定時間の細分化。配送難易度がぜんぜん違います。</p>
+            <p>不在再配達なんて、配達員からすれば「行ったのに会えなかった、また行く」を繰り返すわけで、私が魚を狙ってる時に「すみません、今出かけてました」と魚に言われるようなものです。私だったら3回目で諦めますが、ヤマトの配達員は諦めないのが偉い。</p>
+            <p>この「<strong>ラストワンマイル</strong>」（配送センターから個人宅までの最終区間）が、EC物流のコストの半分以上を占めることが多く、各社の最大のコスト課題になっています。Amazon Lockerやヤマト運輸のPUDOステーション、置き配の普及はすべてこの課題への対応です。</p>
+
+            <p><strong>在庫予測の困難さ</strong></p>
+            <p>普段は1日1個しか動かない商品が、ある日突然インフルエンサーに紹介されて100個売れる、みたいなことが起きます。SNS時代の在庫予測は、ベテランの「勘」が通用しません。逆に「絶対売れる」と思って大量発注した商品が全然動かないこともある。</p>
+            <p>EC物流の在庫管理は、<strong>過去のデータ分析+リアルタイム需要追跡+SNSのトレンド監視</strong>という、もはやデータサイエンスの領域です。倉庫の中の人が、なぜか「TikTokをチェックしている」みたいな光景が普通になりつつあります。仕事中なのに動画を観ているわけではなく、トレンドを把握しないと在庫が読めない、というのが正しい言い分です。</p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <div class="reading-h">§3. 業界の難しさ — 多品種少量・返品・季節波動の三重苦</div>
+          <div class="reading-body">
+            <p>EC物流の現場には、独特の難しさが3つあります。</p>
+
+            <p><strong>多品種少量の極致</strong></p>
+            <p>EC物流では、<strong>取り扱うSKUのうち実際にその日動くのは数%</strong>、というのが普通です。残りの大多数は「念のため在庫しておく」商品。これを<strong>ロングテール</strong>と呼びます。</p>
+
+            <div class="reading-figure">
+              <div class="reading-figure-title">図5: ABC分析と保管戦略</div>
+              <table class="abc-table">
+                <thead><tr><th>区分</th><th>商品数</th><th>売上構成</th><th>保管戦略</th></tr></thead>
+                <tbody>
+                  <tr><td><strong style="color:#e8341a;">A品</strong></td><td>上位20%</td><td>売上の80%</td><td>ロボット倉庫の高頻度エリア</td></tr>
+                  <tr><td><strong style="color:#c4870a;">B品</strong></td><td>中間20%</td><td>売上の15%</td><td>通常の保管エリア</td></tr>
+                  <tr><td><strong style="color:#5a6880;">C品</strong></td><td>下位60%</td><td>売上の5%</td><td>人手ピックの別棚（ロングテール）</td></tr>
+                </tbody>
+              </table>
+              <p class="reading-figure-cap">パレートの法則。ECは「Cの品揃え」が競争力なのでCを切れない。だから<strong>A=ロボット、C=人手</strong>のハイブリッド運用が一般的。</p>
+            </div>
+
+            <p>ECビジネスは「Cの品揃えが豊富であること」が競争力の源泉なので、Cを切り捨てるわけにはいかない。「うちは何でも揃ってます」の説得力が品揃えだからです。でもロボット倉庫にCを大量に入れると保管効率が悪い。だから「Aはロボット倉庫」「Cは別棚で人間ピック」というハイブリッド運用が一般的です。私の倉庫の屋根裏に置いてあるドングリも、よく食べるやつとそうでないやつで区別して置いています（嘘です、ドングリは食べません）。</p>
+
+            <p><strong>返品率の高さ</strong></p>
+            <p>ECは「実物を見てない」状態で買うため、返品率が高い。</p>
+
+            <div class="reading-figure">
+              <div class="reading-figure-title">図6: 業種別の返品率</div>
+              <div class="return-rate">
+                <div class="rr-row"><div class="rr-cat">アパレルEC</div><div class="rr-bar" style="width:80%;background:#e8341a;"><span>20〜30%</span></div></div>
+                <div class="rr-row"><div class="rr-cat">家電・PC</div><div class="rr-bar" style="width:30%;background:#c4870a;"><span>5〜10%</span></div></div>
+                <div class="rr-row"><div class="rr-cat">食品・コスメ</div><div class="rr-bar" style="width:15%;background:#1a9e4a;"><span>3〜5%</span></div></div>
+                <div class="rr-row"><div class="rr-cat">書籍・CD</div><div class="rr-bar" style="width:8%;background:#1a6be8;"><span>1〜3%</span></div></div>
+              </div>
+              <p class="reading-figure-cap">アパレルの返品率は突出。「サイズ違い」「色違い」「思ったより似合わなかった」が三大理由。最後のはEC側のせいじゃない気もする。</p>
+            </div>
+
+            <p>特にアパレルは深刻で、ZOZOTOWNは2020年頃から「サイズ計測サービス」「返品ルールの厳格化」「同梱率の最適化」を進めて返品率を下げる努力を続けています。アパレルECで返品される商品の3割は「サイズが合わない」、2割が「色・素材がイメージと違う」、残りが「思ったより似合わなかった」だそうです。最後のやつ、それECのせいじゃなくない?と私は思います。</p>
+            <p>返品処理（<strong>リバースロジスティクス</strong>と呼びます）の工程は人手依存で、ここがEC物流のボトルネック。検品→再パッケージ→在庫復活→廃棄判定…と工程が多く、自動化が最も遅れている領域です。私から見ると「最初から間違わなければよくないですか」と思いますが、人間は試着もせずに服を買って後悔する生き物のようです。私たちハシビロコウは羽根が抜けたらそのままなので、サイズ違いの問題はそもそも発生しません。</p>
+
+            <p><strong>季節波動の凶暴さ</strong></p>
+            <p>セール時期に物量が<strong>5〜10倍</strong>になります。EC物流の主要なピーク：</p>
+            <ul class="reading-list">
+              <li><strong>6月</strong>：楽天スーパーセール</li>
+              <li><strong>7月</strong>：Amazon Prime Day</li>
+              <li><strong>11月下旬</strong>：ブラックフライデー（最大級）</li>
+              <li><strong>12月</strong>：年末セール・クリスマス商戦</li>
+              <li><strong>3月</strong>：年度末セール</li>
+            </ul>
+
+            <div class="reading-figure">
+              <div class="reading-figure-title">図7: EC物流の年間波動カレンダー</div>
+              <div class="ec-calendar">
+                <div class="ec-month"><div class="ec-mon">1月</div><div class="ec-mbar" style="height:30%;"></div></div>
+                <div class="ec-month"><div class="ec-mon">2月</div><div class="ec-mbar" style="height:22%;"></div></div>
+                <div class="ec-month"><div class="ec-mon">3月</div><div class="ec-mbar" style="height:50%;background:#c4870a;"></div></div>
+                <div class="ec-month"><div class="ec-mon">4月</div><div class="ec-mbar" style="height:30%;"></div></div>
+                <div class="ec-month"><div class="ec-mon">5月</div><div class="ec-mbar" style="height:28%;"></div></div>
+                <div class="ec-month"><div class="ec-mon">6月</div><div class="ec-mbar" style="height:60%;background:#c4870a;"></div></div>
+                <div class="ec-month"><div class="ec-mon">7月</div><div class="ec-mbar" style="height:65%;background:#c4870a;"></div></div>
+                <div class="ec-month"><div class="ec-mon">8月</div><div class="ec-mbar" style="height:32%;"></div></div>
+                <div class="ec-month"><div class="ec-mon">9月</div><div class="ec-mbar" style="height:30%;"></div></div>
+                <div class="ec-month"><div class="ec-mon">10月</div><div class="ec-mbar" style="height:35%;"></div></div>
+                <div class="ec-month"><div class="ec-mon">11月</div><div class="ec-mbar" style="height:95%;background:#e8341a;"></div></div>
+                <div class="ec-month"><div class="ec-mon">12月</div><div class="ec-mbar" style="height:85%;background:#e8341a;"></div></div>
+              </div>
+              <p class="reading-figure-cap">11月（ブラックフライデー）と12月（年末）が最大ピーク。<strong>平常時の8〜10倍</strong>の物量。設備設計のジレンマがここに凝縮される。</p>
+            </div>
+
+            <p>ブラックフライデー前後の1週間は物量が普段の8〜10倍、Amazon Prime Dayは5〜7倍になります。平常時の設備で対応すると爆死。Booztのようなアパレル大手は、EC需要が読めることを前提に、ロボット倉庫を「想定ピーク日に合わせて」設計しています。それでも当日は綱渡り。</p>
+            <p>Walmartが2022年からSymboticのWaaS型自動化を全米42拠点に展開しているのも、ブラックフライデーのピーク処理能力を確保することが大きな目的の一つでした。<small>出典：<a href="https://www.symbotic.com/about/news-events/news/walmart-and-symbotic-expand-partnership-to-implement-industry-leading-automation-system/" target="_blank">Symbotic公式プレスリリース</a></small></p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <div class="reading-h">§4. 自動化のリアル — ECは自動化の最前線</div>
+          <div class="reading-body">
+            <p>EC物流は、<strong>ロボット導入が最も進んでいる業種</strong>です。理由はシンプルで、人力では無理だから。事例集を見ても、EC関連が9件と最も多くなっています（事例の中では食品と並んで首位）。</p>
+
+            <p><strong>刺さる領域</strong></p>
+
+            <p><strong>①  高密度保管+GTP</strong></p>
+            <p>AutoStore、Geek+、Exotec Skypod。</p>
+            <ul class="reading-list">
+              <li><strong>Boozt（スウェーデン）</strong>：1,150台のロボットで120万ビンを管理、保管スペース75%削減・稼働率99.7%・最速63秒フルフィルメント<small>出典：<a href="https://www.autostoresystem.com/cases/boozts-successful-journey-with-autostore-warehouse-automation" target="_blank">AutoStore公式事例</a></small></li>
+              <li><strong>ユニクロ・ファーストリテイリング</strong>：Exotec Skypodをグローバル展開、3社（ダイフク・Mujin・Exotec）と戦略的提携<small>出典：<a href="https://www.fastretailing.com/jp/ir/news/1911131400.html" target="_blank">ファーストリテイリング公式IR</a></small></li>
+              <li><strong>PUMA（米国・インディアナポリス）</strong>：30.5万ビンの北米最大級AutoStore、容量10倍、1日15万オーダー<small>出典：<a href="https://www.autostoresystem.com/cases/puma-increase-capacity-10x" target="_blank">AutoStore公式事例</a></small></li>
+            </ul>
+
+            <p><strong>②  棚搬送AMR</strong></p>
+            <p>アスクル、アルペングループ、ナイキジャパンなどがGeek+ EVEを大量導入：</p>
+            <ul class="reading-list">
+              <li><strong>アスクル</strong>：111台のEVE P500R<small>出典：<a href="https://robotstart.info/2020/07/20/geek-askul.html" target="_blank">ロボスタ記事</a></small></li>
+              <li><strong>アルペングループ</strong>：216台、出庫能力3倍<small>出典：<a href="https://www.geekplus.jp/case/alpen/" target="_blank">ギークプラス公式</a></small></li>
+              <li><strong>ナイキジャパン</strong>：200台以上<small>出典：<a href="https://www.atpress.ne.jp/news/204830" target="_blank">アットプレス</a></small></li>
+            </ul>
+            <p>ピッキング作業者の歩行をほぼゼロにできるのが強み。</p>
+
+            <p><strong>③  大規模WaaS型自動化</strong></p>
+            <p>Walmart×Symboticは全米42拠点に展開。<strong>入荷検品→デパレ→高密度保管→出荷パレタイズまでを一気通貫で自動化</strong>。2025年1月にはWalmartがロボット事業をSymboticに売却するレベルの一体化。</p>
+            <p>イオン×Ocadoの「Green Beans」（誉田CFC）は、最大1,000台のロボットが秒速4mで走行、50品を約6分でピッキング（人間の約10倍）。2025年にはオングリッドロボットピックを30台導入し、作業工程の約30%を自動化。<small>出典：<a href="https://prtimes.jp/main/html/rd/p/000000047.000136256.html" target="_blank">イオンネクスト公式</a></small></p>
+
+            <p><strong>難しい領域</strong></p>
+            <ul class="reading-list">
+              <li><strong>返品処理</strong>：返品された商品の状態確認・検品・再販判定は人間の方が得意。完全自動化は当面難しい。</li>
+              <li><strong>ロングテール商品の扱い</strong>：年に数回しか動かない商品をどう保管するか。ABC分析で頻度別に分けて、Cはあえて「手作業エリア」に置く運用が一般的。</li>
+              <li><strong>同梱・包装の最適化</strong>：「複数商品を1箱にまとめる」「ギフトラッピング」「のし対応」など例外処理。日本人の「丁寧な包装」文化は世界一面倒だと思います。海外のECで届く荷物は段ボールに商品ポンと入ってますが、日本は2重3重に緩衝材、シール、メッセージカード。私は梱包を解くだけで疲れます（解いたことありませんが）。</li>
+              <li><strong>ラストワンマイル</strong>：倉庫の中はほぼロボット化できても、配送センターから個人宅までの最後の区間は、依然として人間のドライバーが担当。ドローンは私の仲間（鳥類）の縄張りを侵すので、私は密かに反対しています。</li>
+            </ul>
+
+            <p><strong>投資の特徴</strong></p>
+            <p>EC物流の自動化投資は、<strong>WaaS型（Robot as a Service）が広がりやすい領域</strong>でもあります。物量変動が大きく、台数を柔軟に増減したい・初期投資を抑えてROIを早く出したい・新拠点立ち上げが多くスケールアップ前提、というニーズに合致するから。ラピュタロボティクスはこのRaaSモデルの代表格で、月額制でAMRを提供。事例集でも国内3PL・卸の導入が急増しています。</p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <div class="reading-h">§5. 業界の裏話 — Amazon・楽天・メルカリと物流戦略</div>
+          <div class="reading-body">
+            <p>最後に、商談の雑談で使える業界の裏話を少し。</p>
+
+            <p><strong>Amazonの「物流を自社化する」戦略</strong></p>
+            <p>Amazonは2010年代から段階的に<strong>自社配送網（Amazon Logistics）</strong>を構築してきました。米国では2020年時点で既に<strong>全配送の50%超を自社で完結</strong>しています。FedEx、UPSへの依存を減らし、配送の主導権を握る戦略。日本ではまだヤマト運輸への依存度が高いですが、デリバリープロバイダ網の拡大、Amazon Flexの普及で、徐々に自社化が進んでいます。Amazonは「物流費を払うのではなく、物流で稼ぐ」会社になりつつあります。怖いですね、人間社会の競争原理。我々ハシビロコウは「魚は水場から来るもの」という分業を保っていますが、人間はすぐ垂直統合したがる。</p>
+
+            <p><strong>楽天の「物流が弱点」問題</strong></p>
+            <p>楽天市場は出店者数では国内最大ですが、楽天自身が物流網を持っていなかったため、出店店舗ごとに配送がバラバラという課題がありました。これを解決するため、<strong>楽天スーパーロジスティクス（RSL）</strong>を立ち上げ、共通の物流拠点を整備中。日本郵便と提携も進めています。Amazonに対抗するには「物流」が肝、というのは楽天もよく分かっているわけです。</p>
+
+            <p><strong>メルカリの登場で何が変わったか</strong></p>
+            <p>CtoC-EC（個人間取引）のメルカリは、<strong>全く新しい物流需要</strong>を生みました。「個人から個人へ」の発送が急増し、これに対応したのが<strong>ヤマトのネコポス、日本郵便のゆうパケット</strong>などの小型配送サービス。コンビニ受け取り、ポスト投函型配送が普及した最大の理由はメルカリです。物流業界では、メルカリの登場は「ECの民主化」と表現されることもあります。それまで企業しか使えなかった配送網が、個人にまで開かれた。</p>
+
+            <p><strong>Ocadoは何がそんなにすごいのか</strong></p>
+            <p>イオンが日本展開したGreen Beansの裏側にいる<strong>Ocado</strong>（英国）は、もともと自社で食品ECを運営していたら、その自動化技術が他社に売れるようになって、今や<strong>プラットフォーム提供企業</strong>として世界展開する会社になりました。Ocadoの強みは「ハードとソフトの完全統合」で、ロボット・倉庫設計・WMS・需要予測AIまでセットで提供。Krogerやイオン、Sobeys（カナダ）、ICA（スウェーデン）など、世界の食品小売大手が次々と契約。<strong>「EC化が遅れている食品小売」</strong>にとっての救世主的存在になっています。</p>
+            <p>ちなみにKrogerは2025年に複数のOcado施設を閉鎖するというニュースが出て、波紋を呼んでいます。理由は「EC需要の伸びが想定より遅かった」とのこと。<small>出典：<a href="https://www.grocerydive.com/news/kroger-ocado-close-automated-fulfillment-centers-robotics-grocery-ecommerce/805931/" target="_blank">Grocery Dive記事</a></small><strong>自動化への投資のタイミングは難しい</strong>、という教訓ですね。早すぎても、遅すぎても、ダメ。私のように「魚が浮上する瞬間」を見極めるべきです、皆さん。</p>
+          </div>
+        </article>
+
+        <article class="reading-section">
+          <div class="reading-h">§6. EC物流 業界用語ミニ辞典</div>
+          <div class="reading-body">
+            <p>商談で出てきがちな用語をざっと押さえておくと、相手の話が理解しやすくなります。</p>
+            <table class="glossary-table">
+              <tbody>
+                <tr><td class="gl-term">FC</td><td>Fulfillment Center。EC専用の物流センター。Amazon FBA等で使われる</td></tr>
+                <tr><td class="gl-term">3PL</td><td>荷主の物流業務を丸ごと請け負う事業者。EC物流の主役</td></tr>
+                <tr><td class="gl-term">CFC</td><td>Customer Fulfillment Center。顧客向けフルフィルメントセンター。Ocado系で多用</td></tr>
+                <tr><td class="gl-term">オムニチャネル</td><td>店舗・EC・カタログ等の販売チャネルを統合する考え方</td></tr>
+                <tr><td class="gl-term">OMS</td><td>Order Management System。注文管理システム。WMSと連携</td></tr>
+                <tr><td class="gl-term">WMS</td><td>Warehouse Management System。倉庫管理システム</td></tr>
+                <tr><td class="gl-term">WES</td><td>Warehouse Execution System。WMSとロボット制御の中間層</td></tr>
+                <tr><td class="gl-term">SKU</td><td>Stock Keeping Unit。在庫管理の最小単位</td></tr>
+                <tr><td class="gl-term">ロングテール</td><td>1日数個しか売れないが種類だけ多い商品群</td></tr>
+                <tr><td class="gl-term">ABC分析</td><td>商品を出荷頻度でランク分け（A=多く動く、C=ほぼ動かない）</td></tr>
+                <tr><td class="gl-term">UPH / ピッキング率</td><td>1時間あたりのピッキング件数（Units Per Hour）。EC現場のKPI</td></tr>
+                <tr><td class="gl-term">同梱率</td><td>1注文あたり何個の商品が入っているか</td></tr>
+                <tr><td class="gl-term">置き配</td><td>宅配時に対面せず玄関先等に置く配達方法</td></tr>
+                <tr><td class="gl-term">ラストワンマイル</td><td>配送センターから個人宅までの最終区間。EC物流の最大コスト</td></tr>
+                <tr><td class="gl-term">CtoC-EC</td><td>メルカリ、ヤフオク等の個人間取引EC</td></tr>
+                <tr><td class="gl-term">リバースロジスティクス</td><td>返品・回収の物流プロセス</td></tr>
+                <tr><td class="gl-term">D2C</td><td>Direct to Consumer。メーカーが直接消費者に売る形態</td></tr>
+                <tr><td class="gl-term">オングリッドロボットピック</td><td>AutoStoreの上で動くロボットによるピッキング自動化</td></tr>
+                <tr><td class="gl-term">ダークストア</td><td>実店舗を装ったEC専用倉庫。即配対応のために都市部に展開</td></tr>
+                <tr><td class="gl-term">マイクロフルフィルメント</td><td>都市部の小型倉庫で素早く配送する仕組み</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+      </div><!-- /reading-ec -->
 
     </div>
   </div>
@@ -3283,6 +3639,24 @@ function buildMarket(){
   }).join('');
 }
 buildMarket();
+
+// ═══════════ READING SUB-TABS ═══════════
+document.querySelectorAll('.rsub').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target = btn.getAttribute('data-rsub');
+    document.querySelectorAll('.rsub').forEach(b=>b.classList.toggle('active', b===btn));
+    document.querySelectorAll('.reading-content').forEach(c=>{
+      const match = c.getAttribute('data-rcontent') === target;
+      c.classList.toggle('active', match);
+      c.style.display = match ? '' : 'none';
+    });
+    // Scroll to top of reading area
+    const wrap = document.querySelector('.reading-wrap');
+    if(wrap) wrap.scrollTop = 0;
+    const view = document.getElementById('view-reading');
+    if(view) view.scrollTop = 0;
+  });
+});
 </script>
 </body>
 </html>
