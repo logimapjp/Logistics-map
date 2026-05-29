@@ -218,6 +218,225 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 
 /* ═══════════ CASES ═══════════ */
 .cases-scroll{flex:1;overflow-y:auto;padding:0;}
+
+/* Market research */
+.market-wrap{max-width:1100px;margin:0 auto;padding:24px 28px 60px;}
+.market-intro{margin-bottom:28px;}
+.market-title{font-size:22px;font-weight:900;color:var(--text);margin:0 0 8px;line-height:1.3;}
+.market-lead{font-size:13px;color:var(--muted);line-height:1.7;margin:0;}
+.market-section{margin-bottom:36px;}
+.market-section-h{font-size:15px;font-weight:800;color:var(--text);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border2);display:flex;align-items:center;gap:8px;}
+.market-flag{font-size:18px;}
+.market-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:14px;}
+.market-card-h{font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;}
+.market-card-text{font-size:13px;color:var(--text2);line-height:1.7;margin:6px 0 10px;}
+.market-hero{background:linear-gradient(135deg,#0e8f6e08,#0e8f6e18);border-left:4px solid #0e8f6e;padding:24px 26px;}
+.market-hero-num{font-family:'DM Mono',monospace;font-size:42px;font-weight:900;color:#0e8f6e;line-height:1;letter-spacing:-1px;}
+.market-hero-unit{font-size:18px;margin-left:6px;font-weight:700;}
+.market-hero-label{font-size:13px;font-weight:700;color:var(--text);margin-top:8px;}
+.market-hero-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+.market-stat{display:flex;align-items:baseline;gap:6px;margin-bottom:6px;}
+.market-stat-num{font-family:'DM Mono',monospace;font-size:28px;font-weight:900;color:#0e8f6e;}
+.market-stat-unit{font-size:12px;color:var(--muted);font-weight:600;}
+.market-source{font-size:10px;color:var(--muted);margin-top:8px;font-style:italic;}
+.market-source a{color:var(--sb);text-decoration:none;}
+.market-source a:hover{text-decoration:underline;}
+.market-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.market-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}
+.market-mini{padding:14px;}
+.market-mini-source{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+.market-mini-num{font-family:'DM Mono',monospace;font-size:24px;font-weight:900;color:var(--text);}
+.market-mini-detail{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.market-list{margin:6px 0 8px;padding-left:18px;font-size:13px;color:var(--text2);line-height:1.8;}
+.market-list li{margin-bottom:4px;}
+.market-summary{background:linear-gradient(135deg,#fff,#fafafa);border:2px solid var(--sb);}
+.market-summary-list{margin:0;padding-left:18px;font-size:13px;color:var(--text);line-height:1.8;}
+.market-summary-list li{margin-bottom:8px;}
+.market-summary-list strong{color:var(--sb);font-weight:800;}
+.market-chart{height:240px;display:flex;align-items:flex-end;gap:6px;padding:18px 8px 30px;position:relative;border-bottom:1px solid var(--border2);}
+.market-chart-bar{flex:1;background:linear-gradient(180deg,#0e8f6e,#0e8f6e88);border-radius:4px 4px 0 0;position:relative;min-height:8px;transition:opacity .15s;}
+.market-chart-bar:hover{opacity:0.85;}
+.market-chart-bar.future{background:linear-gradient(180deg,#0e8f6e66,#0e8f6e22);border:1.5px dashed #0e8f6e;}
+.market-chart-val{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--text2);white-space:nowrap;}
+.market-chart-year{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
+.market-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px;}
+.market-table thead th{text-align:left;font-size:10px;font-weight:700;color:var(--muted);padding:6px 10px;border-bottom:2px solid var(--border2);background:var(--surface2);}
+.market-table tbody td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text2);}
+.market-table tbody tr:last-child td{border-bottom:none;}
+.market-table strong{color:var(--text);font-weight:800;}
+
+/* ─ Reading (Business Primer) ─ */
+.reading-wrap{max-width:780px;margin:0 auto;padding:30px 28px 80px;}
+.reading-cover{text-align:center;padding:30px 0 40px;border-bottom:2px solid var(--border2);margin-bottom:36px;}
+.reading-cover-icon{display:flex;justify-content:center;margin-bottom:14px;}
+.reading-cover-title{font-size:26px;font-weight:900;color:var(--text);margin:0 0 10px;}
+.reading-cover-lead{font-size:13px;color:var(--muted);line-height:1.7;margin:0;}
+.reading-section{margin-bottom:50px;}
+.reading-h{font-size:18px;font-weight:900;color:var(--text);margin-bottom:18px;padding:10px 14px;background:linear-gradient(90deg,var(--sb)15,transparent);border-left:4px solid var(--sb);line-height:1.4;}
+.reading-talker{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;}
+.reading-talker-icon{flex-shrink:0;background:#f0f2f4;border-radius:50%;padding:6px;border:2px solid var(--border2);}
+.reading-bubble{flex:1;background:#f0f2f4;border-radius:14px;padding:12px 16px;font-size:13px;color:var(--text2);line-height:1.6;position:relative;font-style:italic;}
+.reading-bubble::before{content:'';position:absolute;left:-8px;top:14px;width:0;height:0;border-style:solid;border-width:6px 8px 6px 0;border-color:transparent #f0f2f4 transparent transparent;}
+.reading-body{font-size:14px;color:var(--text);line-height:1.9;}
+.reading-body p{margin:0 0 14px;}
+.reading-body strong{color:var(--sb);font-weight:800;}
+.reading-figure{margin:24px 0;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;}
+.reading-figure-title{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase;}
+
+/* Player map for section A */
+.player-map{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.player-box{background:#fff;border:2px solid var(--border2);border-radius:10px;padding:10px 14px;text-align:center;min-width:140px;}
+.player-shipper{border-color:#c4870a;background:#fff8eb;}
+.player-3pl{border-color:#1a9e4a;background:#ecfbf2;}
+.player-re{border-color:#7c3aed;background:#f3edff;}
+.player-trans{border-color:#5a6880;background:#f0f2f5;}
+.player-vendor{border-color:var(--sb);background:#fff0e6;position:relative;}
+.player-here{box-shadow:0 0 0 3px var(--sb)44;}
+.player-role{font-size:10px;font-weight:800;color:var(--muted);letter-spacing:.5px;margin-bottom:2px;text-transform:uppercase;}
+.player-name{font-size:12px;font-weight:700;color:var(--text);line-height:1.4;}
+.player-name small{font-size:10px;color:var(--muted);font-weight:500;}
+.player-arrow{font-size:10px;color:var(--muted);font-weight:700;}
+.player-arrow-down::before{content:'↓ ';color:var(--muted2);}
+.player-three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;}
+.player-three .player-arrow{text-align:center;}
+.reading-figure-cap{font-size:11px;color:var(--muted);margin:10px 0 0;line-height:1.6;}
+.reading-figure-cap small{display:block;font-size:10px;color:var(--muted2);margin-top:3px;}
+.reading-list{margin:8px 0 14px;padding-left:20px;font-size:14px;line-height:1.9;color:var(--text);}
+.reading-list li{margin-bottom:6px;}
+.reading-list strong{color:var(--sb);font-weight:800;}
+
+/* Tier chart (B) */
+.tier-chart{display:flex;flex-direction:column;gap:6px;margin:4px 0;}
+.tier-row{display:flex;align-items:center;gap:10px;}
+.tier-name{width:140px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
+.tier-bar{height:22px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+
+/* Time pie (B) */
+.time-pie{margin:4px 0;}
+.time-bar{display:flex;height:40px;border-radius:6px;overflow:hidden;}
+.time-seg{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;line-height:1.2;}
+.time-seg small{font-family:'DM Mono',monospace;font-weight:600;opacity:0.9;}
+
+/* Flow chart (C) */
+.flow-chart{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center;}
+.flow-step{flex:1;min-width:88px;background:#fff;border:2px solid var(--border2);border-radius:10px;padding:10px 6px;text-align:center;}
+.flow-step.flow-hi{box-shadow:0 0 0 3px #c4870a33;}
+.flow-num{font-family:'DM Mono',monospace;font-size:14px;font-weight:900;color:var(--muted);margin-bottom:3px;}
+.flow-name{font-size:11px;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:4px;}
+.flow-desc{font-size:10px;color:var(--muted);line-height:1.4;}
+.flow-desc strong{color:#c4870a;font-weight:800;}
+.flow-arrow{color:var(--muted2);font-size:14px;font-weight:700;}
+
+/* Walk compare (C) */
+.walk-compare{display:flex;flex-direction:column;gap:6px;}
+.walk-row{display:flex;align-items:center;gap:10px;}
+.walk-label{width:170px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
+.walk-bar{height:22px;background:#c4870a;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+
+/* Triple crisis (D) */
+.triple-crisis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.crisis-box{background:#fff;border:2px solid var(--border2);border-radius:10px;padding:14px;text-align:center;}
+.crisis-icon{font-size:28px;margin-bottom:6px;}
+.crisis-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.crisis-stat{font-size:11px;color:var(--text2);margin-bottom:8px;}
+.crisis-stat strong{font-family:'DM Mono',monospace;font-size:16px;color:#e8341a;}
+.crisis-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* Driver chart (D) */
+.driver-chart{display:flex;flex-direction:column;gap:6px;}
+.dc-row{display:flex;align-items:center;gap:10px;}
+.dc-year{width:140px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
+.dc-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+
+/* Auto matrix (E) */
+.auto-matrix{width:100%;border-collapse:collapse;font-size:12px;}
+.auto-matrix thead th{text-align:left;font-size:10px;font-weight:700;color:var(--muted);padding:7px 10px;border-bottom:2px solid var(--border2);background:var(--surface2);}
+.auto-matrix tbody td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);}
+.mat-dot{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:1px;}
+.mat-high{color:#1a9e4a;}
+.mat-mid{color:#c4870a;}
+.mat-low{color:#e8341a;}
+
+/* Vendor grid (E) */
+.vendor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.vendor-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px;}
+.vendor-name{font-size:12px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.vendor-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* Peak chart (F) */
+.peak-chart{display:flex;flex-direction:column;gap:6px;}
+.peak-row{display:flex;align-items:center;gap:10px;}
+.peak-label{width:140px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
+.peak-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+
+/* Order compare (F) */
+.order-compare{display:flex;align-items:center;gap:14px;justify-content:center;}
+.order-side{flex:1;text-align:center;padding:14px;background:#fff;border:1.5px solid var(--border2);border-radius:10px;}
+.order-era{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.5px;margin-bottom:8px;text-transform:uppercase;}
+.order-icon{font-size:24px;margin-bottom:6px;}
+.order-detail{font-size:11px;color:var(--text);line-height:1.5;margin-bottom:8px;}
+.order-tag{display:inline-block;color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;}
+.order-vs{font-size:18px;color:var(--muted2);font-weight:700;}
+
+/* Final */
+.reading-final{margin-top:30px;padding:24px;background:linear-gradient(135deg,#f8f9fa,#f0f2f4);border-radius:14px;border:1px solid var(--border2);}
+.reading-final p{font-size:13px;line-height:1.9;color:var(--text2);margin:0 0 14px;}
+.reading-final p:last-of-type{margin-bottom:18px;}
+.reading-signature{text-align:right;font-size:13px;font-weight:800;color:var(--muted);font-style:italic;}
+
+/* Industry sections */
+.reading-industry-wrap{margin-top:60px;padding-top:40px;border-top:3px double var(--border2);}
+.reading-industry-h{text-align:center;margin-bottom:24px;}
+.reading-industry-title{font-size:22px;font-weight:900;color:var(--text);margin:0 0 8px;}
+.reading-industry-lead{font-size:13px;color:var(--muted);margin:0;line-height:1.7;}
+.reading-industry{margin-bottom:14px;background:var(--surface);border:1px solid var(--border2);border-radius:12px;overflow:hidden;}
+.reading-industry-sum{padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;list-style:none;user-select:none;transition:background .12s;}
+.reading-industry-sum::-webkit-details-marker{display:none;}
+.reading-industry-sum:hover{background:var(--surface2);}
+.ri-tag{display:inline-block;color:#fff;font-size:11px;font-weight:800;padding:4px 11px;border-radius:20px;flex-shrink:0;}
+.ri-title{flex:1;font-size:14px;font-weight:700;color:var(--text);}
+.ri-arrow{font-size:11px;color:var(--muted);transition:transform .2s;}
+.reading-industry[open] .ri-arrow{transform:rotate(180deg);}
+.reading-industry-body{padding:18px 24px 28px;border-top:1px solid var(--border);}
+.ri-h{font-size:15px;font-weight:800;color:var(--text);margin:20px 0 10px;padding-left:10px;border-left:3px solid var(--sb);}
+.ri-h:first-child{margin-top:8px;}
+
+/* Food tier flow */
+.food-flow{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.food-tier{background:#fff;border:2px solid var(--border2);border-radius:10px;padding:10px 16px;text-align:center;width:100%;max-width:380px;}
+.food-tier-label{font-size:12px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.food-tier-names{font-size:10px;color:var(--muted);line-height:1.5;}
+.food-arrow{font-size:18px;color:var(--muted2);font-weight:700;}
+
+/* Temperature zones */
+.temp-zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.temp-zone{border:2px solid var(--border2);border-radius:10px;padding:14px;text-align:center;}
+.temp-temp{font-family:'DM Mono',monospace;font-size:24px;font-weight:900;color:var(--text);}
+.temp-name{font-size:12px;font-weight:800;color:var(--text);margin:6px 0;}
+.temp-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* Glossary table */
+.glossary-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;}
+.glossary-table tbody tr{border-bottom:1px solid var(--border);}
+.glossary-table tbody tr:last-child{border-bottom:none;}
+.glossary-table td{padding:8px 10px;color:var(--text2);line-height:1.6;}
+.gl-term{font-weight:800;color:var(--text);width:140px;background:var(--surface2);}
+
+@media (max-width:760px){
+  .temp-zones{grid-template-columns:1fr;}
+}
+
+@media (max-width:760px){
+  .triple-crisis,.vendor-grid{grid-template-columns:1fr;}
+  .order-compare{flex-direction:column;}
+  .flow-chart{flex-direction:column;}
+  .flow-arrow{transform:rotate(90deg);}
+}
+
+@media (max-width:780px){
+  .market-grid2,.market-grid3{grid-template-columns:1fr;}
+  .market-hero-num{font-size:32px;}
+}
 .cases-scroll::-webkit-scrollbar{width:8px;}
 .cases-scroll::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
 .cases-grid{}
@@ -304,6 +523,8 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
   <button class="tab active" data-tab="map">🌐 業界マップ</button>
   <button class="tab" data-tab="matrix">📊 ソリューションマトリクス</button>
   <button class="tab" data-tab="cases">📋 事例集</button>
+  <button class="tab" data-tab="market">📈 市場調査</button>
+  <button class="tab" data-tab="reading">📖 業界読本</button>
 </div>
 
 <div class="main">
@@ -362,6 +583,937 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
       <div id="cases-grid" class="cases-grid"></div>
     </div>
   </div>
+
+  <!-- MARKET RESEARCH -->
+  <div id="view-market" class="view" style="overflow-y:auto;">
+    <div class="market-wrap">
+      <div class="market-intro">
+        <h2 class="market-title">📈 倉庫自動化・物流ロボット市場の現状と将来予測</h2>
+        <p class="market-lead">公開されている市場調査レポート・政府統計をもとに、商談の前提として共有できる市場データをまとめています。各データには出典リンクを併記しています。</p>
+      </div>
+
+      <!-- 国内市場 -->
+      <section class="market-section">
+        <div class="market-section-h"><span class="market-flag">🇯🇵</span>国内 物流ロボティクス市場</div>
+        <div class="market-card market-hero">
+          <div class="market-hero-num">¥1,238<span class="market-hero-unit">億円</span></div>
+          <div class="market-hero-label">2030年度の市場規模予測（事業者売上高ベース）</div>
+          <div class="market-hero-sub">2024年度見込 ¥404億円 → 2030年で約3倍に拡大</div>
+        </div>
+        <div class="market-card">
+          <div class="market-card-h">年次推移（2020〜2030）</div>
+          <div id="market-chart-jp" class="market-chart"></div>
+          <div class="market-source">出典：<a href="https://www.yano.co.jp/press-release/show/press_id/3762" target="_blank">矢野経済研究所「2025年版 物流ロボティクス市場の現状と将来展望」（2025年3月発表）</a></div>
+        </div>
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">2024年度の成長</div>
+            <div class="market-stat"><span class="market-stat-num">+13.1%</span><span class="market-stat-unit">前年比</span></div>
+            <p class="market-card-text">ロボットラインナップ拡充・案件あたり導入コスト上昇が背景。倉庫賃料上昇で高密度保管型のロボット自動倉庫需要が増加。ACR（複数ケース同時搬送）が新たに登場し注目を集める。</p>
+            <div class="market-source">出典：<a href="https://www.lnews.jp/2025/03/r0311303.html" target="_blank">矢野経済研究所（2025年3月）</a></div>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">市場の構造変化</div>
+            <p class="market-card-text">海外メーカーの日本市場参入が活発化し競争激化。将来の人手減少を前提とした「物流ロボットありき」のセンター構築が一般化していく見込み。荷主・物流企業ともに自社のビジネス拡大に向け戦略的に導入を進めるケースが増加。</p>
+            <div class="market-source">出典：<a href="https://www.yano.co.jp/press-release/show/press_id/3762" target="_blank">矢野経済研究所（2025年3月）</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 物流2024年問題 -->
+      <section class="market-section">
+        <div class="market-section-h"><span class="market-flag">🇯🇵</span>物流2024年問題と2030年の輸送力不足</div>
+        <div class="market-card market-hero" style="background:linear-gradient(135deg,#e8341a08,#e8341a18);border-left:4px solid #e8341a;">
+          <div class="market-hero-num" style="color:#e8341a;">▲34%<span class="market-hero-unit">(9億トン)</span></div>
+          <div class="market-hero-label">2030年度に不足する輸送能力（対策なしの場合）</div>
+          <div class="market-hero-sub">2024年度時点で既に▲14%、その後も対策がなければ2030年に拡大</div>
+        </div>
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">政府の見解</div>
+            <p class="market-card-text">2024年問題は「当該時点を乗り越えれば終わる一過性の課題ではなく、年々深刻化する構造的な課題」と政府が明言。物流の効率化・商慣行見直し・荷主/消費者の行動変容を柱とする中長期計画を策定。</p>
+            <div class="market-source">出典：<a href="https://wwwtb.mlit.go.jp/chubu/jidosya/ouensaito/shiryou/20241031/20241031_03.pdf" target="_blank">国土交通省「物流の革新に関する関係閣僚会議」資料（2024年10月）</a></div>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">具体的な政策</div>
+            <p class="market-card-text">「即効性のある設備投資の促進」として、バース予約システム・フォークリフト導入・自動化/機械化を明示。荷主企業の8割が物流危機への問題意識を持つ一方、実際の取組は限定的という現状ギャップが明らかに。</p>
+            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2023/06/20230602005/20230602005.html" target="_blank">経済産業省「物流の適正化・生産性向上ガイドライン」（2023年6月）</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- グローバル市場 -->
+      <section class="market-section">
+        <div class="market-section-h"><span class="market-flag">🌐</span>グローバル 倉庫自動化市場</div>
+        <div class="market-card market-hero" style="background:linear-gradient(135deg,#1a6be808,#1a6be818);border-left:4px solid #1a6be8;">
+          <div class="market-hero-num" style="color:#1a6be8;">$55B<span class="market-hero-unit">≈8.2兆円</span></div>
+          <div class="market-hero-label">2030年の世界倉庫自動化市場（LogisticsIQ予測）</div>
+          <div class="market-hero-sub">2024〜2030年でCAGR 15%・EC成長と労働力不足を背景に拡大</div>
+        </div>
+        <div class="market-grid3">
+          <div class="market-card market-mini">
+            <div class="market-mini-source">Grand View Research</div>
+            <div class="market-mini-num">$59.5B</div>
+            <div class="market-mini-detail">2030年予測 / CAGR 18.7%（2024-2030）</div>
+            <div class="market-source"><a href="https://www.grandviewresearch.com/industry-analysis/warehouse-automation-market-report" target="_blank">レポート</a></div>
+          </div>
+          <div class="market-card market-mini">
+            <div class="market-mini-source">LogisticsIQ</div>
+            <div class="market-mini-num">$55B</div>
+            <div class="market-mini-detail">2030年予測 / CAGR 15%（2024-2030）</div>
+            <div class="market-source"><a href="https://www.prnewswire.com/news-releases/warehouse-automation-market-to-reach-55-billion-by-2030-driven-by-e-commerce-and-supply-chain-transformation---logisticsiq-302252709.html" target="_blank">プレスリリース</a></div>
+          </div>
+          <div class="market-card market-mini">
+            <div class="market-mini-source">MarketsandMarkets</div>
+            <div class="market-mini-num">$10.5B</div>
+            <div class="market-mini-detail">倉庫ロボット限定 / 2028年予測 / CAGR 11.4%</div>
+            <div class="market-source"><a href="https://www.marketsandmarkets.com/Market-Reports/warehouse-robotic-market-128876258.html" target="_blank">レポート</a></div>
+          </div>
+        </div>
+        <div class="market-card">
+          <div class="market-card-h">成長ドライバー（共通見解）</div>
+          <ul class="market-list">
+            <li>EC市場の急成長（世界EC売上は2027年に8兆ドル超え見込み、小売の25%以上をECが占める見通し）</li>
+            <li>労働力不足の構造化（先進国共通）</li>
+            <li>同日配送・即日配送のニーズ拡大とそれに対応するダークストア化</li>
+            <li>AMR（自律走行ロボット）の本格普及</li>
+            <li>グローバルサプライチェーンの再構築</li>
+          </ul>
+          <div class="market-source">出典：<a href="https://www.thelogisticsiq.com/research/warehouse-automation-market" target="_blank">LogisticsIQ「Warehouse Automation Market 5th Edition」（2024年9月）</a></div>
+        </div>
+      </section>
+
+      <!-- EC市場の伸び -->
+      <section class="market-section">
+        <div class="market-section-h"><span class="market-flag">🛒</span>EC市場の伸び（物流需要の源泉）</div>
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">BtoC-EC 物販系 市場規模（2024年）</div>
+            <div class="market-stat"><span class="market-stat-num">¥15.2兆</span><span class="market-stat-unit">前年比+3.7%</span></div>
+            <p class="market-card-text">EC化率は<strong>9.78%</strong>（前年比+0.4pt）。2025年には10%突破見込み。コロナ禍の急成長は一服したが堅調に拡大が続く。</p>
+            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省「令和6年度電子商取引に関する市場調査」（2025年8月）</a></div>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">BtoB-EC 市場規模（2024年）</div>
+            <div class="market-stat"><span class="market-stat-num">¥514.4兆</span><span class="market-stat-unit">前年比+10.6%</span></div>
+            <p class="market-card-text">BtoB-ECのEC化率は<strong>43.1%</strong>（前年比+3.1pt）。BtoC以上に企業間取引のEC化が進行中。卸売・製造業の物流自動化ニーズの背景。</p>
+            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省（2025年8月）</a></div>
+          </div>
+        </div>
+        <div class="market-card">
+          <div class="market-card-h">物販系BtoC-EC 業種別の市場規模（2024年・上位）</div>
+          <table class="market-table">
+            <thead><tr><th>業種</th><th>市場規模</th><th>前年比</th><th>EC化率</th></tr></thead>
+            <tbody>
+              <tr><td>食品・飲料・酒類</td><td>¥3.12兆</td><td>+6.36%</td><td>—</td></tr>
+              <tr><td>衣類・服装雑貨等</td><td>¥2.80兆</td><td>—</td><td>—</td></tr>
+              <tr><td>生活家電・AV機器・PC等</td><td>¥2.74兆</td><td>+2.26%</td><td><strong>43.0%</strong></td></tr>
+              <tr><td>生活雑貨・家具・インテリア</td><td>¥2.56兆</td><td>+3.62%</td><td><strong>32.6%</strong></td></tr>
+              <tr><td>書籍・映像・音楽ソフト</td><td>—</td><td>—</td><td><strong>56.5%</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="market-card-text" style="margin-top:10px;">食品EC（+6.36%）が物販系で最も高成長。書籍ECは半分以上がオンラインに。商談時の業種別の話題提供に。</p>
+          <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省「令和6年度電子商取引に関する市場調査」</a></div>
+        </div>
+      </section>
+
+      <!-- 労働力・ドライバー不足 -->
+      <section class="market-section">
+        <div class="market-section-h"><span class="market-flag">👷</span>労働力不足の実態</div>
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">トラックドライバー 有効求人倍率</div>
+            <div class="market-stat"><span class="market-stat-num">2.68倍</span><span class="market-stat-unit">全産業平均の約2倍</span></div>
+            <p class="market-card-text">全産業平均と比較して<strong>1.36倍高い</strong>採用難易度。低賃金・長時間労働が背景。若年層（29歳以下）は10.0%（全産業16.4%）・中年層（40〜54歳）が44.3%（全産業34.7%）と高齢化が進行。</p>
+            <div class="market-source">出典：<a href="https://www.jil.go.jp/institute/zassi/backnumber/2024/02-03/pdf/051-065.pdf" target="_blank">労働政策研究・研修機構「日本労働研究雑誌」No.764（2024年2-3月）</a></div>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">2030年のドライバー不足数</div>
+            <div class="market-stat"><span class="market-stat-num">▲27.8万人</span><span class="market-stat-unit">2028年予測</span></div>
+            <p class="market-card-text">公益社団法人鉄道貨物協会の予測では2028年にドライバー27.8万人不足。これに伴い<strong>2030年に輸送能力の19.5%（5.4億トン）が不足</strong>する見通し。2024年問題（▲14%）と合わせ年間9.4億トンの不足可能性。</p>
+            <div class="market-source">出典：<a href="https://www.meti.go.jp/shingikai/mono_info_service/sustainable_logistics/pdf/003_01_00.pdf" target="_blank">NX総合研究所（経産省 持続可能な物流の実現に向けた検討会 資料）</a></div>
+          </div>
+        </div>
+        <div class="market-card">
+          <div class="market-card-h">ドライバーの労働条件（全産業比較）</div>
+          <table class="market-table">
+            <thead><tr><th>項目</th><th>運送業</th><th>全産業平均</th><th>差</th></tr></thead>
+            <tbody>
+              <tr><td>年間労働時間</td><td>長め</td><td>—</td><td><strong>+396〜444時間/年（+17%）</strong></td></tr>
+              <tr><td>年間所得</td><td>低め</td><td>—</td><td><strong>▲20万〜59万円/年（▲4〜12%）</strong></td></tr>
+              <tr><td>若年層（29歳以下）比率</td><td>10.0%</td><td>16.4%</td><td>▲6.4pt</td></tr>
+              <tr><td>中年層（40〜54歳）比率</td><td>44.3%</td><td>34.7%</td><td>+9.6pt</td></tr>
+            </tbody>
+          </table>
+          <p class="market-card-text" style="margin-top:10px;">「働く人がいない＋採用も難しい＋既存人材は高齢化」という三重苦。倉庫自動化が経営課題として認識される根本要因。</p>
+          <div class="market-source">出典：<a href="https://www.pudo.jp/ja/blog/logistics-problem" target="_blank">全日本トラック協会「日本のトラック輸送産業ー現状と課題ー2023」</a></div>
+        </div>
+      </section>
+
+      <!-- 倉庫不動産・建築費 -->
+      <section class="market-section">
+        <div class="market-section-h"><span class="market-flag">🏭</span>倉庫不動産・建築費の動向</div>
+        <div class="market-card market-hero" style="background:linear-gradient(135deg,#c4870a08,#c4870a18);border-left:4px solid #c4870a;">
+          <div class="market-hero-num" style="color:#c4870a;">+32pt<span class="market-hero-unit">(2021→2024)</span></div>
+          <div class="market-hero-label">倉庫の工事原価指数の急上昇</div>
+          <div class="market-hero-sub">2015〜2020年の6年間は+4ptだったが、2021〜2024年の4年間で+32pt。建築費高騰が新規供給を抑制し、自動化による既存倉庫の有効活用ニーズを押し上げ。</div>
+        </div>
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">首都圏 大型物流施設の賃料・空室率</div>
+            <table class="market-table">
+              <thead><tr><th>指標</th><th>2020年Q4</th><th>2024年Q3</th><th>2025年Q3</th></tr></thead>
+              <tbody>
+                <tr><td>空室率</td><td>0.5%</td><td><strong>10.1%</strong></td><td>10.4%</td></tr>
+                <tr><td>実質賃料/坪</td><td>—</td><td>—</td><td>—</td></tr>
+              </tbody>
+            </table>
+            <p class="market-card-text" style="margin-top:10px;">2020年Q4の0.5%から2024年Q3に10.1%へ急上昇（10%超は2010年Q4以来）。空室を抱えた物件が多いエリアでは建築費上昇分を賃料に転嫁しきれず、デベロッパーが新規開発を見直す動き。</p>
+            <div class="market-source">出典：<a href="https://www.lnews.jp/2025/02/r0217305.html" target="_blank">CBRE Japan / LNEWS（2025年2月）</a></div>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">2025年の新規供給は当初予測から22%減</div>
+            <div class="market-stat"><span class="market-stat-num">▲13万坪</span><span class="market-stat-unit">2023Q4予測比</span></div>
+            <p class="market-card-text">2023年Q4時点で2025年の新規供給は59.5万坪予測 → 2024年Q4時点では46.7万坪。<strong>建築費高騰・工期長期化で開発計画が次々と見直し</strong>。冷凍冷蔵への用途変更や用地のまま売却するケースも。</p>
+            <div class="market-source">出典：<a href="https://www.cbre.co.jp/insights/briefs/%E9%96%8B%E7%99%BA%E8%A8%88%E7%94%BB%E3%81%AE%E8%A6%8B%E7%9B%B4%E3%81%97%E3%81%A7-%E9%A6%96%E9%83%BD%E5%9C%8F%E7%89%A9%E6%B5%81%E6%96%BD%E8%A8%AD%E3%81%AE%E8%B3%83%E6%96%99%E6%B0%B4%E6%BA%96%E3%81%8C%E4%B8%8A%E5%90%91%E3%81%8F%E5%8F%AF%E8%83%BD%E6%80%A7" target="_blank">CBRE Japan「首都圏物流施設の賃料水準が上向く可能性」</a></div>
+          </div>
+        </div>
+        <div class="market-card">
+          <div class="market-card-h">圏別の実質賃料・空室率（2025年Q2-Q3）</div>
+          <table class="market-table">
+            <thead><tr><th>エリア</th><th>実質賃料/坪</th><th>空室率</th><th>需要</th></tr></thead>
+            <tbody>
+              <tr><td>首都圏 LMT</td><td>—</td><td>10.4%</td><td>新規需要14.5万坪（過去5年平均12.6万坪を上回る）</td></tr>
+              <tr><td>近畿圏 LMT</td><td>¥4,260</td><td>5.0%</td><td>新規需要12.2万坪（四半期ベース過去最大）</td></tr>
+              <tr><td>中部圏 LMT</td><td>¥3,720（+1.4%）</td><td>15.9%</td><td>大量供給だが好立地物件がテナント需要喚起</td></tr>
+              <tr><td>福岡圏 LMT</td><td>¥3,580（+0.3%）</td><td>3.0%</td><td>複数物件でテナント決定相次ぐ</td></tr>
+            </tbody>
+          </table>
+          <p class="market-card-text" style="margin-top:10px;">需要は東京・大阪の<strong>二極ハブ構造</strong>へ集約。福岡圏は空室率3%と最も逼迫。EC・3PL・小売の関西拠点比率が上昇中。</p>
+          <div class="market-source">出典：<a href="https://www.cbre-propertysearch.jp/article/industrial_marketview-q3-2025-index/" target="_blank">CBRE「ジャパン・ロジスティクス・マーケットビュー2025年Q3」</a></div>
+        </div>
+      </section>
+
+      <!-- 関連市場（物流不動産投資・補助金） -->
+      <section class="market-section">
+        <div class="market-section-h"><span class="market-flag">💴</span>関連市場・支援制度</div>
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">中小企業省力化投資補助金（一般型）</div>
+            <div class="market-stat"><span class="market-stat-num">最大¥1億</span><span class="market-stat-unit">補助上限</span></div>
+            <p class="market-card-text">2025年新設のオーダーメイド型補助金。自動倉庫・搬送ロボット・WMSなど物流設備が対象。補助率は中小1/2・小規模/再生事業者2/3。<strong>予算1,000億円規模</strong>。</p>
+            <div class="market-source">出典：<a href="https://mirasapo-plus.go.jp/hint/27807/" target="_blank">中小企業庁「中小企業省力化投資補助金」（2025年）</a></div>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">越境EC（日本から中国・米国向け）</div>
+            <div class="market-stat"><span class="market-stat-num">¥2.64兆</span><span class="market-stat-unit">中国向け / +8.5%</span></div>
+            <p class="market-card-text">中国消費者による日本事業者からの越境EC購入額。米国事業者からの越境EC購入は¥3.14兆（+6.0%）。<strong>輸出物流の自動化需要</strong>を底支え。</p>
+            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省（2025年8月）</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 商談で使える要点 -->
+      <section class="market-section">
+        <div class="market-section-h">💡 商談で使える要点</div>
+        <div class="market-card market-summary">
+          <ul class="market-summary-list">
+            <li><strong>市場規模：</strong>国内物流ロボティクス市場は2024年¥404億円 → 2030年¥1,238億円へ3倍成長。グローバルも$55B〜$60B規模・年率15〜19%成長。</li>
+            <li><strong>EC需要：</strong>BtoC-EC市場は¥15.2兆（EC化率9.78%）、BtoB-ECは¥514兆（EC化率43.1%）。食品ECが+6.36%で最も伸び。書籍ECは半分以上がオンライン。</li>
+            <li><strong>労働力危機：</strong>ドライバー有効求人倍率は2.68倍（全産業の2倍）。2030年に▲34%（9億トン）の輸送能力不足、ドライバーは2028年に▲27.8万人。</li>
+            <li><strong>不動産環境：</strong>倉庫工事原価指数は2021〜2024で+32pt急騰。新規供給22%減・空室率10%超で、既存倉庫の自動化による有効活用ニーズが拡大。</li>
+            <li><strong>支援制度：</strong>中小企業省力化投資補助金は最大¥1億・予算1,000億円規模。自動倉庫・搬送ロボット・WMSが対象でオーダーメイド導入も可能。</li>
+            <li><strong>転換点：</strong>「省人化のため」から「物流ロボットを前提とした倉庫構築」へ。新拠点設計時点での自動化検討が標準に。</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- READING (BUSINESS PRIMER) -->
+  <div id="view-reading" class="view" style="overflow-y:auto;">
+    <div class="reading-wrap">
+      <div class="reading-cover">
+        <div class="reading-cover-icon"><svg viewBox="0 0 100 100" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+<!-- body -->
+<ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
+<!-- head -->
+<ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/>
+<!-- crest feathers (slightly drooping for dareru feel) -->
+<path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- beak: long, pointed, with sharp hook -->
+<!-- main beak body (wider at base, tapering to point) -->
+<path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/>
+<!-- beak vertical ridge -->
+<path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/>
+<!-- nostrils -->
+<ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<!-- sharp hook at tip -->
+<path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/>
+<!-- highlight on beak (subtle gloss) -->
+<path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+<!-- eyes -->
+<ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33 Q42 36 47 33" fill="#8b939c"/><path d="M53 33 Q58 36 63 33" fill="#8b939c"/><ellipse cx="42" cy="37.5" rx="2.2" ry="1.8" fill="#222"/><ellipse cx="58" cy="37.5" rx="2.2" ry="1.8" fill="#222"/>
+</svg></div>
+        <h2 class="reading-cover-title">📖 業界読本</h2>
+        <p class="reading-cover-lead">物流業界をちゃんと理解したい人のための読み物。語り手はハシビロコウです。動きません。</p>
+      </div>
+
+      <!-- A. 全体像 -->
+      <article class="reading-section">
+        <div class="reading-h">A. 物流業界の全体像 ― そもそも誰が誰なんですか</div>
+        <div class="reading-talker">
+          <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+<!-- body -->
+<ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
+<!-- head -->
+<ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/>
+<!-- crest feathers (slightly drooping for dareru feel) -->
+<path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- beak: long, pointed, with sharp hook -->
+<!-- main beak body (wider at base, tapering to point) -->
+<path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/>
+<!-- beak vertical ridge -->
+<path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/>
+<!-- nostrils -->
+<ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<!-- sharp hook at tip -->
+<path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/>
+<!-- highlight on beak (subtle gloss) -->
+<path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+<!-- eyes -->
+<ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33 Q42 36 47 33" fill="#8b939c"/><path d="M53 33 Q58 36 63 33" fill="#8b939c"/><ellipse cx="42" cy="37.5" rx="2.2" ry="1.8" fill="#222"/><ellipse cx="58" cy="37.5" rx="2.2" ry="1.8" fill="#222"/>
+</svg></div>
+          <div class="reading-bubble">ハシビロコウです。動物園で「動かない鳥」として有名なアレ。説明面倒なんで省きます。</div>
+        </div>
+        <div class="reading-body">
+          <p>物流業界の全体像、というテーマで頼まれたので解説します。…と言いつつ、人間の皆さんに「物流って何?」と聞くと、たいてい「トラックがビュンビュン走ってるアレ」と返ってくる。間違ってはいないんですが、それは氷山の一角もいいところでして。背後に少なくとも5種類の登場人物がいるんですよ。私としてはもう少し関心持ってほしいですね。</p>
+          <p>まず<strong>荷主</strong>。運んでほしいモノを持っている人。メーカー（明治とか花王とか）、小売（イオンとかニトリ）。要するにこの業界で一番偉いポジションです。お金を払う側なので。</p>
+          <p>次に<strong>3PL</strong>（サードパーティ・ロジスティクス）。荷主から「物流まるごと頼みます」と委託される事業者。日通、SBSホールディングス、センコー、ロジスティードなど。物流の便利屋、と言うと怒られそうですが、まあそういう立ち位置です。</p>
+          <p>3PLが使う倉庫ですが、自前で持っていることもあれば、<strong>物流不動産会社</strong>から借りていることも多い。GLP、プロロジス、ESRあたり。要するに<strong>物流業界の大家さん</strong>ですね。マンション経営の巨大版です。自分は住まないけど、大きな建物を建ててテナントから家賃を取る。</p>
+          <p>実際に走っている<strong>運送会社</strong>は、9割以上が中小零細という独特の構造。多重下請けの温床になっています。私から見ると「もうちょっと整理しません?」と思いますが、まあ、人間社会が好んで複雑にしている部分なので口出しはしません。</p>
+          <p>最後に、Logimapの主役、<strong>マテハンベンダー</strong>。ダイフク、オカムラ、ギークプラス、ラピュタロボティクス、Mujinなど。倉庫の中で動くロボットや自動倉庫を提供する人たち。要するにここに関わる人が、Logimapを開いている人なんでしょうね。</p>
+
+          <!-- 図：プレイヤー相関図 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図A: 物流業界のプレイヤー相関図</div>
+            <div class="player-map">
+              <div class="player-box player-shipper">
+                <div class="player-role">荷主</div>
+                <div class="player-name">メーカー・小売<br><small>明治・花王・イオン・ニトリ等</small></div>
+              </div>
+              <div class="player-arrow player-arrow-down">委託</div>
+              <div class="player-box player-3pl">
+                <div class="player-role">3PL</div>
+                <div class="player-name">物流の便利屋<br><small>日通・SBS・センコー・ロジスティード等</small></div>
+              </div>
+              <div class="player-three">
+                <div class="player-arrow player-arrow-side">賃借</div>
+                <div class="player-arrow player-arrow-side">発注</div>
+                <div class="player-arrow player-arrow-side">発注</div>
+              </div>
+              <div class="player-three">
+                <div class="player-box player-re">
+                  <div class="player-role">物流不動産</div>
+                  <div class="player-name">大家さん<br><small>GLP・プロロジス・ESR等</small></div>
+                </div>
+                <div class="player-box player-trans">
+                  <div class="player-role">運送会社</div>
+                  <div class="player-name">9割が中小零細<br><small>多重下請け構造</small></div>
+                </div>
+                <div class="player-box player-vendor player-here">
+                  <div class="player-role">マテハンベンダー</div>
+                  <div class="player-name">ロボット・自動倉庫<br><small>ダイフク・オカムラ・Geek+・ラピュタ等</small></div>
+                  <div class="player-here-tag">★ 我々はここ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>一応、注意点をひとつ。「ロジスティクス」と「物流」、混同されがちですが厳密には別物です。物流はモノを運ぶ実務、ロジスティクスは発注・在庫・需要予測・物流・返品まで含む<strong>戦略全体</strong>。なので「ロジスティクス部長」のほうがちょっと偉そうで、「物流部長」はそこそこ偉そう、という微妙な空気が業界にはあります。人間って肩書きにこだわりますよね。私たちはハシビロコウ、ハシビロコウ、皆ハシビロコウですけど。</p>
+        </div>
+      </article>
+
+      <!-- B〜F sections will be inserted here -->
+      <div id="reading-rest"></div>
+
+      <!-- B. 文化・商慣行 -->
+      <article class="reading-section">
+        <div class="reading-h">B. 物流業界の文化と商慣行 ― なぜこの業界はDXが遅れているのか</div>
+        <div class="reading-talker">
+          <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+<!-- body -->
+<ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
+<!-- head -->
+<ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/>
+<!-- crest feathers (slightly drooping for dareru feel) -->
+<path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- beak: long, pointed, with sharp hook -->
+<!-- main beak body (wider at base, tapering to point) -->
+<path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/>
+<!-- beak vertical ridge -->
+<path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/>
+<!-- nostrils -->
+<ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<!-- sharp hook at tip -->
+<path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/>
+<!-- highlight on beak (subtle gloss) -->
+<path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+<!-- eyes -->
+<ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33 Q42 35.5 47 33" fill="#8b939c"/><path d="M53 33 Q58 35.5 63 33" fill="#8b939c"/><ellipse cx="42" cy="37.5" rx="2.3" ry="1.8" fill="#222"/><ellipse cx="58" cy="37.5" rx="2.3" ry="1.8" fill="#222"/><path d="M36 28 L46 30 M54 30 L64 28" stroke="#5a5a5a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+</svg></div>
+          <div class="reading-bubble">「DXが遅れてる」って言われがちですが、これ、やる気の問題じゃなくて構造の問題なんですよ。座ったままで解説しますね。</div>
+        </div>
+        <div class="reading-body">
+          <p>物流業界に「DXが遅れている」というレッテルを貼るのは、私から見ても、まあ事実なので、否定する気はありません。ただ、「やる気がないから遅れている」というのは雑な見方でして、実はもっと根深い<strong>構造の問題</strong>があります。せっかくなので説明します。</p>
+
+          <p><strong>理由その1：多重下請け構造</strong></p>
+          <p>運送会社は9割以上が中小零細、と前のセクションで触れました。実はこの業界、<strong>4次下請け・5次下請けが当たり前</strong>という、建設業と肩を並べるレベルの多重下請け構造になっています。</p>
+
+          <!-- 図：多重下請け階層図 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図B-1: 多重下請けでマージンが消えていく</div>
+            <div class="tier-chart">
+              <div class="tier-row"><div class="tier-name">荷主</div><div class="tier-bar" style="width:100%;background:#c4870a;"><span>¥100</span></div></div>
+              <div class="tier-row"><div class="tier-name">元請（大手3PL）</div><div class="tier-bar" style="width:85%;background:#1a9e4a;"><span>¥85</span></div></div>
+              <div class="tier-row"><div class="tier-name">2次下請</div><div class="tier-bar" style="width:70%;background:#1a6be8;"><span>¥70</span></div></div>
+              <div class="tier-row"><div class="tier-name">3次下請</div><div class="tier-bar" style="width:55%;background:#7c3aed;"><span>¥55</span></div></div>
+              <div class="tier-row"><div class="tier-name">4次下請（実運送）</div><div class="tier-bar" style="width:40%;background:#e8341a;"><span>¥40</span></div></div>
+            </div>
+            <p class="reading-figure-cap">荷主が払う¥100が、現場のドライバー手元では¥40程度になる、というケースは珍しくない。中間マージンが業界の生産性を蝕む。<small>※構造のイメージ。実際の比率は契約による。</small></p>
+          </div>
+
+          <p>元請けの大手3PLが荷主から仕事を受注 → 中堅運送会社に再委託 → そこから地場の運送会社へ → さらに個人事業主のドライバーへ、というルートが普通に発生します。そのたびに中間マージンが抜かれていくので、現場で実際に運んでいる人の手取りが減る。だから人が定着しない。若者が来ない。そして高齢化。という負の連鎖。</p>
+
+          <p>DXの話に戻ると、この<strong>多層構造のせいでデータが分断</strong>しているんですよ。元請けはWMSを使っているけど、3次下請けの運送会社はまだ紙の伝票、みたいなことが普通に起きる。情報のバトンがどこかで途切れる。これでDXしろ、と言われても、そりゃ難しいよねという話です。</p>
+
+          <p><strong>理由その2：荷待ち時間という名の「無料サービス」</strong></p>
+          <p>これは私も観察していて何度も「は?」となった慣行です。トラックが荷主や物流センターに到着して、荷下ろし or 積み込みを待つ時間のことを「荷待ち」と言います。この時間、<strong>ドライバーの給料は基本的に出ません</strong>。1〜2時間待ちは普通、ひどい現場だと半日待たされることもある。にもかかわらず無料です。日本独特の「お客様は神様」精神が物流の現場では「荷主様は神様」となって、こんな慣行が放置されてきました。</p>
+
+          <!-- 図：ドライバーの労働時間内訳 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図B-2: ドライバー1日の労働時間内訳</div>
+            <div class="time-pie">
+              <div class="time-bar">
+                <div class="time-seg" style="width:50%;background:#1a9e4a;">運転<br><small>50%</small></div>
+                <div class="time-seg" style="width:25%;background:#c4870a;">荷待ち<br><small>25%</small></div>
+                <div class="time-seg" style="width:20%;background:#e8341a;">付帯作業<br><small>20%</small></div>
+                <div class="time-seg" style="width:5%;background:#7c3aed;">休憩<br><small>5%</small></div>
+              </div>
+            </div>
+            <p class="reading-figure-cap">「運転手」と呼ばれるが、実は運転以外の時間が半分。<strong>給料が出る運転時間を規制しても、無給の荷待ち・付帯作業がなくならない限り根本解決にはならない</strong>。<small>※比率は業界の典型例。全日本トラック協会等の調査ベース。</small></p>
+          </div>
+
+          <p>最近ようやくバース予約システム（事前に荷下ろし時間を予約する仕組み）が普及し始めましたが、まだまだ。</p>
+
+          <p><strong>理由その3：付帯作業という名の「無料サービス」（再）</strong></p>
+          <p>ドライバーが運転以外にやらされる作業のことです。荷物の積み下ろし、検品、棚入れ、棚卸し、果ては倉庫の掃除まで。本来は別の人がやるべき作業を、トラックドライバーが「ついでに」やらされている。当然これも追加料金は出ないことが多い。</p>
+
+          <p><strong>理由その4：「物流は誰でもできる」という幻想</strong></p>
+          <p>これは経営層の意識の問題ですが、物流業務を「コストセンター」「単純作業」と見ている荷主企業がまだ多い。商品開発やマーケティングには予算がつくけど、物流の改善には予算がつきにくい。「物流は外注しておけばいい」「誰でもできるでしょ」という認識。</p>
+
+          <p>これが変わり始めたのが、ここ数年です。コロナでサプライチェーン断絶を経験して、2024年問題でドライバー不足を突きつけられて、ようやく<strong>「物流は経営課題」</strong>と認識する企業が出てきた。遅すぎる気もしますが、私たちハシビロコウは1,000万年以上前から地球にいるので、時間感覚は人間より長めに見ています。</p>
+        </div>
+      </article>
+
+      <!-- C. 倉庫の中 -->
+      <article class="reading-section">
+        <div class="reading-h">C. 倉庫の中で何が起きているか ― 入荷から出荷までの実際</div>
+        <div class="reading-talker">
+          <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+<!-- body -->
+<ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
+<!-- head -->
+<ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/>
+<!-- crest feathers (slightly drooping for dareru feel) -->
+<path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- beak: long, pointed, with sharp hook -->
+<!-- main beak body (wider at base, tapering to point) -->
+<path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/>
+<!-- beak vertical ridge -->
+<path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/>
+<!-- nostrils -->
+<ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<!-- sharp hook at tip -->
+<path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/>
+<!-- highlight on beak (subtle gloss) -->
+<path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+<!-- eyes -->
+<ellipse cx="42" cy="36" rx="5" ry="4.5" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4.5" fill="#fff8d0"/><path d="M37 32.5 Q42 35 47 32.5" fill="#8b939c"/><path d="M53 32.5 Q58 35 63 32.5" fill="#8b939c"/><ellipse cx="42" cy="37" rx="2.6" ry="2.4" fill="#222"/><ellipse cx="58" cy="37" rx="2.6" ry="2.4" fill="#222"/>
+</svg></div>
+          <div class="reading-bubble">倉庫の中、私が一番得意な話です。何時間でも観察していられますからね。</div>
+        </div>
+        <div class="reading-body">
+          <p>倉庫業務は大きく5つの工程に分かれます。</p>
+
+          <!-- 図：倉庫業務の5工程 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図C-1: 倉庫業務の5工程フロー</div>
+            <div class="flow-chart">
+              <div class="flow-step" style="border-color:#e8341a;"><div class="flow-num">1</div><div class="flow-name">入荷・<br>デパレ</div><div class="flow-desc">荷下ろし<br>検品</div></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step" style="border-color:#1a6be8;"><div class="flow-num">2</div><div class="flow-name">保管</div><div class="flow-desc">ロケーション<br>管理</div></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step flow-hi" style="border-color:#c4870a;"><div class="flow-num">3</div><div class="flow-name">ピッキング</div><div class="flow-desc"><strong>最も人手</strong><br>3〜4割</div></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step" style="border-color:#0a7eb8;"><div class="flow-num">4</div><div class="flow-name">荷揃え・<br>仕分け</div><div class="flow-desc">配送先別<br>に振分</div></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step" style="border-color:#9b1fd4;"><div class="flow-num">5</div><div class="flow-name">出荷・<br>パレタイズ</div><div class="flow-desc">積み込み<br>テトリス</div></div>
+            </div>
+            <p class="reading-figure-cap">入口（入荷）から出口（出荷）まで、ぜんぶ重労働の連続。<strong>ピッキングだけで作業の3〜4割を占める</strong>のがポイント。</p>
+          </div>
+
+          <p><strong>1. 入荷・デパレタイズ</strong></p>
+          <p>トラックで届いた荷物を倉庫に入れる工程です。パレット（あの木製の四角い台）に積まれてくることが多くて、それを荷下ろしして、検品して、所定の保管場所へ運ぶ。</p>
+          <p>ここで地味に大変なのが<strong>デパレタイズ</strong>、つまり「パレットに積まれた荷物を1つずつ取り外す作業」。重い箱を腰を曲げて何百回も持ち上げる。人間の腰、よく持ちますよね。私だったら3分でやめます。最近はMujinなどのロボットがこの工程を自動化していて、これはとても良い動きだと思います。</p>
+
+          <p><strong>2. 保管</strong></p>
+          <p>入荷した荷物を「決められた場所」に置く工程。実はこれが奥深い。商品ごとに「よく出荷されるもの」「たまにしか動かないもの」があるので、効率的な置き方が変わります。よく動く商品を出口の近くに置く、形が似た商品を近くに置く、温度帯で分ける。これを<strong>ロケーション管理</strong>といって、WMS（倉庫管理システム）の重要な役割のひとつです。</p>
+          <p>AutoStoreのような<strong>高密度保管型</strong>の自動倉庫が増えているのは、土地代と建築費が高騰しているからですね。同じ面積に何倍も保管できるなら、それは選びますよね、人間が。</p>
+
+          <p><strong>3. ピッキング</strong></p>
+          <p>注文に応じて商品を取り出す工程。物流現場で<strong>最も人手がかかる工程</strong>で、倉庫作業の3〜4割を占めます。</p>
+
+          <!-- 図：ピッキング歩行距離 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図C-2: ピッキング作業者の歩行距離（1日）</div>
+            <div class="walk-compare">
+              <div class="walk-row"><div class="walk-label">倉庫内ピッキング</div><div class="walk-bar" style="width:75%;"><span>10〜20km</span></div></div>
+              <div class="walk-row"><div class="walk-label">フルマラソン</div><div class="walk-bar" style="width:80%;background:#5a6880;"><span>42.195km</span></div></div>
+              <div class="walk-row"><div class="walk-label">一般社会人（1日平均）</div><div class="walk-bar" style="width:18%;background:#5a6880;"><span>約5km</span></div></div>
+              <div class="walk-row"><div class="walk-label">ハシビロコウ（1日）</div><div class="walk-bar" style="width:3%;background:#0e8f6e;"><span>ほぼ0km</span></div></div>
+            </div>
+            <p class="reading-figure-cap">ピッキング作業者は、ハーフマラソンに近い距離を毎日歩く。私から見ると「飛んだほうが早くないですか」と思いますが、人間に翼はないので歩くしかない。歩くしかないなら<strong>商品の方を運んでもらえばいい</strong>というのがGTPの発想です。</p>
+          </div>
+
+          <p>ピッキングには大きく分けて2タイプあります。</p>
+          <ul class="reading-list">
+            <li><strong>シングルオーダーピック</strong>：1注文ごとに必要な商品を集める。EC向け。</li>
+            <li><strong>トータルピック</strong>：複数注文をまとめて集めて、あとで仕分け。BtoB向け。</li>
+          </ul>
+          <p>AutoStoreやGeek+のロボット倉庫はGTP（Goods-to-Person）の考え方で、人ではなく商品の方が動きます。賢い。</p>
+
+          <p><strong>4. 荷揃え・仕分け</strong></p>
+          <p>ピッキングした商品を、配送先別・店舗別に仕分ける工程。コンビニやスーパーの配送センターだと、ここがめちゃくちゃ重要。「セブンイレブン何号店に何を何個」を1つずつ間違いなく仕分けないと、お店の棚が空っぽになる。</p>
+          <p>ソーター（自動仕分け機）が活躍する工程です。長いベルトコンベヤーに大量の荷物が流れて、行き先ごとにシュートへ振り分けられる。あれ、見ていると意外と楽しいです。</p>
+
+          <p><strong>5. 出荷・パレタイズ</strong></p>
+          <p>仕分けた荷物をパレットに積み直して、トラックに積み込む工程。「パレタイズ」というのは、要するにテトリスです。重いものを下に、壊れやすいものを上に、しかも崩れないように。これも人間がやると重労働で、最近はパレタイズロボットが普及してきています。</p>
+
+          <p>ここまでお気づきかと思いますが、倉庫業務というのは<strong>入口（入荷）から出口（出荷）まで、ぜんぶ重労働の連続</strong>なんですよ。歩く、持ち上げる、運ぶ、積む。人間の身体はこういう繰り返し作業には本当に向いていません。腰を痛める、足を痛める、肩を痛める。自動化が必要なのは、効率の問題というより、もっと根本的な<strong>「身体性の限界」</strong>だと私は思っています。</p>
+        </div>
+      </article>
+
+      <!-- D. 三重苦 -->
+      <article class="reading-section">
+        <div class="reading-h">D. いま業界を揺るがしているもの ― 三重苦と転換点</div>
+        <div class="reading-talker">
+          <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+<!-- body -->
+<ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
+<!-- head -->
+<ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/>
+<!-- crest feathers (slightly drooping for dareru feel) -->
+<path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- beak: long, pointed, with sharp hook -->
+<!-- main beak body (wider at base, tapering to point) -->
+<path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/>
+<!-- beak vertical ridge -->
+<path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/>
+<!-- nostrils -->
+<ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<!-- sharp hook at tip -->
+<path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/>
+<!-- highlight on beak (subtle gloss) -->
+<path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+<!-- eyes -->
+<ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 36 Q42 33 47 36 Z" fill="#8b939c"/><path d="M53 36 Q58 33 63 36 Z" fill="#8b939c"/><path d="M37 36 L47 36 M53 36 L63 36" stroke="#222" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+</svg></div>
+          <div class="reading-bubble">ここは少し真面目に書きます。私もダルがってばかりではいられない話なので。</div>
+        </div>
+        <div class="reading-body">
+          <p>物流業界は今、<strong>3つの危機</strong>が同時進行しています。</p>
+
+          <!-- 図：三重苦 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図D-1: 物流業界の三重苦</div>
+            <div class="triple-crisis">
+              <div class="crisis-box" style="border-color:#e8341a;">
+                <div class="crisis-icon">👷</div>
+                <div class="crisis-title">労働力危機</div>
+                <div class="crisis-stat">求人倍率 <strong>2.68倍</strong></div>
+                <div class="crisis-desc">全産業の約2倍。若手10%・高齢化加速。2030年に▲34%（9億トン）の輸送能力不足</div>
+              </div>
+              <div class="crisis-box" style="border-color:#c4870a;">
+                <div class="crisis-icon">⏰</div>
+                <div class="crisis-title">2024年問題</div>
+                <div class="crisis-stat">残業上限 <strong>960h/年</strong></div>
+                <div class="crisis-desc">ドライバー1人の稼働時間が減る→同じ荷物に必要な人数が増える→でも人がいない</div>
+              </div>
+              <div class="crisis-box" style="border-color:#5a6880;">
+                <div class="crisis-icon">🏭</div>
+                <div class="crisis-title">建築費高騰</div>
+                <div class="crisis-stat">工事原価 <strong>+32pt</strong></div>
+                <div class="crisis-desc">2021〜2024で急上昇。新規倉庫を建てづらく、既存倉庫の生産性向上が急務に</div>
+              </div>
+            </div>
+          </div>
+
+          <p><strong>危機1：労働力（特にドライバー）の絶望的な不足</strong></p>
+          <p>トラックドライバーの有効求人倍率は2.68倍。全産業平均の約2倍です。「2人募集して1人来る」のがやっと、という状態。しかも応募してくる人の多くが中高年層で、若手はほとんど来ない。29歳以下のドライバー比率は10%（全産業平均は16.4%）。</p>
+
+          <!-- 図：ドライバー不足推移 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図D-2: 営業用トラックドライバー不足数の予測</div>
+            <div class="driver-chart">
+              <div class="dc-row"><div class="dc-year">2024年（問題発生）</div><div class="dc-bar" style="width:30%;background:#c4870a;"><span>▲14%（4億トン）</span></div></div>
+              <div class="dc-row"><div class="dc-year">2028年予測</div><div class="dc-bar" style="width:55%;background:#e8341a;"><span>▲27.8万人</span></div></div>
+              <div class="dc-row"><div class="dc-year">2030年予測</div><div class="dc-bar" style="width:75%;background:#9b1fd4;"><span>▲34%（9.4億トン）</span></div></div>
+            </div>
+            <p class="reading-figure-cap">1ヶ月のうち11日分の荷物が運べない計算。これは「物流クライシス」と呼ばれるレベル。<small>出典：NX総合研究所・公益社団法人鉄道貨物協会</small></p>
+          </div>
+
+          <p>このまま行くと、2028年にドライバーは27.8万人不足、2030年には<strong>輸送能力の19.5%（5.4億トン）が不足</strong>するとNX総研は予測しています。これはもう「物が運べなくなる時代」が現実に迫っているという話です。</p>
+
+          <p><strong>危機2：2024年問題と働き方改革</strong></p>
+          <p>2024年4月から、トラックドライバーに「年間960時間」の時間外労働規制が適用されました。これによって、ドライバー1人あたりの稼げる時間が減る → 同じ荷物を運ぶのにより多くのドライバーが必要 → でも人がいない、というスパイラル。</p>
+          <p>政府は「2030年に輸送能力34%（9.4億トン）不足する可能性」を公式に認めています。</p>
+
+          <p><strong>危機3：建築費高騰と倉庫不動産の歪み</strong></p>
+          <p>倉庫の工事原価指数は2021〜2024年の4年間で+32pt急上昇しました。それまで6年間で+4ptだったのが、急にです。鋼材高騰、人件費上昇、円安が複合した結果ですね。</p>
+          <p>これで何が起きるかというと、<strong>新しい倉庫を建てづらくなる</strong>。実際、2025年の新規供給予測は当初59.5万坪だったのが、46.7万坪まで縮小しました。22%減です。</p>
+
+          <p><strong>ではどうするか</strong></p>
+          <p>労働力は増えない。倉庫は建てづらい。でも荷物は増え続ける。となれば、答えは<strong>「既存の倉庫の生産性を上げる」</strong>しかありません。具体的には自動化です。</p>
+          <p>国もこれを認識していて、中小企業省力化投資補助金（予算1,000億円規模、最大1億円補助）を出しています。「自動化したいけど高い」という企業の背中を、国が押している状態です。矢野経済研究所は国内の物流ロボティクス市場が2024年¥404億円 → 2030年¥1,238億円へ<strong>3倍</strong>に伸びると予測しています。商談で「市場規模3倍ですよ」と言うと、けっこう刺さります。</p>
+        </div>
+      </article>
+
+      <!-- E. 自動化の現在地 -->
+      <article class="reading-section">
+        <div class="reading-h">E. 自動化の現在地 ― 何ができて、何がまだ難しいのか</div>
+        <div class="reading-talker">
+          <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+<!-- body -->
+<ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
+<!-- head -->
+<ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/>
+<!-- crest feathers (slightly drooping for dareru feel) -->
+<path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- beak: long, pointed, with sharp hook -->
+<!-- main beak body (wider at base, tapering to point) -->
+<path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/>
+<!-- beak vertical ridge -->
+<path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/>
+<!-- nostrils -->
+<ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<!-- sharp hook at tip -->
+<path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/>
+<!-- highlight on beak (subtle gloss) -->
+<path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+<!-- eyes -->
+<ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33.5 Q42 36 47 33.5" fill="#8b939c"/><path d="M53 33.5 Q58 36 63 33.5" fill="#8b939c"/><ellipse cx="42" cy="38" rx="2.4" ry="1.6" fill="#222"/><ellipse cx="58" cy="38" rx="2.4" ry="1.6" fill="#222"/><path d="M36 30 L46 31 M54 31 L64 30" stroke="#5a5a5a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+</svg></div>
+          <div class="reading-bubble">「自動化」と一言で言いますが、何でもできるわけじゃありません。整理しますね。</div>
+        </div>
+        <div class="reading-body">
+          <!-- 図：工程別 × 自動化難易度 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図E-1: 工程別 × 自動化の成熟度マトリクス</div>
+            <table class="auto-matrix">
+              <thead><tr><th>工程</th><th>成熟度</th><th>主要ベンダー</th><th>難しさ</th></tr></thead>
+              <tbody>
+                <tr><td>保管</td><td><span class="mat-dot mat-high">●●●●●</span></td><td>AutoStore・ダイフク・オカムラ</td><td>低</td></tr>
+                <tr><td>搬送（AMR）</td><td><span class="mat-dot mat-high">●●●●●</span></td><td>Geek+・ラピュタ・Exotec</td><td>低</td></tr>
+                <tr><td>デパレ/パレタイズ</td><td><span class="mat-dot mat-mid">●●●●○</span></td><td>Mujin</td><td>中</td></tr>
+                <tr><td>仕分け</td><td><span class="mat-dot mat-high">●●●●●</span></td><td>ダイフク・オカムラ</td><td>低</td></tr>
+                <tr><td>ピース・ピッキング</td><td><span class="mat-dot mat-mid">●●●○○</span></td><td>Mujin・Berkshire Grey</td><td>中〜高</td></tr>
+                <tr><td>不定形品（衣類・生鮮）</td><td><span class="mat-dot mat-low">●●○○○</span></td><td>—（限定的）</td><td>高</td></tr>
+                <tr><td>検品・例外処理</td><td><span class="mat-dot mat-low">●○○○○</span></td><td>—（人間優位）</td><td>非常に高</td></tr>
+              </tbody>
+            </table>
+            <p class="reading-figure-cap">保管・搬送・仕分けは「成熟期」。デパレ/パレタイズは「実用化」。ピース・ピッキングや検品は「発展途上」。</p>
+          </div>
+
+          <p><strong>自動化が得意な領域</strong></p>
+          <ul class="reading-list">
+            <li><strong>保管</strong>：パレット自動倉庫、AutoStoreのようなビン型GTP、シャトル式AS/RS。これはかなり成熟しています。</li>
+            <li><strong>搬送</strong>：AMR（自律走行ロボット）が爆発的に普及中。Geek+、ラピュタ、Exotec、Symboticなど。</li>
+            <li><strong>ピッキング（ケース・ピース単位）</strong>：これも近年大幅に進化。ただし「あらゆる商品を1個ずつ正確に掴む」のはまだ難しい場面あり。</li>
+            <li><strong>パレタイズ・デパレタイズ</strong>：Mujinの分野ですね。AI制御で精度が上がっています。</li>
+          </ul>
+
+          <p><strong>自動化がまだ難しい領域</strong></p>
+          <ul class="reading-list">
+            <li><strong>「壊れやすい・形が不定形」の商品</strong>：例えば衣類（柔らかい）、惣菜（形が崩れる）、生鮮品（個体差がある）。</li>
+            <li><strong>多品種少量</strong>：100種類の商品を1個ずつ違うところに送る、みたいなパターン。ロボットの段取り替えコストが高い。</li>
+            <li><strong>検品・品質判定</strong>：「これ不良品じゃない?」を判断するのはまだ人間の方が得意。</li>
+            <li><strong>イレギュラー対応</strong>：「箱が潰れている」「ラベルが剥がれている」みたいな例外処理。</li>
+          </ul>
+
+          <!-- 図：ベンダーポジショニング -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図E-2: 主要ベンダーのざっくり位置付け</div>
+            <div class="vendor-grid">
+              <div class="vendor-card"><div class="vendor-name">ダイフク 🇯🇵</div><div class="vendor-desc">マテハン界の巨人。大型パレット自動倉庫からシャトル・ソーターまで何でも。安心感が売り。</div></div>
+              <div class="vendor-card"><div class="vendor-name">オカムラ 🇯🇵</div><div class="vendor-desc">AutoStore国内正規販売店として国内シェアトップクラス。中堅〜大手向け。</div></div>
+              <div class="vendor-card"><div class="vendor-name">ギークプラス 🇨🇳</div><div class="vendor-desc">AMR大手。EVE Pシリーズで国内導入実績多数。Goods-to-Person型の代名詞。</div></div>
+              <div class="vendor-card"><div class="vendor-name">ラピュタ 🇯🇵</div><div class="vendor-desc">日本発、AMR協働ピッキング型。3PL・卸売市場で導入急増。RaaS型先駆者。</div></div>
+              <div class="vendor-card"><div class="vendor-name">Mujin 🇯🇵</div><div class="vendor-desc">AIロボティクスの先駆け。デパレ/パレタイズで圧倒的。</div></div>
+              <div class="vendor-card"><div class="vendor-name">Exotec 🇫🇷</div><div class="vendor-desc">フランス発、Skypod。ユニクロ・ヨドバシなど大手案件多数。</div></div>
+              <div class="vendor-card"><div class="vendor-name">AutoStore 🇳🇴</div><div class="vendor-desc">ビン型GTPの本家。世界中で導入実績、グローバルスタンダード。</div></div>
+              <div class="vendor-card"><div class="vendor-name">Symbotic 🇺🇸</div><div class="vendor-desc">WaaS型の大規模DC自動化。Walmartが主要顧客。</div></div>
+              <div class="vendor-card"><div class="vendor-name">Knapp/Swisslog/SSI 🇪🇺</div><div class="vendor-desc">欧州の老舗マテハン。シャトル式に強い。</div></div>
+            </div>
+          </div>
+
+          <p><strong>投資の勘所</strong></p>
+          <ul class="reading-list">
+            <li><strong>投資回収期間（ROI）</strong>：一般的には3〜5年。これより長いと社内承認が通りにくい。</li>
+            <li><strong>稼働率の前提</strong>：「1日◯時間稼働で◯年運用」という前提で計算。波動が大きすぎる現場は注意。</li>
+            <li><strong>拡張性</strong>：将来物量が増えたとき、機器を追加できる設計か。</li>
+          </ul>
+          <p>最近の傾向として、<strong>RaaS（Robot as a Service）型</strong>つまり「ロボットを買わずに月額で借りる」モデルが増えています。ラピュタが先駆けですね。初期投資を抑えて、効果を見ながら台数を増減できる。</p>
+        </div>
+      </article>
+
+      <!-- F. 自動化を阻む現実 -->
+      <article class="reading-section">
+        <div class="reading-h">F. 自動化を阻む現実 ― 業界固有の難しさ</div>
+        <div class="reading-talker">
+          <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+<!-- body -->
+<ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/>
+<!-- head -->
+<ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/>
+<!-- crest feathers (slightly drooping for dareru feel) -->
+<path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- beak: long, pointed, with sharp hook -->
+<!-- main beak body (wider at base, tapering to point) -->
+<path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/>
+<!-- beak vertical ridge -->
+<path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/>
+<!-- nostrils -->
+<ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/>
+<!-- sharp hook at tip -->
+<path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/>
+<!-- highlight on beak (subtle gloss) -->
+<path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+<!-- eyes -->
+<ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 36 Q42 34.5 47 36" fill="#8b939c"/><path d="M53 36 Q58 34.5 63 36" fill="#8b939c"/><path d="M37 37 L47 37 M53 37 L63 37" stroke="#222" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg></div>
+          <div class="reading-bubble">「じゃあ自動化すればいい」と思った方、もう少しお付き合いください。現実はそんなに単純じゃないんですよ。</div>
+        </div>
+        <div class="reading-body">
+          <p><strong>難しさ1：業務が標準化されていない</strong></p>
+          <p>これが最大の壁です。同じ「食品卸の倉庫」でも、A社とB社では業務フローが全然違う。商品マスタの作り方も、ピッキングのルールも、検品の基準も、ぜんぶ独自。これは長年「現場の知恵」で運用してきた結果なんですが、自動化するときには大問題になります。ロボットは「標準化されたルール」がないと動けない。だから自動化プロジェクトの相当な工数が、<strong>業務の棚卸しと標準化</strong>に費やされます。</p>
+
+          <p><strong>難しさ2：ピーク対応の問題</strong></p>
+          <p>物流の現場は、平常時とピーク時で物量が<strong>5〜10倍</strong>違うことが普通にあります。</p>
+
+          <!-- 図：平常時 vs ピーク時 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図F-1: 平常時とピーク時の物量差（食品スーパー特売の例）</div>
+            <div class="peak-chart">
+              <div class="peak-row"><div class="peak-label">平常時</div><div class="peak-bar" style="width:15%;background:#1a9e4a;"><span>1.0</span></div></div>
+              <div class="peak-row"><div class="peak-label">月末セール</div><div class="peak-bar" style="width:45%;background:#c4870a;"><span>3.0倍</span></div></div>
+              <div class="peak-row"><div class="peak-label">特売・お中元</div><div class="peak-bar" style="width:75%;background:#e8341a;"><span>5〜7倍</span></div></div>
+              <div class="peak-row"><div class="peak-label">ブラックフライデー</div><div class="peak-bar" style="width:95%;background:#9b1fd4;"><span>8〜10倍</span></div></div>
+            </div>
+            <p class="reading-figure-cap">ピーク時に対応する設備を入れると、平常時は<strong>余剰</strong>。平常時に最適化すると、ピーク時に<strong>パンク</strong>。ロボットだけでは解決しないジレンマ。</p>
+          </div>
+
+          <p>たとえば食品スーパーの特売、アパレルのセール時期、お中元・お歳暮、年末年始、ブラックフライデー。こういうピーク時に対応できるように設計すると、平常時は設備が余ってしまう。逆に平常時に最適化すると、ピーク時にパンクする。ロボットは「平均的な負荷」には強いんですが、突発的なピークには弱い。だから多くの現場で<strong>「ロボット＋人」のハイブリッド運用</strong>になります。</p>
+
+          <p><strong>難しさ3：多品種少量化の進行</strong></p>
+          <p>EC化の影響で、注文の傾向が大きく変わっています。</p>
+
+          <!-- 図：注文の変化 -->
+          <div class="reading-figure">
+            <div class="reading-figure-title">図F-2: 注文形態の変化（昔と今）</div>
+            <div class="order-compare">
+              <div class="order-side">
+                <div class="order-era">昔（BtoB中心）</div>
+                <div class="order-icon">📦×100</div>
+                <div class="order-detail">同じ商品100個<br>→ A社1社へ</div>
+                <div class="order-tag" style="background:#1a9e4a;">自動化しやすい</div>
+              </div>
+              <div class="order-vs">→</div>
+              <div class="order-side">
+                <div class="order-era">今（EC化進行）</div>
+                <div class="order-icon">📦×100種</div>
+                <div class="order-detail">100種類×1個<br>→ 100人の顧客へ</div>
+                <div class="order-tag" style="background:#e8341a;">自動化しづらい</div>
+              </div>
+            </div>
+            <p class="reading-figure-cap">同じ商品を大量に扱うほどロボットは得意。種類が多くて1個ずつ違うほど難しい。EC化はこの「難しい方」を加速させている。</p>
+          </div>
+
+          <p><strong>難しさ4：人間の感覚・判断の置き換えが難しい</strong></p>
+          <p>長年その現場にいたベテラン作業者は、見ただけで「この商品は欠品しそう」「この箱は中身が違う気がする」と気付ける。この<strong>暗黙知</strong>を、ロボットやシステムに置き換えるのが意外と難しい。ベテランが引退する前に、彼らの判断ロジックをデータ化する取り組みが各社で始まっていますが、これはこれで長い道のりです。</p>
+
+          <p><strong>難しさ5：投資判断の壁</strong></p>
+          <p>物流投資は「コスト削減」の論理で語られがちなので、経営層の判断が「人を減らせるかどうか」になりやすい。でも実際には、自動化の効果は「人を減らす」だけじゃなく、<strong>「24時間稼働できる」「品質が安定する」「ピークに耐えられる」「ベテランに依存しない」</strong>みたいな、定量化しづらいメリットも大きい。ここをどう経営層に翻訳するか、それが商談の山場、ということになります。</p>
+
+          <div class="reading-final">
+            <p>長々と書きましたが、私が物流業界をずっと観察していて思うのは、<strong>この業界、本当に変化のタイミングに来ている</strong>ということです。労働力危機、2024年問題、EC化、建築費高騰。どれもこれも「物流ロボット入れたほうがいい」方向に押している。これだけ追い風が揃うことは、業界の歴史上そうそうないでしょう。</p>
+            <p>ただ、現場の固有事情・暗黙知・ピーク対応など、自動化が簡単ではない要素もたくさんある。だからこそ、<strong>「業界をちゃんと理解して提案できる営業」</strong>の価値が今、急上昇しているわけです。</p>
+            <p>私から見ると、人間の皆さんはずいぶん忙しそうにしていますが、その分野でしっかり成果を出している方は、案外、私のように<strong>観察と判断</strong>を大事にしているように見えます。動き回ることが仕事じゃない。いつ、どこで、何を、誰に話すかを見極めることが仕事です。</p>
+            <p>それでは。私はそろそろ動きたくない気分なので、このへんで。また気が向いたら。</p>
+            <div class="reading-signature">— ハシビロコウ</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- INDUSTRY-SPECIFIC SECTIONS -->
+      <div class="reading-industry-wrap">
+        <div class="reading-industry-h">
+          <h3 class="reading-industry-title">業種別の読本</h3>
+          <p class="reading-industry-lead">商談相手に合わせて、その業界の構造・固有事情・自動化のリアルを押さえておくためのガイド。クリックで展開します。</p>
+        </div>
+
+        <!-- 食品・食品卸 -->
+        <details class="reading-industry">
+          <summary class="reading-industry-sum">
+            <span class="ri-tag" style="background:#0e8f6e;">食品・食品卸</span>
+            <span class="ri-title">3温度帯と賞味期限という宿命</span>
+            <span class="ri-arrow">▼</span>
+          </summary>
+          <div class="reading-industry-body">
+            <div class="reading-talker">
+              <div class="reading-talker-icon"><svg viewBox="0 0 100 100" width="56" height="56" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="78" rx="32" ry="19" fill="#7a838d"/><ellipse cx="50" cy="40" rx="26" ry="24" fill="#8b939c"/><path d="M44 18 Q45 14 47 17 M50 16 Q51 12 53 16 M56 18 Q57 14 59 17" stroke="#5a6068" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M30 47 Q50 43 70 47 L73 60 Q71 68 65 71 L55 73 L52 78 L48 78 L45 73 L35 71 Q29 68 27 60 Z" fill="#c9a96a" stroke="#7a6839" stroke-width="1.3"/><path d="M50 45 L50 75" stroke="#9a8550" stroke-width="0.9" fill="none"/><ellipse cx="44" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><ellipse cx="56" cy="54" rx="1.3" ry="0.7" fill="#4a3a1c"/><path d="M48 76 Q50 82 52 76 L52 73 L48 73 Z" fill="#a08552" stroke="#7a6839" stroke-width="1"/><path d="M38 50 Q43 48 47 49" stroke="#dbc28a" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.6"/><ellipse cx="42" cy="36" rx="5" ry="4" fill="#fff8d0"/><ellipse cx="58" cy="36" rx="5" ry="4" fill="#fff8d0"/><path d="M37 33 Q42 36 47 33" fill="#8b939c"/><path d="M53 33 Q58 36 63 33" fill="#8b939c"/><ellipse cx="42" cy="37.5" rx="2.2" ry="1.8" fill="#222"/><ellipse cx="58" cy="37.5" rx="2.2" ry="1.8" fill="#222"/></svg></div>
+              <div class="reading-bubble">食品物流の話。私は鳥なので生鮮品を見ているとつい食欲が出ますが、なるべく集中して解説します。</div>
+            </div>
+            <div class="reading-body">
+
+              <div class="ri-h">§1. 業界の輪郭</div>
+              <p>食品物流というと、人間の皆さんは「スーパーに並んでる商品を運ぶアレでしょ」と思うわけですが、実際にはもっと複雑な多層構造をしています。</p>
+              <p>メーカー（明治・サントリー・キリン・キユーピー・味の素・ハウス食品など）が作った商品を、<strong>食品卸</strong>（三菱食品・日本アクセス・国分・伊藤忠食品が四大卸）が買い取って、それを小売（イオン・セブン&アイ・ヤオコー・コープ・ローソン・ファミリーマートなど）に配送する。これが基本構造です。</p>
+
+              <!-- 図：食品流通の三層構造 -->
+              <div class="reading-figure">
+                <div class="reading-figure-title">図: 食品物流の三層構造</div>
+                <div class="food-flow">
+                  <div class="food-tier">
+                    <div class="food-tier-label">メーカー</div>
+                    <div class="food-tier-names">明治・サントリー・キリン・キユーピー・味の素・ハウス食品 等</div>
+                  </div>
+                  <div class="food-arrow">↓</div>
+                  <div class="food-tier" style="background:#fef3e6;border-color:#c4870a;">
+                    <div class="food-tier-label" style="color:#c4870a;">食品卸（四大卸）</div>
+                    <div class="food-tier-names">三菱食品・日本アクセス・国分・伊藤忠食品</div>
+                  </div>
+                  <div class="food-arrow">↓</div>
+                  <div class="food-tier">
+                    <div class="food-tier-label">小売</div>
+                    <div class="food-tier-names">イオン・セブン&amp;アイ・ヤオコー・コープ・ローソン・ファミマ 等</div>
+                  </div>
+                </div>
+                <p class="reading-figure-cap">国内食品流通市場は<strong>約80兆円規模</strong>。物流業界の中でも最大の取扱量を持ち、トラックドライバーの仕事の相当な割合がここに費やされている。</p>
+              </div>
+
+              <div class="ri-h">§2. 物流の固有事情 — まず温度帯</div>
+              <p>食品物流が他業界と決定的に違うのは、<strong>3温度帯の併用</strong>です。</p>
+
+              <!-- 図：3温度帯 -->
+              <div class="reading-figure">
+                <div class="reading-figure-title">図: 3温度帯と取扱商品</div>
+                <div class="temp-zones">
+                  <div class="temp-zone" style="background:#fef9e6;border-color:#c4870a;">
+                    <div class="temp-temp">20℃</div>
+                    <div class="temp-name">常温 (ドライ)</div>
+                    <div class="temp-desc">缶詰・調味料・お菓子・飲料・乾物</div>
+                  </div>
+                  <div class="temp-zone" style="background:#e6f4fa;border-color:#0a7eb8;">
+                    <div class="temp-temp">5℃</div>
+                    <div class="temp-name">冷蔵 (チルド)</div>
+                    <div class="temp-desc">日配品・乳製品・惣菜・生鮮</div>
+                  </div>
+                  <div class="temp-zone" style="background:#e8f0fe;border-color:#1a6be8;">
+                    <div class="temp-temp">-25℃</div>
+                    <div class="temp-name">冷凍 (フローズン)</div>
+                    <div class="temp-desc">アイス・冷凍食品・冷凍肉魚</div>
+                  </div>
+                </div>
+                <p class="reading-figure-cap">作業者は1日のうちに<strong>温度差50℃</strong>を行き来する。人間にとって相当の負担。</p>
+              </div>
+
+              <p>そしてもう一つの厄介な特性が<strong>賞味期限管理</strong>。古いものから先に出す<strong>FIFO（First-In, First-Out）</strong>が絶対のルール。ロット番号で「いつ作られたか」「賞味期限はいつか」を1個ずつ管理する必要があります。これがWMSの仕事の半分を占めると言っても過言ではない。</p>
+
+              <div class="ri-h">§3. 業界の難しさ — 1/3ルールと特売</div>
+              <p>食品業界には、外から見ると「は?」と言いたくなる商慣行がいくつかあります。</p>
+
+              <p><strong>1/3ルール</strong></p>
+              <p>賞味期限が<strong>製造日から3分の1の期間内</strong>に小売の店頭に並ばないと、卸が引き取らない（つまりメーカーが廃棄）という独特の慣行。賞味期限6ヶ月の商品なら、製造から2ヶ月以内に納品しないとアウト。この慣行のせいで、まだ食べられる食品が大量に廃棄されてきました。最近は「1/2ルール」に緩和する動きがありますが、まだ業界全体には行き渡っていません。</p>
+
+              <p><strong>特売対応</strong></p>
+              <p>スーパーが「来週、卵を半額」みたいなチラシを出すと、その3日間だけ卵の物量が普段の<strong>5〜10倍</strong>になります。これに対応するのが食品卸の腕の見せ所で、平常時の設備で受けきれないと欠品→クレーム→契約打ち切りに直結する。</p>
+
+              <!-- 図：特売物量波動 -->
+              <div class="reading-figure">
+                <div class="reading-figure-title">図: 特売時の物量波動</div>
+                <div class="peak-chart">
+                  <div class="peak-row"><div class="peak-label">平常時</div><div class="peak-bar" style="width:15%;background:#1a9e4a;"><span>1.0</span></div></div>
+                  <div class="peak-row"><div class="peak-label">月末セール</div><div class="peak-bar" style="width:35%;background:#c4870a;"><span>2〜3倍</span></div></div>
+                  <div class="peak-row"><div class="peak-label">特売初日</div><div class="peak-bar" style="width:70%;background:#e8341a;"><span>5〜7倍</span></div></div>
+                  <div class="peak-row"><div class="peak-label">お中元・年末</div><div class="peak-bar" style="width:90%;background:#9b1fd4;"><span>8〜10倍</span></div></div>
+                </div>
+                <p class="reading-figure-cap">チラシ1枚で物流現場の物量が10倍になる。人間がチラシ1枚で物流現場をぐちゃぐちゃにしている、なかなか興味深い光景。</p>
+              </div>
+
+              <p><strong>多品種少量化</strong></p>
+              <p>スーパー1店舗あたりの取扱SKU数は2〜3万、コンビニで3,000前後。これを1日何回も配送するため、卸の物流センターには数万SKU〜十万SKUが集まり、1日に何百〜何千の店舗向けピッキングが走ります。</p>
+
+              <div class="ri-h">§4. 自動化のリアル</div>
+              <p>食品物流の自動化、刺さりやすい領域と難しい領域がはっきりしています。</p>
+
+              <p><strong>刺さる</strong></p>
+              <ul class="reading-list">
+                <li><strong>常温品の高密度保管</strong>：AutoStoreが大活躍。コープさっぽろ江別物流センターは229坪に1.5万SKUを格納し、人員55→30名に。</li>
+                <li><strong>パレット単位の大量保管</strong>：F-LINEの食品共同物流センターでは、入荷ロボット荷下ろし→ケース自動倉庫（クレーン11基）→パレタイズロボの一気通貫を実現。</li>
+                <li><strong>BtoB卸のピッキング自動化</strong>：国分関信越がラピュタPA-AMRで歩行削減。</li>
+              </ul>
+
+              <p><strong>難しい</strong></p>
+              <ul class="reading-list">
+                <li><strong>冷凍倉庫の自動化</strong>：-25℃環境で動くロボットは限定的。バッテリー性能が落ち、潤滑油が固まる。冷凍対応のAS/RSは存在するが、コストが跳ね上がる。</li>
+                <li><strong>生鮮品</strong>：形状不定・個体差大。掴むのが難しい。</li>
+                <li><strong>特売ピーク対応</strong>：平常時に最適化すると特売で破綻、特売に合わせると平常時に余剰。多くの現場で「平常時=自動・特売時=人海戦術」のハイブリッド運用。</li>
+              </ul>
+
+              <div class="ri-h">§5. 業界用語ミニ辞典</div>
+              <table class="glossary-table">
+                <tbody>
+                  <tr><td class="gl-term">日配品</td><td>日々配送される鮮度が短い商品（牛乳・パン・豆腐・惣菜など）</td></tr>
+                  <tr><td class="gl-term">常温/チルド/フローズン</td><td>3温度帯の呼び方</td></tr>
+                  <tr><td class="gl-term">DC</td><td>Distribution Center。在庫を持つ配送センター</td></tr>
+                  <tr><td class="gl-term">TC</td><td>Transfer Center。在庫を持たず、入荷したものをその日のうちに仕分けて出荷する中継拠点</td></tr>
+                  <tr><td class="gl-term">PC</td><td>Process Center。精肉や惣菜などをセンター内で加工する拠点</td></tr>
+                  <tr><td class="gl-term">共配（共同配送）</td><td>複数メーカーの商品を1台のトラックで配送する取り組み。F-LINEがその代表例</td></tr>
+                  <tr><td class="gl-term">センター料/センターフィー</td><td>小売がメーカー・卸から徴収する物流費。商習慣</td></tr>
+                  <tr><td class="gl-term">棚割</td><td>店頭の棚に何をどう並べるかの設計図</td></tr>
+                  <tr><td class="gl-term">バイヤー</td><td>小売側の仕入担当者。卸・メーカーへの発注権を持つ強い人</td></tr>
+                  <tr><td class="gl-term">1/3ルール</td><td>賞味期限の1/3を過ぎたら納品不可という業界慣行</td></tr>
+                  <tr><td class="gl-term">日販</td><td>1日あたりの売上。コンビニ業界で多用される指標</td></tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+    </div>
+  </div>
+
   <div id="view-detail" class="view" style="overflow-y:auto;">
     <div class="detail-topbar">
       <button class="back-btn" id="back-btn">← 戻る</button>
@@ -1307,6 +2459,7 @@ const TECH_LABELS={
   depal:'デパレ・パレタイズロボット',
   waas:'大規模DC自動化（WaaS型）',
   wms:'WMS・WES',
+  forklift:'自動フォークリフト（AGF/AFL）',
 };
 // (tech labels kept for internal reference)
 
@@ -1336,12 +2489,12 @@ const CASES_DATA=[
    url:'https://www.okamura.co.jp/mhs/special_site/product/autostore/casestudy/case11/index.html',
    note:null,failure:false},
 
-  {id:'c04',span:['保管','ピッキング'],flag:'🇯🇵',client:'東亜DKK（狭山）',sub:'計測機器メーカー / 製造業内倉庫',
-   industry:'製造業',tech:['gtp'],vendor:'AutoStore System / オカムラ',vendorFlag:'🇯🇵',vendorRole:'AutoStore正規販売店',product:'AutoStore',
-   year:2024,procs:['storage', 'picking'],color:'#5a6880',
-   effects:['製造業向け少量多品種部品在庫の自動化','既存倉庫の床下掘り下げでスペース確保し設置'],
-   scale:'小〜中規模 / 埼玉県狭山市',
-   url:'https://www.robot-digest.com/contents/?id=1736823662-773601',
+  {id:'c04',span:['保管','ピッキング'],flag:'🇯🇵',client:'東亜ディーケーケー（東亜DKK）',sub:'計測機器メーカー / 狭山インテグレーションセンター（埼玉県狭山市）',
+   industry:'製造業',tech:['gtp'],vendor:'オカムラ',vendorFlag:'🇯🇵',vendorRole:'AutoStore正規販売店',product:'AutoStore (床掘下げ設置)',alias:['東亜DKK','東亜ディーケーケー','TOA DKK'],
+   year:2024,color:'#5a6880',
+   effects:['平置き棚で約530m²必要だった保管を約320m²に圧縮（床を一部掘り込む自由設計）','1日400〜500ケース出荷で、残業18時超→16時終了に短縮しトラック定時便に対応','補用品・消耗品の膨大なラインナップを高密度に在庫管理','オカムラの国内AutoStore販売で初の床下掘り下げ事例'],
+   scale:'小〜中規模 / 埼玉県狭山市 / 計測機器の部品在庫',
+   url:'https://www.okamura.co.jp/mhs/special_site/product/autostore/casestudy/case12/index.html',
    note:null,failure:false},
 
   // ─ AutoStore 海外 ─
@@ -1378,11 +2531,11 @@ const CASES_DATA=[
    url:'https://monoist.itmedia.co.jp/mn/articles/2212/08/news066.html',
    note:null,failure:false},
 
-  {id:'c09',span:['保管','ピッキング'],flag:'🇯🇵',client:'バリューブックス',sub:'古本EC / 埼玉・吉見町新拠点',
-   industry:'書籍EC',tech:['gtp'],vendor:'Exotec Nihon',vendorFlag:'🇫🇷',vendorRole:'Skypod直販・倉庫全体設計',product:'Exotec Skypod (次世代)',
-   year:2026,procs:['storage', 'picking'],color:'#b07a00',
-   effects:['次世代Skypod（処理能力+50%）を採用','順立て出庫機能を高評価・入荷から梱包まで一気通貫設計','物量増加が人員増加に直結するオペレーションからの脱却'],
-   scale:'中規模 / 2026年冬稼働予定',
+  {id:'c09',span:['保管','ピッキング'],flag:'🇯🇵',client:'バリューブックス',sub:'古本EC / 埼玉吉見倉庫（埼玉県比企郡吉見町）',
+   industry:'書籍EC',tech:['gtp'],vendor:'Exotec Nihon',vendorFlag:'🇫🇷',vendorRole:'Skypod直販・倉庫全体設計',product:'Exotec Skypod (次世代・ロボ80台)',alias:['バリューブックス','VALUE BOOKS'],
+   year:2026,color:'#b07a00',
+   effects:['2025年刷新の次世代Skypodを導入（ロボ80台・保管ビン4万個）','「入荷・査定・保管・出荷」を一気通貫で再設計（未査定品の一時保管・呼び出しも対応）','注文順に商品を搬送する「順立て」機能を高く評価','物量増加が人員増加に直結する従来構造からの脱却'],
+   scale:'中規模 / 2026年10〜12月稼働予定 / 古本EC',
    url:'https://prtimes.jp/main/html/rd/p/000000023.000128228.html',
    note:null,failure:false},
 
@@ -1419,12 +2572,12 @@ const CASES_DATA=[
    url:'https://www.geekplus.jp/news/20210705/',
    note:null,failure:false},
 
-  {id:'c14',span:['ピッキング'],flag:'🇯🇵',client:'KDDI',sub:'通信 / 自社物流センター2拠点',
-   industry:'通信',tech:['amr_shelf'],vendor:'ギークプラス',vendorFlag:'🇨🇳',vendorRole:'自動棚搬送ロボット（Pシリーズ）',product:'Geek+ AMR22台',
+  {id:'c14',span:['ピッキング'],flag:'🇯🇵',client:'KDDI',sub:'通信 / KDDI物流センター 東西2拠点',
+   industry:'通信',tech:['amr_shelf'],vendor:'ギークプラス',vendorFlag:'🇨🇳',vendorRole:'自動棚搬送ロボット（P500R）',product:'Geek+ P500R (AMR22台・242棚)',alias:['KDDI','ケーディーディーアイ','au'],
    year:2024,color:'#7c3aed',
-   effects:['自社物流センター2拠点にAGV22台・棚搬送ソリューションを導入','Goods-to-Personピッキング方式で作業者の歩行時間を削減','ピッキングと検品の効率化','2024年問題（残業規制）への備え'],
-   scale:'中規模 / 2拠点',
-   url:'https://www.geekplus.jp/case/',
+   effects:['東西2拠点合計でP500R 22台・242棚・12ステーション（ロボエリア約400坪）','棚搬送により作業者の歩行時間を削減','ピッキングと検品を同時実施して工数削減','シンプルな作業で教育時間を短縮・物量波動に応じた運営を実現'],
+   scale:'中規模 / 東西2拠点 / 通信端末・アクセサリー',
+   url:'https://www.geekplus.jp/case/kddi-gtp01/',
    note:null,failure:false},
 
   // ─ ラピュタ PA-AMR ─
@@ -1433,7 +2586,7 @@ const CASES_DATA=[
    year:2021,procs:['picking', 'transport'],color:'#1a6be8',
    effects:['34台導入（当時国内EC最大規模）','生産性1.8倍向上','人員約30%削減'],
    scale:'大規模 / RaaS（月額）',
-   url:'https://www.rapyuta-robotics.com/ja/use-cases/',
+   url:'https://www.rapyuta-robotics.com/ja/use-cases/case-askul/',
    note:null,failure:false},
 
   {id:'c16',span:['ピッキング'],flag:'🇯🇵',client:'日本通運（NX小牧流通センター）',sub:'3PL / 愛知県小牧市',
@@ -1449,7 +2602,7 @@ const CASES_DATA=[
    year:2022,procs:['picking', 'transport'],color:'#1a9e4a',
    effects:['柏センター11台・堺センター13台（計24台）','ピッキング工程の省人化','全継続利用中（解約ゼロ）'],
    scale:'中規模 / 2拠点',
-   url:'https://www.rapyuta-robotics.com/ja/case-sgl/',
+   url:'https://www.rapyuta-robotics.com/ja/use-cases/case-sgl/',
    note:null,failure:false},
 
   {id:'c18',span:['ピッキング'],flag:'🇯🇵',client:'花王',sub:'日用品 / 関東物流拠点',
@@ -1528,12 +2681,12 @@ const CASES_DATA=[
    note:null,failure:false},
 
   {id:'c27',span:['入荷・デパレ','出荷・パレタイズ'],flag:'🇲🇽',client:'Walmart de México（Walmex）',sub:'小売DC / メキシコ・バヒオ地区',
-   industry:'EC・通販',tech:['waas'],vendor:'Symbotic',vendorFlag:'🇺🇸',vendorRole:'AIロボットDCシステム',product:'Symbotic',
-   year:2024,procs:['inbound', 'storage', 'picking', 'sorting', 'outbound'],color:'#1a6be8',
-   effects:['Symboticのメキシコ初進出案件（2024年10月発表）','1拠点でSymbotic史上最大のシングルフェーズ案件','バヒオ地区のグリーンフィールドDCに導入'],
-   scale:'超大規模 / 2拠点（メキシコシティ近郊）',
-   url:'https://www.symbotic.com/about/news-events/',
-   note:'2024年10月にSymbotic-Walmex間で合意発表。個別の詳細プレスリリースは要確認のためニュース一覧をリンク。',failure:false},
+   industry:'EC・通販',tech:['waas'],vendor:'Symbotic',vendorFlag:'🇺🇸',vendorRole:'AIロボットDCシステム（入荷〜出荷全自動）',product:'Symbotic (メキシコ初進出)',alias:['ウォルマートメキシコ','Walmex','ウォルメックス'],
+   year:2024,color:'#1a6be8',
+   effects:['メキシコシティ近郊の新設DC2拠点にSymboticのエンドツーエンドシステムを導入（2024年10月合意）','バヒオ地区の拠点はSymbotic史上最大のシングルフェーズ案件','Walmexのメキシコ配送網で最大級のDCに','現地法人Symbotic Mexicoを設立しメキシコ初進出'],
+   scale:'超大規模 / メキシコ2拠点 / Symbotic国際展開の第一号',
+   url:'https://www.symbotic.com/about/news-events/news/symbotic-announces-agreement-to-implement-multiple-industry-leading-warehouse-automation-systems-for-walmex-and-strategic-international-expansion-in-mexico/',
+   note:null,failure:false},
 
   // ─ 失敗・撤退事例 ─
   {id:'c28',span:['保管','ピッキング'],flag:'🇺🇸',client:'Kroger × Ocado',sub:'食品小売 / 米国CFC展開（撤退）',
@@ -1583,11 +2736,11 @@ const CASES_DATA=[
    url:'https://www.daifuku.com/jp/solution/casestudy/f-line/',
    note:null,failure:false},
 
-  {id:'c34',span:['保管','出荷・パレタイズ'],flag:'🇯🇵',client:'ロッテ（LOTTE Confectionery）',sub:'菓子製造 / 物流センター（ドライ・冷凍）',
-   industry:'食品・食品卸',tech:['stacker'],vendor:'ダイフク',vendorFlag:'🇯🇵',vendorRole:'自動倉庫＋STV＋ソーター統合',product:'パレット自動倉庫+STV',alias:['ロッテ','LOTTE'],
-   year:2023,color:'#0e8f6e',
-   effects:['6階建て・延床5.4万m²にパレット自動倉庫・STV・ファインストッカー・サーフィンソータを統合','冷凍品はコンパクトシステム自動倉庫＋移動ラックで対応','727アイテム（ドライ620/冷凍107）を1日130〜150オーダー処理','ドライ・冷凍の温度帯混在を1拠点で自動化'],
-   scale:'大規模 / 延床5.4万m² / ドライ・冷凍混在',
+  {id:'c34',span:['保管','出荷・パレタイズ'],flag:'🇰🇷',client:'ロッテ製菓（LOTTE Confectionery）',sub:'菓子製造 / 光明物流センター（韓国・光明市）',
+   industry:'食品・食品卸',tech:['stacker'],vendor:'ダイフク',vendorFlag:'🇯🇵',vendorRole:'パレット自動倉庫＋STV＋ソーター統合',product:'パレット自動倉庫+STV',alias:['ロッテ','LOTTE','ロッテ製菓'],
+   year:2010,color:'#0e8f6e',
+   effects:['中小規模に分散していたドライ品・冷凍品の物流業務を1拠点に集約','韓国内4工場＋生産委託先の商品を保管し配送センター26カ所へ出荷','自動化レベルの高い物流システムで大幅な省力・省人化を実現','量販店（流通）向けの増加する物量に対応'],
+   scale:'大規模 / 韓国・光明市 / ドライ・冷凍集約',
    url:'https://www.daifuku.com/jp/solution/casestudy/case005/',
    note:null,failure:false},
 
@@ -1674,7 +2827,7 @@ const CASES_DATA=[
    year:2025,color:'#0e8f6e',
    effects:['トータルピック＋仕分け方式からオーダーピック方式に切替し仕分け工程を不要化','仕分け担当の人時を大幅削減','レイアウト変更なしで効果を最大化','6週間の実証運用を経て本稼働・他拠点展開も検討'],
    scale:'中規模 / 2025年稼働 / 東京都',
-   url:'https://www.rapyuta-robotics.com/ja/2025/11/06/nippon-access-pa-amr/',
+   url:'https://prtimes.jp/main/html/rd/p/000000170.000021229.html',
    note:null,failure:false},
 
   {id:'c45',span:['ピッキング'],flag:'🇯🇵',client:'ロジスティード西日本（神戸営業所）',sub:'3PL / 兵庫県神戸市',
@@ -1685,11 +2838,11 @@ const CASES_DATA=[
    url:'https://www.rapyuta-robotics.com/ja/2024/12/11/logisteed-westjapan-pa-amr/',
    note:null,failure:false},
 
-  {id:'c46',span:['保管','荷揃え・仕分け'],flag:'🇯🇵',client:'ニトリ（幸手DC）',sub:'家具・インテリア小売 / 埼玉県幸手市',
-   industry:'家電小売',tech:['stacker'],vendor:'ダイフク',vendorFlag:'🇯🇵',vendorRole:'自動倉庫＋店頭配列順ピッキング',product:'自動倉庫+店頭順仕分け',alias:['ニトリ'],
-   year:2023,color:'#0a7eb8',
-   effects:['店舗の通路数・棚レイアウトを認識し店頭配列順に商品を自動仕分け','店舗での陳列時間を短縮（倉庫側で配列順に箱詰め指示）','重労働を排除しスタッフの6割が女性で運営','人手不足対策のモデル倉庫として最新鋭設備を集約'],
-   scale:'大規模 / 埼玉県幸手市 / 最新鋭DC',
+  {id:'c46',span:['保管','荷揃え・仕分け'],flag:'🇯🇵',client:'ニトリ（幸手DC）',sub:'家具・インテリア小売 / 埼玉県幸手市（延床約15.7万m²）',
+   industry:'家電小売',tech:['stacker'],vendor:'ダイフク',vendorFlag:'🇯🇵',vendorRole:'パレット/ケース自動倉庫＋多関節ロボット',product:'自動倉庫 (シャトル240台等)',alias:['ニトリ','NITORI','ホームロジスティクス'],
+   year:2024,color:'#0a7eb8',
+   effects:['パレット自動倉庫クレーン83台・ケース自動倉庫シャトル240台・多関節ロボ54台を導入','店舗の通路数・棚レイアウトを認識し店頭配列順に商品を自動仕分け（店頭陳列時間を短縮）','重労働を排除しスタッフの約6割が女性','投資額約500億円・国内最大級の物流拠点'],
+   scale:'超大規模 / 延床約15.7万m² / 投資500億円',
    url:'https://business.nikkei.com/atcl/gen/19/00775/081500004/',
    note:null,failure:false},
 
@@ -1709,12 +2862,12 @@ const CASES_DATA=[
    url:'https://www.daifuku.com/jp/solution/casestudy/case029/',
    note:null,failure:false},
 
-  {id:'c49',span:['保管','ピッキング'],flag:'🇯🇵',client:'ニトリ（ホームロジスティクス）',sub:'家具・インテリア小売 / 東日本通販発送センター',
-   industry:'家電小売',tech:['gtp'],vendor:'AutoStore / オカムラ',vendorFlag:'🇳🇴',vendorRole:'キューブ型GTP（国内初導入）',product:'AutoStore',alias:['ニトリ','ホームロジ','ホームロジスティクス'],
+  {id:'c49',span:['保管','ピッキング'],flag:'🇯🇵',client:'ニトリ（ホームロジスティクス）',sub:'家具・インテリア小売 / 東日本通販発送センター（川崎）',
+   industry:'家電小売',tech:['gtp'],vendor:'オカムラ',vendorFlag:'🇯🇵',vendorRole:'AutoStore正規販売店（日本初導入）',product:'AutoStore (国内初導入)',alias:['ニトリ','NITORI','ホームロジ','ホームロジスティクス'],
    year:2016,color:'#0a7eb8',
-   effects:['日本国内で初めてAutoStoreを導入した先駆的事例','EC物量増大を予測した現場改革の中核設備','従来の平置き棚比で設置スペースを約1/3に圧縮','作業者がポートから動かず入出庫できるGoods-to-Person化'],
+   effects:['日本国内で初めてAutoStoreを導入した先駆的事例（2016年）','生産性が当初試算3.75倍→実稼働で4.5倍に向上し投資回収期間も5年→1年半に短縮','定点ピッキング化で1人1時間あたり処理行数が大幅向上・人員50名/日を削減','ビンの高密度積み上げで保管スペースを従来の約半分に圧縮'],
    scale:'大規模 / 東日本通販発送センター / 国内初',
-   url:'https://gemba-pi.jp/post-170047',
+   url:'https://www.okamura.co.jp/mhs/special_site/product/autostore/casestudy/case01/index.html',
    note:null,failure:false},
 
   {id:'c50',span:['保管','ピッキング'],flag:'🇺🇸',client:'Toyota Motor North America',sub:'自動車部品（補修部品）/ ケンタッキー州ヘブロン',
@@ -1725,13 +2878,13 @@ const CASES_DATA=[
    url:'https://www.swisslog.com/en-us/about-swisslog/newsroom/news-press-releases-blog-posts/2021/06/swisslog-mobile-robotic-solution-to-provide-toyota-with-flexibility-and-efficiency',
    note:null,failure:false},
 
-  {id:'c51',span:['保管','ピッキング'],flag:'🇺🇸',client:'Medline',sub:'医療用品流通 / コロラド州倉庫（米国）',
-   industry:'製薬',tech:['gtp'],vendor:'Swisslog',vendorFlag:'🇨🇭',vendorRole:'AutoStore（SynQ統合）',product:'Swisslog AutoStore (ロボ94台)',
-   year:2023,color:'#e8341a',
-   effects:['AutoStoreロボット94台＋自動ワークステーションを導入','医療用品需要の増加に対応','SynQソフトウェアでシステム全体を統合制御'],
-   scale:'中規模 / 米国コロラド州 / 医療用品',
-   url:'https://www.materialhandling247.com/product/carrypick_robots/Swisslog',
-   note:'出典はSwisslog製品紹介ページ内の事例言及。個別事例ページは要確認。',failure:false},
+  {id:'c51',span:['保管','ピッキング'],flag:'🇺🇸',client:'Medline',sub:'医療用品流通 / オーロラDC（米国コロラド州）',
+   industry:'製薬',tech:['gtp'],vendor:'Swisslog',vendorFlag:'🇨🇭',vendorRole:'AutoStore（SynQ統合）',product:'AutoStore (ロボ94台)',alias:['メドライン','Medline'],
+   year:2025,color:'#e8341a',
+   effects:['ロボット94台・荷入れWS8台・ピッキングWS10台をSynQで統合','Medlineにとって24例目のAutoStore（北米初導入の2013年から継続）','既に全拠点で1,800台超のAutoStoreロボを稼働','ピックレートを2〜4倍に改善し全米95%へ翌日配送を実現'],
+   scale:'大規模 / コロラド州オーロラ / 医療用品流通',
+   url:'https://www.swisslog.com/en-us/about-swisslog/newsroom/news-press-releases-blog-posts/2025/03/medline-autostore-installation-in-aurora-colorado',
+   note:null,failure:false},
 
   {id:'c52',span:['保管','ピッキング'],flag:'🇯🇵',client:'トラスコ中山（プラネット北関東）',sub:'機械工具卸 / 群馬県伊勢崎市',
    industry:'製造業',tech:['gtp'],vendor:'オカムラ',vendorFlag:'🇯🇵',vendorRole:'AutoStore正規販売店',product:'AutoStore (ロボ24台・ビン3.2万)',alias:['トラスコ','TRUSCO','トラスコ中山'],
@@ -1828,6 +2981,110 @@ const CASES_DATA=[
    scale:'中〜大規模 / オーストリア / 製造業スマートファクトリー',
    url:'https://www.knapp.com/en/insights/case-studies/',
    note:'出典はKnapp公式の事例一覧（個別ページは要確認）。',failure:false},
+
+  {id:'c64',span:['ピッキング'],flag:'🇯🇵',client:'ビックカメラ',sub:'家電EC / ビックカメラ・ドットコム物流拠点',
+   industry:'家電小売',tech:['amr_shelf'],vendor:'ギークプラス',vendorFlag:'🇨🇳',vendorRole:'自動棚搬送ロボット（P500S/R）',product:'Geek+ P500S/R (AMR90台・棚1,500台)',alias:['ビックカメラ','BIC CAMERA','ビック'],
+   year:2021,color:'#0a7eb8',
+   effects:['ピッキングロボット約90台＋棚約1,500台を導入','カメラ・PC・家電・医薬品・日用品など約130万SKUに対応','高まるEC需要に対し定点ピッキングで業務効率を改善','作業者の歩行を削減し省人化を実現'],
+   scale:'大規模 / ビックカメラ・ドットコム向け',
+   url:'https://www.geekplus.jp/case/biccamera/',
+   note:null,failure:false},
+
+  {id:'c65',span:['保管','ピッキング'],flag:'🇪🇸',client:'Eroski',sub:'食品小売（スーパー）/ マヨルカ島 son morro DC',
+   industry:'食品・食品卸',tech:['gtp'],vendor:'AutoStore / Smartlog',vendorFlag:'🇳🇴',vendorRole:'キューブ型GTP（Galys WMS連携）',product:'AutoStore (ロボ36台・ビン21,275)',alias:['エロスキ','Eroski'],
+   year:2024,color:'#0e8f6e',
+   effects:['ピッキング効率を5倍（400%向上）に','900m²のグリッドに21,275ビン・4,000品目を高密度保管（スペース25%削減）','ロボット36台＋CarouselPort7台（ピッキング3・補充4）','Galys WMS連携でリアルタイム在庫管理・誤出荷削減'],
+   scale:'中規模 / スペイン・マヨルカ島 / 1,600超の店舗網',
+   url:'https://www.autostoresystem.com/cases/eroski-improves-picking-efficiency-fivefold-with-autostore',
+   note:null,failure:false},
+
+  {id:'c66',span:['保管','出荷・パレタイズ'],flag:'🇸🇪',client:'Varner',sub:'アパレル（北欧大手）/ スウェーデン中央DC',
+   industry:'アパレル',tech:['gtp'],vendor:'AutoStore / Swisslog',vendorFlag:'🇳🇴',vendorRole:'キューブ型GTP（2グリッド）',product:'AutoStore (ロボ325台/2基目)',alias:['ヴァーナー','Varner'],
+   year:2012,color:'#9b1fd4',
+   effects:['2012年導入後、容量倍増→コロナ期に2基目(325台)を増設','世界最高性能クラスの7,500オーダー行/時を処理','欧州1,200店舗＋EC向けをスピーディに供給','ミニロード倉庫・ソーター・AutoStoreを統合した一気通貫設計'],
+   scale:'大規模 / スウェーデン / 欧州1,200店舗',
+   url:'https://www.autostoresystem.com/cases/varner-leads-automated-warehouse-fashion-distribution',
+   note:null,failure:false},
+
+  {id:'c67',span:['ピッキング'],flag:'🇯🇵',client:'ほくやく（北海道薬品）',sub:'医薬品卸 / 札幌支店・函館支店（北海道）',
+   industry:'製薬',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型協働ピッキングAMR',product:'ラピュタ PA-AMR (函館11台)',alias:['ほくやく','北海道薬品'],
+   year:2024,color:'#e8341a',
+   effects:['札幌支店での先行導入に続き2拠点目として函館支店へ11台を導入','医薬品卸のピッキング工程を協働ロボットで省人化','北海道の広域物流における労働力確保に対応','作業標準化で品質を安定化'],
+   scale:'中規模 / 北海道 / 医薬品卸',
+   url:'https://www.rapyuta-robotics.com/ja/category/products/pa-amr/',
+   note:null,failure:false},
+
+  {id:'c68',span:['ピッキング'],flag:'🇯🇵',client:'ネスレ日本 × ASKUL LOGIST',sub:'食品・飲料 / 大阪EC物流センター（3PL受託）',
+   industry:'食品・食品卸',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型協働ピッキングAMR',product:'ラピュタ PA-AMR (12台)',alias:['ネスレ','Nestle','アスクルロジスト','ASKUL LOGIST'],
+   year:2024,color:'#0e8f6e',
+   effects:['荷主ネスレ・3PLアスクルロジストの座組でPA-AMR 12台を導入','飲料・食料品・菓子・ペットフード等のピッキングを自動化','2024年7月稼働','3PLオペレーションの生産性向上と省人化を両立'],
+   scale:'中規模 / 大阪EC物流センター / 2024年7月稼働',
+   url:'https://www.rapyuta-robotics.com/ja/use-cases/case-nestle-askul_logist-1/',
+   note:null,failure:false},
+
+  {id:'c69',span:['入荷・デパレ','保管'],flag:'🇯🇵',client:'SUS（エス・ユー・エス）',sub:'FA機械・アルミ構造材製造 / 滋賀事業所（甲賀市）',
+   industry:'製造業',tech:['stacker'],vendor:'ダイフク',vendorFlag:'🇯🇵',vendorRole:'パレット自動倉庫＋移動ラック＋DPS＋AGV',product:'コンパクトシステム+移動ラック+AGV',alias:['SUS','エスユーエス'],
+   year:2008,color:'#5a6880',
+   effects:['国内4ヶ所目の生産拠点にパレット自動倉庫「コンパクトシステム」を導入','移動ラック・デジタルピッキング・無人搬送車など最新マテハンを統合','生産工程と一体化した保管・供給で国内生産体制を強化','東海・関西・北陸圏への販売供給体制を整備'],
+   scale:'中規模 / 滋賀県甲賀市 / FA機械・アルミ製品',
+   url:'https://www.daifuku.com/jp/solution/casestudy/case027/',
+   note:null,failure:false},
+
+  {id:'c70',span:['保管','ピッキング'],flag:'🇯🇵',client:'日立物流（ロジスティード）',sub:'3PL / EC事業者向けシェアリング自動倉庫',
+   industry:'3PL',tech:['amr_shelf'],vendor:'ギークプラス',vendorFlag:'🇨🇳',vendorRole:'自動棚搬送ロボット（EVE）',product:'Geek+ EVE (シェアリング型)',alias:['日立物流','ロジスティード','HITACHI'],
+   year:2020,color:'#1a9e4a',
+   effects:['複数のEC事業者で共用するシェアリング型自動倉庫を構築','GTP方式で各荷主のピッキングを効率化','需要変動に応じてロボットエリアを柔軟に伸縮','保管シェアリングで設備投資リスクを低減'],
+   scale:'中〜大規模 / EC事業者向けシェアリング',
+   url:'https://www.geekplus.jp/case_industry/3pl/',
+   note:'出典はGeek+公式の3PL事例一覧（個別ページは要確認）。',failure:false},
+
+  {id:'c71',span:['ピッキング'],flag:'🇯🇵',client:'国分関信越',sub:'食品卸（BtoB）/ 物流センター',
+   industry:'食品・食品卸',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型協働ピッキングAMR（50Lオリコン対応）',product:'ラピュタ PA-AMR (BtoB対応)',alias:['国分関信越','こくぶ','KOKUBU'],
+   year:2020,color:'#0e8f6e',
+   effects:['BtoB食品卸のバラ注文ピッキングを協働AMRで効率化（歩行時間が作業の半分を占める課題に対応）','50L折りたたみコンテナを搭載できるBtoB要件対応スペックを評価','操作が簡単で習熟時間が短く、シルバー人材・外国人など多様な人材が即戦力化','国分グループ初導入として後続拠点（国分北海道等）へ横展開'],
+   scale:'中規模 / BtoB食品卸 / グループ初導入',
+   url:'https://www.rapyuta-robotics.com/ja/use-cases/case-kokubukanshinetsu/',
+   note:null,failure:false},
+
+  {id:'c72',span:['ピッキング'],flag:'🇯🇵',client:'アクタス（ACTUS）',sub:'家具・インテリア小売 / 物流拠点（3PL委託）',
+   industry:'家電小売',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型協働ピッキングAMR XL（75Lオリコン対応）',product:'ラピュタ PA-AMR XL (WMS連携)',alias:['アクタス','ACTUS'],
+   year:2025,color:'#0a7eb8',
+   effects:['新ピッキング方式「リストスキャン方式」を国内で初採用','WMS「W3 mimosa」とAPI連携しピッキング実績をWMSに自動反映','大容量75Lオリコン対応のPA-AMR XLで多様な家具・インテリア商品に対応','荷主・ラピュタ・3PL・WMS業者の4者連携でオペレーションとシステムを統合'],
+   scale:'中規模 / 家具・インテリア / 国内初の方式採用',
+   url:'https://www.rapyuta-robotics.com/ja/2025/03/19/actus-pa-amr/',
+   note:null,failure:false},
+
+  {id:'c73',span:['ピッキング'],flag:'🇺🇸',client:'IKO International',sub:'ベアリング製造（直動案内機器）/ ニュージャージー州（米国）',
+   industry:'製造業',tech:['amr_assist'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'RaaS型協働ピッキングAMR',product:'ラピュタ PA-AMR',alias:['IKO','日本トムソン','アイケーオー'],
+   year:2024,color:'#5a6880',
+   effects:['数万点に及ぶ取扱品目の管理と誤出荷削減に効果','ピッキング作業の生産性と正確性を向上','経営全領域でのDX推進の一環として物流改革を初めて具体化','従業員のワークライフバランスを保ちつつ効率化を実現'],
+   scale:'中規模 / 米国ニュージャージー州 / ベアリング流通',
+   url:'https://www.rapyuta-robotics.com/ja/2024/12/20/iko-international-pa-amr/',
+   note:null,failure:false},
+
+  {id:'c74',span:['入荷・デパレ','保管'],flag:'🇯🇵',client:'LIXIL物流（エクセディ導入）',sub:'住宅建材物流 / 関東物流センター',
+   industry:'製造業',tech:['amr_shelf'],vendor:'エクセディ',vendorFlag:'🇯🇵',vendorRole:'Neibo パワフルロボット（重量物AMR）',product:'Neibo パワフルロボット (重量物2台)',alias:['LIXIL','リクシル','エクセディ'],
+   year:2025,color:'#5a6880',
+   effects:['最大6mの住宅用サッシ・玄関ドア等の重量物搬送をAMRで自動化','フォークリフト中心だった搬送を省人化（運転資格・技術への依存を解消）','2025年1月の2台導入以降、故障ゼロで運用継続','重量物特有の搬送課題に対応'],
+   scale:'中規模 / 関東物流センター / 住宅建材',
+   url:'https://www.lnews.jp/2025/12/r1203101.html',
+   note:null,failure:false},
+
+  {id:'c75',span:['荷揃え・仕分け','出荷・パレタイズ'],flag:'🇯🇵',client:'キリンビール',sub:'酒類製造 / 国内全9工場',
+   industry:'食品・食品卸',tech:['wms'],vendor:'NTTデータ / キリングループロジスティクス',vendorFlag:'🇯🇵',vendorRole:'WMS連携・積み付け/人員割当最適化システム',product:'新ピッキングシステム (WMS連携)',alias:['キリン','KIRIN','キリンビール','キリングループ'],
+   year:2025,color:'#0e8f6e',
+   effects:['パレットへの最適な積み付け方法と人員配置を自動指示するシステムを全9工場に導入','年間パレット使用枚数を約9万枚削減見込み（2026年購入は約3万枚減）','トラックドライバーの荷待ち時間を3カ月で約1万時間削減','作業者の熟練度・難易度に応じ人とロボットへ効率的に作業指示・CO2も削減'],
+   scale:'大規模 / 国内全9工場 / WMS×最適化ソフトの好例',
+   url:'https://prtimes.jp/main/html/rd/p/000001397.000073077.html',
+   note:null,failure:false},
+
+  {id:'c76',span:['入荷・デパレ','保管'],flag:'🇯🇵',client:'AGCエスアイテック',sub:'化学・シリカ製品製造 / 自社倉庫（福岡県北九州市）',
+   industry:'製造業',tech:['forklift'],vendor:'ラピュタロボティクス',vendorFlag:'🇯🇵',vendorRole:'自動フォークリフト「ラピュタAFL」',product:'ラピュタAFL (LiDAR方式)',alias:['AGCエスアイテック','AGC','エージーシー'],
+   year:2025,color:'#5a6880',
+   effects:['LiDAR方式採用で磁気棒・反射板などの現場工事が不要・既存倉庫に柔軟導入','既存の移動ラックとWMSを連携させAFLが格納・ピッキング搬送を実施','荷役自動化で倉庫稼働率向上と品質安定化','1拠点目として導入し業務標準化・他拠点への横展開を計画'],
+   scale:'中規模 / 福岡県北九州市 / 自動フォークリフト第1号',
+   url:'https://www.rapyuta-robotics.com/ja/2025/03/11/rapyuta-afl-agc-sitech/',
+   note:null,failure:false},
 
 ];
 
@@ -1999,6 +3256,33 @@ openDetail=function(...args){_origOpenDetail(...args);requestAnimationFrame(appl
 buildMap();
 buildMatrix();
 buildCases();
+
+// ═══════════ MARKET RESEARCH CHART ═══════════
+function buildMarket(){
+  const data = [
+    {year:2020, val:191, type:'actual'},
+    {year:2021, val:243, type:'actual'},
+    {year:2022, val:300, type:'actual'},
+    {year:2023, val:357, type:'actual'},
+    {year:2024, val:404, type:'est'},
+    {year:2025, val:531, type:'forecast'},
+    {year:2027, val:733, type:'forecast'},
+    {year:2030, val:1238, type:'forecast'},
+  ];
+  const max = Math.max(...data.map(d=>d.val));
+  const container = document.getElementById('market-chart-jp');
+  if(!container) return;
+  container.innerHTML = data.map(d=>{
+    const h = (d.val/max)*100;
+    const cls = (d.type==='forecast') ? ' future' : '';
+    const valFmt = d.val.toLocaleString();
+    return `<div class="market-chart-bar${cls}" style="height:${h}%" title="${d.year}年: ${valFmt}億円">
+      <div class="market-chart-val">${valFmt}</div>
+      <div class="market-chart-year">${d.year}${d.type==='est'?'(見込)':d.type==='forecast'?'(予測)':''}</div>
+    </div>`;
+  }).join('');
+}
+buildMarket();
 </script>
 </body>
 </html>
