@@ -40,7 +40,7 @@ Logimap内の各タブ・読み物・市場調査に関係する内容。
 ・箇条書きを適度に使う
 ・専門用語には簡単な補足を入れる`;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const origin = req.headers['origin'] || '';
   const allowedOrigin = ALLOWED_ORIGINS.find(o => origin.startsWith(o))
     || ALLOWED_ORIGINS[0];
