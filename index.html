@@ -257,7 +257,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .market-chart-bar{flex:1;background:linear-gradient(180deg,#0e8f6e,#0e8f6e88);border-radius:4px 4px 0 0;position:relative;min-height:8px;transition:opacity .15s;}
 .market-chart-bar:hover{opacity:0.85;}
 .market-chart-bar.future{background:linear-gradient(180deg,#0e8f6e66,#0e8f6e22);border:1.5px dashed #0e8f6e;}
-.market-chart-val{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--text2);white-space:nowrap;}
+.market-chart-val{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--text2);white-space:nowrap;}
 .market-chart-year{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
 .market-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px;}
 .market-table thead th{text-align:left;font-size:10px;font-weight:700;color:var(--muted);padding:6px 10px;border-bottom:2px solid var(--border2);background:var(--surface2);}
@@ -266,6 +266,15 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .market-table strong{color:var(--text);font-weight:800;}
 
 /* ─ Reading (Business Primer) ─ */
+
+/* Chapter summary box */
+.chapter-summary{background:linear-gradient(135deg,#fff8eb,#fef3e6);border:2px solid #c4870a;border-radius:14px;padding:20px 24px;margin-bottom:28px;}
+.chapter-summary-lead{font-size:14px;color:var(--text);line-height:1.7;margin:0 0 14px;font-weight:500;}
+.chapter-summary-list{margin:0;padding:0;list-style:none;}
+.chapter-summary-list li{font-size:12px;color:var(--text2);line-height:1.6;padding:4px 0 4px 20px;position:relative;border-bottom:1px solid #f0d9b0;}
+.chapter-summary-list li:last-child{border-bottom:none;}
+.chapter-summary-list li::before{content:"▶";position:absolute;left:0;color:#c4870a;font-size:9px;top:6px;}
+.chapter-summary-title{font-size:10px;font-weight:800;color:#c4870a;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;}
 .reading-wrap{max-width:780px;margin:0 auto;padding:30px 28px 80px;}
 .reading-cover{text-align:center;padding:30px 0 40px;border-bottom:2px solid var(--border2);margin-bottom:36px;}
 .reading-cover-icon{display:flex;justify-content:center;margin-bottom:14px;}
@@ -309,12 +318,12 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .tier-chart{display:flex;flex-direction:column;gap:6px;margin:4px 0;}
 .tier-row{display:flex;align-items:center;gap:10px;}
 .tier-name{width:140px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
-.tier-bar{height:22px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+.tier-bar{height:22px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;white-space:nowrap;overflow:visible;}
 
 /* Time pie (B) */
 .time-pie{margin:4px 0;}
 .time-bar{display:flex;height:40px;border-radius:6px;overflow:hidden;}
-.time-seg{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;line-height:1.2;}
+.time-seg{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:800;line-height:1.2;min-width:40px;overflow:hidden;}
 .time-seg small{font-family:'DM Mono',monospace;font-weight:600;opacity:0.9;}
 
 /* Flow chart (C) */
@@ -332,8 +341,8 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .walk-row{display:flex;align-items:center;gap:10px;}
 .walk-label{width:170px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;flex-shrink:0;}
 .walk-track{flex:1;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;}
-.walk-bar{height:22px;border-radius:4px;min-width:3px;}
-.walk-val{font-size:12px;font-weight:800;color:var(--text);font-family:'DM Mono',monospace;white-space:nowrap;}
+.walk-bar{height:22px;border-radius:4px;min-width:3px;overflow:visible;}
+.walk-val{font-size:12px;font-weight:800;color:var(--text);font-family:'DM Mono',monospace;white-space:nowrap;min-width:60px;}
 
 /* Triple crisis (D) */
 .triple-crisis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
@@ -348,7 +357,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .driver-chart{display:flex;flex-direction:column;gap:6px;}
 .dc-row{display:flex;align-items:center;gap:10px;}
 .dc-year{width:140px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
-.dc-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+.dc-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;white-space:nowrap;overflow:visible;}
 
 /* Auto matrix (E) */
 .auto-matrix{width:100%;border-collapse:collapse;font-size:12px;}
@@ -369,7 +378,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .peak-chart{display:flex;flex-direction:column;gap:6px;}
 .peak-row{display:flex;align-items:center;gap:10px;}
 .peak-label{width:140px;font-size:11px;font-weight:700;color:var(--text2);text-align:right;}
-.peak-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;}
+.peak-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;white-space:nowrap;overflow:visible;}
 
 /* Order compare (F) */
 .order-compare{display:flex;align-items:center;gap:14px;justify-content:center;}
@@ -474,14 +483,14 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .pm-shipper-box .player-role{font-size:10px;font-weight:800;color:#c4870a;letter-spacing:.5px;margin-bottom:2px;text-transform:uppercase;}
 .pm-shipper-box .player-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:4px;}
 .player-sub{font-size:10px;color:var(--muted);line-height:1.4;}
-.pm-split{display:flex;width:80%;max-width:400px;justify-content:space-between;position:relative;height:32px;}
+.pm-split{display:flex;width:80%;max-width:560px;justify-content:space-between;position:relative;height:32px;}
 .pm-split::before,.pm-split::after{content:'';position:absolute;top:0;width:2px;height:32px;background:var(--muted2);}
 .pm-split::before{left:25%;}
 .pm-split::after{right:25%;}
 .pm-split-line{font-size:10px;font-weight:700;color:var(--muted);position:absolute;top:8px;}
 .pm-split-left{left:0;transform:translateX(20%);}
 .pm-split-right{right:0;transform:translateX(-20%);}
-.pm-two-tracks{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:560px;}
+.pm-two-tracks{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:560px;align-items:start;}
 .pm-track{display:flex;flex-direction:column;align-items:center;}
 .pm-track .player-box{width:100%;}
 .pm-merge-arrow{font-size:10px;color:var(--muted);font-weight:700;padding:6px 0;}
@@ -525,7 +534,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .sc-row{display:contents;}
 .sc-label{font-size:12px;font-weight:800;color:var(--text);padding-right:8px;}
 .sc-track{flex:1;}
-.sc-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:700;}
+.sc-bar{height:24px;border-radius:4px;display:flex;align-items:center;padding:0 10px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:visible;}
 .sc-bar-up{background:linear-gradient(90deg,#1a9e4a,#0e8f6e);width:100%;}
 .sc-bar-down{background:linear-gradient(90deg,#e8341a,#a02810);width:60%;}
 .sc-gap{grid-column:1/-1;background:linear-gradient(135deg,#fef3e6,#fae6e0);border:2px dashed #e8341a;border-radius:10px;padding:14px;text-align:center;margin:6px 0;}
@@ -592,9 +601,9 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .tr-axis{display:flex;justify-content:space-between;padding:0 4px;font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);border-top:2px solid var(--border2);padding-top:6px;}
 
 /* Monthly food calendar */
-.food-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.food-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
 .fc-week-label{font-size:10px;font-weight:800;color:var(--muted);text-align:center;padding:4px 0;}
-.fc-day{aspect-ratio:1;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:4px 2px;font-size:9px;line-height:1.2;border:1px solid var(--border2);}
+.fc-day{border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:3px 1px;font-size:8px;line-height:1.2;border:1px solid var(--border2);overflow:hidden;min-height:36px;}
 .fc-day[data-load="1"]{background:#f0f2f4;}
 .fc-day[data-load="2"]{background:#fef9e6;color:#7a5a05;}
 .fc-day[data-load="3"]{background:#fef3c7;color:#7a5a05;}
@@ -746,7 +755,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .tpl-fit-row:first-child .tpl-fit-issue,.tpl-fit-row:first-child .tpl-fit-sol{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
 .tpl-fit-data:nth-child(odd){background:#fff;}
 .tpl-fit-data:nth-child(even){background:#f8f9fa;}
-.tpl-fit-issue{color:var(--text2);border-right:1px solid var(--border);}
+.tpl-fit-issue{color:var(--text2);border-right:1px solid var(--border);word-break:keep-all;}
 .tpl-fit-sol{color:var(--text);font-weight:700;}
 .tpl-fit-arrow{text-align:center;font-size:14px;color:var(--sb);font-weight:900;}
 
@@ -827,6 +836,219 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .tt-sub{font-size:9px;color:var(--muted);margin-top:1px;}
 .tt-desc{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:6px;}
 .tt-hint{font-size:10px;color:var(--sb);font-weight:600;}
+
+/* === New industry figures CSS === */
+
+/* 製造業: 工場内物流フロー */
+.mfg-flow{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;justify-content:center;}
+.mfg-step{flex:1;min-width:110px;background:#fff;border:2px solid var(--border2);border-radius:10px;padding:10px;text-align:center;}
+.mfg-step-in{border-color:#e8341a;background:#fae6e0;}
+.mfg-step-store{border-color:#0a7eb8;background:#e6f4fa;}
+.mfg-step-supply{border-color:#c4870a;background:#fef9e6;}
+.mfg-step-line{border-color:#1a9e4a;background:#ecfbf2;}
+.mfg-step-icon{font-size:24px;margin-bottom:4px;}
+.mfg-step-name{font-size:12px;font-weight:900;color:var(--text);margin-bottom:6px;}
+.mfg-step-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.mfg-arrow{display:flex;align-items:center;color:var(--muted2);font-size:18px;font-weight:700;}
+.mfg-compare-table{width:100%;border-collapse:collapse;font-size:12px;}
+.mfg-compare-table thead th{background:var(--surface2);padding:8px;font-size:10px;font-weight:800;color:var(--muted);border:1px solid var(--border);}
+.mfg-compare-table tbody td{padding:8px 10px;border:1px solid var(--border);color:var(--text2);}
+.mfg-compare-table tbody td:first-child{font-weight:700;color:var(--text);background:var(--surface2);}
+
+/* 自動車: Tier構造 */
+.tier-structure{display:flex;flex-direction:column;gap:8px;}
+.ts-row{padding:14px;border-radius:10px;display:grid;grid-template-columns:160px 1fr 1fr;gap:10px;align-items:center;}
+.ts-oem{background:linear-gradient(90deg,#fef3e6,#fff);border:2px solid #c4870a;}
+.ts-tier1{background:linear-gradient(90deg,#ecfbf2,#fff);border:2px solid #1a9e4a;}
+.ts-tier2{background:linear-gradient(90deg,#f0f2f4,#fff);border:2px solid #5a6880;}
+.ts-label{font-size:13px;font-weight:900;color:var(--text);}
+.ts-examples{font-size:11px;color:var(--muted);font-style:italic;}
+.ts-role{font-size:11px;color:var(--text2);}
+.ts-arrow{text-align:center;font-size:11px;color:var(--muted);font-weight:700;}
+
+/* かんばん */
+.kanban-flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;justify-content:center;}
+.kf-node{background:#fff;border:2px solid var(--border2);border-radius:10px;padding:14px;text-align:center;min-width:120px;flex:1;}
+.kf-supplier{border-color:#0a7eb8;}
+.kf-parts{border-color:#c4870a;}
+.kf-line{border-color:#1a9e4a;}
+.kf-label{font-size:13px;font-weight:900;color:var(--text);margin-bottom:4px;}
+.kf-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+.kf-arrows{display:flex;flex-direction:column;gap:6px;padding:0 8px;flex-shrink:0;}
+.kf-arr{font-size:10px;font-weight:700;white-space:nowrap;padding:4px 8px;border-radius:4px;}
+.kf-arr-goods{background:#ecfbf2;color:#1a9e4a;}
+.kf-arr-info{background:#fae6e0;color:#e8341a;}
+.kanban-key{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;}
+.kk-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
+.kk-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+
+/* EV比較 */
+.ev-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:start;}
+.ev-side{background:var(--surface);border:2px solid var(--border2);border-radius:10px;padding:14px;}
+.ev-ice{border-color:#5a6880;}
+.ev-ev{border-color:#1a9e4a;}
+.ev-era{font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px;letter-spacing:.5px;}
+.ev-count{font-family:'DM Mono',monospace;font-size:22px;font-weight:900;color:var(--text);margin-bottom:10px;}
+.ev-breakdown{display:flex;flex-direction:column;gap:4px;}
+.ev-bar-row{display:flex;align-items:center;gap:6px;}
+.ev-bar-label{width:90px;font-size:9px;font-weight:700;color:var(--muted);text-align:right;flex-shrink:0;}
+.ev-bar{height:18px;border-radius:3px;display:flex;align-items:center;padding:0 6px;color:#fff;font-size:9px;font-weight:800;white-space:nowrap;overflow:visible;min-width:24px;}
+.ev-arrow-mid{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--muted);text-align:center;line-height:1.5;padding-top:40px;}
+
+/* アパレル: SKU爆発 */
+.sku-explosion{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;}
+.sku-base{background:#fff;border:2px solid #c4870a;border-radius:10px;padding:10px 14px;text-align:center;}
+.sku-label{font-size:11px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.sku-count{font-family:'DM Mono',monospace;font-size:16px;font-weight:900;color:#c4870a;}
+.sku-times{font-size:22px;font-weight:900;color:var(--muted);}
+.sku-result{background:#fef3e6;border:3px solid #c4870a;border-radius:10px;padding:10px 16px;text-align:center;}
+.sku-big{font-size:28px;}
+.sku-scale{background:var(--surface2);border-radius:8px;padding:12px;}
+.sku-scale-row{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;border-bottom:1px solid var(--border);}
+.sku-scale-row:last-child{border-bottom:none;}
+.sku-scale-label{font-size:11px;color:var(--text2);}
+.sku-scale-val{font-family:'DM Mono',monospace;font-size:12px;font-weight:800;color:var(--text);}
+.sku-scale-total{background:#fef3e6;}
+.sku-scale-total .sku-scale-val{color:#c4870a;}
+
+/* シーズンタイムライン */
+.season-timeline{border:1px solid var(--border);border-radius:8px;padding:12px;overflow:hidden;}
+.stl-months{display:flex;justify-content:space-between;padding:0 80px 6px;font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+.stl-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;position:relative;height:30px;}
+.stl-label{width:70px;font-size:10px;font-weight:700;color:var(--text2);flex-shrink:0;}
+.stl-bar-wrap{flex:1;position:relative;height:100%;background:#f0f2f4;border-radius:4px;overflow:hidden;}
+.stl-bar{position:absolute;top:4px;height:22px;border-radius:3px;}
+.stl-label-on{position:absolute;top:8px;font-size:9px;color:#fff;font-weight:800;white-space:nowrap;pointer-events:none;}
+.stl-overlap-zone{position:absolute;top:4px;height:22px;background:repeating-linear-gradient(45deg,#e8c4f0,#e8c4f0 4px,#f3edff 4px,#f3edff 8px);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#9b1fd4;}
+
+/* オムニチャネル */
+.omni-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:start;}
+.omni-side{padding:14px;border-radius:10px;border:2px solid var(--border2);}
+.omni-before{background:#fae6e0;border-color:#e8341a;}
+.omni-after{background:#ecfbf2;border-color:#1a9e4a;}
+.omni-era{font-size:11px;font-weight:800;margin-bottom:10px;text-align:center;letter-spacing:.5px;}
+.omni-before .omni-era{color:#e8341a;}
+.omni-after .omni-era{color:#1a9e4a;}
+.omni-diagram{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;}
+.omni-box{background:#fff;border:2px solid var(--border2);border-radius:6px;padding:6px 10px;text-align:center;font-size:11px;font-weight:700;}
+.omni-store{border-color:#0a7eb8;}
+.omni-ec{border-color:#c4870a;}
+.omni-gap{font-size:20px;font-weight:900;color:#e8341a;}
+.omni-unified{background:#fff;border:2px solid #1a9e4a;border-radius:8px;padding:10px;text-align:center;font-size:12px;font-weight:800;color:#1a9e4a;}
+.omni-issues{margin:0;padding-left:14px;font-size:10px;line-height:1.8;color:var(--text2);}
+.omni-benefits li{color:#1a9e4a;}
+.omni-arrow-mid{display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--muted2);font-weight:700;padding-top:30px;}
+
+/* 製薬: 三重規制 */
+.pharma-regs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.preg-box{padding:14px;border-radius:10px;border:2px solid var(--border2);}
+.preg-gmp{background:#fae6e0;border-color:#e8341a;}
+.preg-gdp{background:#e6f4fa;border-color:#0a7eb8;}
+.preg-trace{background:#ecfbf2;border-color:#1a9e4a;}
+.preg-name{font-size:18px;font-weight:900;margin-bottom:2px;}
+.preg-gmp .preg-name{color:#e8341a;}
+.preg-gdp .preg-name{color:#0a7eb8;}
+.preg-trace .preg-name{color:#1a9e4a;}
+.preg-full{font-size:9px;color:var(--muted);margin-bottom:4px;font-style:italic;}
+.preg-scope{font-size:10px;font-weight:700;color:var(--text);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.preg-list{margin:0;padding-left:14px;font-size:10px;color:var(--text2);line-height:1.7;}
+
+/* コールドチェーン */
+.pharma-cold{display:flex;flex-direction:column;gap:4px;}
+.pc-row{display:grid;grid-template-columns:100px 1fr 1fr;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:#fff;border:1px solid var(--border);}
+.pc-temp{font-size:11px;font-weight:900;text-align:center;padding:6px;border-radius:6px;}
+.pc-ambient{background:#fff8eb;color:#7a5a05;}
+.pc-cool{background:#e6f4fa;color:#05517a;}
+.pc-refrig{background:#e8f0fe;color:#0a3fb8;}
+.pc-frozen{background:#ede8fe;color:#4a0aac;}
+.pc-deep{background:#fae0f8;color:#7a0a8f;}
+.pc-products{font-size:11px;color:var(--text2);}
+.pc-manage{font-size:10px;color:var(--muted);}
+.pc-manage strong{color:#e8341a;}
+
+/* 先発 vs ジェネリック */
+.pharma-generic{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:start;}
+.pg-side{padding:14px;border-radius:10px;border:2px solid var(--border2);}
+.pg-brand{background:#fff8eb;border-color:#c4870a;}
+.pg-generic{background:#e6f4fa;border-color:#0a7eb8;}
+.pg-title{font-size:13px;font-weight:900;color:var(--text);margin-bottom:8px;}
+.pg-stat{font-size:11px;color:var(--text2);margin-bottom:4px;font-family:'DM Mono',monospace;}
+.pg-stat-hi{font-size:13px;font-weight:800;color:var(--text);}
+.pg-list{margin:8px 0 0;padding-left:14px;font-size:10px;color:var(--text2);line-height:1.7;}
+.pg-vs{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);text-align:center;line-height:1.6;padding-top:30px;}
+
+@media(max-width:760px){
+  .ts-row{grid-template-columns:1fr;}
+  .kanban-flow{flex-direction:column;}
+  .ev-compare,.omni-compare,.pharma-generic{grid-template-columns:1fr;}
+  .ev-arrow-mid,.omni-arrow-mid,.pg-vs{padding:0;}
+  .pharma-regs{grid-template-columns:1fr;}
+  .mfg-flow{flex-direction:column;}
+  .sku-explosion{flex-direction:column;}
+}
+
+
+/* 因果ループ図 */
+.causal-loop{display:grid;grid-template-columns:1fr auto 1fr;grid-template-rows:auto auto auto;gap:8px;align-items:center;padding:12px;}
+.cl-node{background:#fff;border:2px solid var(--border2);border-radius:10px;padding:12px;text-align:center;}
+.cl-node-1{border-color:#0a7eb8;background:#e6f4fa;}
+.cl-node-2{border-color:#e8341a;background:#fae6e0;}
+.cl-node-3{border-color:#9b1fd4;background:#f3edff;}
+.cl-node-4{border-color:#1a9e4a;background:#ecfbf2;}
+.cl-num{font-family:'DM Mono',monospace;font-size:18px;font-weight:900;margin-bottom:4px;}
+.cl-node-1 .cl-num{color:#0a7eb8;}
+.cl-node-2 .cl-num{color:#e8341a;}
+.cl-node-3 .cl-num{color:#9b1fd4;}
+.cl-node-4 .cl-num{color:#1a9e4a;}
+.cl-text{font-size:11px;color:var(--text);line-height:1.5;font-weight:700;}
+.cl-arr{font-size:20px;font-weight:900;color:var(--muted2);text-align:center;}
+.cl-arr-r,.cl-arr-l{display:flex;align-items:center;justify-content:center;}
+.cl-row-mid{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;padding:0 20%;}
+.cl-center-label{font-size:11px;font-weight:800;color:#e8341a;border:2px dashed #e8341a;padding:6px 16px;border-radius:20px;}
+
+/* 氷山図 */
+.iceberg{padding:8px 0;}
+.iceberg-sea{border-radius:12px;overflow:hidden;}
+.iceberg-above{background:linear-gradient(180deg,#e6f4fa,#b8dff5);padding:16px 20px 20px;text-align:center;}
+.iceberg-above-label{font-size:10px;font-weight:800;color:#0a5a8a;margin-bottom:10px;letter-spacing:.5px;}
+.iceberg-above-items{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;}
+.iceberg-above-items span{background:#fff;border:1.5px solid #0a7eb8;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;color:#0a5a8a;}
+.iceberg-waterline{background:#0a7eb8;color:#fff;font-size:10px;font-weight:700;padding:6px 20px;letter-spacing:2px;text-align:center;}
+.iceberg-below{background:linear-gradient(180deg,#1a4a6b,#0d2d45);padding:16px 20px 20px;}
+.iceberg-below-label{font-size:10px;font-weight:800;color:#8ecaf5;margin-bottom:12px;letter-spacing:.5px;}
+.ibi-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.ibi-dot{width:8px;height:8px;border-radius:50%;background:#f5a623;flex-shrink:0;}
+.ibi-row{font-size:12px;color:#d0eeff;font-weight:500;}
+
+@media(max-width:760px){
+  .causal-loop{grid-template-columns:1fr;grid-template-rows:auto;}
+  .cl-arr-r,.cl-arr-l{transform:rotate(90deg);}
+  .cl-row-mid{flex-direction:column;gap:4px;padding:0;}
+}
+
+/* Global chart overflow fixes */
+.reading-figure{overflow:hidden;}
+.reading-figure table{table-layout:fixed;width:100%;}
+.reading-figure table td, .reading-figure table th{word-break:break-word;overflow-wrap:break-word;}
+.market-chart{overflow:visible !important;}
+.ec-calendar .fc-load{font-size:7px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;}
+.return-rate .rr-bar span,.ec-trend .ec-bar span{white-space:nowrap;}
+/* Fix short bars where text overflows */
+.walk-track{overflow:visible;}
+.peak-chart,.driver-chart,.tier-chart,.return-rate,.ec-trend{overflow:visible;}
+/* Fix season timeline overlap */
+.season-timeline{overflow:hidden;}
+.stl-bar-wrap{overflow:hidden;}
+/* Fix sku-explosion on small screens */
+.sku-explosion{flex-wrap:wrap;gap:6px;}
+.sku-base{min-width:80px;}
+/* Fix pharma cold chain */
+.pc-row{grid-template-columns:90px 1fr 1fr;gap:6px;}
+.pc-temp{font-size:10px;padding:4px;}
+/* Fix kanban flow */
+.kanban-flow{flex-wrap:wrap;}
+.kf-arrows{min-width:120px;}
+.kf-arr{font-size:9px;padding:3px 6px;}
 </style>
 </head>
 <body>
@@ -1167,7 +1389,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 
       <!-- Sub-tabs -->
       <div class="reading-subtabs">
-        <button class="rsub active" data-rsub="overview">📘 全体読本</button>
+        <button class="rsub active" data-rsub="overview">📘 業界の全体像</button>
         <button class="rsub" data-rsub="food">🍱 食品・食品卸</button>
         <button class="rsub" data-rsub="ec">🛒 EC・通販</button>
         <button class="rsub" data-rsub="3pl">🚚 3PL</button>
@@ -1186,6 +1408,19 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
       </div>
 
       <!-- A. 全体像 -->
+      <div class="chapter-summary">
+        <div class="chapter-summary-title">このページで分かること</div>
+        <p class="chapter-summary-lead">物流業界の「常識」を一通り押さえるための読本。業界の構造・商慣行・倉庫の現場・三重苦・自動化の今がこの1冊に。商談前の30分で読めます。</p>
+        <ul class="chapter-summary-list">
+          <li>「物流」と「ロジスティクス」の違いと語源</li>
+          <li>物流業界の5プレイヤーと荷主・3PL・マテハンベンダーの役割分担</li>
+          <li>多重下請け・荷待ち・属人化・人海戦術など業界固有の慣行</li>
+          <li>倉庫業務の5工程と生産性の課題（ピッキングが全体の3〜4割を占める理由）</li>
+          <li>2024年問題・労働力危機・建築費高騰という三重苦の実態</li>
+          <li>自動化の成熟度マトリクスと「刺さる/刺さらない」領域の整理</li>
+        </ul>
+      </div>
+
       <article class="reading-section">
         <div class="reading-h">A. 物流業界の全体像 ― そもそも誰が誰なんですか</div>
         <div class="reading-talker">
@@ -1341,6 +1576,80 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
           <p>これは経営層の意識の問題ですが、物流業務を「コストセンター」「単純作業」と見ている荷主企業がまだ多い。商品開発やマーケティングには予算がつくけど、物流の改善には予算がつきにくい。「物流は外注しておけばいい」「誰でもできるでしょ」という認識。</p>
 
           <p>これが変わり始めたのが、ここ数年です。コロナでサプライチェーン断絶を経験して、2024年問題でドライバー不足を突きつけられて、ようやく<strong>「物流は経営課題」</strong>と認識する企業が出てきた。遅すぎる気もしますが、私たちハシビロコウは1,000万年以上前から地球にいるので、時間感覚は人間より長めに見ています。</p>
+            <p><strong>理由その5：暗黙知・属人化</strong></p>
+            <p>「この棚に何があるかはAさんに聞けばわかる」「あの品番のピッキング手順はBさんしか知らない」——物流現場は、長年この状態で動いてきました。マニュアルも手順書もなく、業務が特定の人の頭の中に入っている。本人は有能ですが、その人が休んだ瞬間に現場が止まる。</p>
+            <p>これが続いてきた理由は、「標準化するより教えた方が早い」という現場の合理性と、「物流は現場の職人技で動かすもの」という文化が組み合わさったからです。皮肉なことに、この属人化が自動化導入の最大の障壁にもなります。ロボットは「Aさんの頭の中」を読めません。</p>
+            <!-- 図: 属人化の悪循環 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図B-5: 属人化が自動化を阻む悪循環</div>
+              <div class="causal-loop">
+                <div class="cl-node cl-node-1">
+                  <div class="cl-num">①</div>
+                  <div class="cl-text">特定の人だけが<br>業務を知っている</div>
+                </div>
+                <div class="cl-arr cl-arr-r">→</div>
+                <div class="cl-node cl-node-2">
+                  <div class="cl-num">②</div>
+                  <div class="cl-text">手順が文書化<br>されていない</div>
+                </div>
+                <div class="cl-row-mid">
+                  <div class="cl-arr cl-arr-d">↓</div>
+                  <div class="cl-center-label">悪循環</div>
+                  <div class="cl-arr cl-arr-d">↓</div>
+                </div>
+                <div class="cl-node cl-node-4">
+                  <div class="cl-num">④</div>
+                  <div class="cl-text">さらに人に<br>依存し続ける</div>
+                </div>
+                <div class="cl-arr cl-arr-l">←</div>
+                <div class="cl-node cl-node-3">
+                  <div class="cl-num">③</div>
+                  <div class="cl-text">ロボットに<br>教えられない<br>→自動化できない</div>
+                </div>
+              </div>
+              <p class="reading-figure-cap">このループが回り続ける限り、自動化の前提が整わない。<strong>自動化プロジェクトの工数の多くが「業務の棚卸しと標準化」に費やされる</strong>のはここが理由。ロボットは「Aさんの頭の中」を読めない。</p>
+            </div>
+
+            <p><strong>理由その6：人海戦術文化</strong></p>
+            <p>ピーク時の解決策として長年定着してきたのが、「派遣・アルバイトを大量投入して乗り切る」です。繁忙期に一時的に人を増やし、閑散期に減らす。この柔軟さが、逆に自動化投資を遠ざけてきた面があります。</p>
+            <p>「人を増やせばなんとかなる」が成立している間は、設備投資の必要性を感じにくい。人件費が上昇し、採用が難しくなって初めて「人海戦術が通用しなくなった」と気づく。人間は問題が目の前に迫るまで解決策を探しません。私はずいぶん前から観察していましたが。</p>
+
+            <p><strong>理由その7：投資優先度の低さ</strong></p>
+            <p>多くの企業の経営層にとって、倉庫は「お金を生まない場所」です。商品開発・マーケティング・生産設備には予算がつく。しかし物流改善の投資稟議は後回しにされがちで、「今のやり方でなんとかなっているなら変えなくていい」という判断が続いてきました。</p>
+            <p>ただしこれが変わり始めています。コロナでサプライチェーン断絶を経験し、2024年問題でドライバー不足を突きつけられて、ようやく「物流は経営課題」と認識する企業が増えてきた。「倉庫は後回し」から「倉庫こそ先手を打つべき」への転換点です。</p>
+            <!-- 図: 物流コストの氷山 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図B-7: 物流コストの氷山 — 見えているのは一部だけ</div>
+              <div class="iceberg">
+                <div class="iceberg-sea">
+                  <div class="iceberg-above">
+                    <div class="iceberg-above-label">水面上（経営層が認識しやすい）</div>
+                    <div class="iceberg-above-items">
+                      <span>運送費</span>
+                      <span>倉庫賃料</span>
+                      <span>人件費（直接）</span>
+                    </div>
+                  </div>
+                  <div class="iceberg-waterline">── 水面 ──────────────────</div>
+                  <div class="iceberg-below">
+                    <div class="iceberg-below-label">水面下（見えにくい・後回しにされる）</div>
+                    <div class="iceberg-below-items">
+                      <div class="ibi-row"><span class="ibi-dot"></span>部品・商品を探す時間のロス</div>
+                      <div class="ibi-row"><span class="ibi-dot"></span>誤ピッキング・手戻りのコスト</div>
+                      <div class="ibi-row"><span class="ibi-dot"></span>属人化による引継ぎ・教育コスト</div>
+                      <div class="ibi-row"><span class="ibi-dot"></span>過剰在庫による資金拘束</div>
+                      <div class="ibi-row"><span class="ibi-dot"></span>欠品・遅延による機会損失</div>
+                      <div class="ibi-row"><span class="ibi-dot"></span>スペース非効率による賃料の割高感</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="reading-figure-cap">「数字で見えないコストは存在しないことにされがちです。見えないものには予算がつかない」——これが倉庫への投資が後回しにされ続けた構造的な理由。WMSと自動倉庫の組み合わせが「水面下のコストを可視化する」ことで、初めて投資判断が動くケースが増えている。</p>
+            </div>
+
+            <p><strong>理由その8：荷主主導の倉庫設計</strong></p>
+            <p>3PLが荷主から仕事を受注するとき、倉庫のレイアウト・業務フロー・WMSの仕様・KPI設定まで、荷主が決めるケースが多い。3PLは「言われた通りに動く」のが仕事で、自発的な改善提案を出しても「余計なコストが増えるのでは」と荷主に渋られることがある。</p>
+            <p>この構造が、3PL側の「自動化したい」という意欲を削ぐ場合があります。自動化の投資判断が「荷主の承認」を必要とするため、せっかく良いソリューションがあっても意思決定が進まない。商談で3PLと話すとき、「荷主との関係性がどうなっているか」を確認するのが実は重要な論点です。
 
           <!-- 図：力関係ピラミッド -->
           <div class="reading-figure">
@@ -1777,6 +2086,11 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
           <div class="reading-cover-icon"></div>
           <h2 class="reading-cover-title">🍱 食品・食品卸 — 3温度帯と賞味期限という宿命</h2>
         </div>
+        <div class="chapter-summary">
+          <div class="chapter-summary-title">このページで分かること</div>
+          <p class="chapter-summary-lead">食品物流のキーワードは「温度・期限・特売」。3温度帯の管理・1/3ルール・特売時の物量10倍——これを理解するだけで商談の解像度が大幅に上がる。</p>
+          <ul class="chapter-summary-list"><li>食品流通の三層構造（メーカー→四大卸→小売）</li><li>3温度帯（常温/冷蔵/冷凍）と温度差50℃の現場</li><li>1/3ルールの仕組みと特売時の物量波動</li><li>常温GTPが刺さり、冷凍庫が難しい理由</li><li>食品物流の自動化マトリクス（温度帯×商品形態）</li></ul>
+        </div>
         <article class="reading-section">
           <div class="reading-talker">
             <div class="reading-talker-icon"><img src="data:image/jpeg;base64,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" width="56" height="56" style="border-radius:50%;display:block;" alt="ハシビロコウ"/></div>
@@ -2065,6 +2379,11 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
       <div class="reading-content reading-ec" data-rcontent="ec" style="display:none;">
         <div class="reading-cover">
           <h2 class="reading-cover-title">🛒 EC・通販 — 注文1個ごとに人を1人雇えない</h2>
+        </div>
+        <div class="chapter-summary">
+          <div class="chapter-summary-title">このページで分かること</div>
+          <p class="chapter-summary-lead">EC物流は「とにかく種類が多く、1個ずつ、すぐに届ける」が宿命。この3つの掛け合わせが物流の難易度を爆発的に上げている。</p>
+          <ul class="chapter-summary-list"><li>BtoC-EC 15.2兆円市場の構造とプレイヤー</li><li>SKU数・注文単位・即日配送という固有の難しさ</li><li>返品率・季節波動・ロングテールの三重苦</li><li>GTP/AMR/WaaS型自動化の3パターンの使い分け</li><li>Amazon・楽天・メルカリ・Ocadoの戦略の違い</li></ul>
         </div>
 
         <article class="reading-section">
@@ -2487,6 +2806,11 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
         <div class="reading-cover">
           <h2 class="reading-cover-title">🚚 3PL — 物流の便利屋、最大の主役</h2>
         </div>
+        <div class="chapter-summary">
+          <div class="chapter-summary-title">このページで分かること</div>
+          <p class="chapter-summary-lead">3PLは物流業界の主役でありながら、最も立場が弱い。荷主依存・薄利・短期契約というビジネスモデルの構造を理解すると、自動化提案のツボが見えてくる。</p>
+          <ul class="chapter-summary-list"><li>1PL〜4PLの違いと3PL市場4.7兆円の全体像</li><li>マルチテナント運用の強みとリスク</li><li>利益率3〜5%・3〜5年契約という厳しいビジネス環境</li><li>荷主主導の倉庫設計が自動化の意思決定を遅らせる理由</li><li>RaaSモデルが3PLにフィットした構造的な理由</li></ul>
+        </div>
 
         <article class="reading-section">
           <div class="reading-h">§1. 業界の輪郭 — 「3PL」って結局なんなのか</div>
@@ -2816,6 +3140,11 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
       <!-- MFG content -->
       <div class="reading-content reading-mfg" data-rcontent="mfg" style="display:none;">
         <div class="reading-cover"><h2 class="reading-cover-title">🏭 製造業（工場内物流）— 工場は止められない</h2></div>
+        <div class="chapter-summary">
+          <div class="chapter-summary-title">このページで分かること</div>
+          <p class="chapter-summary-lead">工場の倉庫は長年「後回し」にされてきた。でも人手不足が深刻化した今、工場内物流の自動化は製造業の最重要テーマの一つになりつつある。</p>
+          <ul class="chapter-summary-list"><li>工場内物流の3つの役割と自動化の主戦場</li><li>「ラインを止めるな」という至上命令と平置き文化</li><li>生産用部品 vs MRO（保全部品）の違いと管理の難しさ</li><li>AutoStoreが産業機械・計測機器メーカーに刺さる理由</li><li>暗黙知・人海戦術・投資優先度の低さという業界の慣行</li></ul>
+        </div>
         <article class="reading-section">
           <div class="reading-h">§1. 業界の輪郭 — 「製造業の物流」ってどこの話か</div>
           <div class="reading-talker"><div class="reading-talker-icon"><img src="data:image/jpeg;base64,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" width="56" height="56" style="border-radius:50%;display:block;" alt="ハシビロコウ"/></div><div class="reading-bubble">工場の中の倉庫の話です。長年「後回し」にされてきた領域です。</div></div>
@@ -2829,6 +3158,20 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
             </ul>
             <p>このうち、マテハンベンダーが一番入り込みやすいのが<strong>部品・材料の保管と供給</strong>の領域です。特にFA機器・産業機械・電子機器・計測機器など、<strong>部品点数が多くて補修部品の長期保管が必要なメーカー</strong>に、AutoStoreやAMRが急速に入っています。</p>
             <p>事例集で見ると、ハヤブサ（釣具・ペット用品）、レオン自動機（食品機械）、東亜DKK（計測機器）、グローリー（通貨処理機）、SUS（FA機器）、コマツ（建設機械）など。「えっ、釣具メーカーに？」と思うかもしれませんが、これらに共通するのは「<strong>多品種少量の部品を長期保管している</strong>」という特性です。</p>
+            <!-- 図: 工場内物流の全体像 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 工場内物流の全体像（入荷→保管→供給→ライン）</div>
+              <div class="mfg-flow">
+                <div class="mfg-step mfg-step-in"><div class="mfg-step-icon">🚚</div><div class="mfg-step-name">入荷・検品</div><div class="mfg-step-desc">サプライヤーから<br>部品・材料を受取<br>品番・数量確認</div></div>
+                <div class="mfg-arrow">→</div>
+                <div class="mfg-step mfg-step-store"><div class="mfg-step-icon">📦</div><div class="mfg-step-name">部品倉庫</div><div class="mfg-step-desc">生産用部品<br>＋MRO部品<br>数万SKUを管理</div></div>
+                <div class="mfg-arrow">→</div>
+                <div class="mfg-step mfg-step-supply"><div class="mfg-step-icon">🔄</div><div class="mfg-step-name">工程間搬送</div><div class="mfg-step-desc">かんばん指示で<br>ラインサイドへ<br>AGF/AMRで自動化</div></div>
+                <div class="mfg-arrow">→</div>
+                <div class="mfg-step mfg-step-line"><div class="mfg-step-icon">🏭</div><div class="mfg-step-name">生産ライン</div><div class="mfg-step-desc">最優先事項<br>「止めない」<br>数時間分の在庫</div></div>
+              </div>
+              <p class="reading-figure-cap"><strong>生産ラインを止めないこと</strong>が最優先で、倉庫の効率化は長年後回しにされてきた。マテハンベンダーが入り込みやすいのは「部品倉庫」の領域。</p>
+            </div>
           </div>
         </article>
         <article class="reading-section">
@@ -2852,12 +3195,43 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
             <p>グローリー（通貨処理機製造）の事例で、外部倉庫に分散していた7,000点の部品を工場内に集約できたのは、AutoStoreの高密度保管があってこそです。</p>
             <p><strong>③  生産用部品と保全部品の混在</strong></p>
             <p>生産ラインに流す部品（定期的に動く）と、保全用のスペアパーツ（ロングテール・不定期）が同じ倉庫に混在しています。この2種類は<strong>管理の考え方が全然違う</strong>のに、同じ棚に並べるからおかしくなる。AutoStoreやGTP型倉庫はこの「混在」に強い。これがFA・産業機械系メーカーにGTPが刺さる理由です。</p>
+            <!-- 図: 生産用部品 vs MRO部品比較 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 生産用部品 vs MRO（保全部品）の違い</div>
+              <table class="mfg-compare-table">
+                <thead><tr><th>項目</th><th>生産用部品</th><th>MRO（保全部品）</th></tr></thead>
+                <tbody>
+                  <tr><td>用途</td><td>製品を作るための部品</td><td>設備が壊れた時の交換用</td></tr>
+                  <tr><td>動き方</td><td>定期的・予測可能</td><td>不定期・突発的（ロングテール）</td></tr>
+                  <tr><td>在庫の考え方</td><td>消費量に合わせて発注</td><td>「いつか必要」で抱え続ける</td></tr>
+                  <tr><td>廃棄できるか</td><td>製品廃盤時に不要に</td><td>設備が動く限り捨てられない</td></tr>
+                  <tr><td>SKU数の傾向</td><td>製品ラインと連動</td><td>蓄積する一方（増え続ける）</td></tr>
+                  <tr><td>自動化との相性</td><td>◎ 定量管理しやすい</td><td>○ GTPで高密度収容が有効</td></tr>
+                </tbody>
+              </table>
+              <p class="reading-figure-cap">この2種類が同じ棚に混在しているのが工場の現実。<strong>管理の考え方が全然違う</strong>のに同じルールで管理しようとするから破綻する。AutoStore等のGTPはこの「混在」に強い。</p>
+            </div>
           </div>
         </article>
         <article class="reading-section">
           <div class="reading-h">§4. 自動化のリアル — 工場内物流に「倉庫自動化」が入り始めた理由</div>
           <div class="reading-body">
             <p>長年「倉庫は後回し」だった製造業の工場内物流に、なぜ今、自動化が入り始めているのか。<strong>理由は「工場の人手不足」です。ラインを止めない、でも人がいない。</strong></p>
+            <!-- 図: 製造業の自動化適合マトリクス -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 製造業（工場内物流）の自動化適合マトリクス</div>
+              <table class="food-auto-matrix">
+                <thead><tr><th>工程</th><th>自動化手段</th><th>成熟度</th><th>代表事例</th></tr></thead>
+                <tbody>
+                  <tr><td>部品倉庫の保管・ピッキング</td><td>AutoStore・GTP</td><td class="fm-good"><span class="fm-icon">◎</span></td><td>ハヤブサ・グローリー・東亜DKK</td></tr>
+                  <tr><td>工程間搬送（パレット）</td><td>AGF・AMR</td><td class="fm-mid"><span class="fm-icon">○</span></td><td>LIXIL物流（エクセディ）</td></tr>
+                  <tr><td>デパレタイズ（入荷）</td><td>Mujin等ロボ</td><td class="fm-mid"><span class="fm-icon">○</span></td><td>コマツ・ファナックパートロニクス</td></tr>
+                  <tr><td>ラインサイドへの供給同期</td><td>WMS×MES連携</td><td class="fm-low"><span class="fm-icon">△</span></td><td>設計段階が多い</td></tr>
+                  <tr><td>MRO部品の保管・検索</td><td>GTP（AutoStore）</td><td class="fm-mid"><span class="fm-icon">○</span></td><td>レオン自動機・SUS</td></tr>
+                </tbody>
+              </table>
+              <p class="reading-figure-cap"><strong>部品倉庫のGTP化</strong>は最も成熟した領域。ラインサイドへの供給同期はWMSとMESの連携が必要で設計が複雑。</p>
+            </div>
             <p><strong>刺さる領域</strong></p>
             <ul class="reading-list">
               <li><strong>部品倉庫のGTP化</strong>（AutoStore）：保管スペースを従来の1/3〜1/6に圧縮（ハヤブサは850→280m²）、ピッキング人員を大幅削減（レオン自動機は10名→6〜7名）、OJT1日で誰でも作業可能に</li>
@@ -2911,6 +3285,11 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
       <!-- AUTO content -->
       <div class="reading-content reading-auto" data-rcontent="auto" style="display:none;">
         <div class="reading-cover"><h2 class="reading-cover-title">🚗 自動車・自動車部品 — 1秒でも止めるな</h2></div>
+        <div class="chapter-summary">
+          <div class="chapter-summary-title">このページで分かること</div>
+          <p class="chapter-summary-lead">自動車物流はJIT（ジャスト・イン・タイム）が全ての前提。1台3万点の部品を止めずに届け続ける——この宿命が、業界の物流を他とは全く別物にしている。</p>
+          <ul class="chapter-summary-list"><li>JIT・かんばんとTier1〜3サプライチェーンの構造</li><li>部品納品遅延がライン停止に直結するリスクと損失規模</li><li>混流生産・モデルチェンジ・グローバル調達の難しさ</li><li>EV化で部品点数が減り、サプライチェーンが変わる</li><li>部品センター自動化とAGFが刺さる領域と限界</li></ul>
+        </div>
         <article class="reading-section">
           <div class="reading-h">§1. 業界の輪郭 — 物流が止まると工場が止まる</div>
           <div class="reading-talker"><div class="reading-talker-icon"><img src="data:image/jpeg;base64,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" width="56" height="56" style="border-radius:50%;display:block;" alt="ハシビロコウ"/></div><div class="reading-bubble">自動車の物流の話です。私は自動車に乗ったことがありませんが、あの産業が世界経済に占める重さは観察しているだけで分かります。</div></div>
@@ -2925,6 +3304,18 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
               <li><strong>物流子会社・専業3PL</strong>（トヨタ輸送・日産ロジスティクス・山九等）：自動車専門の物流</li>
             </ul>
             <p>Logimapが関わるのは主に<strong>Tier1〜3サプライヤーの工場内倉庫</strong>と<strong>完成車メーカーの部品センター</strong>です。</p>
+            <!-- 図: 自動車サプライチェーン構造 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 自動車サプライチェーンの階層構造</div>
+              <div class="tier-structure">
+                <div class="ts-row ts-oem"><div class="ts-label">完成車メーカー（OEM）</div><div class="ts-examples">トヨタ・ホンダ・日産・マツダ・スバル等</div><div class="ts-role">ラインで組み立て。部品を「消費する側」</div></div>
+                <div class="ts-arrow">↑ 直接納品</div>
+                <div class="ts-row ts-tier1"><div class="ts-label">Tier1（一次サプライヤー）</div><div class="ts-examples">デンソー・アイシン・豊田紡織・ジェイテクト等</div><div class="ts-role">完成品に近いモジュール単位で納品。JIT対応必須</div></div>
+                <div class="ts-arrow">↑ 部品納品</div>
+                <div class="ts-row ts-tier2"><div class="ts-label">Tier2〜3（二〜三次サプライヤー）</div><div class="ts-examples">中小・専門メーカー多数</div><div class="ts-role">素材・加工部品を供給。多くが中小企業</div></div>
+              </div>
+              <p class="reading-figure-cap">1台3万点の部品が世界中のサプライヤーから集まる。Tier2〜3は中小企業が多く、EV化の影響を最も受けやすい層。<strong>Logimapが関わるのは主にTier1〜3の工場内倉庫と完成車メーカーの部品センター。</strong></p>
+            </div>
           </div>
         </article>
         <article class="reading-section">
@@ -2933,6 +3324,29 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
             <p>自動車業界の物流を理解するには、まず<strong>JIT（ジャスト・イン・タイム）</strong>と<strong>かんばん</strong>を理解する必要があります。これはトヨタ生産方式の根幹で、今や自動車業界全体の「共通言語」になっています。</p>
             <p><strong>JIT</strong>は「必要なものを、必要なときに、必要な量だけ供給する」考え方。在庫を極力持たず、必要な瞬間に届ける。ラインサイドには「数時間分の部品」しかない状態が普通です。<strong>かんばん</strong>はそのJITを実現するための情報伝達ツール（元々は紙のカード）。</p>
             <p>この仕組みが意味するのは、<strong>部品の納品遅延は即座にライン停止につながる</strong>ということです。食品や日用品の物流が「少し遅れてもなんとかなる」のと違い、自動車部品の物流は<strong>「1分の遅延が数百万円の損失」</strong>になりえます。</p>
+            <p>
+            <!-- 図: JIT・かんばんの仕組み -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: JIT・かんばんの情報と物の流れ</div>
+              <div class="kanban-flow">
+                <div class="kf-node kf-supplier"><div class="kf-label">サプライヤー</div><div class="kf-desc">部品を製造</div></div>
+                <div class="kf-arrows">
+                  <div class="kf-arr kf-arr-goods">→ 部品（物の流れ）</div>
+                  <div class="kf-arr kf-arr-info">← かんばん（情報の流れ）</div>
+                </div>
+                <div class="kf-node kf-parts"><div class="kf-label">部品倉庫</div><div class="kf-desc">ラインサイド在庫<br>数時間分のみ</div></div>
+                <div class="kf-arrows">
+                  <div class="kf-arr kf-arr-goods">→ 必要な時に必要な分だけ</div>
+                  <div class="kf-arr kf-arr-info">← 引取りかんばん</div>
+                </div>
+                <div class="kf-node kf-line"><div class="kf-label">生産ライン</div><div class="kf-desc">消費した分だけ<br>前工程に指示</div></div>
+              </div>
+              <div class="kanban-key">
+                <div class="kk-item"><span class="kk-dot" style="background:#1a9e4a;"></span>物の流れ：部品が前→後工程へ</div>
+                <div class="kk-item"><span class="kk-dot" style="background:#e8341a;"></span>情報の流れ：かんばんが後→前工程へ（プル型）</div>
+              </div>
+              <p class="reading-figure-cap">プッシュ型（計画で押し込む）ではなく<strong>プル型（消費した分だけ引っ張る）</strong>。これがJITの本質。在庫が少ないほど、どこかが止まった時の影響が全体に即波及する。</p>
+            </div>
             <p>私から見ると、人間がこれほどシビアなシステムを何十年も維持してきたのは感心します。ただ、ここまでシビアにすると<strong>ちょっとした外乱（台風・地震・コロナ・コンテナ不足）で全部崩れる</strong>という脆さも抱え込むことになります。</p>
           </div>
         </article>
@@ -2973,6 +3387,33 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
           <div class="reading-body">
             <p><strong>EV化が部品点数を減らす</strong></p>
             <p>電気自動車（EV）はエンジンがないので、エンジン関連部品（数千点）が丸ごとなくなります。全体の部品点数が3万点から2万点程度に減るとも言われていて、これは既存のサプライヤーにとっては大打撃。エンジン系部品だけ作ってきたTier2・3の中小メーカーは、取引先を失うリスクがあります。</p>
+            <p>
+            <!-- 図: EV化による部品点数の変化 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: EV化による部品点数の変化と影響</div>
+              <div class="ev-compare">
+                <div class="ev-side ev-ice">
+                  <div class="ev-era">内燃機関車（ICE）</div>
+                  <div class="ev-count">約30,000点</div>
+                  <div class="ev-breakdown">
+                    <div class="ev-bar-row"><div class="ev-bar-label">エンジン系部品</div><div class="ev-bar" style="width:35%;background:#e8341a;"><span>〜10,000点</span></div></div>
+                    <div class="ev-bar-row"><div class="ev-bar-label">駆動系部品</div><div class="ev-bar" style="width:25%;background:#c4870a;"><span>〜7,000点</span></div></div>
+                    <div class="ev-bar-row"><div class="ev-bar-label">電装・車体・内装</div><div class="ev-bar" style="width:40%;background:#5a6880;"><span>〜13,000点</span></div></div>
+                  </div>
+                </div>
+                <div class="ev-arrow-mid">→<br>EV化</div>
+                <div class="ev-side ev-ev">
+                  <div class="ev-era">電気自動車（EV）</div>
+                  <div class="ev-count">約20,000点</div>
+                  <div class="ev-breakdown">
+                    <div class="ev-bar-row"><div class="ev-bar-label">エンジン系</div><div class="ev-bar" style="width:3%;background:#e8341a;"><span>消滅</span></div></div>
+                    <div class="ev-bar-row"><div class="ev-bar-label">モーター・電池系</div><div class="ev-bar" style="width:30%;background:#1a9e4a;"><span>新規発生</span></div></div>
+                    <div class="ev-bar-row"><div class="ev-bar-label">電装・車体・内装</div><div class="ev-bar" style="width:40%;background:#5a6880;"><span>〜13,000点</span></div></div>
+                  </div>
+                </div>
+              </div>
+              <p class="reading-figure-cap">エンジン関連部品がほぼ消滅し、全体の部品点数が約1/3減る。<strong>エンジン系部品専業のTier2・3メーカーは仕事を失うリスク</strong>がある一方、バッテリー・モーター関連の新たなサプライヤーが台頭。物流の複雑さは減るが、サプライチェーン自体が再編される。</p>
+            </div>
             <p>エンジン部品だけ作ってきたサプライヤーが仕事を失う、というのを「産業の新陳代謝」と言う人がいます。私は何十年も同じ場所で魚を待ちますが、水場がなくなったら移動します。ただ、工場も作業員も水場ほど簡単には動けません。</p>
             <p><strong>「地産地消」へのシフト</strong></p>
             <p>コロナ後、各社が進めているのがサプライチェーンの地産地消化。「現地で作って現地で売る」ことで長距離輸送リスクを減らす。これが進むと、各国内の工場内物流が増える。国内のマテハン需要が高まる方向です。</p>
@@ -3005,6 +3446,11 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
       <!-- APPAREL content -->
       <div class="reading-content reading-apparel" data-rcontent="apparel" style="display:none;">
         <div class="reading-cover"><h2 class="reading-cover-title">👗 アパレル — 服は作れても、物流は読めない</h2></div>
+        <div class="chapter-summary">
+          <div class="chapter-summary-title">このページで分かること</div>
+          <p class="chapter-summary-lead">アパレル物流のキーワードは「SKU爆発・需要予測不能・シーズン交代」。EC化でその複雑さはさらに増している。</p>
+          <ul class="chapter-summary-list"><li>1型×色×サイズでSKUが爆発する構造</li><li>需要予測が根本的に当たらない理由とシーズン末在庫の処分</li><li>店舗在庫とEC在庫の統合（オムニチャネル）の難しさ</li><li>GTP・ソーター・AMRが刺さる領域と返品処理の壁</li><li>SPA化・サステナビリティ規制が物流に与える影響</li></ul>
+        </div>
         <article class="reading-section">
           <div class="reading-h">§1. 業界の輪郭 — ファッションと物流の相性の悪さ</div>
           <div class="reading-talker"><div class="reading-talker-icon"><img src="data:image/jpeg;base64,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" width="56" height="56" style="border-radius:50%;display:block;" alt="ハシビロコウ"/></div><div class="reading-bubble">毎年全部作り直して毎年大量に捨てる産業というのは、なかなか興味深い浪費文化ですが、観察対象としては面白い。</div></div>
@@ -3017,8 +3463,65 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
         <article class="reading-section">
           <div class="reading-h">§2. 物流の固有事情 — SKU数が爆発する</div>
           <div class="reading-body">
+            
+            <!-- 図: SKU爆発の仕組み -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: SKU爆発の仕組み（1型→何SKUになるか）</div>
+              <div class="sku-explosion">
+                <div class="sku-base"><div class="sku-label">1型（デザイン）</div><div class="sku-count">× 1</div></div>
+                <div class="sku-times">×</div>
+                <div class="sku-base" style="border-color:#0a7eb8;background:#e6f4fa;"><div class="sku-label">カラー展開</div><div class="sku-count">× 5色</div></div>
+                <div class="sku-times">×</div>
+                <div class="sku-base" style="border-color:#9b1fd4;background:#f3edff;"><div class="sku-label">サイズ展開</div><div class="sku-count">× 7サイズ</div></div>
+                <div class="sku-times">=</div>
+                <div class="sku-result"><div class="sku-label">1型あたりのSKU数</div><div class="sku-count sku-big">35 SKU</div></div>
+              </div>
+              <div class="sku-scale">
+                <div class="sku-scale-row"><span class="sku-scale-label">ブランド1社（100型展開）</span><span class="sku-scale-val">3,500 SKU</span></div>
+                <div class="sku-scale-row"><span class="sku-scale-label">春夏・秋冬 2シーズン</span><span class="sku-scale-val">7,000 SKU</span></div>
+                <div class="sku-scale-row"><span class="sku-scale-label">別注・限定・別素材追加</span><span class="sku-scale-val">さらに増加↑</span></div>
+                <div class="sku-scale-row sku-scale-total"><span class="sku-scale-label">ZOZOTOWNの取扱（1,500ブランド）</span><span class="sku-scale-val">常時 約90万SKU</span></div>
+              </div>
+              <p class="reading-figure-cap">食品の数万SKUと比較しても、アパレルのSKU数は桁違い。しかも<strong>シーズンごとに総入れ替え</strong>になるため、安定した品揃えを前提にしたGTPとの相性が難しい要因の一つ。</p>
+            </div>
             <p>アパレル物流が他業界と根本的に違うのは、<strong>SKU数の多さ</strong>です。<strong>1型×5カラー×7サイズ＝35 SKU</strong>が普通に発生します。ブランドが100型展開していれば3,500 SKU。これが春夏・秋冬と2シーズン分あれば7,000 SKU。さらに別注・限定色が加わる。</p>
             <p>大手セレクトショップやZOZOTOWNで取り扱うブランドが数百あれば、数十万〜百万 SKUになります。この規模のSKU数を、シーズンごとに総入れ替えしながら管理するのが、アパレル物流の日常です。</p>
+            
+            <!-- 図: シーズン在庫のタイムライン -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: アパレルのシーズン在庫タイムライン（1年間）</div>
+              <div class="season-timeline">
+                <div class="stl-months">
+                  <span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span>
+                  <span>7月</span><span>8月</span><span>9月</span><span>10月</span><span>11月</span><span>12月</span>
+                </div>
+                <div class="stl-row">
+                  <div class="stl-label">春夏（SS）在庫</div>
+                  <div class="stl-bar-wrap">
+                    <div class="stl-bar" style="left:8%;width:42%;background:#0a7eb8;"></div>
+                    <div class="stl-label-on" style="left:12%;">店頭・EC販売</div>
+                    <div class="stl-bar stl-bar-sale" style="left:50%;width:12%;background:#c4870a;"></div>
+                    <div class="stl-label-on" style="left:51%;">バーゲン</div>
+                  </div>
+                </div>
+                <div class="stl-row">
+                  <div class="stl-label">秋冬（AW）在庫</div>
+                  <div class="stl-bar-wrap">
+                    <div class="stl-bar" style="left:58%;width:42%;background:#9b1fd4;"></div>
+                    <div class="stl-label-on" style="left:62%;">店頭・EC販売</div>
+                  </div>
+                </div>
+                <div class="stl-row">
+                  <div class="stl-label">倉庫内状況</div>
+                  <div class="stl-bar-wrap">
+                    <div class="stl-overlap-zone" style="left:45%;width:20%;">
+                      <span>SS＋AW混在</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="reading-figure-cap">倉庫には常に<strong>新旧2シーズン分の在庫が混在する</strong>期間がある。しかも次シーズンの準備は前シーズンの販売中から始まる。倉庫運営の複雑さはここから来ている。</p>
+            </div>
             <p><strong>シーズン性</strong>も独特です。春夏物は2〜3月から店頭に出始め、7〜8月にはもう秋冬物の準備が始まる。物流倉庫には常に新旧2シーズン分の在庫が混在します。</p>
             <p>売れ残った在庫をアウトレットへ回す、海外向けに処分する、廃棄する——この<strong>バックワード物流（逆流する在庫）</strong>の管理が、アパレル3PLの隠れた重要業務です。</p>
           </div>
@@ -3032,6 +3535,39 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
             <p>シーズン末に売れ残った在庫は一気に資産価値が下がります。バーゲン→アウトレット→廃棄、という処分ルートをどう設計するかは、アパレル企業の利益率に直結します。</p>
             <p>売れ残りをバーゲン→アウトレット→廃棄と流していくのを見ていると、人間は価値があると思って作ったものを自分で無価値にするのが得意だなと思います。</p>
             <p><strong>③  店舗とECの「在庫統合」問題</strong></p>
+            
+            <!-- 図: オムニチャネル在庫統合 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 店舗 vs EC の在庫管理（バラバラ→統合）</div>
+              <div class="omni-compare">
+                <div class="omni-side omni-before">
+                  <div class="omni-era">Before（サイロ型）</div>
+                  <div class="omni-diagram">
+                    <div class="omni-box omni-store">店舗在庫<br><small>店舗のバックヤード</small></div>
+                    <div class="omni-gap">≠</div>
+                    <div class="omni-box omni-ec">EC在庫<br><small>EC専用倉庫</small></div>
+                  </div>
+                  <ul class="omni-issues">
+                    <li>店舗に在庫があってもECで「在庫なし」表示</li>
+                    <li>倉庫在庫があっても店舗取り置き不可</li>
+                    <li>在庫が分散して管理コストが2倍に</li>
+                  </ul>
+                </div>
+                <div class="omni-arrow-mid">→</div>
+                <div class="omni-side omni-after">
+                  <div class="omni-era">After（オムニチャネル統合）</div>
+                  <div class="omni-diagram">
+                    <div class="omni-unified">統合在庫プール<br><small>WMS＋OMS連携</small></div>
+                  </div>
+                  <ul class="omni-issues omni-benefits">
+                    <li>店舗在庫からEC注文を出荷可能</li>
+                    <li>EC返品品を最寄り店舗で受取可能</li>
+                    <li>在庫精度が上がり欠品・過剰在庫が減る</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="reading-figure-cap">「理念は正しいが実装が大変」の典型。システム投資・物流設計の変更・店舗オペレーションの変更が全部必要。ユニクロやニトリが先行している。</p>
+            </div>
             <p>かつて店舗在庫とEC在庫は別管理が普通でした。これを解消するのが<strong>オムニチャネル在庫統合</strong>ですが、システム投資・物流設計の変更・店舗オペレーションの変更が必要で、実現は思ったより難しい。「理念は正しいけど実装が大変」の典型例です。</p>
             <p><strong>④  ハンガー管理vs平置き管理</strong></p>
             <p>アパレルには「ハンガーにかけた状態で保管・出荷する」商品と「畳んで箱に入れる」商品が混在します。ハンガー物流は専用設備が必要で、通常の棚保管とは別世界。</p>
@@ -3089,7 +3625,12 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 
       <!-- PHARMA content -->
       <div class="reading-content reading-pharma" data-rcontent="pharma" style="display:none;">
-        <div class="reading-cover"><h2 class="reading-cover-title">💊 製薬 — GMP違反は「死」に繋がる業界</h2></div>
+        <div class="reading-cover"><h2 class="reading-cover-title">💊 製薬 — 物流ミスが命に関わる業界</h2></div>
+        <div class="chapter-summary">
+          <div class="chapter-summary-title">このページで分かること</div>
+          <p class="chapter-summary-lead">製薬物流は「物流ミスが人の命に関わる」業界。GMP・GDP・トレーサビリティの三重規制が全ての判断基準の根底にある。</p>
+          <ul class="chapter-summary-list"><li>GMP/GDP/トレーサビリティの三重規制とその実務的意味</li><li>温度管理・ロット管理・リコール対応の厳格さ</li><li>バリデーション（証明手続き）が導入を半年〜1年遅らせる理由</li><li>AutoStoreとAMRが製薬で評価される理由</li><li>ジェネリック化・バイオ医薬品増加・医薬品不足の最新動向</li></ul>
+        </div>
         <article class="reading-section">
           <div class="reading-h">§1. 業界の輪郭 — 規制と精度の世界</div>
           <div class="reading-talker"><div class="reading-talker-icon"><img src="data:image/jpeg;base64,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" width="56" height="56" style="border-radius:50%;display:block;" alt="ハシビロコウ"/></div><div class="reading-bubble">この業界は、物流のミスが人の命に関わる。それが全てのルールの根底にあります。</div></div>
@@ -3110,6 +3651,47 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
             <p><strong>GMP（Good Manufacturing Practice）</strong>：医薬品の製造に関わる品質管理の国際基準。温度管理・清掃記録・入退室管理・手順書の整備・逸脱管理が義務化されています。</p>
             <p><strong>GDP（Good Distribution Practice）</strong>：医薬品の流通・保管に関わる品質管理の基準。日本では2018年に厚生労働省からGDPガイドラインが出されて以降、物流拠点への適用が進んでいます。</p>
             <p><strong>トレーサビリティ</strong>：医薬品は「どのロットの製品が、いつ、どこで、誰に渡ったか」を追跡できなければなりません。2022年から導入が進む「医療用医薬品の識別コード（GS1）」による管理は、ビン単位・個別単位での追跡を可能にします。</p>
+            <p>
+            <!-- 図: GMP/GDP/トレーサビリティの三重規制 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 製薬物流を縛る三重規制</div>
+              <div class="pharma-regs">
+                <div class="preg-box preg-gmp">
+                  <div class="preg-name">GMP</div>
+                  <div class="preg-full">Good Manufacturing Practice</div>
+                  <div class="preg-scope">製造・保管の品質管理</div>
+                  <ul class="preg-list">
+                    <li>温度・湿度の厳密な管理</li>
+                    <li>清掃記録・入退室管理</li>
+                    <li>逸脱（ルール外れ）の即報告</li>
+                    <li>手順書の整備・遵守</li>
+                  </ul>
+                </div>
+                <div class="preg-box preg-gdp">
+                  <div class="preg-name">GDP</div>
+                  <div class="preg-full">Good Distribution Practice</div>
+                  <div class="preg-scope">流通・輸送の品質管理</div>
+                  <ul class="preg-list">
+                    <li>輸送中の温度ログ記録</li>
+                    <li>コールドチェーンの維持</li>
+                    <li>従業員教育の記録</li>
+                    <li>2018年〜国内ガイドライン適用</li>
+                  </ul>
+                </div>
+                <div class="preg-box preg-trace">
+                  <div class="preg-name">トレーサビリティ</div>
+                  <div class="preg-full">GS1バーコードによる追跡</div>
+                  <div class="preg-scope">ロット単位の全経路追跡</div>
+                  <ul class="preg-list">
+                    <li>製造→流通→病院まで追跡</li>
+                    <li>ロット・使用期限をビン単位で管理</li>
+                    <li>リコール時の即時対象特定</li>
+                    <li>2022年〜導入加速</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="reading-figure-cap">3つの規制が製薬物流のあらゆる判断基準の根底にある。これが自動倉庫導入時に<strong>バリデーション（半年〜1年の証明手続き）</strong>が必要になる理由。</p>
+            </div>
             <p>記録と手順書に囲まれた世界で黙々と働く製薬物流の人たちは、私の「じっと観察する」スタイルと相性が良さそうです。ただ彼らは観察だけでなく記録まで求められる。それは私にはちょっと面倒です。</p>
           </div>
         </article>
@@ -3119,6 +3701,38 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
             <p><strong>①  温度管理の厳格さ</strong></p>
             <p>医薬品は温度に敏感です。一般医薬品（常温）、冷蔵品（2〜8℃）、冷凍品（-20℃以下）。食品の温度管理とも違い、<strong>1度でも外れたら「逸脱」として記録・報告義務</strong>が発生します。</p>
             <p>1度ずれただけで廃棄になる。人間がこれほど繊細なものを大量に扱う仕組みを作り上げたのは、率直に言って大したものだと思います。</p>
+            <!-- 図: コールドチェーンの温度帯と管理 -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 製薬コールドチェーンの温度帯と管理基準</div>
+              <div class="pharma-cold">
+                <div class="pc-row">
+                  <div class="pc-temp pc-ambient">室温<br>1〜30℃</div>
+                  <div class="pc-products">一般錠剤・カプセル・外用剤</div>
+                  <div class="pc-manage">逸脱許容なし。常時記録</div>
+                </div>
+                <div class="pc-row">
+                  <div class="pc-temp pc-cool">冷所<br>1〜15℃</div>
+                  <div class="pc-products">一部の外用剤・点眼剤</div>
+                  <div class="pc-manage">輸送中も専用容器管理</div>
+                </div>
+                <div class="pc-row">
+                  <div class="pc-temp pc-refrig">冷蔵<br>2〜8℃</div>
+                  <div class="pc-products">インスリン・ワクチン・抗体薬</div>
+                  <div class="pc-manage"><strong>1度でも外れたら逸脱報告</strong></div>
+                </div>
+                <div class="pc-row">
+                  <div class="pc-temp pc-frozen">冷凍<br>-20℃以下</div>
+                  <div class="pc-products">一部バイオ医薬品・ワクチン原液</div>
+                  <div class="pc-manage">専用フリーザー・温度監視必須</div>
+                </div>
+                <div class="pc-row">
+                  <div class="pc-temp pc-deep">超低温<br>-70℃以下</div>
+                  <div class="pc-products">mRNAワクチン（コロナ等）</div>
+                  <div class="pc-manage">ドライアイス輸送・特殊設備</div>
+                </div>
+              </div>
+              <p class="reading-figure-cap">食品の3温度帯より細かく、管理精度が段違い。<strong>輸送中に温度が外れれば廃棄</strong>——1バイアル数百万円のバイオ医薬品では莫大なリスク。コールドチェーンへの投資が業界全体で加速している。</p>
+            </div>
             <p><strong>②  先入先出し（FIFO）と使用期限管理</strong></p>
             <p>医薬品の場合、<strong>使用期限の管理単位がロット（製造番号）</strong>で、「同じ薬でも製造番号が違えば別管理」が求められます。自動倉庫がロット単位での先入先出しができるかどうかが重要な選定基準です。</p>
             <p><strong>③  少量多品種・低稼働品の管理</strong></p>
@@ -3151,6 +3765,26 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
           <div class="reading-body">
             <p><strong>後発薬（ジェネリック）の台頭</strong></p>
             <p>日本政府は医療費削減のため、ジェネリック医薬品の使用促進を強力に推進してきました。現在、日本のジェネリック使用率は数量ベースで80%超。物流的にはジェネリックの方が品目数が多く（先発品と同じ成分でも複数社が製造する）、物流管理の複雑度が上がります。</p>
+            <!-- 図: 先発品 vs ジェネリック -->
+            <div class="reading-figure">
+              <div class="reading-figure-title">図: 先発品 vs ジェネリックの市場構造</div>
+              <div class="pharma-generic">
+                <div class="pg-side pg-brand">
+                  <div class="pg-title">先発品（ブランド薬）</div>
+                  <div class="pg-stat">数量シェア：約20%</div>
+                  <div class="pg-stat pg-stat-hi">金額シェア：約60%</div>
+                  <ul class="pg-list"><li>製薬会社が開発・特許取得</li><li>1品目あたりの薬価が高い</li><li>品目数は少ないが高付加価値</li></ul>
+                </div>
+                <div class="pg-vs">特許切れ後<br>↓<br>後発品解禁</div>
+                <div class="pg-side pg-generic">
+                  <div class="pg-title">ジェネリック（後発薬）</div>
+                  <div class="pg-stat pg-stat-hi">数量シェア：約80%</div>
+                  <div class="pg-stat">金額シェア：約40%</div>
+                  <ul class="pg-list"><li>同成分・複数メーカーが製造</li><li>薬価が安い（先発品の30〜50%）</li><li>品目数が多く在庫管理が複雑</li></ul>
+                </div>
+              </div>
+              <p class="reading-figure-cap">数量ベースでジェネリックが80%超を占める一方、金額ベースでは先発品が依然として高い。<strong>ジェネリックの品目数増加が医薬品卸の在庫管理を複雑化させている</strong>。2022年のGMP違反による薬不足問題はジェネリックメーカー起因。</p>
+            </div>
             <p><strong>バイオ医薬品の増加</strong></p>
             <p>近年急増しているのが<strong>バイオ医薬品</strong>（抗体医薬品・細胞療法等）。従来の化学合成薬より高価で、温度管理が更に厳格（冷凍や超低温が必要なものも）。1バイアル数百万円の薬も存在します。輸送中に温度が外れれば廃棄、というリスクが莫大なため、コールドチェーンへの投資が業界全体で加速しています。</p>
             <p><strong>薬局DXとラストマイルの変化</strong></p>
@@ -4976,5 +5610,564 @@ document.querySelectorAll('.rsub').forEach(btn=>{
   });
 });
 </script>
+<!-- ============================================================
+  Logimap AI Chat UI
+  index.html の </body> 直前に追加してください
+  ============================================================ -->
+
+<!-- ── チャットUI HTML ───────────────────────────────── -->
+<div id="lm-chat-root">
+
+  <!-- 開閉ボタン -->
+  <button id="lm-chat-toggle" aria-label="チャットを開く" title="ハシビロコウに聞く">
+    <img id="lm-chat-btn-img" src="data:image/jpeg;base64,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" alt="ハシビロコウ" />
+    <span id="lm-chat-badge" class="lm-chat-badge" hidden>!</span>
+  </button>
+
+  <!-- チャットウィンドウ -->
+  <div id="lm-chat-window" class="lm-chat-window" aria-hidden="true">
+
+    <!-- ヘッダー -->
+    <div class="lm-chat-header">
+      <div class="lm-chat-header-info">
+        <img id="lm-chat-header-img" src="data:image/jpeg;base64,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" alt="ハシビロコウ" class="lm-chat-header-avatar" />
+        <div>
+          <div class="lm-chat-header-name">ハシビロコウ</div>
+          <div class="lm-chat-header-sub">物流の話なら答える</div>
+        </div>
+      </div>
+      <button id="lm-chat-close" class="lm-chat-close-btn" aria-label="閉じる">✕</button>
+    </div>
+
+    <!-- メッセージエリア -->
+    <div id="lm-chat-messages" class="lm-chat-messages" role="log" aria-live="polite">
+      <!-- 初期メッセージ（JS で挿入） -->
+    </div>
+
+    <!-- 入力エリア -->
+    <div class="lm-chat-input-area">
+      <div class="lm-chat-input-wrap">
+        <textarea
+          id="lm-chat-input"
+          class="lm-chat-input"
+          placeholder="物流について聞く…"
+          rows="2"
+          maxlength="300"
+          aria-label="メッセージ入力"
+        ></textarea>
+        <div class="lm-chat-counter">
+          <span id="lm-chat-char-count">0</span>/300
+        </div>
+      </div>
+      <button id="lm-chat-send" class="lm-chat-send-btn" aria-label="送信">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+
+  </div><!-- /lm-chat-window -->
+</div><!-- /lm-chat-root -->
+
+
+<!-- ── チャットCSS ───────────────────────────────────── -->
+<style>
+/* === Logimap Chat === */
+#lm-chat-root {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 開閉ボタン */
+#lm-chat-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2.5px solid #d46b08;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  cursor: pointer;
+  padding: 4px;
+  position: relative;
+  transition: transform .15s, box-shadow .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lm-chat-toggle:hover { transform: scale(1.07); box-shadow: 0 6px 22px rgba(0,0,0,.2); }
+#lm-chat-toggle img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.lm-chat-badge {
+  position: absolute;
+  top: -2px; right: -2px;
+  width: 16px; height: 16px;
+  background: #e8341a;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* ウィンドウ */
+.lm-chat-window {
+  position: absolute;
+  bottom: 68px;
+  right: 0;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.18);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #f0e0c8;
+  max-height: 70vh;
+}
+.lm-chat-window.lm-open { display: flex; }
+
+/* ヘッダー */
+.lm-chat-header {
+  background: linear-gradient(135deg, #fff8eb, #fef3e6);
+  border-bottom: 1.5px solid #f0d9b0;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.lm-chat-header-info { display: flex; align-items: center; gap: 10px; }
+.lm-chat-header-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #d46b08; }
+.lm-chat-header-name { font-size: 14px; font-weight: 800; color: #1a1a1a; }
+.lm-chat-header-sub { font-size: 11px; color: #888; margin-top: 1px; }
+.lm-chat-close-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 16px; color: #888; padding: 4px 6px; border-radius: 6px;
+  transition: background .1s;
+}
+.lm-chat-close-btn:hover { background: #f0e0c8; color: #333; }
+
+/* メッセージエリア */
+.lm-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+  background: #fafafa;
+}
+.lm-chat-messages::-webkit-scrollbar { width: 4px; }
+.lm-chat-messages::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+/* メッセージバブル */
+.lm-msg {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  align-items: flex-end;
+}
+.lm-msg-ai { flex-direction: row; }
+.lm-msg-user { flex-direction: row-reverse; }
+
+.lm-msg-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%; object-fit: cover;
+  flex-shrink: 0; border: 1.5px solid #f0d9b0;
+}
+.lm-msg-bubble {
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.65;
+  max-width: calc(100% - 44px);
+  word-break: break-word;
+}
+.lm-msg-ai .lm-msg-bubble {
+  background: #fff;
+  border: 1px solid #eee;
+  border-bottom-left-radius: 4px;
+  color: #1a1a1a;
+}
+.lm-msg-user .lm-msg-bubble {
+  background: #d46b08;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+/* ローディング */
+.lm-msg-loading .lm-msg-bubble {
+  display: flex; align-items: center; gap: 6px;
+  color: #888; font-size: 12px;
+}
+.lm-dots { display: flex; gap: 4px; }
+.lm-dots span {
+  width: 6px; height: 6px;
+  background: #ccc; border-radius: 50%;
+  animation: lmDot .8s infinite;
+}
+.lm-dots span:nth-child(2) { animation-delay: .15s; }
+.lm-dots span:nth-child(3) { animation-delay: .3s; }
+@keyframes lmDot {
+  0%, 80%, 100% { transform: scale(.7); opacity: .5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* エラー */
+.lm-msg-error .lm-msg-bubble {
+  background: #fae6e0;
+  border-color: #e8341a;
+  color: #a01010;
+}
+
+/* 入力エリア */
+.lm-chat-input-area {
+  padding: 10px 12px;
+  border-top: 1px solid #f0d9b0;
+  background: #fff;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+.lm-chat-input-wrap { flex: 1; position: relative; }
+.lm-chat-input {
+  width: 100%;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  padding: 8px 10px 22px;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border .15s;
+}
+.lm-chat-input:focus { border-color: #d46b08; }
+.lm-chat-counter {
+  position: absolute;
+  bottom: 5px; right: 8px;
+  font-size: 10px; color: #bbb;
+}
+.lm-chat-counter.lm-warn { color: #e8341a; }
+
+.lm-chat-send-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #d46b08;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background .15s, transform .1s;
+}
+.lm-chat-send-btn:hover { background: #b85a06; transform: scale(1.05); }
+.lm-chat-send-btn:disabled { background: #e0c9a8; cursor: not-allowed; transform: none; }
+
+/* システムメッセージ */
+.lm-msg-system {
+  text-align: center;
+  font-size: 11px;
+  color: #aaa;
+  padding: 4px 0;
+}
+
+/* スマホ対応 */
+@media (max-width: 480px) {
+  #lm-chat-root { bottom: 16px; right: 16px; }
+  .lm-chat-window { width: calc(100vw - 32px); max-height: 75vh; }
+}
+</style>
+
+
+<!-- ── チャットJavaScript ─────────────────────────────── -->
+<script>
+(function() {
+  'use strict';
+
+  // ─── 設定 ────────────────────────────────────────────
+  // デプロイ後は本番WorkerのURLに変更する
+  const WORKER_URL = 'https://logistics-map-three.vercel.app/api/chat';
+  // ↑ wrangler deploy 後に表示されるURLに差し替え
+
+  const MAX_CHARS        = 300;
+  const RATE_LIMIT_MAX   = 10;   // 1時間あたりのブラウザ側制限
+  const RATE_LIMIT_KEY   = 'lm_chat_rl';
+  const MIN_SEND_INTERVAL = 3000; // 連投防止（ms）
+
+  // ハシビロコウアイコン（既存のBase64データを流用）
+  // ページ内の .reading-talker-icon img の最初のsrcを使う
+  function getHashiIcon() {
+    const img = document.querySelector('.reading-talker-icon img');
+    return img ? img.src : 'data:image/jpeg;base64,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';
+  }
+
+  // 初期メッセージのバリエーション
+  const GREETINGS = [
+    '聞けば答える。物流の話なら。',
+    '何か聞きたいことがあるなら。物流に限る。',
+    '倉庫の話なら得意。それ以外は保証しない。',
+  ];
+
+  // ローディングメッセージのバリエーション
+  const LOADING_MSGS = [
+    '今さばいてる。人間の会議よりは早い。',
+    '少し待て。急かすな。',
+    '考えてる。',
+  ];
+
+  // エラーメッセージのバリエーション
+  const ERROR_MSGS = [
+    '今は無理。鳥にも限界がある。',
+    'うまくいかなかった。また試してくれ。',
+    'API側が落ちてる。私のせいではない。',
+  ];
+
+  function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  // ─── レート制限（ブラウザ側） ─────────────────────────
+  function checkRateLimit() {
+    try {
+      const raw = localStorage.getItem(RATE_LIMIT_KEY);
+      const data = raw ? JSON.parse(raw) : { count: 0, reset: Date.now() + 3600000 };
+      if (Date.now() > data.reset) {
+        data.count = 0;
+        data.reset = Date.now() + 3600000;
+      }
+      if (data.count >= RATE_LIMIT_MAX) return false;
+      data.count++;
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(data));
+      return true;
+    } catch { return true; } // localStorage が使えない場合は通す
+  }
+
+  // ─── コンテキスト取得 ─────────────────────────────────
+  function getPageContext() {
+    try {
+      // アクティブなメインタブ
+      const activeTab = document.querySelector('.tab.active, .tab-btn.active');
+      const tabName = activeTab ? activeTab.textContent.trim() : '';
+
+      // アクティブなreadingサブタブ
+      const activeRsub = document.querySelector('.rsub.active');
+      const rsubName = activeRsub ? activeRsub.textContent.trim() : '';
+
+      // アクティブなview（表示中の画面）
+      let activeView = null;
+      const views = document.querySelectorAll('.view');
+      for (const v of views) {
+        const style = window.getComputedStyle(v);
+        if (style.display !== 'none' && style.visibility !== 'hidden') {
+          activeView = v;
+          break;
+        }
+      }
+
+      // readingコンテンツの場合はアクティブなコンテンツを優先
+      const activeContent = document.querySelector('.reading-content.active');
+      const targetEl = activeContent || activeView;
+
+      let contentText = '';
+      if (targetEl) {
+        const nodes = targetEl.querySelectorAll(
+          'h1, h2, h3, .reading-h, p, li, td, .reading-figure-title, .reading-bubble'
+        );
+        const parts = [];
+        for (const n of nodes) {
+          const t = n.textContent.replace(/\s+/g, ' ').trim();
+          if (t && t.length > 3) parts.push(t);
+          if (parts.join(' ').length > 800) break;
+        }
+        contentText = parts.join(' / ').slice(0, 800);
+      }
+
+      const parts = [];
+      if (tabName) parts.push(`現在のタブ: ${tabName}`);
+      if (rsubName) parts.push(`セクション: ${rsubName}`);
+      if (contentText) parts.push(`本文抜粋: ${contentText}`);
+      return parts.join('\n');
+    } catch { return ''; }
+  }
+
+  // ─── DOM要素 ──────────────────────────────────────────
+  const toggle    = document.getElementById('lm-chat-toggle');
+  const window_   = document.getElementById('lm-chat-window');
+  const closeBtn  = document.getElementById('lm-chat-close');
+  const messages  = document.getElementById('lm-chat-messages');
+  const input     = document.getElementById('lm-chat-input');
+  const sendBtn   = document.getElementById('lm-chat-send');
+  const charCount = document.getElementById('lm-chat-char-count');
+  const btnImg    = document.getElementById('lm-chat-btn-img');
+  const headerImg = document.getElementById('lm-chat-header-img');
+
+  // ─── アイコン設定 ─────────────────────────────────────
+  // ページ読み込み後に設定（画像が存在する場合）
+  function setIcons() {
+    // アイコンは既にHTMLに埋め込み済み。talker-iconが存在すればそちらに同期。
+    const src = getHashiIcon();
+    if (src && btnImg.src !== src) {
+      btnImg.src = src;
+      headerImg.src = src;
+    }
+  }
+
+  // ─── メッセージ追加 ───────────────────────────────────
+  function addMessage(role, text, extra = '') {
+    const wrap = document.createElement('div');
+    wrap.className = `lm-msg lm-msg-${role}${extra ? ' ' + extra : ''}`;
+
+    if (role === 'ai' || role === 'loading' || role === 'error') {
+      const av = document.createElement('img');
+      av.src = getHashiIcon();
+      av.className = 'lm-msg-avatar';
+      av.alt = 'ハシビロコウ';
+      wrap.appendChild(av);
+    }
+
+    const bubble = document.createElement('div');
+    bubble.className = 'lm-msg-bubble';
+
+    if (role === 'loading') {
+      bubble.innerHTML = `<span>${text}</span><div class="lm-dots"><span></span><span></span><span></span></div>`;
+    } else {
+      // 改行を <br> に変換
+      bubble.innerHTML = text.replace(/\n/g, '<br>');
+    }
+
+    wrap.appendChild(bubble);
+    messages.appendChild(wrap);
+    messages.scrollTop = messages.scrollHeight;
+    return wrap;
+  }
+
+  function addSystem(text) {
+    const el = document.createElement('div');
+    el.className = 'lm-msg-system';
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // ─── 送信処理 ─────────────────────────────────────────
+  let lastSent = 0;
+  let isSending = false;
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text || isSending) return;
+    if (text.length > MAX_CHARS) return;
+
+    // 連投防止
+    if (Date.now() - lastSent < MIN_SEND_INTERVAL) {
+      addSystem('少し間を空けてくれ。');
+      return;
+    }
+
+    // ブラウザ側レート制限
+    if (!checkRateLimit()) {
+      addMessage('error', rand(ERROR_MSGS) + ' (1時間あたり' + RATE_LIMIT_MAX + '回まで)', 'lm-msg-error');
+      return;
+    }
+
+    lastSent = Date.now();
+    isSending = true;
+    sendBtn.disabled = true;
+    input.disabled = true;
+
+    // ユーザーメッセージ
+    addMessage('user', text);
+    input.value = '';
+    charCount.textContent = '0';
+    charCount.className = '';
+
+    // ローディング
+    const loadingEl = addMessage('loading', rand(LOADING_MSGS));
+
+    // コンテキスト取得
+    const context = getPageContext();
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, context }),
+        signal: AbortSignal.timeout(20000), // 20秒タイムアウト
+      });
+
+      const data = await res.json();
+      loadingEl.remove();
+
+      if (!res.ok || data.error) {
+        addMessage('ai', data.error || rand(ERROR_MSGS), 'lm-msg-error');
+      } else {
+        addMessage('ai', data.reply);
+      }
+    } catch (e) {
+      loadingEl.remove();
+      const msg = e.name === 'TimeoutError'
+        ? 'タイムアウト。少し待ってから試してくれ。'
+        : rand(ERROR_MSGS);
+      addMessage('ai', msg, 'lm-msg-error');
+    } finally {
+      isSending = false;
+      sendBtn.disabled = false;
+      input.disabled = false;
+      input.focus();
+    }
+  }
+
+  // ─── 開閉 ─────────────────────────────────────────────
+  let isOpen = false;
+
+  function openChat() {
+    isOpen = true;
+    window_.classList.add('lm-open');
+    window_.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-label', 'チャットを閉じる');
+    if (messages.children.length === 0) {
+      addMessage('ai', rand(GREETINGS));
+    }
+    setTimeout(() => input.focus(), 100);
+  }
+
+  function closeChat() {
+    isOpen = false;
+    window_.classList.remove('lm-open');
+    window_.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-label', 'チャットを開く');
+  }
+
+  toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+  closeBtn.addEventListener('click', closeChat);
+
+  // ─── 入力イベント ─────────────────────────────────────
+  input.addEventListener('input', () => {
+    const len = input.value.length;
+    charCount.textContent = len;
+    charCount.parentElement.className = 'lm-chat-counter' + (len > 250 ? ' lm-warn' : '');
+    sendBtn.disabled = len === 0 || len > MAX_CHARS;
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  // ─── 初期化 ───────────────────────────────────────────
+  sendBtn.disabled = true;
+  window.addEventListener('load', setIcons);
+  // 画像が後から設定される場合に備えて少し遅延
+  setTimeout(setIcons, 500);
+
+})();
+</script>
+
 </body>
 </html>
