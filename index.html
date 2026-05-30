@@ -4976,5 +4976,568 @@ document.querySelectorAll('.rsub').forEach(btn=>{
   });
 });
 </script>
+  <!-- ============================================================
+  Logimap AI Chat UI
+  index.html の </body> 直前に追加してください
+  ============================================================ -->
+
+<!-- ── チャットUI HTML ───────────────────────────────── -->
+<div id="lm-chat-root">
+
+  <!-- 開閉ボタン -->
+  <button id="lm-chat-toggle" aria-label="チャットを開く" title="ハシビロコウに聞く">
+    <img id="lm-chat-btn-img" src="" alt="ハシビロコウ" />
+    <span id="lm-chat-badge" class="lm-chat-badge" hidden>!</span>
+  </button>
+
+  <!-- チャットウィンドウ -->
+  <div id="lm-chat-window" class="lm-chat-window" aria-hidden="true">
+
+    <!-- ヘッダー -->
+    <div class="lm-chat-header">
+      <div class="lm-chat-header-info">
+        <img id="lm-chat-header-img" src="" alt="ハシビロコウ" class="lm-chat-header-avatar" />
+        <div>
+          <div class="lm-chat-header-name">ハシビロコウ</div>
+          <div class="lm-chat-header-sub">物流の話なら答える</div>
+        </div>
+      </div>
+      <button id="lm-chat-close" class="lm-chat-close-btn" aria-label="閉じる">✕</button>
+    </div>
+
+    <!-- メッセージエリア -->
+    <div id="lm-chat-messages" class="lm-chat-messages" role="log" aria-live="polite">
+      <!-- 初期メッセージ（JS で挿入） -->
+    </div>
+
+    <!-- 入力エリア -->
+    <div class="lm-chat-input-area">
+      <div class="lm-chat-input-wrap">
+        <textarea
+          id="lm-chat-input"
+          class="lm-chat-input"
+          placeholder="物流について聞く…"
+          rows="2"
+          maxlength="300"
+          aria-label="メッセージ入力"
+        ></textarea>
+        <div class="lm-chat-counter">
+          <span id="lm-chat-char-count">0</span>/300
+        </div>
+      </div>
+      <button id="lm-chat-send" class="lm-chat-send-btn" aria-label="送信">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+
+  </div><!-- /lm-chat-window -->
+</div><!-- /lm-chat-root -->
+
+
+<!-- ── チャットCSS ───────────────────────────────────── -->
+<style>
+/* === Logimap Chat === */
+#lm-chat-root {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 開閉ボタン */
+#lm-chat-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2.5px solid #d46b08;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  cursor: pointer;
+  padding: 4px;
+  position: relative;
+  transition: transform .15s, box-shadow .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lm-chat-toggle:hover { transform: scale(1.07); box-shadow: 0 6px 22px rgba(0,0,0,.2); }
+#lm-chat-toggle img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.lm-chat-badge {
+  position: absolute;
+  top: -2px; right: -2px;
+  width: 16px; height: 16px;
+  background: #e8341a;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* ウィンドウ */
+.lm-chat-window {
+  position: absolute;
+  bottom: 68px;
+  right: 0;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.18);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #f0e0c8;
+  max-height: 70vh;
+}
+.lm-chat-window.lm-open { display: flex; }
+
+/* ヘッダー */
+.lm-chat-header {
+  background: linear-gradient(135deg, #fff8eb, #fef3e6);
+  border-bottom: 1.5px solid #f0d9b0;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.lm-chat-header-info { display: flex; align-items: center; gap: 10px; }
+.lm-chat-header-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #d46b08; }
+.lm-chat-header-name { font-size: 14px; font-weight: 800; color: #1a1a1a; }
+.lm-chat-header-sub { font-size: 11px; color: #888; margin-top: 1px; }
+.lm-chat-close-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 16px; color: #888; padding: 4px 6px; border-radius: 6px;
+  transition: background .1s;
+}
+.lm-chat-close-btn:hover { background: #f0e0c8; color: #333; }
+
+/* メッセージエリア */
+.lm-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+  background: #fafafa;
+}
+.lm-chat-messages::-webkit-scrollbar { width: 4px; }
+.lm-chat-messages::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+/* メッセージバブル */
+.lm-msg {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  align-items: flex-end;
+}
+.lm-msg-ai { flex-direction: row; }
+.lm-msg-user { flex-direction: row-reverse; }
+
+.lm-msg-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%; object-fit: cover;
+  flex-shrink: 0; border: 1.5px solid #f0d9b0;
+}
+.lm-msg-bubble {
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.65;
+  max-width: calc(100% - 44px);
+  word-break: break-word;
+}
+.lm-msg-ai .lm-msg-bubble {
+  background: #fff;
+  border: 1px solid #eee;
+  border-bottom-left-radius: 4px;
+  color: #1a1a1a;
+}
+.lm-msg-user .lm-msg-bubble {
+  background: #d46b08;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+/* ローディング */
+.lm-msg-loading .lm-msg-bubble {
+  display: flex; align-items: center; gap: 6px;
+  color: #888; font-size: 12px;
+}
+.lm-dots { display: flex; gap: 4px; }
+.lm-dots span {
+  width: 6px; height: 6px;
+  background: #ccc; border-radius: 50%;
+  animation: lmDot .8s infinite;
+}
+.lm-dots span:nth-child(2) { animation-delay: .15s; }
+.lm-dots span:nth-child(3) { animation-delay: .3s; }
+@keyframes lmDot {
+  0%, 80%, 100% { transform: scale(.7); opacity: .5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* エラー */
+.lm-msg-error .lm-msg-bubble {
+  background: #fae6e0;
+  border-color: #e8341a;
+  color: #a01010;
+}
+
+/* 入力エリア */
+.lm-chat-input-area {
+  padding: 10px 12px;
+  border-top: 1px solid #f0d9b0;
+  background: #fff;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+.lm-chat-input-wrap { flex: 1; position: relative; }
+.lm-chat-input {
+  width: 100%;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  padding: 8px 10px 22px;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border .15s;
+}
+.lm-chat-input:focus { border-color: #d46b08; }
+.lm-chat-counter {
+  position: absolute;
+  bottom: 5px; right: 8px;
+  font-size: 10px; color: #bbb;
+}
+.lm-chat-counter.lm-warn { color: #e8341a; }
+
+.lm-chat-send-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #d46b08;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background .15s, transform .1s;
+}
+.lm-chat-send-btn:hover { background: #b85a06; transform: scale(1.05); }
+.lm-chat-send-btn:disabled { background: #e0c9a8; cursor: not-allowed; transform: none; }
+
+/* システムメッセージ */
+.lm-msg-system {
+  text-align: center;
+  font-size: 11px;
+  color: #aaa;
+  padding: 4px 0;
+}
+
+/* スマホ対応 */
+@media (max-width: 480px) {
+  #lm-chat-root { bottom: 16px; right: 16px; }
+  .lm-chat-window { width: calc(100vw - 32px); max-height: 75vh; }
+}
+</style>
+
+
+<!-- ── チャットJavaScript ─────────────────────────────── -->
+<script>
+(function() {
+  'use strict';
+
+  // ─── 設定 ────────────────────────────────────────────
+  // デプロイ後は本番WorkerのURLに変更する
+  const WORKER_URL = 'https://logistics-map-three.vercel.app/api/chat';
+  // ↑ wrangler deploy 後に表示されるURLに差し替え
+
+  const MAX_CHARS        = 300;
+  const RATE_LIMIT_MAX   = 10;   // 1時間あたりのブラウザ側制限
+  const RATE_LIMIT_KEY   = 'lm_chat_rl';
+  const MIN_SEND_INTERVAL = 3000; // 連投防止（ms）
+
+  // ハシビロコウアイコン（既存のBase64データを流用）
+  // ページ内の .reading-talker-icon img の最初のsrcを使う
+  function getHashiIcon() {
+    const img = document.querySelector('.reading-talker-icon img');
+    return img ? img.src : '';
+  }
+
+  // 初期メッセージのバリエーション
+  const GREETINGS = [
+    '聞けば答える。物流の話なら。',
+    '何か聞きたいことがあるなら。物流に限る。',
+    '倉庫の話なら得意。それ以外は保証しない。',
+  ];
+
+  // ローディングメッセージのバリエーション
+  const LOADING_MSGS = [
+    '今さばいてる。人間の会議よりは早い。',
+    '少し待て。急かすな。',
+    '考えてる。',
+  ];
+
+  // エラーメッセージのバリエーション
+  const ERROR_MSGS = [
+    '今は無理。鳥にも限界がある。',
+    'うまくいかなかった。また試してくれ。',
+    'API側が落ちてる。私のせいではない。',
+  ];
+
+  function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  // ─── レート制限（ブラウザ側） ─────────────────────────
+  function checkRateLimit() {
+    try {
+      const raw = localStorage.getItem(RATE_LIMIT_KEY);
+      const data = raw ? JSON.parse(raw) : { count: 0, reset: Date.now() + 3600000 };
+      if (Date.now() > data.reset) {
+        data.count = 0;
+        data.reset = Date.now() + 3600000;
+      }
+      if (data.count >= RATE_LIMIT_MAX) return false;
+      data.count++;
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(data));
+      return true;
+    } catch { return true; } // localStorage が使えない場合は通す
+  }
+
+  // ─── コンテキスト取得 ─────────────────────────────────
+  function getPageContext() {
+    try {
+      // アクティブなメインタブ
+      const activeTab = document.querySelector('.tab.active, .tab-btn.active');
+      const tabName = activeTab ? activeTab.textContent.trim() : '';
+
+      // アクティブなreadingサブタブ
+      const activeRsub = document.querySelector('.rsub.active');
+      const rsubName = activeRsub ? activeRsub.textContent.trim() : '';
+
+      // アクティブなview（表示中の画面）
+      let activeView = null;
+      const views = document.querySelectorAll('.view');
+      for (const v of views) {
+        const style = window.getComputedStyle(v);
+        if (style.display !== 'none' && style.visibility !== 'hidden') {
+          activeView = v;
+          break;
+        }
+      }
+
+      // readingコンテンツの場合はアクティブなコンテンツを優先
+      const activeContent = document.querySelector('.reading-content.active');
+      const targetEl = activeContent || activeView;
+
+      let contentText = '';
+      if (targetEl) {
+        const nodes = targetEl.querySelectorAll(
+          'h1, h2, h3, .reading-h, p, li, td, .reading-figure-title, .reading-bubble'
+        );
+        const parts = [];
+        for (const n of nodes) {
+          const t = n.textContent.replace(/\s+/g, ' ').trim();
+          if (t && t.length > 3) parts.push(t);
+          if (parts.join(' ').length > 800) break;
+        }
+        contentText = parts.join(' / ').slice(0, 800);
+      }
+
+      const parts = [];
+      if (tabName) parts.push(`現在のタブ: ${tabName}`);
+      if (rsubName) parts.push(`セクション: ${rsubName}`);
+      if (contentText) parts.push(`本文抜粋: ${contentText}`);
+      return parts.join('\n');
+    } catch { return ''; }
+  }
+
+  // ─── DOM要素 ──────────────────────────────────────────
+  const toggle    = document.getElementById('lm-chat-toggle');
+  const window_   = document.getElementById('lm-chat-window');
+  const closeBtn  = document.getElementById('lm-chat-close');
+  const messages  = document.getElementById('lm-chat-messages');
+  const input     = document.getElementById('lm-chat-input');
+  const sendBtn   = document.getElementById('lm-chat-send');
+  const charCount = document.getElementById('lm-chat-char-count');
+  const btnImg    = document.getElementById('lm-chat-btn-img');
+  const headerImg = document.getElementById('lm-chat-header-img');
+
+  // ─── アイコン設定 ─────────────────────────────────────
+  // ページ読み込み後に設定（画像が存在する場合）
+  function setIcons() {
+    const src = getHashiIcon();
+    if (src) {
+      btnImg.src = src;
+      headerImg.src = src;
+    } else {
+      // フォールバック：絵文字を使う
+      btnImg.style.display = 'none';
+      toggle.textContent = '🦤';
+      toggle.style.fontSize = '28px';
+    }
+  }
+
+  // ─── メッセージ追加 ───────────────────────────────────
+  function addMessage(role, text, extra = '') {
+    const wrap = document.createElement('div');
+    wrap.className = `lm-msg lm-msg-${role}${extra ? ' ' + extra : ''}`;
+
+    if (role === 'ai' || role === 'loading' || role === 'error') {
+      const av = document.createElement('img');
+      av.src = getHashiIcon();
+      av.className = 'lm-msg-avatar';
+      av.alt = 'ハシビロコウ';
+      wrap.appendChild(av);
+    }
+
+    const bubble = document.createElement('div');
+    bubble.className = 'lm-msg-bubble';
+
+    if (role === 'loading') {
+      bubble.innerHTML = `<span>${text}</span><div class="lm-dots"><span></span><span></span><span></span></div>`;
+    } else {
+      // 改行を <br> に変換
+      bubble.innerHTML = text.replace(/\n/g, '<br>');
+    }
+
+    wrap.appendChild(bubble);
+    messages.appendChild(wrap);
+    messages.scrollTop = messages.scrollHeight;
+    return wrap;
+  }
+
+  function addSystem(text) {
+    const el = document.createElement('div');
+    el.className = 'lm-msg-system';
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // ─── 送信処理 ─────────────────────────────────────────
+  let lastSent = 0;
+  let isSending = false;
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text || isSending) return;
+    if (text.length > MAX_CHARS) return;
+
+    // 連投防止
+    if (Date.now() - lastSent < MIN_SEND_INTERVAL) {
+      addSystem('少し間を空けてくれ。');
+      return;
+    }
+
+    // ブラウザ側レート制限
+    if (!checkRateLimit()) {
+      addMessage('error', rand(ERROR_MSGS) + ' (1時間あたり' + RATE_LIMIT_MAX + '回まで)', 'lm-msg-error');
+      return;
+    }
+
+    lastSent = Date.now();
+    isSending = true;
+    sendBtn.disabled = true;
+    input.disabled = true;
+
+    // ユーザーメッセージ
+    addMessage('user', text);
+    input.value = '';
+    charCount.textContent = '0';
+    charCount.className = '';
+
+    // ローディング
+    const loadingEl = addMessage('loading', rand(LOADING_MSGS));
+
+    // コンテキスト取得
+    const context = getPageContext();
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, context }),
+        signal: AbortSignal.timeout(20000), // 20秒タイムアウト
+      });
+
+      const data = await res.json();
+      loadingEl.remove();
+
+      if (!res.ok || data.error) {
+        addMessage('ai', data.error || rand(ERROR_MSGS), 'lm-msg-error');
+      } else {
+        addMessage('ai', data.reply);
+      }
+    } catch (e) {
+      loadingEl.remove();
+      const msg = e.name === 'TimeoutError'
+        ? 'タイムアウト。少し待ってから試してくれ。'
+        : rand(ERROR_MSGS);
+      addMessage('ai', msg, 'lm-msg-error');
+    } finally {
+      isSending = false;
+      sendBtn.disabled = false;
+      input.disabled = false;
+      input.focus();
+    }
+  }
+
+  // ─── 開閉 ─────────────────────────────────────────────
+  let isOpen = false;
+
+  function openChat() {
+    isOpen = true;
+    window_.classList.add('lm-open');
+    window_.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-label', 'チャットを閉じる');
+    if (messages.children.length === 0) {
+      addMessage('ai', rand(GREETINGS));
+    }
+    setTimeout(() => input.focus(), 100);
+  }
+
+  function closeChat() {
+    isOpen = false;
+    window_.classList.remove('lm-open');
+    window_.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-label', 'チャットを開く');
+  }
+
+  toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+  closeBtn.addEventListener('click', closeChat);
+
+  // ─── 入力イベント ─────────────────────────────────────
+  input.addEventListener('input', () => {
+    const len = input.value.length;
+    charCount.textContent = len;
+    charCount.parentElement.className = 'lm-chat-counter' + (len > 250 ? ' lm-warn' : '');
+    sendBtn.disabled = len === 0 || len > MAX_CHARS;
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  // ─── 初期化 ───────────────────────────────────────────
+  sendBtn.disabled = true;
+  window.addEventListener('load', setIcons);
+  // 画像が後から設定される場合に備えて少し遅延
+  setTimeout(setIcons, 500);
+
+})();
+</script>
+
 </body>
 </html>
