@@ -219,51 +219,163 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 /* ═══════════ CASES ═══════════ */
 .cases-scroll{flex:1;overflow-y:auto;padding:0;}
 
-/* Market research */
-.market-wrap{max-width:1100px;margin:0 auto;padding:24px 28px 60px;}
-.market-intro{margin-bottom:28px;}
-.market-title{font-size:22px;font-weight:900;color:var(--text);margin:0 0 8px;line-height:1.3;}
-.market-lead{font-size:13px;color:var(--muted);line-height:1.7;margin:0;}
-.market-section{margin-bottom:36px;}
-.market-section-h{font-size:15px;font-weight:800;color:var(--text);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border2);display:flex;align-items:center;gap:8px;}
-.market-flag{font-size:18px;}
-.market-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:14px;}
-.market-card-h{font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;}
-.market-card-text{font-size:13px;color:var(--text2);line-height:1.7;margin:6px 0 10px;}
-.market-hero{background:linear-gradient(135deg,#0e8f6e08,#0e8f6e18);border-left:4px solid #0e8f6e;padding:24px 26px;}
-.market-hero-num{font-family:'DM Mono',monospace;font-size:42px;font-weight:900;color:#0e8f6e;line-height:1;letter-spacing:-1px;}
-.market-hero-unit{font-size:18px;margin-left:6px;font-weight:700;}
-.market-hero-label{font-size:13px;font-weight:700;color:var(--text);margin-top:8px;}
-.market-hero-sub{font-size:11px;color:var(--muted);margin-top:4px;}
-.market-stat{display:flex;align-items:baseline;gap:6px;margin-bottom:6px;}
-.market-stat-num{font-family:'DM Mono',monospace;font-size:28px;font-weight:900;color:#0e8f6e;}
-.market-stat-unit{font-size:12px;color:var(--muted);font-weight:600;}
+/* ══════════════════════════════════════
+   Market Research Tab — Phase 2 CSS
+   AutoStore軸 全面差し替え版
+   ══════════════════════════════════════ */
+
+/* ─ 基本ラッパー ─ */
+.market-wrap{max-width:1140px;margin:0 auto;padding:28px 28px 80px;}
+
+/* ─ ヘッダー ─ */
+.market-page-header{margin-bottom:32px;}
+.market-page-title{font-size:20px;font-weight:900;color:var(--text);margin:0 0 6px;line-height:1.3;display:flex;align-items:center;gap:8px;}
+.market-page-lead{font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 14px;max-width:760px;}
+
+/* ─ 目的ボックス ─ */
+.market-purpose-box{background:linear-gradient(135deg,rgba(255,102,0,.06),rgba(255,102,0,.02));border:1.5px solid rgba(255,102,0,.25);border-radius:12px;padding:18px 22px;margin-bottom:32px;}
+.market-purpose-axis{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.market-axis-pill{background:var(--sb);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;font-family:'DM Mono',monospace;}
+.market-axis-arrow{color:var(--sb);font-weight:900;font-size:14px;}
+.market-purpose-msg{font-size:12px;color:var(--text2);line-height:1.75;margin:0;}
+
+/* ─ ラベルバッジ ─ */
+.mlabel{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;font-family:'DM Mono',monospace;vertical-align:middle;}
+.mlabel-fact{background:rgba(14,143,110,.1);color:#0e8f6e;border:1px solid rgba(14,143,110,.25);}
+.mlabel-hypo{background:rgba(200,160,0,.1);color:#a07800;border:1px solid rgba(200,160,0,.25);}
+.mlabel-supp{background:rgba(120,120,140,.1);color:#606080;border:1px solid rgba(120,120,140,.2);}
+.mlabel-warn{background:rgba(220,100,0,.08);color:#b05000;border:1px solid rgba(220,100,0,.2);}
+
+/* ─ セクション共通 ─ */
+.market-section{margin-bottom:44px;}
+.market-section-h{font-size:15px;font-weight:800;color:var(--text);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border2);display:flex;align-items:center;gap:8px;}
+.market-section-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);background:var(--surface2);border:1px solid var(--border2);border-radius:5px;padding:2px 7px;flex-shrink:0;}
+
+/* ─ カード共通 ─ */
+.market-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:18px 20px;margin-bottom:14px;}
+.market-card-h{font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.market-card-text{font-size:13px;color:var(--text2);line-height:1.75;margin:6px 0 10px;}
 .market-source{font-size:10px;color:var(--muted);margin-top:8px;font-style:italic;}
 .market-source a{color:var(--sb);text-decoration:none;}
 .market-source a:hover{text-decoration:underline;}
+
+/* ─ KPIカード ─ */
+.market-kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.market-kpi{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:16px 18px;}
+.market-kpi-num{font-family:'DM Mono',monospace;font-size:26px;font-weight:900;color:var(--text);line-height:1.1;margin-bottom:4px;}
+.market-kpi-label{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:4px;}
+.market-kpi-sub{font-size:11px;color:var(--muted);line-height:1.5;}
+.market-kpi.kpi-hl{background:linear-gradient(135deg,#fff8f4,#fff1e6);border:1.5px solid rgba(255,102,0,.3);}
+.market-kpi.kpi-hl .market-kpi-num{color:var(--sb);}
+
+/* ─ バーチャート（JILS推移）─ */
+.market-barchart{display:flex;align-items:flex-end;gap:8px;height:180px;padding:16px 4px 32px;position:relative;border-bottom:1px solid var(--border2);overflow:visible;}
+.mbc-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;position:relative;}
+.mbc-bar{width:100%;border-radius:4px 4px 0 0;min-height:6px;transition:opacity .15s;position:relative;}
+.mbc-bar:hover{opacity:.8;}
+.mbc-val{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:8px;font-weight:700;color:var(--text2);white-space:nowrap;}
+.mbc-year{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;}
+
+/* ─ 注記ボックス ─ */
+.market-note{background:rgba(200,120,0,.05);border:1px solid rgba(200,120,0,.2);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--text2);line-height:1.65;margin-top:10px;}
+.market-note strong{color:#905000;font-weight:800;}
+
+/* ─ テーブル共通 ─ */
+.market-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.market-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px;min-width:560px;}
+.market-table thead th{text-align:left;font-size:10px;font-weight:700;color:var(--muted);padding:7px 10px;border-bottom:2px solid var(--border2);background:var(--surface2);white-space:nowrap;}
+.market-table tbody td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;line-height:1.55;}
+.market-table tbody tr:last-child td{border-bottom:none;}
+.market-table tbody tr:hover td{background:var(--surface2);}
+.market-table strong{color:var(--text);font-weight:800;}
+.market-table .hl-row td{background:linear-gradient(135deg,#fff8f4,#fff3ec);}
+.market-table .hl-row td:first-child{border-left:3px solid var(--sb);}
+
+/* ─ 方式別グリッド（4枚カード）─ */
+.market-method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;}
+.method-card{background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:14px 16px;}
+.method-card.method-hl{background:linear-gradient(135deg,#fff8f4,#fff0e6);border-color:rgba(255,102,0,.4);}
+.method-card-name{font-size:13px;font-weight:900;color:var(--text);margin-bottom:6px;}
+.method-card.method-hl .method-card-name{color:var(--sb);}
+.method-card-desc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:8px;}
+.method-card-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;align-items:flex-start;}
+.method-card-key{font-size:10px;font-weight:700;color:var(--text2);min-width:52px;flex-shrink:0;padding-top:1px;}
+.method-card-val{font-size:11px;color:var(--muted);flex:1;line-height:1.5;}
+
+/* ─ 競合比較カード群 ─ */
+.market-rival-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.rival-card{background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:14px 16px;}
+.rival-card.rival-hl{background:linear-gradient(135deg,#fff8f4,#fff0e6);border-color:rgba(255,102,0,.4);}
+.rival-card-name{font-size:14px;font-weight:900;margin-bottom:2px;}
+.rival-card.rival-hl .rival-card-name{color:var(--sb);}
+.rival-card-country{font-size:10px;color:var(--muted);margin-bottom:8px;font-family:'DM Mono',monospace;}
+.rival-card-row{display:flex;gap:6px;margin-bottom:4px;font-size:11px;align-items:flex-start;}
+.rival-card-key{font-weight:700;color:var(--text2);min-width:48px;flex-shrink:0;}
+.rival-card-val{color:var(--muted);flex:1;line-height:1.5;}
+
+/* ─ ヒートマップ ─ */
+.market-heatmap-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;}
+.market-heatmap{border-collapse:collapse;min-width:700px;font-size:11px;}
+.market-heatmap th{padding:7px 10px;font-size:10px;font-weight:700;color:var(--muted);background:var(--surface2);border:1px solid var(--border);text-align:center;white-space:nowrap;}
+.market-heatmap th.hm-row-hdr{text-align:left;min-width:120px;}
+.market-heatmap th.hm-hl{background:linear-gradient(135deg,#fff8f4,#fff0e6);color:var(--sb);}
+.market-heatmap td{padding:6px 10px;border:1px solid var(--border);text-align:center;font-weight:700;font-family:'DM Mono',monospace;font-size:12px;}
+.market-heatmap td.hm-industry{text-align:left;font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:11px;color:var(--text2);background:var(--surface2);}
+.hm-ss{color:#0e8f6e;background:rgba(14,143,110,.07);}
+.hm-s{color:#3d8b5e;background:rgba(14,143,110,.04);}
+.hm-m{color:var(--muted);background:transparent;}
+.hm-w{color:#b0b8d0;background:transparent;}
+.hm-hl-col{background:linear-gradient(135deg,#fff8f4,#fff0e8) !important;color:var(--sb) !important;}
+
+/* ─ グリッド2・3 ─ */
 .market-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .market-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}
-.market-mini{padding:14px;}
-.market-mini-source{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
-.market-mini-num{font-family:'DM Mono',monospace;font-size:24px;font-weight:900;color:var(--text);}
-.market-mini-detail{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;}
-.market-list{margin:6px 0 8px;padding-left:18px;font-size:13px;color:var(--text2);line-height:1.8;}
-.market-list li{margin-bottom:4px;}
-.market-summary{background:linear-gradient(135deg,#fff,#fafafa);border:2px solid var(--sb);}
-.market-summary-list{margin:0;padding-left:18px;font-size:13px;color:var(--text);line-height:1.8;}
+
+/* ─ 優先ターゲット表 ─ */
+.target-rank{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-family:'DM Mono',monospace;font-size:10px;font-weight:900;flex-shrink:0;}
+.target-rank.r-top{background:var(--sb);color:#fff;}
+.target-rank.r-mid{background:var(--surface2);color:var(--text2);border:1px solid var(--border2);}
+.fit-ss{font-weight:900;color:var(--sb);font-size:14px;}
+.fit-s{font-weight:700;color:#0e8f6e;font-size:13px;}
+.fit-m{font-weight:600;color:var(--muted);}
+.fit-w{color:var(--muted2);}
+
+/* ─ 収益構造テーブル（コスト章）─ */
+.market-cost-flow{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:14px;}
+.market-cost-flow-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;}
+.cost-flow-items{display:flex;flex-direction:column;gap:6px;}
+.cost-flow-item{display:flex;align-items:center;gap:8px;font-size:12px;}
+.cost-flow-plus{color:var(--muted);font-weight:700;width:14px;text-align:center;}
+.cost-flow-label{color:var(--text2);flex:1;}
+.cost-flow-eq{font-weight:900;color:var(--sb);padding:6px 0 0 22px;font-size:12px;border-top:1px solid var(--border2);margin-top:4px;}
+
+/* ─ まとめカード ─ */
+.market-summary-card{background:linear-gradient(135deg,#fff,#fafafa);border:2px solid var(--sb);border-radius:12px;padding:20px 24px;margin-bottom:14px;}
+.market-summary-card-h{font-size:14px;font-weight:900;color:var(--sb);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.market-summary-list{margin:0;padding-left:20px;font-size:13px;color:var(--text);line-height:1.8;}
 .market-summary-list li{margin-bottom:8px;}
 .market-summary-list strong{color:var(--sb);font-weight:800;}
-.market-chart{height:240px;display:flex;align-items:flex-end;gap:6px;padding:18px 8px 30px;position:relative;border-bottom:1px solid var(--border2);}
-.market-chart-bar{flex:1;background:linear-gradient(180deg,#0e8f6e,#0e8f6e88);border-radius:4px 4px 0 0;position:relative;min-height:8px;transition:opacity .15s;}
-.market-chart-bar:hover{opacity:0.85;}
-.market-chart-bar.future{background:linear-gradient(180deg,#0e8f6e66,#0e8f6e22);border:1.5px dashed #0e8f6e;}
-.market-chart-val{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--text2);white-space:nowrap;}
-.market-chart-year{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
-.market-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px;}
-.market-table thead th{text-align:left;font-size:10px;font-weight:700;color:var(--muted);padding:6px 10px;border-bottom:2px solid var(--border2);background:var(--surface2);}
-.market-table tbody td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text2);}
-.market-table tbody tr:last-child td{border-bottom:none;}
-.market-table strong{color:var(--text);font-weight:800;}
+
+/* ─ 出典一覧 ─ */
+.market-sources-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.market-source-item{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;}
+.market-source-ch{font-size:10px;font-weight:700;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:4px;}
+.market-source-name{font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.market-source-note{font-size:11px;color:var(--muted);}
+.market-source-badge{display:inline-block;font-size:9px;padding:1px 6px;border-radius:10px;margin-left:4px;font-family:'DM Mono',monospace;}
+.msb-ok{background:rgba(14,143,110,.1);color:#0e8f6e;}
+.msb-tbd{background:rgba(200,120,0,.1);color:#905000;}
+
+/* レスポンシブ */
+@media(max-width:900px){
+  .market-rival-grid{grid-template-columns:repeat(2,1fr);}
+  .market-method-grid{grid-template-columns:1fr;}
+}
+@media(max-width:780px){
+  .market-grid2,.market-grid3,.market-kpi-grid{grid-template-columns:1fr;}
+  .market-rival-grid{grid-template-columns:1fr;}
+  .market-sources-grid{grid-template-columns:1fr;}
+}
 
 /* ─ Reading (Business Primer) ─ */
 
@@ -774,8 +886,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 }
 
 @media (max-width:780px){
-  .market-grid2,.market-grid3{grid-template-columns:1fr;}
-  .market-hero-num{font-size:32px;}
+  .market-grid2,.market-grid3,.market-kpi-grid,.market-method-grid,.market-rival-grid{grid-template-columns:1fr;}
 }
 .cases-scroll::-webkit-scrollbar{width:8px;}
 .cases-scroll::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
@@ -1030,7 +1141,6 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
 .reading-figure{overflow:hidden;}
 .reading-figure table{table-layout:fixed;width:100%;}
 .reading-figure table td, .reading-figure table th{word-break:break-word;overflow-wrap:break-word;}
-.market-chart{overflow:visible !important;}
 .ec-calendar .fc-load{font-size:7px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;}
 .return-rate .rr-bar span,.ec-trend .ec-bar span{white-space:nowrap;}
 /* Fix short bars where text overflows */
@@ -1140,248 +1250,908 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-seri
   <!-- MARKET RESEARCH -->
   <div id="view-market" class="view" style="overflow-y:auto;">
     <div class="market-wrap">
-      <div class="market-intro">
-        <h2 class="market-title">📈 倉庫自動化・物流ロボット市場の現状と将来予測</h2>
-        <p class="market-lead">公開されている市場調査レポート・政府統計をもとに、商談の前提として共有できる市場データをまとめています。各データには出典リンクを併記しています。</p>
+
+      <!-- ══ ヘッダー ══ -->
+      <div class="market-page-header">
+        <h2 class="market-page-title">📊 市場調査 <span style="font-size:13px;font-weight:500;color:var(--muted);">AutoStore軸 — どこに刺さるかを特定する</span></h2>
+        <p class="market-page-lead">本タブの目的は物流自動化市場の成長を確認することではなく、AutoStoreを中心とした主要商材が「どの業界・企業規模・工程に最も刺さるか」を可視化することである。市場規模、競合動向、3PL・マテハン会社の動き、導入事例を根拠に、優先的に狙うべきターゲット領域を整理する。</p>
+        <!-- 目的ボックス -->
+        <div class="market-purpose-box">
+          <div class="market-purpose-axis">
+            <span class="market-axis-pill">業界</span>
+            <span class="market-axis-arrow">×</span>
+            <span class="market-axis-pill">企業規模</span>
+            <span class="market-axis-arrow">×</span>
+            <span class="market-axis-pill">工程</span>
+            <span class="market-axis-arrow">×</span>
+            <span class="market-axis-pill">商材</span>
+            <span class="market-axis-arrow">→</span>
+            <span style="font-size:12px;font-weight:800;color:var(--sb);">どこに刺さるかを特定する</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+            <span class="mlabel mlabel-fact">🟢 事実：公的・業界統計・上場企業IR</span>
+            <span class="mlabel mlabel-hypo">🟡 仮説：公開資料・事例から推測。要追加検証</span>
+            <span class="mlabel mlabel-supp">⚪ 補助資料：民間調査・業界紙・非統計データ</span>
+            <span class="mlabel mlabel-warn">⚠️ 注記：定義・対象範囲の違い</span>
+          </div>
+        </div>
       </div>
 
-      <!-- 国内市場 -->
+      <!-- ══ 2. 市場全体の前提 ══ -->
       <section class="market-section">
-        <div class="market-section-h"><span class="market-flag">🇯🇵</span>国内 物流ロボティクス市場</div>
-        <div class="market-card market-hero">
-          <div class="market-hero-num">¥1,238<span class="market-hero-unit">億円</span></div>
-          <div class="market-hero-label">2030年度の市場規模予測（事業者売上高ベース）</div>
-          <div class="market-hero-sub">2024年度見込 ¥404億円 → 2030年で約3倍に拡大</div>
+        <div class="market-section-h">
+          <span class="market-section-num">2</span>
+          市場全体の前提
         </div>
+
+        <!-- KPI 3枚 -->
+        <div class="market-kpi-grid">
+          <div class="market-kpi kpi-hl">
+            <div class="market-kpi-num">6,570億円</div>
+            <div class="market-kpi-label">国内 物流システム機器 総売上（2024年度）<span class="mlabel mlabel-fact" style="margin-left:4px;">🟢 事実</span></div>
+            <div class="market-kpi-sub">前年比 +3.8%、過去最高</div>
+            <div class="market-source">JILS 物流システム機器生産出荷統計</div>
+          </div>
+          <div class="market-kpi">
+            <div class="market-kpi-num">約550億USD</div>
+            <div class="market-kpi-label">グローバル倉庫自動化市場（2030予測）<span class="mlabel mlabel-supp" style="margin-left:4px;">⚪ 補助資料</span></div>
+            <div class="market-kpi-sub">CAGR 15%（民間調査）</div>
+            <div class="market-source">LogisticsIQ</div>
+          </div>
+          <div class="market-kpi">
+            <div class="market-kpi-num">+35%</div>
+            <div class="market-kpi-label">サービスロボット 物流向け販売成長（2023）<span class="mlabel mlabel-fact" style="margin-left:4px;">🟢 事実</span></div>
+            <div class="market-kpi-sub">プロサービスロボット販売の半数超が物品・貨物搬送</div>
+            <div class="market-source">IFR World Robotics 2024 Service Robots</div>
+          </div>
+        </div>
+
+        <!-- JILS 5年推移バーチャート -->
         <div class="market-card">
-          <div class="market-card-h">年次推移（2020〜2030）</div>
-          <div id="market-chart-jp" class="market-chart"></div>
-          <div class="market-source">出典：<a href="https://www.yano.co.jp/press-release/show/press_id/3762" target="_blank">矢野経済研究所「2025年版 物流ロボティクス市場の現状と将来展望」（2025年3月発表）</a></div>
+          <div class="market-card-h">国内 物流システム機器 生産出荷 5年推移 <span class="mlabel mlabel-fact">🟢 事実</span></div>
+          <div class="market-barchart" id="mbc-jils5yr"></div>
+          <div class="market-source">出典：<a href="https://www.logistics.or.jp" target="_blank">JILS（公益社団法人日本ロジスティクスシステム協会）物流システム機器生産出荷統計 2024年度版</a></div>
         </div>
-        <div class="market-grid2">
-          <div class="market-card">
-            <div class="market-card-h">2024年度の成長</div>
-            <div class="market-stat"><span class="market-stat-num">+13.1%</span><span class="market-stat-unit">前年比</span></div>
-            <p class="market-card-text">ロボットラインナップ拡充・案件あたり導入コスト上昇が背景。倉庫賃料上昇で高密度保管型のロボット自動倉庫需要が増加。ACR（複数ケース同時搬送）が新たに登場し注目を集める。</p>
-            <div class="market-source">出典：<a href="https://www.lnews.jp/2025/03/r0311303.html" target="_blank">矢野経済研究所（2025年3月）</a></div>
-          </div>
-          <div class="market-card">
-            <div class="market-card-h">市場の構造変化</div>
-            <p class="market-card-text">海外メーカーの日本市場参入が活発化し競争激化。将来の人手減少を前提とした「物流ロボットありき」のセンター構築が一般化していく見込み。荷主・物流企業ともに自社のビジネス拡大に向け戦略的に導入を進めるケースが増加。</p>
-            <div class="market-source">出典：<a href="https://www.yano.co.jp/press-release/show/press_id/3762" target="_blank">矢野経済研究所（2025年3月）</a></div>
-          </div>
+
+        <!-- 結びメッセージ -->
+        <div class="market-note">
+          <strong>⚠️ 重要な読み方：</strong>市場全体は伸びているが、AutoStore本体メーカー（AutoStore Holdings）の2024年売上はやや減少（市場縮小局面でもシェアは拡大）。<br>
+          「市場全体の成長」と「商材別・業界別の機会」は分けて見る必要がある。<br>
+          LogisticsIQは民間調査会社、IFRは国際業界団体。出典種別は各データに明示。
         </div>
       </section>
 
-      <!-- 物流2024年問題 -->
+      <!-- ══ 3. 自動倉庫の方式別整理 ══ -->
       <section class="market-section">
-        <div class="market-section-h"><span class="market-flag">🇯🇵</span>物流2024年問題と2030年の輸送力不足</div>
-        <div class="market-card market-hero" style="background:linear-gradient(135deg,#e8341a08,#e8341a18);border-left:4px solid #e8341a;">
-          <div class="market-hero-num" style="color:#e8341a;">▲34%<span class="market-hero-unit">(9億トン)</span></div>
-          <div class="market-hero-label">2030年度に不足する輸送能力（対策なしの場合）</div>
-          <div class="market-hero-sub">2024年度時点で既に▲14%、その後も対策がなければ2030年に拡大</div>
+        <div class="market-section-h">
+          <span class="market-section-num">3</span>
+          自動倉庫の方式別整理 <span style="font-size:12px;font-weight:500;color:var(--muted);margin-left:4px;">自動倉庫は1種類ではない。方式により得意領域が全く違う。</span>
         </div>
-        <div class="market-grid2">
-          <div class="market-card">
-            <div class="market-card-h">政府の見解</div>
-            <p class="market-card-text">2024年問題は「当該時点を乗り越えれば終わる一過性の課題ではなく、年々深刻化する構造的な課題」と政府が明言。物流の効率化・商慣行見直し・荷主/消費者の行動変容を柱とする中長期計画を策定。</p>
-            <div class="market-source">出典：<a href="https://wwwtb.mlit.go.jp/chubu/jidosya/ouensaito/shiryou/20241031/20241031_03.pdf" target="_blank">国土交通省「物流の革新に関する関係閣僚会議」資料（2024年10月）</a></div>
+
+        <div class="market-method-grid">
+          <div class="method-card">
+            <div class="method-card-name">📦 パレット型 AS/RS（スタッカークレーン）</div>
+            <div class="method-card-desc">大型・低頻度・パレット単位、高い保管効率、高さ40m級も可能</div>
+            <div class="method-card-row"><span class="method-card-key">代表</span><span class="method-card-val">Daifuku、Murata、SSI Schaefer、TGW、Swisslog</span></div>
+            <div class="method-card-row"><span class="method-card-key">AutoStoreとの関係</span><span class="method-card-val" style="color:#3d8b5e;">競合外（対象が違う）</span></div>
           </div>
-          <div class="market-card">
-            <div class="market-card-h">具体的な政策</div>
-            <p class="market-card-text">「即効性のある設備投資の促進」として、バース予約システム・フォークリフト導入・自動化/機械化を明示。荷主企業の8割が物流危機への問題意識を持つ一方、実際の取組は限定的という現状ギャップが明らかに。</p>
-            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2023/06/20230602005/20230602005.html" target="_blank">経済産業省「物流の適正化・生産性向上ガイドライン」（2023年6月）</a></div>
+          <div class="method-card">
+            <div class="method-card-name">🔄 ケース型シャトル（Mini-load、Multi-shuttle）</div>
+            <div class="method-card-desc">中SKU・中頻度、ケース単位、決まったパス</div>
+            <div class="method-card-row"><span class="method-card-key">代表</span><span class="method-card-val">Knapp OSR Shuttle、Dematic Multishuttle、TGW Stingray</span></div>
+            <div class="method-card-row"><span class="method-card-key">AutoStoreとの関係</span><span class="method-card-val" style="color:#a07800;">競合（中SKU帯で重なる）</span></div>
           </div>
+          <div class="method-card method-hl">
+            <div class="method-card-name">⬛ キューブ型グリッド ← AutoStore本流</div>
+            <div class="method-card-desc">小物〜中物・高密度・高頻度、グリッド上でロボットが動く</div>
+            <div class="method-card-row"><span class="method-card-key">代表</span><span class="method-card-val"><strong>AutoStore</strong>、Element Logic</span></div>
+            <div class="method-card-row"><span class="method-card-key">強み</span><span class="method-card-val">超高密度・標準化・パートナー流通・高収益モデル</span></div>
+          </div>
+          <div class="method-card">
+            <div class="method-card-name">🤖 ACR（自律ケースハンドリングロボット）</div>
+            <div class="method-card-desc">キューブ型より柔軟、変更しやすい、保管密度はやや劣る</div>
+            <div class="method-card-row"><span class="method-card-key">代表</span><span class="method-card-val">HAI Robotics（HaiPick）、Geek+ RoboShuttle</span></div>
+            <div class="method-card-row"><span class="method-card-key">AutoStoreとの関係</span><span class="method-card-val" style="color:#a07800;">競合（柔軟性で差別化）</span></div>
+          </div>
+        </div>
+
+        <div class="market-note">
+          <strong>JILS統計上の位置づけ：</strong>パレット型AS/RS・バケット用自動倉庫は「自動倉庫（1〜3）」に分類。2024年度の自動倉庫合計：147,098百万円（前年比+11.4%）🟢<br>
+          <strong>⚠️ 注記：</strong>キューブ型・ACRは「自動倉庫」と「無軌道台車」のどちらに集計されるかはメーカーにより差がある可能性。
         </div>
       </section>
 
-      <!-- グローバル市場 -->
+      <!-- ══ 4. 商材カテゴリ別の動向（JILS統計）══ -->
       <section class="market-section">
-        <div class="market-section-h"><span class="market-flag">🌐</span>グローバル 倉庫自動化市場</div>
-        <div class="market-card market-hero" style="background:linear-gradient(135deg,#1a6be808,#1a6be818);border-left:4px solid #1a6be8;">
-          <div class="market-hero-num" style="color:#1a6be8;">$55B<span class="market-hero-unit">≈8.2兆円</span></div>
-          <div class="market-hero-label">2030年の世界倉庫自動化市場（LogisticsIQ予測）</div>
-          <div class="market-hero-sub">2024〜2030年でCAGR 15%・EC成長と労働力不足を背景に拡大</div>
+        <div class="market-section-h">
+          <span class="market-section-num">4</span>
+          商材カテゴリ別の動向（JILS統計 2024年度）<span class="mlabel mlabel-fact" style="margin-left:6px;">🟢 事実</span>
         </div>
-        <div class="market-grid3">
-          <div class="market-card market-mini">
-            <div class="market-mini-source">Grand View Research</div>
-            <div class="market-mini-num">$59.5B</div>
-            <div class="market-mini-detail">2030年予測 / CAGR 18.7%（2024-2030）</div>
-            <div class="market-source"><a href="https://www.grandviewresearch.com/industry-analysis/warehouse-automation-market-report" target="_blank">レポート</a></div>
-          </div>
-          <div class="market-card market-mini">
-            <div class="market-mini-source">LogisticsIQ</div>
-            <div class="market-mini-num">$55B</div>
-            <div class="market-mini-detail">2030年予測 / CAGR 15%（2024-2030）</div>
-            <div class="market-source"><a href="https://www.prnewswire.com/news-releases/warehouse-automation-market-to-reach-55-billion-by-2030-driven-by-e-commerce-and-supply-chain-transformation---logisticsiq-302252709.html" target="_blank">プレスリリース</a></div>
-          </div>
-          <div class="market-card market-mini">
-            <div class="market-mini-source">MarketsandMarkets</div>
-            <div class="market-mini-num">$10.5B</div>
-            <div class="market-mini-detail">倉庫ロボット限定 / 2028年予測 / CAGR 11.4%</div>
-            <div class="market-source"><a href="https://www.marketsandmarkets.com/Market-Reports/warehouse-robotic-market-128876258.html" target="_blank">レポート</a></div>
-          </div>
-        </div>
-        <div class="market-card">
-          <div class="market-card-h">成長ドライバー（共通見解）</div>
-          <ul class="market-list">
-            <li>EC市場の急成長（世界EC売上は2027年に8兆ドル超え見込み、小売の25%以上をECが占める見通し）</li>
-            <li>労働力不足の構造化（先進国共通）</li>
-            <li>同日配送・即日配送のニーズ拡大とそれに対応するダークストア化</li>
-            <li>AMR（自律走行ロボット）の本格普及</li>
-            <li>グローバルサプライチェーンの再構築</li>
-          </ul>
-          <div class="market-source">出典：<a href="https://www.thelogisticsiq.com/research/warehouse-automation-market" target="_blank">LogisticsIQ「Warehouse Automation Market 5th Edition」（2024年9月）</a></div>
-        </div>
-      </section>
 
-      <!-- EC市場の伸び -->
-      <section class="market-section">
-        <div class="market-section-h"><span class="market-flag">🛒</span>EC市場の伸び（物流需要の源泉）</div>
-        <div class="market-grid2">
-          <div class="market-card">
-            <div class="market-card-h">BtoC-EC 物販系 市場規模（2024年）</div>
-            <div class="market-stat"><span class="market-stat-num">¥15.2兆</span><span class="market-stat-unit">前年比+3.7%</span></div>
-            <p class="market-card-text">EC化率は<strong>9.78%</strong>（前年比+0.4pt）。2025年には10%突破見込み。コロナ禍の急成長は一服したが堅調に拡大が続く。</p>
-            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省「令和6年度電子商取引に関する市場調査」（2025年8月）</a></div>
-          </div>
-          <div class="market-card">
-            <div class="market-card-h">BtoB-EC 市場規模（2024年）</div>
-            <div class="market-stat"><span class="market-stat-num">¥514.4兆</span><span class="market-stat-unit">前年比+10.6%</span></div>
-            <p class="market-card-text">BtoB-ECのEC化率は<strong>43.1%</strong>（前年比+3.1pt）。BtoC以上に企業間取引のEC化が進行中。卸売・製造業の物流自動化ニーズの背景。</p>
-            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省（2025年8月）</a></div>
-          </div>
-        </div>
-        <div class="market-card">
-          <div class="market-card-h">物販系BtoC-EC 業種別の市場規模（2024年・上位）</div>
+        <div class="market-table-wrap">
           <table class="market-table">
-            <thead><tr><th>業種</th><th>市場規模</th><th>前年比</th><th>EC化率</th></tr></thead>
+            <thead>
+              <tr>
+                <th>カテゴリ</th>
+                <th>売上（百万円）</th>
+                <th>前年比</th>
+                <th>トレンド</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>食品・飲料・酒類</td><td>¥3.12兆</td><td>+6.36%</td><td>—</td></tr>
-              <tr><td>衣類・服装雑貨等</td><td>¥2.80兆</td><td>—</td><td>—</td></tr>
-              <tr><td>生活家電・AV機器・PC等</td><td>¥2.74兆</td><td>+2.26%</td><td><strong>43.0%</strong></td></tr>
-              <tr><td>生活雑貨・家具・インテリア</td><td>¥2.56兆</td><td>+3.62%</td><td><strong>32.6%</strong></td></tr>
-              <tr><td>書籍・映像・音楽ソフト</td><td>—</td><td>—</td><td><strong>56.5%</strong></td></tr>
+              <tr class="hl-row">
+                <td><strong>自動倉庫</strong>（1〜3）</td>
+                <td><strong>147,098</strong></td>
+                <td style="color:#0e8f6e;font-weight:800;">+11.4%</td>
+                <td style="color:#0e8f6e;">↑ 2桁成長・過去最高</td>
+              </tr>
+              <tr>
+                <td>台車系（4〜6）</td>
+                <td>182,039</td>
+                <td style="color:#0e8f6e;font-weight:700;">+9.7%</td>
+                <td style="color:#0e8f6e;">↑ 好調</td>
+              </tr>
+              <tr>
+                <td>コンベヤ系（8〜10）</td>
+                <td>144,746</td>
+                <td style="color:#b04040;font-weight:700;">△1.4%</td>
+                <td style="color:#b04040;">↓ 微減</td>
+              </tr>
+              <tr>
+                <td>コンピュータ（含WMS）（23〜25）</td>
+                <td>54,083</td>
+                <td style="color:#0e8f6e;font-weight:800;">+18.7%</td>
+                <td style="color:#0e8f6e;">↑ 最大成長</td>
+              </tr>
+              <tr>
+                <td>棚（17〜19）</td>
+                <td>33,307</td>
+                <td>+1.9%</td>
+                <td>→ 横ばい</td>
+              </tr>
+              <tr>
+                <td>仕分け・ピッキング系（7,11,12）</td>
+                <td>27,161</td>
+                <td style="color:#b04040;font-weight:700;">△8.6%</td>
+                <td style="color:#b04040;">↓ 減少</td>
+              </tr>
+              <tr>
+                <td>回転棚・移動棚（13〜16）</td>
+                <td>20,202</td>
+                <td>+5.1%</td>
+                <td style="color:#0e8f6e;">↑</td>
+              </tr>
+              <tr>
+                <td>垂直搬送機（21,22）</td>
+                <td>13,725</td>
+                <td style="color:#b04040;font-weight:800;">△19.8%</td>
+                <td style="color:#b04040;">↓↓ 大幅減少</td>
+              </tr>
+              <tr>
+                <td>パレタイザ/デパレタイザ（20）</td>
+                <td>8,147</td>
+                <td style="color:#b04040;">△4.5%</td>
+                <td style="color:#b04040;">↓</td>
+              </tr>
             </tbody>
           </table>
-          <p class="market-card-text" style="margin-top:10px;">食品EC（+6.36%）が物販系で最も高成長。書籍ECは半分以上がオンラインに。商談時の業種別の話題提供に。</p>
-          <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省「令和6年度電子商取引に関する市場調査」</a></div>
+        </div>
+
+        <div class="market-note" style="margin-top:12px;">
+          <strong>読み方：</strong>自動倉庫・台車系が牽引。コンベヤ・垂直搬送機は減少傾向 → 「省人化したい工程」がコンベヤから自動倉庫・台車系にシフトしている可能性。<br>
+          <strong>⚠️ 注記：</strong>「台車系」は天井走行＋有軌道＋無軌道（≠AMR/AGF）。「コンピュータ」の中にWMSが含まれるがカバレッジ不十分（JILS本文で明示）。大手ITベンダー（SAP/Oracle等）のWMSは含まれない。<br>
+          <strong>台車系内訳：</strong>天井走行154,463（+5.4%）/ 有軌道9,515（+66.8%）/ 無軌道18,061（<strong>+35.2%</strong> ← AMR/AGFを含む）<br>
+          <strong>コンベヤ系内訳：</strong>パレット搬送62,134（+34.2%、増加）/ ケース搬送73,205（△16.2%、減少）/ ハンガー式9,408（△28.3%、減少）
         </div>
       </section>
 
-      <!-- 労働力・ドライバー不足 -->
+      <!-- ══ 5. キューブ型自動倉庫の動向 ══ -->
       <section class="market-section">
-        <div class="market-section-h"><span class="market-flag">👷</span>労働力不足の実態</div>
-        <div class="market-grid2">
-          <div class="market-card">
-            <div class="market-card-h">トラックドライバー 有効求人倍率</div>
-            <div class="market-stat"><span class="market-stat-num">2.68倍</span><span class="market-stat-unit">全産業平均の約2倍</span></div>
-            <p class="market-card-text">全産業平均と比較して<strong>1.36倍高い</strong>採用難易度。低賃金・長時間労働が背景。若年層（29歳以下）は10.0%（全産業16.4%）・中年層（40〜54歳）が44.3%（全産業34.7%）と高齢化が進行。</p>
-            <div class="market-source">出典：<a href="https://www.jil.go.jp/institute/zassi/backnumber/2024/02-03/pdf/051-065.pdf" target="_blank">労働政策研究・研修機構「日本労働研究雑誌」No.764（2024年2-3月）</a></div>
+        <div class="market-section-h">
+          <span class="market-section-num">5</span>
+          キューブ型自動倉庫の動向 ★主軸の章
+        </div>
+
+        <!-- 5-1 AutoStore KPI -->
+        <div class="market-card-h" style="font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+          <span style="background:var(--sb);color:#fff;padding:2px 10px;border-radius:5px;font-size:11px;font-family:'DM Mono',monospace;font-weight:900;">5-1</span>
+          AutoStore（Holdings Ltd, OSE:AUTO）の状況
+          <span class="mlabel mlabel-fact">🟢 事実</span>
+        </div>
+
+        <div class="market-kpi-grid" style="margin-bottom:14px;">
+          <div class="market-kpi kpi-hl">
+            <div class="market-kpi-num">USD 601.4M</div>
+            <div class="market-kpi-label">2024通期売上</div>
+            <div class="market-kpi-sub">ガイダンス$575-600Mを上回り達成</div>
           </div>
-          <div class="market-card">
-            <div class="market-card-h">2030年のドライバー不足数</div>
-            <div class="market-stat"><span class="market-stat-num">▲27.8万人</span><span class="market-stat-unit">2028年予測</span></div>
-            <p class="market-card-text">公益社団法人鉄道貨物協会の予測では2028年にドライバー27.8万人不足。これに伴い<strong>2030年に輸送能力の19.5%（5.4億トン）が不足</strong>する見通し。2024年問題（▲14%）と合わせ年間9.4億トンの不足可能性。</p>
-            <div class="market-source">出典：<a href="https://www.meti.go.jp/shingikai/mono_info_service/sustainable_logistics/pdf/003_01_00.pdf" target="_blank">NX総合研究所（経産省 持続可能な物流の実現に向けた検討会 資料）</a></div>
+          <div class="market-kpi kpi-hl">
+            <div class="market-kpi-num">73.1%</div>
+            <div class="market-kpi-label">粗利率（FY2024）</div>
+            <div class="market-kpi-sub">過去最高水準</div>
+          </div>
+          <div class="market-kpi kpi-hl">
+            <div class="market-kpi-num">47.0%</div>
+            <div class="market-kpi-label">調整後 EBITDAマージン</div>
+            <div class="market-kpi-sub">極めて高水準</div>
           </div>
         </div>
+
+        <div class="market-grid3" style="margin-bottom:14px;">
+          <div class="market-kpi">
+            <div class="market-kpi-num">約1,650</div>
+            <div class="market-kpi-label">累計設置システム数</div>
+            <div class="market-kpi-sub">2024年Q4時点</div>
+          </div>
+          <div class="market-kpi">
+            <div class="market-kpi-num">58カ国</div>
+            <div class="market-kpi-label">展開国数</div>
+            <div class="market-kpi-sub">グローバルパートナー流通</div>
+          </div>
+          <div class="market-kpi">
+            <div class="market-kpi-num">64,500台</div>
+            <div class="market-kpi-label">累計ロボット販売</div>
+            <div class="market-kpi-sub">2023年時点。北米売上比率 約25%</div>
+          </div>
+        </div>
+
+        <div class="market-note">
+          <strong>経営者コメントの要旨：</strong>高金利・EC成長鈍化が逆風。それでも標準化された製品とパートナー流通モデルで高収益維持。市場縮小局面でもシェアを拡大。創業1996年（ノルウェー Nedre Vats）。
+        </div>
+
+        <div class="market-source" style="margin-bottom:24px;">出典：<a href="https://investors.autostoresystem.com" target="_blank">AutoStore Holdings Q4 2024 Results（IR資料）</a></div>
+
+        <!-- 5-2 競合比較 -->
+        <div class="market-card-h" style="font-size:14px;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+          <span style="background:var(--sb);color:#fff;padding:2px 10px;border-radius:5px;font-size:11px;font-family:'DM Mono',monospace;font-weight:900;">5-2</span>
+          競合プレイヤーの状況
+        </div>
+
+        <div class="market-rival-grid">
+          <div class="rival-card rival-hl">
+            <div class="rival-card-name">⬛ AutoStore</div>
+            <div class="rival-card-country">🇳🇴 ノルウェー（OSE上場）1996年創業</div>
+            <div class="rival-card-row"><span class="rival-card-key">売上</span><span class="rival-card-val">$601M (2024) 🟢</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">実績</span><span class="rival-card-val">1,650システム / 58カ国 🟢</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">技術</span><span class="rival-card-val">キューブ型グリッド（元祖）</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">強み</span><span class="rival-card-val">超高密度・標準化・高収益・パートナー流通</span></div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-card-name">Exotec</div>
+            <div class="rival-card-country">🇫🇷 フランス（未上場、ユニコーン）2015年創業</div>
+            <div class="rival-card-row"><span class="rival-card-key">売上</span><span class="rival-card-val">累計$1B（MODEX 2024時点）⚪</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">実績</span><span class="rival-card-val">100社超サイト ⚪</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">技術</span><span class="rival-card-val">Skypod（3D移動ロボット、12m）</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">特徴</span><span class="rival-card-val">評価額$2B。UNIQLO・GAP・Decathlon。日本進出済（2019）</span></div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-card-name">HAI Robotics</div>
+            <div class="rival-card-country">🇨🇳 中国深圳（未上場）2016年創業</div>
+            <div class="rival-card-row"><span class="rival-card-key">売上</span><span class="rival-card-val">非公開</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">実績</span><span class="rival-card-val">累計1,100プロジェクト超 ⚪</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">技術</span><span class="rival-card-val">HaiPick ACR（自律ケースハンドリング）12m高さ</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">特徴</span><span class="rival-card-val">1-2ヶ月で展開可能。Fashion/3PL/Retail</span></div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-card-name">Geek+</div>
+            <div class="rival-card-country">🇨🇳 中国北京（HKEX上場）2015年創業</div>
+            <div class="rival-card-row"><span class="rival-card-key">売上</span><span class="rival-card-val">RMB 24.09億 (2024) 🟢</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">実績</span><span class="rival-card-val">800社超、ロボット30,000台超 🟢</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">技術</span><span class="rival-card-val">主にAMR（シェルフ-to-person）</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">特徴</span><span class="rival-card-val">AMR世界シェア7年連続1位。国際売上79.5%</span></div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-card-name">Symbotic</div>
+            <div class="rival-card-country">🇺🇸 米国（NASDAQ:SYM）2007年創業</div>
+            <div class="rival-card-row"><span class="rival-card-key">売上</span><span class="rival-card-val">$1.7B超 (FY24) 🟢</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">実績</span><span class="rival-card-val">Walmart 42 RDC全展開予定 🟢</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">技術</span><span class="rival-card-val">パレット→ケース一貫自動化</span></div>
+            <div class="rival-card-row"><span class="rival-card-key">特徴</span><span class="rival-card-val">未履行売上残高$22.8B。大規模特化</span></div>
+          </div>
+        </div>
+
+        <!-- 競合ポジショニング解説 -->
         <div class="market-card">
-          <div class="market-card-h">ドライバーの労働条件（全産業比較）</div>
-          <table class="market-table">
-            <thead><tr><th>項目</th><th>運送業</th><th>全産業平均</th><th>差</th></tr></thead>
-            <tbody>
-              <tr><td>年間労働時間</td><td>長め</td><td>—</td><td><strong>+396〜444時間/年（+17%）</strong></td></tr>
-              <tr><td>年間所得</td><td>低め</td><td>—</td><td><strong>▲20万〜59万円/年（▲4〜12%）</strong></td></tr>
-              <tr><td>若年層（29歳以下）比率</td><td>10.0%</td><td>16.4%</td><td>▲6.4pt</td></tr>
-              <tr><td>中年層（40〜54歳）比率</td><td>44.3%</td><td>34.7%</td><td>+9.6pt</td></tr>
-            </tbody>
-          </table>
-          <p class="market-card-text" style="margin-top:10px;">「働く人がいない＋採用も難しい＋既存人材は高齢化」という三重苦。倉庫自動化が経営課題として認識される根本要因。</p>
-          <div class="market-source">出典：<a href="https://www.pudo.jp/ja/blog/logistics-problem" target="_blank">全日本トラック協会「日本のトラック輸送産業ー現状と課題ー2023」</a></div>
-        </div>
-      </section>
-
-      <!-- 倉庫不動産・建築費 -->
-      <section class="market-section">
-        <div class="market-section-h"><span class="market-flag">🏭</span>倉庫不動産・建築費の動向</div>
-        <div class="market-card market-hero" style="background:linear-gradient(135deg,#c4870a08,#c4870a18);border-left:4px solid #c4870a;">
-          <div class="market-hero-num" style="color:#c4870a;">+32pt<span class="market-hero-unit">(2021→2024)</span></div>
-          <div class="market-hero-label">倉庫の工事原価指数の急上昇</div>
-          <div class="market-hero-sub">2015〜2020年の6年間は+4ptだったが、2021〜2024年の4年間で+32pt。建築費高騰が新規供給を抑制し、自動化による既存倉庫の有効活用ニーズを押し上げ。</div>
-        </div>
-        <div class="market-grid2">
-          <div class="market-card">
-            <div class="market-card-h">首都圏 大型物流施設の賃料・空室率</div>
+          <div class="market-card-h">競合ポジショニング解説</div>
+          <div class="market-table-wrap">
             <table class="market-table">
-              <thead><tr><th>指標</th><th>2020年Q4</th><th>2024年Q3</th><th>2025年Q3</th></tr></thead>
+              <thead>
+                <tr><th>競合</th><th>AutoStoreの強み</th><th>注意点</th></tr>
+              </thead>
               <tbody>
-                <tr><td>空室率</td><td>0.5%</td><td><strong>10.1%</strong></td><td>10.4%</td></tr>
-                <tr><td>実質賃料/坪</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr>
+                  <td><strong>vs Exotec</strong></td>
+                  <td>標準化・高密度・パートナー流通の安定性</td>
+                  <td>Exotecは3D移動可能でレイアウト柔軟性が高い</td>
+                </tr>
+                <tr>
+                  <td><strong>vs HAI Robotics</strong></td>
+                  <td>圧倒的な保管密度</td>
+                  <td>HAIのACRは変更・拡張しやすい（既存ラック流用可）</td>
+                </tr>
+                <tr>
+                  <td><strong>vs Geek+</strong></td>
+                  <td>高SKU・高密度でAutoStore優位</td>
+                  <td>中SKU・低密度ならGeek+が有利</td>
+                </tr>
+                <tr>
+                  <td><strong>vs Symbotic</strong></td>
+                  <td>トート単位の柔軟性（Symboticはパレット中心）</td>
+                  <td>Symboticはケース/パレットの大規模一貫。重なりは限定的</td>
+                </tr>
               </tbody>
             </table>
-            <p class="market-card-text" style="margin-top:10px;">2020年Q4の0.5%から2024年Q3に10.1%へ急上昇（10%超は2010年Q4以来）。空室を抱えた物件が多いエリアでは建築費上昇分を賃料に転嫁しきれず、デベロッパーが新規開発を見直す動き。</p>
-            <div class="market-source">出典：<a href="https://www.lnews.jp/2025/02/r0217305.html" target="_blank">CBRE Japan / LNEWS（2025年2月）</a></div>
           </div>
-          <div class="market-card">
-            <div class="market-card-h">2025年の新規供給は当初予測から22%減</div>
-            <div class="market-stat"><span class="market-stat-num">▲13万坪</span><span class="market-stat-unit">2023Q4予測比</span></div>
-            <p class="market-card-text">2023年Q4時点で2025年の新規供給は59.5万坪予測 → 2024年Q4時点では46.7万坪。<strong>建築費高騰・工期長期化で開発計画が次々と見直し</strong>。冷凍冷蔵への用途変更や用地のまま売却するケースも。</p>
-            <div class="market-source">出典：<a href="https://www.cbre.co.jp/insights/briefs/%E9%96%8B%E7%99%BA%E8%A8%88%E7%94%BB%E3%81%AE%E8%A6%8B%E7%9B%B4%E3%81%97%E3%81%A7-%E9%A6%96%E9%83%BD%E5%9C%8F%E7%89%A9%E6%B5%81%E6%96%BD%E8%A8%AD%E3%81%AE%E8%B3%83%E6%96%99%E6%B0%B4%E6%BA%96%E3%81%8C%E4%B8%8A%E5%90%91%E3%81%8F%E5%8F%AF%E8%83%BD%E6%80%A7" target="_blank">CBRE Japan「首都圏物流施設の賃料水準が上向く可能性」</a></div>
+          <div class="market-note" style="margin-top:10px;">
+            <strong>⚠️ 注記：</strong>競合各社の売上は通貨・年度・対象範囲が違うため単純比較不可。LogisticsIQ：上位10社（Dematic, Daifuku, SSI Schaefer, Honeywell Intelligrated, Knapp, Toyota, Muratec, Beumer, Fortna, Witron）で世界シェア50%超。キューブ型・ACR等の新興セグメントで上位プレイヤーの構図が変動中。
           </div>
         </div>
-        <div class="market-card">
-          <div class="market-card-h">圏別の実質賃料・空室率（2025年Q2-Q3）</div>
+      </section>
+
+      <!-- ══ 6. 導入コスト・ハードル ══ -->
+      <section class="market-section">
+        <div class="market-section-h">
+          <span class="market-section-num">6</span>
+          導入コスト・ハードル
+        </div>
+
+        <div class="market-grid3">
+          <div class="market-kpi">
+            <div class="market-kpi-num">+14.9%</div>
+            <div class="market-kpi-label">国内設備総売上 5年伸び率（2020→2024）<span class="mlabel mlabel-fact" style="margin-left:4px;">🟢</span></div>
+            <div class="market-kpi-sub">5,714億 → 6,570億</div>
+          </div>
+          <div class="market-kpi">
+            <div class="market-kpi-num">15〜20%</div>
+            <div class="market-kpi-label">サービス事業（MRO+Digital）マージン<span class="mlabel mlabel-supp" style="margin-left:4px;">⚪</span></div>
+            <div class="market-kpi-sub">新規設備は 3〜5%。サービスが高収益</div>
+          </div>
+          <div class="market-kpi">
+            <div class="market-kpi-num">約110億USD</div>
+            <div class="market-kpi-label">2028年予測 サービス事業規模<span class="mlabel mlabel-supp" style="margin-left:4px;">⚪</span></div>
+            <div class="market-kpi-sub">市場全体の約25%</div>
+          </div>
+        </div>
+
+        <div class="market-grid2">
+          <div class="market-cost-flow">
+            <div class="market-cost-flow-title">導入総コストの構成要素</div>
+            <div class="cost-flow-items">
+              <div class="cost-flow-item"><span class="cost-flow-plus"> </span><span class="cost-flow-label">設備本体</span></div>
+              <div class="cost-flow-item"><span class="cost-flow-plus">＋</span><span class="cost-flow-label">制御（PLC、上位連携）</span></div>
+              <div class="cost-flow-item"><span class="cost-flow-plus">＋</span><span class="cost-flow-label">電気・据付工事</span></div>
+              <div class="cost-flow-item"><span class="cost-flow-plus">＋</span><span class="cost-flow-label">安全対策（柵、センサ、防火）</span></div>
+              <div class="cost-flow-item"><span class="cost-flow-plus">＋</span><span class="cost-flow-label">現地調整・試運転</span></div>
+              <div class="cost-flow-item"><span class="cost-flow-plus">＋</span><span class="cost-flow-label">既存設備接続</span></div>
+              <div class="cost-flow-item"><span class="cost-flow-plus">＋</span><span class="cost-flow-label">WMS/WES/WCS連携</span></div>
+            </div>
+            <div class="cost-flow-eq">＝ 導入総コスト（TCO）</div>
+          </div>
+          <div class="market-card" style="margin-bottom:0;">
+            <div class="market-card-h">AutoStoreのコスト面の強み</div>
+            <ul class="market-list">
+              <li><strong>標準化された製品</strong>でカスタマイズを最小化</li>
+              <li><strong>パートナー流通</strong>で直販コストを削減</li>
+              <li>高い保管密度 → 倉庫床面積を従来比最大<strong>75%削減</strong>（⚪）</li>
+              <li><strong>24/7運用</strong>可能（夜間も稼働）</li>
+            </ul>
+            <div class="market-note">
+              <strong>⚠️ 重要：</strong>「設備本体価格」だけで判断しない。サービス・連携・運用コストを含むTCOで評価する必要がある。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 7. 企業規模別の機会 ══ -->
+      <section class="market-section">
+        <div class="market-section-h">
+          <span class="market-section-num">7</span>
+          企業規模別の機会
+        </div>
+
+        <div class="market-table-wrap">
           <table class="market-table">
-            <thead><tr><th>エリア</th><th>実質賃料/坪</th><th>空室率</th><th>需要</th></tr></thead>
+            <thead>
+              <tr>
+                <th>規模</th>
+                <th>主な主力商材</th>
+                <th style="text-align:center;">AutoStoreフィット</th>
+                <th>理由</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>首都圏 LMT</td><td>—</td><td>10.4%</td><td>新規需要14.5万坪（過去5年平均12.6万坪を上回る）</td></tr>
-              <tr><td>近畿圏 LMT</td><td>¥4,260</td><td>5.0%</td><td>新規需要12.2万坪（四半期ベース過去最大）</td></tr>
-              <tr><td>中部圏 LMT</td><td>¥3,720（+1.4%）</td><td>15.9%</td><td>大量供給だが好立地物件がテナント需要喚起</td></tr>
-              <tr><td>福岡圏 LMT</td><td>¥3,580（+0.3%）</td><td>3.0%</td><td>複数物件でテナント決定相次ぐ</td></tr>
+              <tr class="hl-row">
+                <td><strong>大企業・大規模DC</strong></td>
+                <td>自動倉庫（パレット）、大型ソーター、大規模コンベヤ、WES/WCS</td>
+                <td style="text-align:center;" class="fit-ss">◎</td>
+                <td>大規模AutoStore（数百〜数千ロボット）の典型ターゲット</td>
+              </tr>
+              <tr class="hl-row">
+                <td><strong>中堅企業</strong></td>
+                <td>AMR、AGF、部分自動化、AutoStore中規模、簡易WES</td>
+                <td style="text-align:center;" class="fit-ss">◎</td>
+                <td>段階的拡張可能、ROI重視</td>
+              </tr>
+              <tr>
+                <td>中小企業</td>
+                <td>カタログ型省力化設備、単工程自動化、簡易WMS</td>
+                <td style="text-align:center;" class="fit-m">△</td>
+                <td>AutoStoreの初期投資は依然壁。補助金活用例あり</td>
+              </tr>
+              <tr class="hl-row">
+                <td><strong>3PL</strong></td>
+                <td>AMR、WES、可変型搬送、AutoStore（顧客別運用）</td>
+                <td style="text-align:center;" class="fit-ss">◎</td>
+                <td>横展開・標準化、契約期間内ROI</td>
+              </tr>
             </tbody>
           </table>
-          <p class="market-card-text" style="margin-top:10px;">需要は東京・大阪の<strong>二極ハブ構造</strong>へ集約。福岡圏は空室率3%と最も逼迫。EC・3PL・小売の関西拠点比率が上昇中。</p>
-          <div class="market-source">出典：<a href="https://www.cbre-propertysearch.jp/article/industrial_marketview-q3-2025-index/" target="_blank">CBRE「ジャパン・ロジスティクス・マーケットビュー2025年Q3」</a></div>
+        </div>
+
+        <div class="market-note" style="margin-top:12px;">
+          <strong>⚠️ 中小企業白書2024：</strong>中小の自動化障壁は「業務標準化が難しい」「投資効果が不明」「資金不足」（要追加fetch）。<br>
+          <strong>🟡 仮説：</strong>中小企業省力化投資補助金（カタログ型）は単工程設備向けで、AutoStoreのような大型システムは現状対象外（要確認）。
         </div>
       </section>
 
-      <!-- 関連市場（物流不動産投資・補助金） -->
+      <!-- ══ 8. 業界別の機会 ══ -->
       <section class="market-section">
-        <div class="market-section-h"><span class="market-flag">💴</span>関連市場・支援制度</div>
+        <div class="market-section-h">
+          <span class="market-section-num">8</span>
+          業界別の機会 ★AutoStoreフィット度を強調
+        </div>
+
+        <!-- ヒートマップ -->
+        <div class="market-heatmap-wrap">
+          <table class="market-heatmap">
+            <thead>
+              <tr>
+                <th class="hm-row-hdr">業界</th>
+                <th>パレット型<br>自動倉庫</th>
+                <th>シャトル型<br>自動倉庫</th>
+                <th class="hm-hl">⬛ AutoStore</th>
+                <th>AMR/AGV</th>
+                <th>AGF</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="hm-industry">EC・通販</td>
+                <td class="hm-m">△</td>
+                <td class="hm-ss">◎</td>
+                <td class="hm-ss hm-hl-col">◎</td>
+                <td class="hm-ss">◎</td>
+                <td class="hm-m">△</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">アパレル</td>
+                <td class="hm-m">△</td>
+                <td class="hm-ss">◎</td>
+                <td class="hm-ss hm-hl-col">◎</td>
+                <td class="hm-s">○</td>
+                <td class="hm-m">△</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">医薬品・化粧品</td>
+                <td class="hm-m">△</td>
+                <td class="hm-s">○</td>
+                <td class="hm-ss hm-hl-col">◎</td>
+                <td class="hm-s">○</td>
+                <td class="hm-m">△</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">小売・雑貨</td>
+                <td class="hm-s">○</td>
+                <td class="hm-s">○</td>
+                <td class="hm-s hm-hl-col">○</td>
+                <td class="hm-s">○</td>
+                <td class="hm-s">○</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">食品 常温</td>
+                <td class="hm-s">○</td>
+                <td class="hm-s">○</td>
+                <td class="hm-s hm-hl-col">○</td>
+                <td class="hm-m">△</td>
+                <td class="hm-ss">◎</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">食品 冷凍・低温</td>
+                <td class="hm-s">○</td>
+                <td class="hm-m">△</td>
+                <td class="hm-m hm-hl-col" style="color:#b04040;">△</td>
+                <td class="hm-m">△</td>
+                <td class="hm-s">○</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">製造業 小物・MRO</td>
+                <td class="hm-m">△</td>
+                <td class="hm-s">○</td>
+                <td class="hm-ss hm-hl-col">◎</td>
+                <td class="hm-s">○</td>
+                <td class="hm-s">○</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">製造業 大物・パレット</td>
+                <td class="hm-ss">◎</td>
+                <td class="hm-m">△</td>
+                <td class="hm-m hm-hl-col" style="color:#b04040;">△</td>
+                <td class="hm-m">△</td>
+                <td class="hm-ss">◎</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">自動車部品</td>
+                <td class="hm-ss">◎</td>
+                <td class="hm-m">△</td>
+                <td class="hm-m hm-hl-col" style="color:#b04040;">△</td>
+                <td class="hm-s">○</td>
+                <td class="hm-ss">◎</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">3PL</td>
+                <td class="hm-m">△</td>
+                <td class="hm-ss">◎</td>
+                <td class="hm-ss hm-hl-col">◎</td>
+                <td class="hm-ss">◎</td>
+                <td class="hm-s">○</td>
+              </tr>
+              <tr>
+                <td class="hm-industry">卸・BtoB</td>
+                <td class="hm-s">○</td>
+                <td class="hm-m">△</td>
+                <td class="hm-s hm-hl-col">○</td>
+                <td class="hm-m">△</td>
+                <td class="hm-ss">◎</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="market-note" style="margin-bottom:16px;">
+          <strong>⚠️ このヒートマップは販売実績データではなく、</strong>業界特性（SKU構成、温度帯、商品サイズ、頻度）と公開事例から推測した🟡仮説。
+        </div>
+
+        <!-- ◎業界解説 / △業界解説 -->
         <div class="market-grid2">
           <div class="market-card">
-            <div class="market-card-h">中小企業省力化投資補助金（一般型）</div>
-            <div class="market-stat"><span class="market-stat-num">最大¥1億</span><span class="market-stat-unit">補助上限</span></div>
-            <p class="market-card-text">2025年新設のオーダーメイド型補助金。自動倉庫・搬送ロボット・WMSなど物流設備が対象。補助率は中小1/2・小規模/再生事業者2/3。<strong>予算1,000億円規模</strong>。</p>
-            <div class="market-source">出典：<a href="https://mirasapo-plus.go.jp/hint/27807/" target="_blank">中小企業庁「中小企業省力化投資補助金」（2025年）</a></div>
+            <div class="market-card-h" style="color:#0e8f6e;">AutoStore ◎ 業界 — なぜ刺さるか</div>
+            <div class="market-table-wrap">
+              <table class="market-table" style="min-width:320px;">
+                <thead><tr><th>業界</th><th>理由</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>EC・通販</strong></td><td>多SKU小物、高頻度、24/7、波動対応</td></tr>
+                  <tr><td><strong>アパレル</strong></td><td>SKU爆発（1型×色×サイズ）、シーズン在庫、Decathlon等の事例</td></tr>
+                  <tr><td><strong>医薬品・化粧品</strong></td><td>小物多SKU、トレーサビリティ要件、温度帯対応（常温なら最適）</td></tr>
+                  <tr><td><strong>製造業MRO・部品</strong></td><td>多品種少量、ロングテール（数年に1回しか使わない部品）</td></tr>
+                  <tr><td><strong>3PL</strong></td><td>標準化・横展開、複数荷主の運用、契約期間内ROI</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div class="market-card">
-            <div class="market-card-h">越境EC（日本から中国・米国向け）</div>
-            <div class="market-stat"><span class="market-stat-num">¥2.64兆</span><span class="market-stat-unit">中国向け / +8.5%</span></div>
-            <p class="market-card-text">中国消費者による日本事業者からの越境EC購入額。米国事業者からの越境EC購入は¥3.14兆（+6.0%）。<strong>輸出物流の自動化需要</strong>を底支え。</p>
-            <div class="market-source">出典：<a href="https://www.meti.go.jp/press/2025/08/20250826005/20250826005.html" target="_blank">経済産業省（2025年8月）</a></div>
+            <div class="market-card-h" style="color:#b04040;">AutoStore △ 業界 — なぜ厳しいか</div>
+            <div class="market-table-wrap">
+              <table class="market-table" style="min-width:320px;">
+                <thead><tr><th>業界</th><th>理由</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>食品 冷凍・低温</strong></td><td>-25℃環境はバッテリー・ロボット稼働に影響、専用設計が必要</td></tr>
+                  <tr><td><strong>製造業 大物・パレット</strong></td><td>パレット単位の保管が中心、AutoStoreはトート単位</td></tr>
+                  <tr><td><strong>自動車部品（大物）</strong></td><td>大物部品（バンパー・ガラス等）がトートに入らない</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- 商談で使える要点 -->
+      <!-- ══ 9. AGFの位置づけ ══ -->
       <section class="market-section">
-        <div class="market-section-h">💡 商談で使える要点</div>
-        <div class="market-card market-summary">
-          <ul class="market-summary-list">
-            <li><strong>市場規模：</strong>国内物流ロボティクス市場は2024年¥404億円 → 2030年¥1,238億円へ3倍成長。グローバルも$55B〜$60B規模・年率15〜19%成長。</li>
-            <li><strong>EC需要：</strong>BtoC-EC市場は¥15.2兆（EC化率9.78%）、BtoB-ECは¥514兆（EC化率43.1%）。食品ECが+6.36%で最も伸び。書籍ECは半分以上がオンライン。</li>
-            <li><strong>労働力危機：</strong>ドライバー有効求人倍率は2.68倍（全産業の2倍）。2030年に▲34%（9億トン）の輸送能力不足、ドライバーは2028年に▲27.8万人。</li>
-            <li><strong>不動産環境：</strong>倉庫工事原価指数は2021〜2024で+32pt急騰。新規供給22%減・空室率10%超で、既存倉庫の自動化による有効活用ニーズが拡大。</li>
-            <li><strong>支援制度：</strong>中小企業省力化投資補助金は最大¥1億・予算1,000億円規模。自動倉庫・搬送ロボット・WMSが対象でオーダーメイド導入も可能。</li>
-            <li><strong>転換点：</strong>「省人化のため」から「物流ロボットを前提とした倉庫構築」へ。新拠点設計時点での自動化検討が標準に。</li>
-          </ul>
+        <div class="market-section-h">
+          <span class="market-section-num">9</span>
+          AGFの位置づけ
+        </div>
+
+        <div class="market-grid3">
+          <div class="market-kpi">
+            <div class="market-kpi-num">75,686台</div>
+            <div class="market-kpi-label">国内フォークリフト 年間販売（2024年度）<span class="mlabel mlabel-fact" style="margin-left:4px;">🟢</span></div>
+            <div class="market-kpi-sub">JILS（産業車両協会）</div>
+          </div>
+          <div class="market-kpi">
+            <div class="market-kpi-num">約300台</div>
+            <div class="market-kpi-label">国内AGF 年間販売規模（参考）<span class="mlabel mlabel-supp" style="margin-left:4px;">⚪</span></div>
+            <div class="market-kpi-sub">業界紙（モノクエ／日本物流新聞 2023）。普及初期〜拡大前段階</div>
+          </div>
+          <div class="market-kpi kpi-hl">
+            <div class="market-kpi-num">〜150台/年</div>
+            <div class="market-kpi-label">ラピュタ目標 AGFシェア<span class="mlabel mlabel-supp" style="margin-left:4px;">⚪</span></div>
+            <div class="market-kpi-sub">「数年内にAGFシェア半数」を表明</div>
+          </div>
+        </div>
+
+        <div class="market-note" style="margin-bottom:14px;">
+          <strong>⚠️ 重要：</strong>「AGF年間約300台」は業界紙報道であり公式統計ではない。出典が異なるためフォークリフト全体との単純比較は参考値。
+        </div>
+
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">AGFが向きやすい工程</div>
+            <p class="market-card-text">資材供給、完成品搬送、パレット回収、入出庫、夜間搬送、トラックバース搬送</p>
+            <div class="market-card-h" style="margin-top:10px;">AGF優先業界仮説 <span class="mlabel mlabel-hypo">🟡 仮説</span></div>
+            <ul class="market-list">
+              <li>食品・飲料 / FMCG（トヨタL&amp;F 大東製糖、VisionNav エステー）</li>
+              <li>運輸・倉庫 / 3PL</li>
+              <li>自動車・部品製造（岡谷鋼機 DENSO実証）</li>
+              <li>製造業 / 日用品 / 素材</li>
+            </ul>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">AutoStore × AGF の連携可能性</div>
+            <p class="market-card-text">AutoStoreは保管・ピッキング、AGFはパレット搬送・入出庫。<strong>工程分担として補完関係</strong>（競合ではない）。商談では「AutoStore + AGF」の組み合わせ提案も視野。</p>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--surface2);border-radius:8px;font-size:12px;flex-wrap:wrap;">
+              <span style="background:var(--sb);color:#fff;padding:4px 10px;border-radius:6px;font-weight:800;font-size:11px;">AutoStore</span>
+              <span style="color:var(--muted);">保管・ピッキング</span>
+              <span style="color:var(--sb);font-weight:700;font-size:16px;">+</span>
+              <span style="background:var(--text2);color:#fff;padding:4px 10px;border-radius:6px;font-weight:800;font-size:11px;">AGF</span>
+              <span style="color:var(--muted);">パレット搬送・入出庫</span>
+              <span style="color:var(--sb);font-weight:700;font-size:16px;">=</span>
+              <span style="color:#0e8f6e;font-weight:700;">完全自動化</span>
+            </div>
+          </div>
         </div>
       </section>
+
+      <!-- ══ 10. 3PL・大手物流会社の動向 ══ -->
+      <section class="market-section">
+        <div class="market-section-h">
+          <span class="market-section-num">10</span>
+          3PL・大手物流会社の動向
+        </div>
+
+        <div class="market-card">
+          <div class="market-card-h">3PL向け商材構成</div>
+          <div class="market-table-wrap">
+            <table class="market-table">
+              <thead><tr><th>テーマ</th><th>主な商材</th></tr></thead>
+              <tbody>
+                <tr><td><strong>屋内搬送</strong></td><td>AMR、AGF</td></tr>
+                <tr><td><strong>保管・GTP</strong></td><td>AutoStore、AS/RS</td></tr>
+                <tr><td><strong>ピッキング支援</strong></td><td>アシストピッキング、ピッキング支援AMR</td></tr>
+                <tr><td><strong>仕分け</strong></td><td>ソーター、仕分けロボット</td></tr>
+                <tr><td><strong>ソフトウェア</strong></td><td>WES、WMS、可視化</td></tr>
+                <tr><td><strong>横展開モデル</strong></td><td>RaaS、カタログ化されたソリューション</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="market-card">
+          <div class="market-card-h">主要3PLの動き <span class="mlabel mlabel-supp">⚪ 補助資料</span></div>
+          <div class="market-table-wrap">
+            <table class="market-table">
+              <thead><tr><th>会社</th><th>キーワード</th></tr></thead>
+              <tbody>
+                <tr><td><strong>DHL Supply Chain</strong></td><td>AMR、アシストピッキング、屋内搬送、グローバル横展開</td></tr>
+                <tr><td><strong>DB Schenker</strong></td><td>100台超AMR、自動仕分けシステム、垂直オーダーピッカー</td></tr>
+                <tr><td><strong>Kuehne+Nagel</strong></td><td>大手3PL経営環境、顧客ニーズへの対応</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="market-note" style="margin-top:8px;">
+            <strong>⚠️</strong> 企業IRはポジショントーク注意。「自社で進めている」発信が中心。必要に応じて個別fetch要。
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 11. 大手マテハン会社の方向性 ══ -->
+      <section class="market-section">
+        <div class="market-section-h">
+          <span class="market-section-num">11</span>
+          大手マテハン会社の方向性
+        </div>
+
+        <div class="market-grid2">
+          <div class="market-card">
+            <div class="market-card-h">変化の方向</div>
+            <div style="display:flex;flex-direction:column;gap:8px;padding:10px;background:var(--surface2);border-radius:8px;font-size:12px;">
+              <div style="padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--muted);">
+                <strong>[従来]</strong> 単体設備売り（自動倉庫、コンベヤ、ソーター）
+              </div>
+              <div style="text-align:center;color:var(--sb);font-size:18px;font-weight:900;">↓</div>
+              <div style="padding:8px 12px;background:linear-gradient(135deg,#fff8f4,#fff0e6);border:1.5px solid rgba(255,102,0,.3);border-radius:6px;color:var(--text);">
+                <strong>[現在]</strong> 統合ソリューション<br>
+                <span style="font-size:11px;color:var(--text2);">保管 ＋ 搬送 ＋ 仕分け ＋ ピッキング ＋ ソフトウェア ＋ ライフサイクルサービス</span>
+              </div>
+            </div>
+          </div>
+          <div class="market-card">
+            <div class="market-card-h">収益構造の変化</div>
+            <div class="market-table-wrap">
+              <table class="market-table" style="min-width:240px;">
+                <thead><tr><th>事業領域</th><th>オペレーションマージン</th></tr></thead>
+                <tbody>
+                  <tr><td>新規設備販売</td><td>3〜5%</td></tr>
+                  <tr class="hl-row"><td><strong>サービス事業（MRO + Digital）</strong></td><td class="fit-ss"><strong>15〜20%</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="market-card-text">2028年予測：MRO+Digitalで <strong>約110億USD（市場の約25%）</strong></p>
+          </div>
+        </div>
+
+        <div class="market-card">
+          <div class="market-card-h">世界上位10社（LogisticsIQ）<span class="mlabel mlabel-supp">⚪</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Dematic（KION傘下）</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Daifuku</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">SSI Schaefer</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Honeywell Intelligrated</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Knapp</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Toyota Advance Logistics</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Muratec</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Beumer Group</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Fortna</span>
+            <span style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">Witron</span>
+          </div>
+          <p class="market-card-text">→ 上位10社で世界シェア50%超。<strong>M&A動向（⚪）：</strong>KION→Dematic、KUKA→Swisslog、Toyota→Vanderlande/Bastian/Viastore、SSI Schaefer→DS Automotion、Honeywell→Intelligrated/Transnorm、Körber→Cohesio/Siemens Logistics等。マテハン業界は統合・拡大フェーズ。<strong>SBRが扱うAutoStoreは独立ベンダーとしてユニークな位置。</strong></p>
+        </div>
+      </section>
+
+      <!-- ══ 12. 優先ターゲット仮説 ══ -->
+      <section class="market-section">
+        <div class="market-section-h">
+          <span class="market-section-num">12</span>
+          優先ターゲット仮説（AutoStore軸）<span class="mlabel mlabel-hypo" style="margin-left:6px;">🟡 仮説</span>
+        </div>
+
+        <div class="market-summary-card">
+          <div class="market-summary-card-h">🎯 AutoStore優先ターゲット — 8選</div>
+          <div class="market-table-wrap">
+            <table class="market-table">
+              <thead>
+                <tr>
+                  <th style="width:32px;">#</th>
+                  <th>ターゲット</th>
+                  <th style="text-align:center;">フィット</th>
+                  <th>根拠</th>
+                  <th>ラベル</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hl-row">
+                  <td><span class="target-rank r-top">1</span></td>
+                  <td><strong>EC・アパレル中堅DC</strong></td>
+                  <td style="text-align:center;" class="fit-ss">◎</td>
+                  <td>SKU多・小物・高頻度、UNIQLO/GAP事例（Exotec導入）</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+                <tr class="hl-row">
+                  <td><span class="target-rank r-top">2</span></td>
+                  <td><strong>医薬品・化粧品 物流</strong></td>
+                  <td style="text-align:center;" class="fit-ss">◎</td>
+                  <td>小物多SKU、トレーサビリティ、24/7、AutoStore事例豊富</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+                <tr class="hl-row">
+                  <td><span class="target-rank r-top">3</span></td>
+                  <td><strong>製造業 MRO・部品倉庫</strong></td>
+                  <td style="text-align:center;" class="fit-ss">◎</td>
+                  <td>多品種少量、ロングテール、空間効率重視</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+                <tr class="hl-row">
+                  <td><span class="target-rank r-top">4</span></td>
+                  <td><strong>3PL 契約物流</strong></td>
+                  <td style="text-align:center;" class="fit-ss">◎</td>
+                  <td>標準化・横展開、RaaS適合、複数顧客運用</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+                <tr>
+                  <td><span class="target-rank r-mid">5</span></td>
+                  <td>食品 常温・FMCG</td>
+                  <td style="text-align:center;" class="fit-s">○</td>
+                  <td>常温なら最適、低温/冷凍は△</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+                <tr>
+                  <td><span class="target-rank r-mid">6</span></td>
+                  <td>自動車部品 小物</td>
+                  <td style="text-align:center;" class="fit-s">○</td>
+                  <td>MRO・小物部品で◎、大物は△</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+                <tr>
+                  <td><span class="target-rank r-mid">7</span></td>
+                  <td>中堅企業 部分自動化</td>
+                  <td style="text-align:center;" class="fit-s">○</td>
+                  <td>段階的拡張可、ROI重視</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+                <tr>
+                  <td><span class="target-rank r-mid">8</span></td>
+                  <td>中小企業 単工程自動化</td>
+                  <td style="text-align:center;" class="fit-w">△</td>
+                  <td>初期投資の壁、補助金対象外の可能性</td>
+                  <td><span class="mlabel mlabel-hypo">🟡</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="market-card">
+          <div class="market-card-h">競合との戦い方</div>
+          <div class="market-table-wrap">
+            <table class="market-table">
+              <thead><tr><th>競合</th><th>AutoStoreの強み</th></tr></thead>
+              <tbody>
+                <tr><td><strong>vs Exotec</strong></td><td>標準化・高密度・パートナー流通の安定性</td></tr>
+                <tr><td><strong>vs HAI Robotics / Geek+</strong></td><td>圧倒的な保管密度、グローバル実績、長期信頼性</td></tr>
+                <tr><td><strong>vs Symbotic</strong></td><td>トート単位の柔軟性（Symboticはパレット中心）</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 出典一覧 ══ -->
+      <section class="market-section">
+        <div class="market-section-h">
+          <span class="market-section-num">出典</span>
+          出典一覧（章別マッピング）
+        </div>
+
+        <div class="market-sources-grid">
+          <div class="market-source-item">
+            <div class="market-source-ch">章 2・3・4・6・9</div>
+            <div class="market-source-name">JILS 物流システム機器生産出荷統計 2024年度版</div>
+            <div class="market-source-note">公益社団法人日本ロジスティクスシステム協会 <span class="market-source-badge msb-ok">✅ 確認済</span></div>
+          </div>
+          <div class="market-source-item">
+            <div class="market-source-ch">章 5</div>
+            <div class="market-source-name">AutoStore Holdings Q4 2024 Results（IR資料）</div>
+            <div class="market-source-note">OSE上場 公式IR <a href="https://investors.autostoresystem.com" target="_blank">investors.autostoresystem.com</a> <span class="market-source-badge msb-ok">✅</span></div>
+          </div>
+          <div class="market-source-item">
+            <div class="market-source-ch">章 2・6・11</div>
+            <div class="market-source-name">LogisticsIQ Warehouse Automation Market 2024</div>
+            <div class="market-source-note">民間調査会社 ⚪ 補助資料として扱う <span class="market-source-badge msb-ok">✅</span></div>
+          </div>
+          <div class="market-source-item">
+            <div class="market-source-ch">章 2</div>
+            <div class="market-source-name">IFR World Robotics 2024 Service Robots</div>
+            <div class="market-source-note">国際ロボット連盟 <span class="market-source-badge msb-ok">✅</span></div>
+          </div>
+          <div class="market-source-item">
+            <div class="market-source-ch">章 5</div>
+            <div class="market-source-name">Geek+ FY2024 IR（HKEX）/ Symbotic 10-K</div>
+            <div class="market-source-note">上場企業IR <span class="market-source-badge msb-ok">✅</span></div>
+          </div>
+          <div class="market-source-item">
+            <div class="market-source-ch">章 5</div>
+            <div class="market-source-name">Exotec MODEX 2024 / HAI Robotics 公式</div>
+            <div class="market-source-note">未上場のため公開資料のみ ⚪ <span class="market-source-badge msb-ok">✅</span></div>
+          </div>
+          <div class="market-source-item">
+            <div class="market-source-ch">章 7</div>
+            <div class="market-source-name">中小企業白書 2024</div>
+            <div class="market-source-note">中小企業庁 <span class="market-source-badge msb-tbd">❓ 追加fetch推奨</span></div>
+          </div>
+          <div class="market-source-item">
+            <div class="market-source-ch">章 9</div>
+            <div class="market-source-name">業界紙（モノクエ・日本物流新聞）2023</div>
+            <div class="market-source-note">AGF約300台の出典。公式統計ではない ⚪ <span class="market-source-badge msb-ok">✅</span></div>
+          </div>
+        </div>
+
+        <div class="market-note" style="margin-top:16px;">
+          <strong>追加調査が必要な項目：</strong>①業界別・商材別の実際の販売実績（JILS統計は上位10業種の構成比のみ）②企業規模別の導入傾向（中小企業白書のテキストはあるが業種×規模×商材クロスはない）③AGF単体の売上金額（JIVA統計・業界紙のみ）④AMR/AGV/AGFの定義差（各社で違い、注記必須）⑤WMS/WES/WCS市場の定量データ（JILSカバレッジ不十分）⑥国内 vs 海外（JILS海外向け228,582百万円、+26.0%）
+        </div>
+      </section>
+
     </div>
   </div>
+
 
   <!-- READING (BUSINESS PRIMER) -->
   <div id="view-reading" class="view" style="overflow-y:auto;">
@@ -5565,32 +6335,31 @@ buildMap();
 buildMatrix();
 buildCases();
 
-// ═══════════ MARKET RESEARCH CHART ═══════════
-function buildMarket(){
+// ═══════════ MARKET — JILS 5年推移バーチャート ═══════════
+function buildJilsChart(){
+  const el = document.getElementById('mbc-jils5yr');
+  if(!el) return;
   const data = [
-    {year:2020, val:191, type:'actual'},
-    {year:2021, val:243, type:'actual'},
-    {year:2022, val:300, type:'actual'},
-    {year:2023, val:357, type:'actual'},
-    {year:2024, val:404, type:'est'},
-    {year:2025, val:531, type:'forecast'},
-    {year:2027, val:733, type:'forecast'},
-    {year:2030, val:1238, type:'forecast'},
+    {year:2020, val:5714},
+    {year:2021, val:5393},
+    {year:2022, val:6139},
+    {year:2023, val:6330},
+    {year:2024, val:6570},
   ];
   const max = Math.max(...data.map(d=>d.val));
-  const container = document.getElementById('market-chart-jp');
-  if(!container) return;
-  container.innerHTML = data.map(d=>{
-    const h = (d.val/max)*100;
-    const cls = (d.type==='forecast') ? ' future' : '';
-    const valFmt = d.val.toLocaleString();
-    return `<div class="market-chart-bar${cls}" style="height:${h}%" title="${d.year}年: ${valFmt}億円">
-      <div class="market-chart-val">${valFmt}</div>
-      <div class="market-chart-year">${d.year}${d.type==='est'?'(見込)':d.type==='forecast'?'(予測)':''}</div>
+  const colors = ['#b0b8d0','#b0b8d0','#b0b8d0','#b0b8d0','#ff6600'];
+  el.innerHTML = data.map((d,i)=>{
+    const h = Math.round((d.val/max)*100);
+    const valStr = (d.val/10000).toFixed(2)+'億';
+    return `<div class="mbc-bar-wrap">
+      <div class="mbc-bar" style="height:${h}%;background:${colors[i]};" title="${d.year}年度: ${d.val.toLocaleString()}百万円">
+        <div class="mbc-val">${valStr}</div>
+      </div>
+      <div class="mbc-year">${d.year}</div>
     </div>`;
   }).join('');
 }
-buildMarket();
+buildJilsChart();
 
 // ═══════════ READING SUB-TABS ═══════════
 document.querySelectorAll('.rsub').forEach(btn=>{
